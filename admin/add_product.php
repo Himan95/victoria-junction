@@ -15,9 +15,9 @@ if($_SESSION['username']!=$results2['username']|| $_SESSION['username']==''){
 }
 
 
-  $records1 = $connection->prepare('SELECT * FROM category ORDER BY category_name');
-  $records1->execute();
-  $results1=$records1->fetch(PDO::FETCH_ASSOC);
+$records1 = $connection->prepare('SELECT * FROM category ORDER BY category_name');
+$records1->execute();
+$results1=$records1->fetch(PDO::FETCH_ASSOC);
 
 //Add product Button clicked
 if(isset($_POST['add_product'])){
@@ -28,14 +28,16 @@ if(isset($_POST['add_product'])){
   $prod_price=$_POST['prod_price'];
   $prod_quantity=$_POST['prod_quantity'];
   $prod_desc=$_POST['prod_desc'];
+  $prod_discount=$_POST['prod_discount'];
+  $prod_span_price=$_POST['prod_span_price'];
 
   //Process the image that is uploaded by the user
-    $target_dir = "../images/";
-    $target_file = $target_dir . basename($_FILES['imageUpload']['name']);
-    $uploadOk = 1;
-    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-    move_uploaded_file($_FILES['imageUpload']['tmp_name'], $target_file);
-    $final_image=substr($target_file, 3);
+  $target_dir = "../images/";
+  $target_file = $target_dir . basename($_FILES['imageUpload']['name']);
+  $uploadOk = 1;
+  $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+  move_uploaded_file($_FILES['imageUpload']['tmp_name'], $target_file);
+  $final_image=substr($target_file, 3);
   /* Code to check if product id exists */
 
   $records = $connection->prepare('SELECT * FROM product_master WHERE prod_id=:prod_id');
@@ -43,31 +45,34 @@ if(isset($_POST['add_product'])){
   $records->execute();
   $results=$records->fetch(PDO::FETCH_ASSOC);
 
-try{
-  if($prod_type=='')
-  echo "<script>alert('Please Choose Product Category!');</script>";
+  try{
+    if($prod_type=='')
+    echo "<script>alert('Please Choose Product Category!');</script>";
 
-  else{
+    else{
 
-    $stmt1=$connection->prepare('INSERT INTO product_master (prod_id,prod_type,prod_name)  VALUES (:prod_id,:prod_type,:prod_name)');
-    $stmt1->bindParam(':prod_id',$prod_id);
-    $stmt1->bindParam(':prod_type',$prod_type);
-    $stmt1->bindParam(':prod_name',$prod_name);
-    $stmt1->execute();
+      $stmt1=$connection->prepare('INSERT INTO product_master (prod_id,prod_type,prod_name)  VALUES (:prod_id,:prod_type,:prod_name)');
+      $stmt1->bindParam(':prod_id',$prod_id);
+      $stmt1->bindParam(':prod_type',$prod_type);
+      $stmt1->bindParam(':prod_name',$prod_name);
+      $stmt1->execute();
 
-    $stmt=$connection->prepare('INSERT INTO products (prod_id,prod_name,prod_type,prod_image,prod_price,prod_quantity,prod_desc) VALUES (:prod_id,:prod_name,:prod_type,:prod_image,:prod_price,:prod_quantity,:prod_desc)');
-    $stmt->bindParam(':prod_id',$prod_id);
-    $stmt->bindParam(':prod_name',$prod_name);
-    $stmt->bindParam(':prod_type',$prod_type);
-    $stmt->bindParam(':prod_image',$final_image);
-    $stmt->bindParam(':prod_price',$prod_price);
-    $stmt->bindParam(':prod_quantity',$prod_quantity);
-    $stmt->bindParam(':prod_desc',$prod_desc);
-    $stmt->execute();
+      $stmt=$connection->prepare('INSERT INTO products (prod_id,prod_name,prod_type,prod_image,prod_price,prod_quantity,prod_desc,prod_discount,prod_span_price) VALUES (:prod_id,:prod_name,:prod_type,:prod_image,:prod_price,:prod_quantity,:prod_desc,:prod_discount,:prod_span_price)');
+      $stmt->bindParam(':prod_id',$prod_id);
+      $stmt->bindParam(':prod_name',$prod_name);
+      $stmt->bindParam(':prod_type',$prod_type);
+      $stmt->bindParam(':prod_image',$final_image);
+      $stmt->bindParam(':prod_price',$prod_price);
+      $stmt->bindParam(':prod_quantity',$prod_quantity);
+      $stmt->bindParam(':prod_desc',$prod_desc);
+      $stmt->bindParam(':prod_discount',$prod_discount);
+      $stmt->bindParam(':prod_span_price',$prod_span_price);
+
+      $stmt->execute();
+    }
+    echo "<script>alert('Product added!');</script>";
   }
-  echo "<script>alert('Product added!');</script>";
-}
-catch(PDOException $e){echo "<script>alert('Add Product failed : Product Id exists');</script>"; }
+  catch(PDOException $e){echo "<script>alert('Add Product failed : Product Id exists');</script>"; }
 }
 
 
@@ -180,79 +185,98 @@ catch(PDOException $e){echo "<script>alert('Add Product failed : Product Id exis
                       <select name="prod_type" class="form-control col-md-7 col-xs-12">
                         <option selected disabled>Choose here</option>
                         <?php
-                          while($row=$records1->fetch(PDO::FETCH_ASSOC)){
+                        while($row=$records1->fetch(PDO::FETCH_ASSOC)){
                           echo '<option>'.$row['category_name'].'</option>';}
-                         ?>
-                      </select>
+                          ?>
+                        </select>
+                      </div>
                     </div>
-                  </div>
 
-                  <br><br><br>
+                    <br><br><br>
 
-                  <div class="form-group">
-                    <label class="control-label col-md-3" >Product Image<span class="required">*</span>
-                    </label>
-                    <div class="col-md-9">
-                      <input type="file" id="imageUpload" required="required" autocomplete="off" name="imageUpload" class="form-control col-md-7 col-xs-12">
+
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3" >Product Price<span class="required">*</span>
+                      </label>
+                      <div class="col-md-3">
+                        <input type="number" required="required" autocomplete="off" name="prod_price" class="form-control col-md-7 col-xs-12">
+                      </div>
+                      <label class="control-label col-md-3">Product Quantity<span class="required">*</span>
+                      </label>
+                      <div class="col-md-3">
+                        <input type="number" required="required" autocomplete="off" name="prod_quantity" class="form-control col-md-7 col-xs-12">
+                      </div>
                     </div>
-                  </div>
 
-                  <br><br><br>
+                    <br><br><br>
 
-                  <div class="form-group">
-                    <label class="control-label col-md-3" >Product Price<span class="required">*</span>
-                    </label>
-                    <div class="col-md-3">
-                      <input type="number" required="required" autocomplete="off" name="prod_price" class="form-control col-md-7 col-xs-12">
+                    <div class="form-group">
+                      <label class="control-label col-md-3" >Product Span Price<span class="required">*</span>
+                      </label>
+                      <div class="col-md-3">
+                        <input type="number" required="required" autocomplete="off" name="prod_span_price" class="form-control col-md-7 col-xs-12">
+                      </div>
+
+                      <label class="control-label col-md-3" >Product Discount<span class="required">*</span>
+                      </label>
+                      <div class="col-md-3">
+                        <input type="number" required="required" autocomplete="off" name="prod_discount" class="form-control col-md-7 col-xs-12">
+                      </div>
                     </div>
-                    <label class="control-label col-md-3">Product Quantity<span class="required">*</span>
-                    </label>
-                    <div class="col-md-3">
-                      <input type="number" required="required" autocomplete="off" name="prod_quantity" class="form-control col-md-7 col-xs-12">
+
+                    <br><br><br>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3" >Product Image<span class="required">*</span>
+                      </label>
+                      <div class="col-md-9">
+                        <input type="file" id="imageUpload" required="required" autocomplete="off" name="imageUpload" class="form-control col-md-7 col-xs-12">
+                      </div>
                     </div>
-                  </div>
 
-                  <br><br><br>
+                    <br><br><br>
 
-                  <div class="form-group">
-                    <label class="control-label col-md-3" >Product Description<span class="required">*</span>
-                    </label>
-                    <div class="col-md-9">
-                      <textarea required="required" autocomplete="off" rows="4" columns="20" name="prod_desc" class="form-control col-md-7 col-xs-12"></textarea>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3" >Product Description<span class="required">*</span>
+                      </label>
+                      <div class="col-md-9">
+                        <textarea required="required" autocomplete="off" rows="4" columns="20" name="prod_desc" class="form-control col-md-7 col-xs-12"></textarea>
+                      </div>
                     </div>
-                  </div>
 
-                  <br><br><br>
+                    <br><br><br>
 
-                  <div class="form-group">
-                    <div class="col-md-9">
-                      <button type="reset" class="btn btn-primary">Reset</button>
-                      <button type="submit" name="add_product" class="btn btn-success">Add Product</button>
+                    <div class="form-group">
+                      <div class="col-md-9">
+                        <button type="reset" class="btn btn-primary">Reset</button>
+                        <button type="submit" name="add_product" class="btn btn-success">Add Product</button>
+                      </div>
                     </div>
-                  </div>
 
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
+
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer style="margin-top:px;">
+      <div class="pull-right">
+        Designed and maintained by <b><a href="#">Empreus Labs</a></b>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
   </div>
-
-
-
-  <!-- /page content -->
-
-  <!-- footer content -->
-  <footer style="margin-top:px;">
-    <div class="pull-right">
-      Designed and maintained by <b><a href="#">Empreus Labs</a></b>
-    </div>
-    <div class="clearfix"></div>
-  </footer>
-  <!-- /footer content -->
-</div>
 </div>
 
 <!-- jQuery -->
