@@ -292,7 +292,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 				<div class="snipcart-thumb">
 				<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
 				<p>'.$results['prod_name'].'</p>
-				<h4>Rs.'.$results['prod_price'].'<span>95.00</span></h4>
+				<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
 				</div>
 				<div class="snipcart-details">
 				<form action="#" method="post">
@@ -302,8 +302,8 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 				<input type="hidden" name="business" value=" " />
 				<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
 				<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-				<input type="hidden" name="discount_amount" value="1.00" />
-				<input type="hidden" name="currency_code" value="USD" />
+				<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+				<input type="hidden" name="currency_code" value="INR" />
 				<input type="hidden" name="return" value=" " />
 				<input type="hidden" name="cancel_return" value=" " />
 				<input type="submit" name="submit" value="Add to cart" class="button" />

@@ -222,25 +222,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="snipcart-item block">
 						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							<h4>Rs.<?php echo $results['prod_price']; ?> <span>Rs.25.00</span></h4>
-						</div>
-						<div class="snipcart-details agileinfo_single_right_details">
+<?php  			echo '
+							<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+							</div>
+							<div class="snipcart-details">
 							<form action="#" method="post">
-								<fieldset>
-									<input type="hidden" name="cmd" value="_cart" />
-									<input type="hidden" name="add" value="1" />
-									<input type="hidden" name="business" value=" " />
-									<input type="hidden" name="item_name" value=<?php echo $results['prod_name']; ?> />
-									<input type="hidden" name="amount" value=<?php echo $results['prod_price']; ?> />
-									<input type="hidden" name="discount_amount" value="1.00" />
-									<input type="hidden" name="currency_code" value="USD" />
-									<input type="hidden" name="return" value=" " />
-									<input type="hidden" name="cancel_return" value=" " />
-									<input type="submit" name="submit" value="Add to cart" class="button" />
-								</fieldset>
-							</form>
+							<fieldset>
+							<input type="hidden" name="cmd" value="_cart" />
+							<input type="hidden" name="add" value="1" />
+							<input type="hidden" name="business" value=" " />
+							<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+							<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+							<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+							<input type="hidden" name="currency_code" value="INR" />
+							<input type="hidden" name="return" value=" " />
+							<input type="hidden" name="cancel_return" value=" " />
+							<input type="submit" name="submit" value="Add to cart" class="button" />
+						</fieldset>
+					</form>
+
 						</div>
 					</div>
+
+					';
+					?>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -274,18 +279,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<div class="snipcart-thumb">
 											<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
 											<p>'.$results['prod_name'].'</p>
-											<h4>Rs.'.$results['prod_price'].'<span>Rs. 65.00</span></h4>
-										</div>
-										<div class="snipcart-details">
+											<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+											</div>
+											<div class="snipcart-details">
 											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-													<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-													<input type="hidden" name="discount_amount" value="1.00" />
-													<input type="hidden" name="currency_code" value="USD" />
+											<fieldset>
+											<input type="hidden" name="cmd" value="_cart" />
+											<input type="hidden" name="add" value="1" />
+											<input type="hidden" name="business" value=" " />
+											<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+											<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+											<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+											<input type="hidden" name="currency_code" value="INR" />
 													<input type="hidden" name="return" value=" " />
 													<input type="hidden" name="cancel_return" value=" " />
 													<input type="submit" name="submit" value="Add to cart" class="button" />

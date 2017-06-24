@@ -23,18 +23,18 @@ echo '
 										<div class="snipcart-thumb">
 											<a href="single.php?product='.$results['prod_id'].'"><img title=" " alt=" " src="'.$results['prod_image'].'"  /></a>
 											<p>'.$results['prod_name'].'</p>
-											<h4>Rs.'.$results['prod_price'].' <span>Rs. 10.00</span></h4>
-										</div>
-										<div class="snipcart-details top_brand_home_details">
+											<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+											</div>
+											<div class="snipcart-details">
 											<form action="#" method="post">
-												<fieldset>
-													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
-													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-													<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-													<input type="hidden" name="discount_amount" value="1.00" />
-													<input type="hidden" name="currency_code" value="USD" />
+											<fieldset>
+											<input type="hidden" name="cmd" value="_cart" />
+											<input type="hidden" name="add" value="1" />
+											<input type="hidden" name="business" value=" " />
+											<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+											<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+											<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+											<input type="hidden" name="currency_code" value="INR" />
 													<input type="hidden" name="return" value=" " />
 													<input type="hidden" name="cancel_return" value=" " />
 													<input type="submit" name="submit" value="Add to cart" class="button" />
