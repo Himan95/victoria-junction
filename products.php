@@ -230,10 +230,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="w3ls_w3l_banner_nav_right_grid">
 							<h3>Popular Brands</h3>
 							<div class="w3ls_w3l_banner_nav_right_grid1">
-								<h6>Food</h6>
+								<h6>Cakes</h6>
 								<?php
 
-								$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Food" ORDER BY rand() LIMIT 4');
+								$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Cakes" ORDER BY rand() LIMIT 4');
 								$records->execute();
 								$results=$records->fetch(PDO::FETCH_ASSOC);
 								do{
@@ -281,10 +281,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="clearfix"> </div>
 							</div>
 							<div class="w3ls_w3l_banner_nav_right_grid1">
-								<h6>vegetables & fruits</h6>
+								<h6>Cookies</h6>
 								<?php
 
-								$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Vegetables & Fruits" ORDER BY rand() LIMIT 4');
+								$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Cookies" ORDER BY rand() LIMIT 4');
 								$records->execute();
 								$results=$records->fetch(PDO::FETCH_ASSOC);
 								do{
@@ -333,10 +333,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="clearfix"> </div>
 							</div>
 							<div class="w3ls_w3l_banner_nav_right_grid1">
-								<h6>beverages</h6>
+								<h6>Muffins</h6>
 								<?php
 
-								$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Beverages" ORDER BY rand() LIMIT 4');
+								$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Muffins" ORDER BY rand() LIMIT 4');
 								$records->execute();
 								$results=$records->fetch(PDO::FETCH_ASSOC);
 								do{

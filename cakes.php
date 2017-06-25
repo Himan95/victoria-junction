@@ -176,10 +176,68 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 			<div class="w3l_banner_nav_right_banner10">
 				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
 			</div>
-<!---728x90--->
+			<!---728x90--->
+			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+				<h3>Cakes</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Cakes</h6>
+					<?php
 
-<!---728x90--->
-<!-- //banner -->
+					$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Cakes" ');
+					$records->execute();
+					$results=$records->fetch(PDO::FETCH_ASSOC);
+					do{
+						echo '
+						<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						<div class="agile_top_brand_left_grid_pos">
+						<img src="images/offer.png" alt=" " class="img-responsive" />
+						</div>
+						<div class="agile_top_brand_left_grid1">
+						<figure>
+						<div class="snipcart-item block">
+						<div class="snipcart-thumb">
+						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+						<p>'.$results['prod_name'].'</p>
+						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+						</div>
+						<div class="snipcart-details">
+						<form action="#" method="post">
+						<fieldset>
+						<input type="hidden" name="cmd" value="_cart" />
+						<input type="hidden" name="add" value="1" />
+						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+						<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+						<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+						<input type="hidden" name="currency_code" value="INR" />
+						<input type="hidden" name="return" value=" " />
+						<input type="hidden" name="cancel_return" value=" " />
+						<input type="submit" name="submit" value="Add to cart" class="button" />
+						</fieldset>
+						</form>
+						</div>
+						</div>
+						</figure>
+						</div>
+						</div>
+						</div>
+						</div>
+						';
+					}
+					while($results=$records->fetch(PDO::FETCH_ASSOC));
+					?>
+
+					<div class="clearfix"> </div>
+					</div>
+					</div>
+					</div>
+					<div class="clearfix"></div>
+					</div>
+
+
+			<!---728x90--->
 <!-- newsletter -->
 	<?php include('newsletter.php');?>
 <!-- //newsletter -->

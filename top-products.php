@@ -6,14 +6,14 @@
 					<div class="w3l_fresh_vegetables_grid2">
 						<ul>
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">All Brands</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="vegetables.php">Vegetables</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="vegetables.php">Fruits</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="drinks.php">Juices</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="pet.php">Pet Food</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="bread.php">Bread & Bakery</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="household.php">Cleaning</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Spices</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Dry Fruits</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Cakes</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Muffins</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Cookies</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Frozen Food</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Bread & Bakery</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Cold Drinks</a></li>
+						
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Chocolates</a></li>
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Dairy Products</a></li>
 						</ul>
 					</div>
