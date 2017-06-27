@@ -86,7 +86,7 @@ if(isset($_POST['login'])){
 				$stmt1->execute();
 				header('location:index.php');
 			}
-			else{$errMsg ='Wrong credentials.';}
+			else{$errMsg ='Wrong credentials. Please enter correct username & password';}
 
 		}else{
 			$errMsg ='No record found for the given credentials.';
@@ -219,7 +219,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="form">
 										<h2>Login to your account</h2>
 										<form action="login.php" method="post">
-											<input type="text" name="username" placeholder="Username" required=" ">
+											<input type="text" name="username" autocomplete="off" placeholder="Username" required=" ">
 											<input type="password" name="password" placeholder="Password" required=" ">
 											<p><font color="red" style="font-style:italic"><?php if($errMsg!=null){echo $errMsg;} ?></font> </p>
 											<p><font color="green" style="font-style:italic"><?php if($success!=null){echo $success;} ?></font> </p>
@@ -229,10 +229,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="form">
 										<h2>Create an account</h2>
 										<form action="login.php" method="post">
-											<input type="text" name="username" placeholder="Username" required=" ">
-											<input type="password" name="password" placeholder="Password" required=" ">
-											<input type="email" name="email" placeholder="Email Address" required=" ">
-											<input type="text" name="phone" placeholder="Phone Number" required=" ">
+											<input type="text" name="username" placeholder="Username" autocomplete="off" required=" ">
+											<input type="password" name="password" placeholder="Password" minlength="6" required=" ">
+											<input type="email" name="email" placeholder="Email Address" autocomplete="off" required=" ">
+											<input type="text" name="phone" placeholder="Phone Number" minlength="10" autocomplete="off" maxlength="10" required=" ">
 											<input type="submit" name="register" value="Register">
 										</form>
 									</div>

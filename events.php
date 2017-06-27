@@ -47,6 +47,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!-- start-smoth-scrolling -->
 </head>
+<style>
+.img{
+	border: 2px solid #000;
+    border-radius: 4px;
+    padding: 5px;
+	max-width: 100%;
+    height: auto;
+}
+</style>
 
 <body>
 <script src='../../../../../../ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script><script>
@@ -193,50 +202,21 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 				<div class="clearfix"> </div>
 			</div>
 <!---728x90--->
-			<div class="events-bottom">
-				<div class="col-md-6 events_bottom_left">
-					<div class="col-md-4 events_bottom_left1">
-						<div class="events_bottom_left1_grid">
-							<h4>26</h4>
-							<p>July, 2017</p>
-						</div>
-					</div>
-					<div class="col-md-8 events_bottom_left2">
-						<img src="images/15.jpg" alt=" " class="img-responsive" />
-						<h4>Grand Opening</h4>
-						<ul>
-							<li><i class="fa fa-clock-o" aria-hidden="true"></i>3:00 PM</li>
-							<li><i class="fa fa-user" aria-hidden="true"></i><a href="#">Admin</a></li>
-						</ul>
-						<p>We hope you will be there with yur family this time an join us in the celebration.</p>
-					</div>
 					<div class="clearfix"> </div>
 				</div>
-				<div class="col-md-6 events_bottom_left">
-					<div class="col-md-4 events_bottom_left1">
-						<div class="events_bottom_left1_grid">
-							<h4>27</h4>
-							<p>July, 2017</p>
-						</div>
-					</div>
-					<div class="col-md-8 events_bottom_left2">
-						<img src="images/19.jpg" alt=" " class="img-responsive" />
-						<h4>New Outlet launched</h4>
-						<ul>
-							<li><i class="fa fa-clock-o" aria-hidden="true"></i>3:30 PM</li>
-							<li><i class="fa fa-user" aria-hidden="true"></i><a href="#">Admin</a></li>
-						</ul>
-						<p>Our ne outlet is launched at Haryana Junction, near Sea Dhaba, Siliguri and we cordially invite you to our gathering.</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="clearfix"> </div>
+
 			</div>
+
+					<div class="container">
+						<img class="img" src="images/about.jpg" height="400" width="1200">
+							<div class="clearfix"> </div>
+						</div>
+						<br><br>
+						<div class="clearfix"> </div>
 		</div>
 <!-- //events -->
-		</div>
 		<div class="clearfix"></div>
-	</div>
+
 <!-- //banner -->
 <!-- newsletter -->
 <?php include('newsletter.php');?>

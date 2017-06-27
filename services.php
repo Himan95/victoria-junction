@@ -47,6 +47,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start-smoth-scrolling -->
 </head>
 
+<style>
+img{
+	border: 1px solid #000;
+    border-radius: 200px;
+    padding: 2px;
+}
+</style>
 <body>
 <script src='../../../../../../ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -120,30 +127,22 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		<div class="services">
 			<h3>Services</h3>
 			<div class="w3ls_service_grids">
-				<div class="col-md-5 w3ls_service_grid_left">
+				<div class="col-md-12 w3ls_service_grid_left">
 					<h4>Our Services</h4>
-					<p>Celebrate life’s sweetest moments with Victoria Junction.
+					<p style="text-align: justify">Celebrate life’s sweetest moments with Victoria Junction.
 						Our events team will work with you to create personalized desserts for birthdays, graduations, bar or bat mitzvahs,
-						 baby showers, bridal showers, bachelorette parties and more. No event is too large or too small for Victoria Junction.</p>
+						 baby showers, bridal showers, bachelorette parties and more. No event is too large or too small for Victoria Junction.Celebrate life’s sweetest moments with Victoria Junction.
+			 				Our events team will work with you to create personalized desserts for birthdays, graduations, bar or bat mitzvahs,
+			 				 baby showers, bridal showers, bachelorette parties and more. No event is too large or too small for Victoria Junction. Whether planning an intimate dinner party, black-tie gala or corporate gathering,
+			 				 our team works closely with you to design a delicious, custom dessert menu.</p>
 				</div>
-				<div class="col-md-7 w3ls_service_grid_right">
-					<div class="col-md-4 w3ls_service_grid_right_1">
-						<img src="images/18.jpg" alt=" " class="img-responsive" />
-					</div>
-					<div class="col-md-4 w3ls_service_grid_right_1">
-						<img src="images/19.jpg" alt=" " class="img-responsive" />
-					</div>
-					<div class="col-md-4 w3ls_service_grid_right_1">
-						<img src="images/20.jpg" alt=" " class="img-responsive" />
-					</div>
-					<div class="clearfix"> </div>
-				</div>
+
 				<div class="clearfix"> </div>
 			</div>
 <!---728x90--->
 			<div class="w3ls_service_grids1">
 				<div class="col-md-6 w3ls_service_grids1_left">
-					<img src="images/4.jpg" alt=" " class="img-responsive" />
+					<img src="images/offer1.jpg" alt=" " class="img-responsive" />
 				</div>
 				<div class="col-md-6 w3ls_service_grids1_right">
 					<ul>
@@ -154,7 +153,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Foreign Chocolates</li>
 						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Fruits, Vegetagles & more</li>
 					</ul>
-					<a href="single.php">Shop Now</a>
+					<a href="products.php">Shop Now</a>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
