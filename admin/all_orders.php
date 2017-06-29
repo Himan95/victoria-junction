@@ -1,4 +1,4 @@
-<<?php
+<?php
 
 date_default_timezone_set('Asia/Kolkata');
 session_start();
@@ -33,7 +33,7 @@ if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Victoria Junction | My Profile</title>
+  <title>Victoria Junction | Orders</title>
 
   <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -47,6 +47,11 @@ if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
 </head>
+<style>
+table,td,tr{
+  text-transform: uppercase;
+}
+</style>
 
 <body class="nav-md">
   <div class="container body">
@@ -137,38 +142,67 @@ if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
                 {
                   $from=$_POST['from'];
                   $to=$_POST['to'];
-
-                  $records2 = $connection->prepare('SELECT * FROM orders WHERE created_at BETWEEN :from AND :to ORDER BY order_id');
-                  $records2->bindParam(':from', $from);
-                  $records2->bindParam(':to', $to);
-                  $records2->execute();
-                  $results2=$records2->fetch(PDO::FETCH_ASSOC);
-
-                  echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='center' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
-                  <tr style='background-color:#EDEDED;padding:5px'>
-
-                  <td style='padding:5px' align='center'<i><b>ORDER NO. </b></i></td>
-                  <td style='padding:5px' align='center'<i><b>NAME</b></i></td>
-                  <td style='padding:5px' align='center'<i><b>PHONE </b></i></td>
-                  <td style='padding:5px' align='center'<i><b>DELIVERY ADDRESS</b></i></td>
-                  <td style='padding:5px' align='center'<i><b>PRODUCT</b></i></td>
-                  <td style='padding:5px' align='center'<i><b>PRICE</b></i></td>
-                  <td style='padding:5px' align='center'<i><b>ORDER STATUS </b></i></td>
-                  </tr>";
-                  echo "<br />";
-
-                  do{
-
-                    echo "<tr><td style='padding:3px' align='center'>".$results2['order_no']."</td>";
-                    echo "<td style='padding:3px' align='center'>".$results2['customer_name']."</td>";
-                    echo "<td style='padding:3px' align='center'>".$results2['customer_contact']."</td>";
-                    echo "<td style='padding:3px' align='center'>".$results2['shipping_address']."</td>";
-                    echo "<td style='padding:3px' align='center'>".$results2['product']."</td>";
-                    echo "<td style='padding:3px' align='center'>".$results2['price']."</td>";
-                    echo "<td style='padding:3px' align='center'>".$results2['order_status']."</td></tr>";
+                  $today= date('Y-m-d');
+                  if ($to < $from || $to > $today || $from > $today) {
+                    echo "<script>alert('Date Invalid');</script>";
+                  }
+                  else {
+                    $records2 = $connection->prepare('SELECT * FROM orders WHERE created_at BETWEEN :from AND :to ORDER BY created_at DESC');
+                    $records2->bindParam(':from', $from);
+                    $records2->bindParam(':to', $to);
+                    $records2->execute();
+                    $results2=$records2->fetch(PDO::FETCH_ASSOC);
 
 
-                  }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
+                    if(!$results2['order_id'])  // No Order exists
+                    {
+                      echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+                      <tr style='background-color:#EDEDED;padding:5px'>
+
+                      <td style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
+                      <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
+                      <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
+                      <td style='padding:5px' align='left'<i><b>DELIVERY ADDRESS</b></i></td>
+                      <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
+                      <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
+                      <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
+                      </tr>";
+                      echo "<br />";
+
+                      echo "<tr><td colspan='7' style='padding:3px' align='left'>No Records Found</td>";
+
+                    }
+                    else {
+
+                      echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+                      <tr style='background-color:#EDEDED;padding:5px'>
+
+                      <td style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
+                      <td style='padding:5px' align='left'<i><b>ORDER DATE. </b></i></td>
+                      <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
+                      <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
+                      <td style='padding:5px' align='left'<i><b>DELIVERY ADDRESS</b></i></td>
+                      <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
+                      <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
+                      <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
+                      </tr>";
+                      echo "<br />";
+
+                      do{
+                          $orderDate = date_format(date_create_from_format('Y-m-d', $results2['created_at']), 'd-m-Y');
+                        echo "<tr><td style='padding:3px' align='left'>".$results2['order_no']."</td>";
+                        echo "<td style='padding:3px' align='left'>".$orderDate."</td>";
+                        echo "<td style='padding:3px' align='left'>".$results2['customer_name']."</td>";
+                        echo "<td style='padding:3px' align='left'>".$results2['customer_contact']."</td>";
+                        echo "<td style='padding:3px' align='left'>".$results2['shipping_address']."</td>";
+                        echo "<td style='padding:3px' align='left'>".$results2['product']."</td>";
+                        echo "<td style='padding:3px' align='left'>".$results2['price']."</td>";
+                        echo "<td style='padding:3px' align='left'>".$results2['order_status']."</td></tr>";
+
+
+                      }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
+                    }
+                  }
                 }
                 ?>
               </div>
@@ -181,38 +215,38 @@ if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
 
       <!-- /page content -->
 
-<!-- footer content
+      <!-- footer content
       <footer style="margin-top:px;">
-        <div class="pull-right">
-          Designed and maintained by <b><a href="#">Empreus Labs</a></b>
-        </div>
-        <div class="clearfix"></div>
-      </footer>
-      /footer content -->
+      <div class="pull-right">
+      Designed and maintained by <b><a href="#">Empreus Labs</a></b>
     </div>
-  </div>
+    <div class="clearfix"></div>
+  </footer>
+  /footer content -->
+</div>
+</div>
 
-  <!-- jQuery -->
-  <script src="../vendors/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- FastClick -->
-  <script src="../vendors/fastclick/lib/fastclick.js"></script>
-  <!-- NProgress -->
-  <script src="../vendors/nprogress/nprogress.js"></script>
-  <!-- Chart.js -->
-  <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
-  <!-- gauge.js -->
-  <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- Chart.js -->
+<script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- gauge.js -->
+<script src="../vendors/gauge.js/dist/gauge.min.js"></script>
 
-  <!-- iCheck -->
-  <script src="../vendors/iCheck/icheck.min.js"></script>
-  <!-- Skycons -->
-  <script src="../vendors/skycons/skycons.js"></script>
+<!-- iCheck -->
+<script src="../vendors/iCheck/icheck.min.js"></script>
+<!-- Skycons -->
+<script src="../vendors/skycons/skycons.js"></script>
 
 
-  <!-- Custom Theme Scripts -->
-  <script src="../build/js/custom.min.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
 
 
 </body>

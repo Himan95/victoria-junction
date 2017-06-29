@@ -11,54 +11,49 @@ $records2->bindParam(':username', $_SESSION['username']);
 $records2->execute();
 $results2=$records2->fetch(PDO::FETCH_ASSOC);
 
-if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
+if($_SESSION['username']!=$results2['username']|| $_SESSION['username']==''){
   echo "<script>alert('For admin only');</script>";
 	echo "<script>window.location.href='../login.php';</script>";
 }
 
-
-
 //Update Button clicked
-if(isset($_POST['update_details'])){
+if(isset($_POST['update_pass'])){
 
-  $records1 = $connection->prepare('SELECT * FROM login WHERE username=:username');
-  $records1->bindParam(':username', $_SESSION['username']);
-  $records1->execute();
-  $results1=$records1->fetch(PDO::FETCH_ASSOC);
+$records2 = $connection->prepare('SELECT * FROM login WHERE username=:username');
+$records2->bindParam(':username', $_SESSION['username']);
+$records2->execute();
+$results2=$records2->fetch(PDO::FETCH_ASSOC);
 
-  if($_POST['password']==$results1['password'] && $_SESSION['username']==$results1['username'] ){
+if($_POST['old_password']==$results2['password']){
 
-    $records3 = $connection->prepare('UPDATE login SET username=:username WHERE password=:password');
-    $records3->bindParam(':username', $username);
-    $records3->bindParam(':password', $password);
-    $username=$_POST['new_username'];
-    $password=$_POST['password'];
-    $records3->execute();
+  $records3 = $connection->prepare('UPDATE login SET password=:password WHERE username=:username');
+  $records3->bindParam(':password', $password);
+  $records3->bindParam(':username', $username);
+  $username=$_SESSION['username'];
+  $password=$_POST['password'];
+  $records3->execute();
 
-    $records31 = $connection->prepare('UPDATE register SET username=:username WHERE password=:password');
-    $records31->bindParam(':username', $username);
-    $records31->bindParam(':password', $password);
-    $username=$_POST['new_username'];
-    $password=$_POST['password'];
-    $records31->execute();
+  $records31 = $connection->prepare('UPDATE register SET password=:password WHERE username=:username');
+  $records31->bindParam(':password', $password);
+  $records31->bindParam(':username', $username);
+  $username=$_SESSION['username'];
+  $password=$_POST['password'];
+  $records31->execute();
 
-    $records32 = $connection->prepare('UPDATE admin_credentials SET username=:username,contact=:contact WHERE password=:password');
-    $records32->bindParam(':username', $username);
-    $records32->bindParam(':contact', $contact);
-    $records32->bindParam(':password', $password);
-    $username=$_POST['new_username'];
-    $contact=$_POST['contact'];
-    $password=$_POST['password'];
-    $records32->execute();
+  $records32 = $connection->prepare('UPDATE admin_credentials SET password=:password WHERE username=:username');
+  $records32->bindParam(':password', $password);
+  $records32->bindParam(':username', $username);
+  $username=$_SESSION['username'];
+  $password=$_POST['password'];
+  $records32->execute();
 
-    echo "<script>alert('Username updated successfully. Login again to continue');</script>";
-    echo "<script>window.location.href='../checksession.php';</script>";
-    }
-    else{
-  	   echo "<script>alert('Enter correct details');</script>";
-  	}
+  echo "<script>alert('Password updated successfully. Login again to continue');</script>";
+  echo "<script>window.location.href='../checksession.php';</script>";
   }
-
+  else{
+	   $error_alert="Enter correct password";
+	}
+}
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +66,7 @@ if(isset($_POST['update_details'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Victoria Junction | My Profile</title>
+    <title>Victoria Junction | Admin Panel</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -140,41 +135,27 @@ include('sidebarmenu.php');
 
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-              <center><h2>Victoria Junction | Update Profile  </h2></center>
+              <center><h2>Victoria Junction | Update Credentials  </h2></center>
                   <div class="x_panel tile fixed_height_450">
                     <div class="x_title">
-                    <h2>Update Profile</h2>
+                    <h2>Update Password</h2>
 
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                      <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="my_profile.php" method="post">
+                      <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="update_password.php" method="post">
                  <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >Current Admin Name<span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >Old password<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" required="required" autocomplete="off" value="<?php echo $_SESSION['username']; ?>" name="username" class="form-control col-md-7 col-xs-12">
+                              <input type="password" required="required" autocomplete="off" name="old_password" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
-                          <div class="form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12" >New Admin Name<span class="required">*</span>
-                          </label>
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" required="required" autocomplete="off" name="new_username" class="form-control col-md-7 col-xs-12">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Contact Number<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" required="required" autocomplete="off" value="<?php echo $results2['contact']; ?>" name="contact" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
                            <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >Password<span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" >New password<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="password" required="required" autocomplete="off"  name="password" class="form-control col-md-7 col-xs-12">
+                              <input type="password" required="required" autocomplete="off" name="password" class="form-control col-md-7 col-xs-12">
                    <i><font color="green" style="font-style:italic;font-weight:bold;">
                   <?php if($success!=null){ ?>
                   <img src="../images/tick.png">
@@ -195,7 +176,7 @@ include('sidebarmenu.php');
                           <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                               <button type="reset" class="btn btn-primary">Reset</button>
-                              <button type="submit" name="update_details" class="btn btn-success">Update</button>
+                              <button type="submit" name="update_pass" class="btn btn-success">Update</button>
                             </div>
                           </div>
 

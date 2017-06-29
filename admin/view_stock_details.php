@@ -1,3 +1,4 @@
+
 <?php
 
 date_default_timezone_set('Asia/Kolkata');
@@ -42,6 +43,11 @@ if($_SESSION['username']!=$results2['username']|| $_SESSION['username']==''){
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
 </head>
+<style>
+table,td,tr{
+  text-transform: uppercase;
+}
+</style>
 
 <body class="nav-md">
   <div class="container body">
@@ -97,75 +103,78 @@ if($_SESSION['username']!=$results2['username']|| $_SESSION['username']==''){
 
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <center><h2>Victoria Junction | View Messages  </h2></center>
+            <center><h2>Victoria Junction | View Products  </h2></center>
             <?php
-
-            $records2 = $connection->prepare('SELECT * FROM support ORDER BY id DESC LIMIT 10');
+            $records2 = $connection->prepare('SELECT * FROM products');
             $records2->execute();
             $results2=$records2->fetch(PDO::FETCH_ASSOC);
 
-              echo "<table align='center' id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
-              <tr style='background-color:#ECECEC;padding:5px'>
-              <td style='padding:5px' align='center'<i><b>Sl No.</b></i></td>
-              	<td style='padding:5px' align='center'<i><b>Name </b></i></td>
-                <td style='padding:5px' align='center'<i><b>Telephone </b></i></td>
-                <td colspan='3' style='padding:5px' align='center'<i><b>Query </b></i></td>
-                <td style='padding:5px' align='center'<i><b>Submitted On </b></i></td>
-              </tr>";
-              echo "<br />";
+            echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+            <tr style='background-color:#EDEDED;padding:5px'>
 
-              $count=0;
+            <td style='padding:5px' align='left'<i><b>Product Id </b></i></td>
+            <td style='padding:5px' align='left'<i><b>Product Name</b></i></td>
+            <td colspan='3' style='padding:5px' align='left'<i><b>Product Type </b></i></td>
+            <td style='padding:5px' align='left'<i><b>Product Quantity</b></i></td>
+            </tr>";
+            echo "<br />";
 
-              do{
-                echo "<tr><td style='padding:3px' align='center'>".(++$count)."</td>";
-            	   echo "<td style='padding:3px' align='center'>".$results2['name']."</td>";
-                 echo "<td style='padding:3px' align='center'>".$results2['telephone']."</td>";
-             	   echo "<td colspan='3' style='padding:3px' align='center'>".$results2['message']."</td>";
-                 echo "<td style='padding:3px' align='center'>".$results2['submitted_at']."</td></tr>";
-            }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
+            do{
+              if($results2['prod_quantity']==0){
+                echo "<tr><td style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_id']."</td>";
+                echo "<td style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_name']."</td>";
+                echo "<td colspan='3' style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_type']."</td>";
+                echo "<td style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_quantity']."</td></tr>";}
+                else {
+                  echo "<tr><td style='padding:3px' align='left'>".$results2['prod_id']."</td>";
+                  echo "<td style='padding:3px' align='left'>".$results2['prod_name']."</td>";
+                  echo "<td colspan='3' style='padding:3px' align='left'>".$results2['prod_type']."</td>";
+                  echo "<td style='padding:3px' align='left'>".$results2['prod_quantity']."</td></tr>";
+                }
+              }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
+              //echo "<tr><td style='padding:3px' align='left'><input style='width:100%'type='submit' value='Refresh' name='Refresh' /></td></tr>";
 
-            ?>
 
-        <?php //include('report-card-display.php'); ?>
-      </div>
+              ?>
+            </div>
+          </div>
+
+
+
+          <!-- /page content -->
+
+          <!-- footer content
+          <footer style="margin-top:px;">
+          <div class="pull-right">
+          Designed and maintained by <b><a href="#">Empreus Labs</a></b>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      /footer content -->
     </div>
-
-
-
-    <!-- /page content -->
-
-    <!-- footer content
-    <footer style="margin-top:px;">
-      <div class="pull-right">
-        Designed and maintained by <b><a href="#">Empreus Labs</a></b>
-      </div>
-      <div class="clearfix"></div>
-    </footer>
-     /footer content -->
   </div>
-</div>
 
-<!-- jQuery -->
-<script src="../vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="../vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="../vendors/nprogress/nprogress.js"></script>
-<!-- Chart.js -->
-<script src="../vendors/Chart.js/dist/Chart.min.js"></script>
-<!-- gauge.js -->
-<script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="../vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+  <!-- Chart.js -->
+  <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+  <!-- gauge.js -->
+  <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
 
-<!-- iCheck -->
-<script src="../vendors/iCheck/icheck.min.js"></script>
-<!-- Skycons -->
-<script src="../vendors/skycons/skycons.js"></script>
+  <!-- iCheck -->
+  <script src="../vendors/iCheck/icheck.min.js"></script>
+  <!-- Skycons -->
+  <script src="../vendors/skycons/skycons.js"></script>
 
 
-<!-- Custom Theme Scripts -->
-<script src="../build/js/custom.min.js"></script>
+  <!-- Custom Theme Scripts -->
+  <script src="../build/js/custom.min.js"></script>
 
 
 </body>

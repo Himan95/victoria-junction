@@ -42,6 +42,11 @@ if($_SESSION['username']!=$results2['username']|| $_SESSION['username']==''){
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
 </head>
+<style>
+table,td,tr{
+  text-transform: uppercase;
+}
+</style>
 
 <body class="nav-md">
   <div class="container body">
@@ -96,52 +101,55 @@ if($_SESSION['username']!=$results2['username']|| $_SESSION['username']==''){
         <!-- top tiles -->
 
         <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <center><h2>Victoria Junction | View Messages  </h2></center>
+            <?php
 
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <center><h2>Victoria Junction | View Subscriptions  </h2></center>
-              <?php
+            $records2 = $connection->prepare('SELECT * FROM support ORDER BY id DESC LIMIT 10');
+            $records2->execute();
+            $results2=$records2->fetch(PDO::FETCH_ASSOC);
 
-              $records2 = $connection->prepare('SELECT * FROM newsletter ORDER BY id DESC LIMIT 20');
-              $records2->execute();
-              $results2=$records2->fetch(PDO::FETCH_ASSOC);
-
-              echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='center' border='1'  cellspacing='2' cellpadding='2'  width='550px;'>
-              <tr style='background-color:#EDEDED;padding:5px'>
-
-              <!--<td align='center'<i><b>Id</b></i></td>-->
-              <td style='padding:5px' align='center'<i><b>Sl No. </b></i></td>
-              <td style='padding:5px' align='center'<i><b>Emails </b></i></td>
-              <td style='padding:5px' align='center'<i><b>Subscribed On </b></i></td>
+              echo "<table align='left' id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+              <tr style='background-color:#ECECEC;padding:5px'>
+              <td style='padding:5px' align='left'<i><b>Sl No.</b></i></td>
+              	<td style='padding:5px' align='left'<i><b>Name </b></i></td>
+                <td style='padding:5px' align='left'<i><b>Telephone </b></i></td>
+                <td colspan='3' style='padding:5px' align='left'<i><b>Query </b></i></td>
+                <td style='padding:5px' align='left'<i><b>Submitted On </b></i></td>
+                <td style='padding:5px' align='left'<i><b>Reply </b></i></td>
               </tr>";
               echo "<br />";
 
               $count=0;
 
               do{
-                echo "<tr><td style='padding:3px' align='center'>".(++$count)."</td>";
-                echo "<td style='padding:3px' align='center'>".$results2['email']."</td>";
-                echo "<td style='padding:3px' align='center'>".$results2['subscribed_at']."</td></tr>";
-              }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
+                $queryDate = date_format(date_create_from_format('Y-m-d', $results2['submitted_at']), 'd-m-Y');
+                echo "<tr><td style='padding:3px' align='left'>".(++$count)."</td>";
+            	   echo "<td style='padding:3px' align='left'>".$results2['name']."</td>";
+                 echo "<td style='padding:3px' align='left'>".$results2['telephone']."</td>";
+             	   echo "<td colspan='3' style='padding:3px' align='left'>".$results2['message']."</td>";
+                 echo "<td style='padding:3px' align='left'>".$queryDate."</td>";
+                 echo "<td style='padding:3px' align='left'>Reply</td></tr>";
+            }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
 
-              ?>
+            ?>
 
-              <?php //include('report-card-display.php'); ?>
-            </div>
-
-        </div>
-
+        <?php //include('report-card-display.php'); ?>
+      </div>
+    </div>
 
 
-        <!-- /page content -->
 
-        <!-- footer content
-        <footer style="margin-top:px;">
-        <div class="pull-right">
+    <!-- /page content -->
+
+    <!-- footer content
+    <footer style="margin-top:px;">
+      <div class="pull-right">
         Designed and maintained by <b><a href="#">Empreus Labs</a></b>
       </div>
       <div class="clearfix"></div>
     </footer>
-    /footer content -->
+     /footer content -->
   </div>
 </div>
 

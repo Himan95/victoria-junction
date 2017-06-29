@@ -161,31 +161,51 @@ table,td,tr{
                   $results2=$records2->fetch(PDO::FETCH_ASSOC);
                 }
 
+                if(!$results2['order_id'])  // No Order exists
+                {
+                  echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+                  <tr style='background-color:#EDEDED;padding:5px'>
 
-                echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='center' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+                  <td style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
+                  <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
+                  <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
+                  <td style='padding:5px' align='left'<i><b>DELIVERY ADDRESS</b></i></td>
+                  <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
+                  <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
+                  <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
+                  </tr>";
+                  echo "<br />";
+
+                  echo "<tr><td colspan='7' style='padding:3px' align='left'>No Records Found</td>";
+
+                }
+                else {
+
+                echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
                 <tr style='background-color:#EDEDED;padding:5px'>
 
-                <td style='padding:5px' align='center'<i><b>ORDER NO. </b></i></td>
-                <td style='padding:5px' align='center'<i><b>NAME</b></i></td>
-                <td style='padding:5px' align='center'<i><b>PHONE </b></i></td>
-                <td style='padding:5px' align='center'<i><b>DELIVERY ADDRESS</b></i></td>
-                <td style='padding:5px' align='center'<i><b>PRODUCT</b></i></td>
-                <td style='padding:5px' align='center'<i><b>PRICE</b></i></td>
-                <td style='padding:5px' align='center'<i><b>ORDER STATUS </b></i></td>
+                <td style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
+                <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
+                <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
+                <td style='padding:5px' align='left'<i><b>DELIVERY ADDRESS</b></i></td>
+                <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
+                <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
+                <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
                 </tr>";
                 echo "<br />";
 
                 do{
 
-                  echo "<tr><td style='padding:3px' align='center'>".$results2['order_no']."</td>";
-                  echo "<td style='padding:3px' align='center'>".$results2['customer_name']."</td>";
-                  echo "<td style='padding:3px' align='center'>".$results2['customer_contact']."</td>";
-                  echo "<td style='padding:3px' align='center'>".$results2['shipping_address']."</td>";
-                  echo "<td style='padding:3px' align='center'>".$results2['product']."</td>";
-                  echo "<td style='padding:3px' align='center'>".$results2['price']."</td>";
-                  echo "<td style='padding:3px' align='center'>".$results2['order_status']."</td></tr>";
+                  echo "<tr><td style='padding:3px' align='left'>".$results2['order_no']."</td>";
+                  echo "<td style='padding:3px' align='left'>".$results2['customer_name']."</td>";
+                  echo "<td style='padding:3px' align='left'>".$results2['customer_contact']."</td>";
+                  echo "<td style='padding:3px' align='left'>".$results2['shipping_address']."</td>";
+                  echo "<td style='padding:3px' align='left'>".$results2['product']."</td>";
+                  echo "<td style='padding:3px' align='left'>".$results2['price']."</td>";
+                  echo "<td style='padding:3px' align='left'>".$results2['order_status']."</td></tr>";
 
                 }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
+              }
                 ?>
               </div>
             </div>
