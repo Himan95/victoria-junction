@@ -1,6 +1,12 @@
 <?php
 error_reporting(0);
 session_start();
+
+include('connect/connection.php');
+
+$records = $connection->prepare('SELECT * FROM products');
+$records->execute();
+$results=$records->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!--

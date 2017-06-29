@@ -10,6 +10,10 @@ $records->bindParam(':prod_id', $id);
 $records->execute();
 $results=$records->fetch(PDO::FETCH_ASSOC);
 
+
+$records1 = $connection->prepare('SELECT * FROM products');
+$records1->execute();
+$results1=$records1->fetch(PDO::FETCH_ASSOC);
 ?>
 <!--
 

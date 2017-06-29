@@ -6,14 +6,9 @@ error_reporting(0);
 
 include('../connect/connection.php');
 
-$records2 = $connection->prepare('SELECT * FROM admin_credentials WHERE username=:username');
-$records2->bindParam(':username', $_SESSION['username']);
-$records2->execute();
-$results2=$records2->fetch(PDO::FETCH_ASSOC);
-
-if($_SESSION['username']!=$results2['username']|| $_SESSION['username']==''){
+if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   echo "<script>alert('For admin only');</script>";
-  echo "<script>window.location.href='../login.php';</script>";
+	echo "<script>window.location.href='login.php';</script>";
 }
 
 ?>
@@ -136,7 +131,7 @@ table,td,tr{
                  echo "<td style='padding:3px' align='left'>".$results2['telephone']."</td>";
              	   echo "<td colspan='3' style='padding:3px' align='left'>".$results2['message']."</td>";
                  echo "<td style='padding:3px' align='left'>".$queryDate."</td>";
-                 echo "<td style='padding:3px' align='left'>Reply</td></tr>";
+                 echo "<td style='padding:3px' align='center'><a class='btn-success' href='reply_customer.php?email=".$results2['email']."' name='reply'>REPLY</a></td></tr>";
             }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
 
             ?>

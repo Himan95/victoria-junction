@@ -2,6 +2,8 @@
 error_reporting(0);
 session_start();
 include('connect/connection.php');
+
+
 ?>
 
 <!--
@@ -15,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:01:53 GMT -->
 <head>
-<title>Victoria Junction | Frozen Food </title>
+<title>Victoria Junction | Affiliates </title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

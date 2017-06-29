@@ -7,14 +7,9 @@ error_reporting(0);
 
 include('../connect/connection.php');
 
-$records2 = $connection->prepare('SELECT * FROM admin_credentials WHERE username=:username');
-$records2->bindParam(':username', $_SESSION['username']);
-$records2->execute();
-$results2=$records2->fetch(PDO::FETCH_ASSOC);
-
-if($_SESSION['username']!=$results2['username']|| $_SESSION['username']==''){
+if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   echo "<script>alert('For admin only');</script>";
-  echo "<script>window.location.href='../login.php';</script>";
+	echo "<script>window.location.href='login.php';</script>";
 }
 
 ?>
@@ -124,12 +119,12 @@ table,td,tr{
 
               <td style='padding:5px' align='left'<i><b>Product Id </b></i></td>
               <td style='padding:5px' align='left'<i><b>Product Name</b></i></td>
-              <td style='padding:5px' align='left'<i><b>Product Type </b></i></td>
+              <td colspan='3' style='padding:5px' align='left'<i><b>Product Type </b></i></td>
               <td style='padding:5px' align='left'<i><b>Product Quantity</b></i></td>
               </tr>";
               echo "<br />";
 
-              echo "<tr><td colspan='4' style='padding:3px' align='left'>No Records Found</td>";
+              echo "<tr><td colspan='7' style='padding:3px' align='left'>No Records Found</td>";
 
             }
             else {
@@ -138,7 +133,7 @@ table,td,tr{
 
               <td style='padding:5px' align='left'<i><b>Product Id </b></i></td>
               <td style='padding:5px' align='left'<i><b>Product Name</b></i></td>
-              <td style='padding:5px' align='left'<i><b>Product Type </b></i></td>
+              <td colspan='3' style='padding:5px' align='left'<i><b>Product Type </b></i></td>
               <td style='padding:5px' align='left'<i><b>Product Quantity</b></i></td>
               </tr>";
               echo "<br />";

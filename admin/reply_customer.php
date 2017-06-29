@@ -11,8 +11,25 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 	echo "<script>window.location.href='login.php';</script>";
 }
 
-?>
+//Update Button clicked
+if(isset($_POST['send'])){
 
+  $to=$_GET['email'];
+  $email="rm46@gmail.com";
+  $message=$_POST['message'];
+  $subject='Victoria Junction | Customer Support';
+  $message='Message: '.$message;
+  $headers='From:'.$email;
+  $m=mail($to,$subject,$message,$headers);
+  if($m){
+  echo "<script>alert('Message sent!');</script>";
+  }
+  else {
+  echo "<script>alert('Sorry, Mail could not be sent!');</script>";
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,11 +54,6 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
 </head>
-<style>
-table,td,tr{
-  text-transform: uppercase;
-}
-</style>
 
 <body class="nav-md">
   <div class="container body">
@@ -97,73 +109,61 @@ table,td,tr{
 
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <center><h2>Victoria Junction | Display Product Ids </h2></center>
+            <center><h2>Victoria Junction | Reply  </h2></center>
             <div class="x_panel tile fixed_height_450">
               <div class="x_title">
-                <h2>View Coupons</h2>
+                <h2>Reply</h2>
 
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="reply_customer.php" method="post">
+                  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Add Customer Name<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="text" disabled autocomplete="off" value="<?php echo $_GET['email']; ?>" class="form-control col-md-7 col-xs-12">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Add Message<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="text" required="required" autocomplete="off" name="message" class="form-control col-md-7 col-xs-12">
+                    </div>
+                  </div>
 
-            <?php
-            $records2 = $connection->prepare('SELECT * FROM products');
-            $records2->execute();
-            $results2=$records2->fetch(PDO::FETCH_ASSOC);
+                  <div class="ln_solid"></div>
+                  <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                      <button type="reset" class="btn btn-primary">Reset</button>
+                      <button type="submit" name="send" class="btn btn-success">Send</button>
+                    </div>
+                  </div>
 
-            if(!$results2['prod_id'])  // No Order exists
-            {
-              echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
-              <tr style='background-color:#EDEDED;padding:5px'>
-
-              <td style='padding:5px' align='left'<i><b>Product Id </b></i></td>
-              <td style='padding:5px' align='left'<i><b>Product Name</b></i></td>
-              <td style='padding:5px' align='left'<i><b>Product Type</b></i></td>
-              </tr>";
-              echo "<br />";
-
-              echo "<tr><td colspan='3' style='padding:3px' align='left'>No Records Found</td>";
-
-            }
-            else {
-            echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
-            <tr style='background-color:#EDEDED;padding:5px'>
-
-            <td style='padding:5px' align='left'<i><b>Product Id </b></i></td>
-            <td style='padding:5px' align='left'<i><b>Product Name</b></i></td>
-            <td style='padding:5px' align='left'<i><b>Product Type</b></i></td>
-            </tr>";
-            echo "<br />";
-
-            do{
-                echo "<tr><td style='padding:3px' align='left'>".$results2['prod_id']."</td>";
-                echo "<td style='padding:3px' align='left'>".$results2['prod_name']."</td>";
-                echo "<td style='padding:3px' align='left'>".$results2['prod_type']."</td></tr>";
-
-              }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
-            }
-              //echo "<tr><td style='padding:3px' align='left'><input style='width:100%'type='submit' value='Refresh' name='Refresh' /></td></tr>";
-            echo "</div></div>";
-
-            ?>
-
-        <?php //include('report-card-display.php'); ?>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <?php //include('report-card-display.php'); ?>
     </div>
-</div>
-
-
-    <!-- /page content -->
-
-    <!-- footer content
-    <footer style="margin-top:px;">
-      <div class="pull-right">
-        Designed and maintained by <b><a href="#">Empreus Labs</a></b>
-      </div>
-      <div class="clearfix"></div>
-    </footer>
-     /footer content -->
   </div>
+
+
+
+  <!-- /page content -->
+
+  <!-- footer content -->
+  <footer style="margin-top:px;">
+    <div class="pull-right">
+      Designed and maintained by <b><a href="#">Empreus Labs</a></b>
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  <!-- /footer content -->
+</div>
 </div>
 
 <!-- jQuery -->

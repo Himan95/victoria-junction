@@ -6,14 +6,9 @@ error_reporting(0);
 
 include('../connect/connection.php');
 
-$records2 = $connection->prepare('SELECT * FROM admin_credentials WHERE username=:username');
-$records2->bindParam(':username', $_SESSION['username']);
-$records2->execute();
-$results2=$records2->fetch(PDO::FETCH_ASSOC);
-
-if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
+if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   echo "<script>alert('For admin only');</script>";
-	echo "<script>window.location.href='../login.php';</script>";
+	echo "<script>window.location.href='login.php';</script>";
 }
 
 $category_name=$_POST['category_name'];
@@ -140,6 +135,7 @@ if(isset($_POST['add_category'])){
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" >Add Category Description<span class="required">*</span>
                     </label>
+
                     <div class="col-md-6 col-sm-6 col-xs-12">
                       <input type="text" required="required" autocomplete="off" name="category_desc" class="form-control col-md-7 col-xs-12">
                     </div>

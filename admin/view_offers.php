@@ -6,14 +6,9 @@ error_reporting(0);
 
 include('../connect/connection.php');
 
-$records2 = $connection->prepare('SELECT * FROM admin_credentials WHERE username=:username');
-$records2->bindParam(':username', $_SESSION['username']);
-$records2->execute();
-$results2=$records2->fetch(PDO::FETCH_ASSOC);
-
-if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
+if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   echo "<script>alert('For admin only');</script>";
-  echo "<script>window.location.href='../login.php';</script>";
+	echo "<script>window.location.href='login.php';</script>";
 }
 
 

@@ -10,7 +10,7 @@ include('connect/connection.php');
 			<div class="wfour_banner_bottom_left_grid_sub1">
 				<?php
 
-				$records = $connection->prepare('SELECT * FROM offer_images ORDER BY rand() LIMIT 3');
+				$records = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 3');
 				$records->execute();
 				$results=$records->fetch(PDO::FETCH_ASSOC);
 				do{

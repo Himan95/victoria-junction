@@ -4,16 +4,10 @@ error_reporting(0);
 
 include('../connect/connection.php');
 
-$records2 = $connection->prepare('SELECT * FROM admin_credentials WHERE username=:username');
-$records2->bindParam(':username', $_SESSION['username']);
-$records2->execute();
-$results2=$records2->fetch(PDO::FETCH_ASSOC);
-
-if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
+if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   echo "<script>alert('For admin only');</script>";
-	echo "<script>window.location.href='../login.php';</script>";
+	echo "<script>window.location.href='login.php';</script>";
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +52,7 @@ if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2><?php echo $_SESSION['username']; ?></h2>
+                <h2><?php echo $_SESSION['usertype']; ?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -82,7 +76,7 @@ include('sidebarmenu.php');
               </div>
 			  <ul class="nav navbar-nav navbar-right" style="text-align:right;margin-top:7px;margin-right:5px;">
 
-                  <b>Logged in as :</b> <i><?php echo $_SESSION['username']; ?></i> | <a href="../index.php" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
+                  <b>Logged in as :</b> <i><?php echo $_SESSION['usertype']; ?></i> | <a href="../index.php" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
               </ul>
             </nav>
           </div>
@@ -97,7 +91,7 @@ include('sidebarmenu.php');
             <div class="col-md-12 col-sm-12 col-xs-12">
               <center><h2>Victoria Junction | Dashboard  </h2></center>
 
-              
+
 
 
 

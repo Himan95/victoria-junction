@@ -133,6 +133,7 @@ table,td,tr{
                     <div class="form-group">
                       <button type="reset" class="btn btn-primary">Reset</button>
                       <button type="submit" name="display_all" class="btn btn-success">View</button>
+                      <button type="submit" class="btn btn-warning">Print</button>
                     </div>
                   </center>
                 </form>

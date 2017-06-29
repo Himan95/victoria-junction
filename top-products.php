@@ -12,7 +12,7 @@
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Frozen Food</a></li>
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Bread & Bakery</a></li>
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Cold Drinks</a></li>
-						
+
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Chocolates</a></li>
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Dairy Products</a></li>
 						</ul>
