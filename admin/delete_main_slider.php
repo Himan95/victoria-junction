@@ -13,30 +13,23 @@ $results2=$records2->fetch(PDO::FETCH_ASSOC);
 
 if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
   echo "<script>alert('For admin only');</script>";
-  echo "<script>window.location.href='../login.php';</script>";
+	echo "<script>window.location.href='../login.php';</script>";
 }
 
-//Process the image that is uploaded by the user
-$target_dir = "../images/";
-$target_file = $target_dir . basename($_FILES['imageUpload']['name']);
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-move_uploaded_file($_FILES['imageUpload']['tmp_name'], $target_file);
-$final_image=substr($target_file, 3);
 
+$records1 = $connection->prepare('SELECT * FROM main_slider');
+$records1->execute();
 
-$slider_name=$_POST['slider_name'];
-$slider_status=1;
 
 //Update Button clicked
-if(isset($_POST['add_slider'])){
+if(isset($_POST['delete_slider'])){
 
-  $stmt1=$connection->prepare('INSERT INTO main_slider (slider_name,slider_image,slider_status) VALUES (:slider_name,:slider_image,:slider_status)');
-  $stmt1->bindParam(':slider_name',$slider_name);
-  $stmt1->bindParam(':slider_image',$final_image);
-  $stmt1->bindParam(':slider_status',$slider_status);
-  $stmt1->execute();
-  echo "<script>alert('New Image for Main Slider added!');</script>";
+      $slider_name=$_POST['slider_name'];
+      $stmt1=$connection->prepare('DELETE FROM main_slider WHERE slider_name=:slider_name');
+      $stmt1->bindParam(':slider_name',$slider_name);
+      $stmt1->execute();
+      echo "<script>alert('Slider Image deleted!');</script>";
+
 }
 
 ?>
@@ -119,27 +112,27 @@ if(isset($_POST['add_slider'])){
 
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <center><h2>Victoria Junction | Add Image for Slider </h2></center>
+            <center><h2>Victoria Junction | Delete Slider Image  </h2></center>
             <div class="x_panel tile fixed_height_450">
               <div class="x_title">
+                <h2>Delete Image</h2>
+
                 <div class="clearfix"></div>
               </div>
-              <h2>Add Image for Slider</h2>
               <div class="x_content">
-                <form id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left" action="add_main_slider.php" method="post">
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="delete_main_slider.php" method="post">
                   <div class="form-group">
-                    <label class="control-label col-md-3" >Add Slider Name<span class="required">*</span>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Select Image<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" required="required" autocomplete="off" name="slider_name" class="form-control col-md-7 col-xs-12">
-                    </div>
-                  </div>
+                      <select name="slider_name" class="form-control col-md-7 col-xs-12">
+                        <option selected disabled>Choose Here</option>
+                        <?php
+                        while($row=$records1->fetch(PDO::FETCH_ASSOC)){
+                          echo '<option>'.$row['slider_name'].'</option>';}
+                          ?>
+                        </select>
 
-                  <div class="form-group">
-                    <label class="control-label col-md-3" >Add Slider Image<span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="file" id="imageUpload" required="required" autocomplete="off" name="imageUpload" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
 
@@ -147,32 +140,32 @@ if(isset($_POST['add_slider'])){
                   <div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                       <button type="reset" class="btn btn-primary">Reset</button>
-                      <button type="submit" name="add_slider" class="btn btn-success">Add Image</button>
+                      <button type="submit" name="delete_slider" class="btn btn-success">Delete Slider</button>
                     </div>
                   </div>
+
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <?php //include('report-card-display.php'); ?>
     </div>
-    <?php //include('report-card-display.php'); ?>
   </div>
-</div>
 
 
 
-<!-- /page content -->
+  <!-- /page content -->
 
-<!-- footer content -->
-<footer style="margin-top:px;">
-  <div class="pull-right">
-    Designed and maintained by <b><a href="#">Empreus Labs</a></b>
-  </div>
-  <div class="clearfix"></div>
-</footer>
-<!-- /footer content -->
+  <!-- footer content -->
+  <footer style="margin-top:px;">
+    <div class="pull-right">
+      Designed and maintained by <b><a href="#">Empreus Labs</a></b>
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  <!-- /footer content -->
 </div>
 </div>
 
