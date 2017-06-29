@@ -21,7 +21,6 @@ if($_SESSION['username']!=$results2['username']|| $_SESSION['username']==''){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- Meta, title, CSS, favicons, etc. -->
   <meta charset="utf-8">
@@ -103,6 +102,14 @@ table,td,tr{
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <center><h2>Victoria Junction | View Messages  </h2></center>
+            <div class="x_panel tile fixed_height_450">
+              <div class="x_title">
+                <h2>View Messages</h2>
+
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+
             <?php
 
             $records2 = $connection->prepare('SELECT * FROM support ORDER BY id DESC LIMIT 10');
@@ -135,9 +142,12 @@ table,td,tr{
             ?>
 
         <?php //include('report-card-display.php'); ?>
+
       </div>
     </div>
-
+  </div>
+  </div>
+</div>
 
 
     <!-- /page content -->
@@ -151,9 +161,12 @@ table,td,tr{
     </footer>
      /footer content -->
   </div>
+
 </div>
 
+
 <!-- jQuery -->
+
 <script src="../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -24,12 +24,19 @@ if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
   move_uploaded_file($_FILES['imageUpload']['tmp_name'], $target_file);
   $final_image=substr($target_file, 3);
 
+  $offer_name=$_POST['offer_name'];
+  $offer_desc=$_POST['offer_desc'];
+  $offer_status=1;
 //Update Button clicked
-if(isset($_POST['add_image'])){
+if(isset($_POST['add_offer'])){
 
-  $stmt1=$connection->prepare('INSERT INTO offer_images (offer_image) VALUES (:offer_image)');
+  $stmt1=$connection->prepare('INSERT INTO offers (offer_name,offer_image,offer_desc,offer_status) VALUES (:offer_name,:offer_image,:offer_desc,:offer_status)');
+  $stmt1->bindParam(':offer_name',$offer_name);
   $stmt1->bindParam(':offer_image',$final_image);
+  $stmt1->bindParam(':offer_desc',$offer_desc);
+  $stmt1->bindParam(':offer_status',$offer_status);
   $stmt1->execute();
+  echo "<script>alert('New Offer added!');</script>";
 
 }
 
@@ -120,19 +127,36 @@ if(isset($_POST['add_image'])){
               </div>
                 <h2>Add Image for Offers</h2>
               <div class="x_content">
-                <form id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left" action="update_offer_images.php" method="post">
+                <form id="demo-form2" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left" action="add_offer.php" method="post">
                   <div class="form-group">
-                    <label class="control-label col-md-3" >Add Image<span class="required">*</span>
+                    <label class="control-label col-md-3" >Add Offer Image<span class="required">*</span>
                     </label>
-                    <div class="col-md-9">
+                    <div class="col-md-6  col-sm-6 col-xs-12">
                       <input type="file" id="imageUpload" required="required" autocomplete="off" name="imageUpload" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-md-3" >Add Offer Name<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="text" required="required" autocomplete="off" name="offer_name" class="form-control col-md-7 col-xs-12">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="control-label col-md-3" >Add Offer Description<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="text" required="required" autocomplete="off" name="offer_desc" class="form-control col-md-7 col-xs-12">
+                    </div>
+                  </div>
+
                   <div class="ln_solid"></div>
                   <div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                       <button type="reset" class="btn btn-primary">Reset</button>
-                      <button type="submit" name="add_image" class="btn btn-success">Add Image</button>
+                      <button type="submit" name="add_offer" class="btn btn-success">Add Image</button>
                     </div>
                   </div>
                 </form>

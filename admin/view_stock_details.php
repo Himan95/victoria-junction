@@ -104,41 +104,67 @@ table,td,tr{
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <center><h2>Victoria Junction | View Products  </h2></center>
+            <div class="x_panel tile fixed_height_450">
+              <div class="x_title">
+                <h2>View Products</h2>
+
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+
             <?php
             $records2 = $connection->prepare('SELECT * FROM products');
             $records2->execute();
             $results2=$records2->fetch(PDO::FETCH_ASSOC);
 
-            echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
-            <tr style='background-color:#EDEDED;padding:5px'>
+            if(!$results2['prod_id'])  // No Order exists
+            {
+              echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+              <tr style='background-color:#EDEDED;padding:5px'>
 
-            <td style='padding:5px' align='left'<i><b>Product Id </b></i></td>
-            <td style='padding:5px' align='left'<i><b>Product Name</b></i></td>
-            <td colspan='3' style='padding:5px' align='left'<i><b>Product Type </b></i></td>
-            <td style='padding:5px' align='left'<i><b>Product Quantity</b></i></td>
-            </tr>";
-            echo "<br />";
+              <td style='padding:5px' align='left'<i><b>Product Id </b></i></td>
+              <td style='padding:5px' align='left'<i><b>Product Name</b></i></td>
+              <td style='padding:5px' align='left'<i><b>Product Type </b></i></td>
+              <td style='padding:5px' align='left'<i><b>Product Quantity</b></i></td>
+              </tr>";
+              echo "<br />";
 
-            do{
-              if($results2['prod_quantity']==0){
-                echo "<tr><td style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_id']."</td>";
-                echo "<td style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_name']."</td>";
-                echo "<td colspan='3' style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_type']."</td>";
-                echo "<td style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_quantity']."</td></tr>";}
-                else {
-                  echo "<tr><td style='padding:3px' align='left'>".$results2['prod_id']."</td>";
-                  echo "<td style='padding:3px' align='left'>".$results2['prod_name']."</td>";
-                  echo "<td colspan='3' style='padding:3px' align='left'>".$results2['prod_type']."</td>";
-                  echo "<td style='padding:3px' align='left'>".$results2['prod_quantity']."</td></tr>";
-                }
-              }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
-              //echo "<tr><td style='padding:3px' align='left'><input style='width:100%'type='submit' value='Refresh' name='Refresh' /></td></tr>";
+              echo "<tr><td colspan='4' style='padding:3px' align='left'>No Records Found</td>";
 
+            }
+            else {
+              echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+              <tr style='background-color:#EDEDED;padding:5px'>
+
+              <td style='padding:5px' align='left'<i><b>Product Id </b></i></td>
+              <td style='padding:5px' align='left'<i><b>Product Name</b></i></td>
+              <td style='padding:5px' align='left'<i><b>Product Type </b></i></td>
+              <td style='padding:5px' align='left'<i><b>Product Quantity</b></i></td>
+              </tr>";
+              echo "<br />";
+
+              do{
+                if($results2['prod_quantity']==0){
+                  echo "<tr><td style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_id']."</td>";
+                  echo "<td style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_name']."</td>";
+                  echo "<td style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_type']."</td>";
+                  echo "<td style='background-color:#FCCFEF;padding:3px' align='left'>".$results2['prod_quantity']."</td></tr>";}
+                  else {
+                    echo "<tr><td style='padding:3px' align='left'>".$results2['prod_id']."</td>";
+                    echo "<td style='padding:3px' align='left'>".$results2['prod_name']."</td>";
+                    echo "<td colspan='3' style='padding:3px' align='left'>".$results2['prod_type']."</td>";
+                    echo "<td style='padding:3px' align='left'>".$results2['prod_quantity']."</td></tr>";
+                  }
+                }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
+                //echo "<tr><td style='padding:3px' align='left'><input style='width:100%'type='submit' value='Refresh' name='Refresh' /></td></tr>";
+              }
 
               ?>
             </div>
           </div>
-
+        </div>
+      </div>
+    </div>
 
 
           <!-- /page content -->

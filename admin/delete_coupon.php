@@ -17,12 +17,22 @@ if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
 }
 
 
+$records1 = $connection->prepare('SELECT * FROM coupons');
+$records1->execute();
+
 
 //Update Button clicked
+if(isset($_POST['delete_coupon'])){
 
+  $coupon_name=$_POST['coupon_name'];
+  $stmt1=$connection->prepare('DELETE FROM coupons WHERE coupon_name=:coupon_name');
+  $stmt1->bindParam(':coupon_name',$coupon_name);
+  $stmt1->execute();
+  echo "<script>alert('Coupon deleted!');</script>";
+
+}
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +43,7 @@ if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Victoria Junction | Coupons</title>
+  <title>Victoria Junction | Admin Panel</title>
 
   <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -47,11 +57,6 @@ if($_SESSION['username']!=$results2['username'] || $_SESSION['username']==''){
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
 </head>
-<style>
-table,td,tr{
-  text-transform: uppercase;
-}
-</style>
 
 <body class="nav-md">
   <div class="container body">
@@ -107,76 +112,63 @@ table,td,tr{
 
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <center><h2>Victoria Junction | Coupons  </h2></center>
+            <center><h2>Victoria Junction | Delete Coupon  </h2></center>
             <div class="x_panel tile fixed_height_450">
               <div class="x_title">
-                <h2>View Coupons</h2>
+                <h2>Delete Coupon</h2>
 
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="delete_coupon.php" method="post">
+                  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Select Coupon<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <select name="coupon_name" class="form-control col-md-7 col-xs-12">
+                        <option selected disabled>Choose here</option>
+                        <?php
 
-                <?php
+                        while($row=$records1->fetch(PDO::FETCH_ASSOC)){
+                          echo '<option>'.$row['coupon_name'].'</option>';
+                        }
 
-                $records2 = $connection->prepare('SELECT * FROM coupons WHERE coupon_status= "1" ');
-                $records2->execute();
-                $results2=$records2->fetch(PDO::FETCH_ASSOC);
+                        ?>
+                      </select>
 
+                    </div>
+                  </div>
 
-                if(!$results2['coupon_id'])  // No Order exists
-                {
-                  echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
-                  <tr style='background-color:#EDEDED;padding:5px'>
+                  <div class="ln_solid"></div>
+                  <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                      <button type="reset" class="btn btn-primary">Reset</button>
+                      <button type="submit" name="delete_coupon" class="btn btn-success">Delete Coupon</button>
+                    </div>
+                  </div>
 
-                  <td style='padding:5px' align='left'<i><b>Coupon Id </b></i></td>
-                  <td style='padding:5px' align='left'<i><b>Coupon Name</b></i></td>
-                  <td style='padding:5px' align='left'<i><b>Coupon Status </b></i></td>
-                  </tr>";
-                  echo "<br />";
-
-                  echo "<tr><td colspan='7' style='padding:3px' align='left'>No Records Found</td>";
-
-                }
-                else {
-
-                  echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap'  border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
-                  <tr style='background-color:#EDEDED;padding:5px'>
-
-                  <td style='padding:5px' align='left'<i><b>Coupon Id </b></i></td>
-                  <td style='padding:5px' align='left'<i><b>Coupon Name </b></i></td>
-                  <td style='padding:5px' align='left'<i><b>Coupon Status </b></i></td>
-                  </tr>";
-                  echo "<br />";
-
-                  do{
-                    echo "<tr><td style='padding:3px' align='left'>".$results2['coupon_id']."</td>";
-                    echo "<td style='padding:3px' align='left'>".$results2['coupon_name']."</td>";
-                    echo "<td style='padding:3px' align='left'>".$results2['coupon_status']."</td></tr>";
-
-
-                  }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
-                }
-
-
-                ?>
+                </form>
               </div>
             </div>
           </div>
-
         </div>
       </div>
+      <?php //include('report-card-display.php'); ?>
+    </div>
+  </div>
 
 
-      <!-- /page content -->
 
-      <!-- footer content
-      <footer style="margin-top:px;">
-      <div class="pull-right">
+  <!-- /page content -->
+
+  <!-- footer content -->
+  <footer style="margin-top:px;">
+    <div class="pull-right">
       Designed and maintained by <b><a href="#">Empreus Labs</a></b>
     </div>
     <div class="clearfix"></div>
   </footer>
-  /footer content -->
+  <!-- /footer content -->
 </div>
 </div>
 

@@ -104,6 +104,14 @@ table,td,tr{
 
           <div class="col-md-12 col-sm-12 col-xs-12">
             <center><h2>Victoria Junction | View Subscriptions  </h2></center>
+            <div class="x_panel tile fixed_height_450">
+              <div class="x_title">
+                <h2>View Subscriptions</h2>
+
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+
             <?php
 
             $records2 = $connection->prepare('SELECT * FROM newsletter ORDER BY id DESC LIMIT 20');
@@ -135,8 +143,9 @@ table,td,tr{
           </div>
 
         </div>
-
-
+</div>
+</div>
+</div>
 
         <!-- /page content -->
 
@@ -147,7 +156,7 @@ table,td,tr{
       </div>
       <div class="clearfix"></div>
     </footer>
-    /footer content -->
+   footer content -->
   </div>
 </div>
 

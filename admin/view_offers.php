@@ -142,6 +142,8 @@ table,td,tr{
                   <tr style='background-color:#EDEDED;padding:5px'>
 
                   <td style='padding:5px' align='left'<i><b>Offer Id </b></i></td>
+                  <td style='padding:5px' align='left'<i><b>Offer Name </b></i></td>
+
                   <td style='padding:5px' align='left'<i><b>Offer Description </b></i></td>
                   <td style='padding:5px' align='left'<i><b>Offer Status </b></i></td>
                   </tr>";
@@ -150,6 +152,7 @@ table,td,tr{
                   do{
 
                     echo "<tr><td style='padding:3px' align='left'>".$results2['offer_id']."</td>";
+                    echo "<td style='padding:3px' align='left'>".$results2['offer_name']."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['offer_desc']."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['offer_status']."</td></tr>";
 
