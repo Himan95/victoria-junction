@@ -12,7 +12,6 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 
 $records1 = $connection->prepare('SELECT * FROM category ORDER BY category_name');
 $records1->execute();
-$results1=$records1->fetch(PDO::FETCH_ASSOC);
 
 //Add product Button clicked
 if(isset($_POST['add_product'])){

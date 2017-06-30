@@ -11,12 +11,10 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 
 $records11 = $connection->prepare('SELECT * FROM products ORDER BY prod_id');
 $records11->execute();
-$results11=$records11->fetch(PDO::FETCH_ASSOC);
 
 
 $records1 = $connection->prepare('SELECT * FROM category ORDER BY category_name');
 $records1->execute();
-$results1=$records1->fetch(PDO::FETCH_ASSOC);
 
 //Add product Button clicked
 if(isset($_POST['delete_product'])){
