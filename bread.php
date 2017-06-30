@@ -3,9 +3,6 @@ error_reporting(0);
 session_start();
 include('connect/connection.php');
 
-$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Snacks" AND prod_quantity>0');
-$records->execute();
-$results=$records->fetch(PDO::FETCH_ASSOC);
 
 ?>
 <!--
@@ -124,63 +121,67 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
 			</div>
 <!---728x90--->
-			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
-				<h3 class="w3l_fruit">Bread & Bakery</h3>
-				<?php
-
-				$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Bread & Bakery" ORDER BY rand() LIMIT 8');
-				$records->execute();
-				$results=$records->fetch(PDO::FETCH_ASSOC);
-				do{
-				echo '
-				<div class="w3ls_w3l_banner_nav_right_grid1 w3ls_w3l_banner_nav_right_grid1_veg">
-				<div class="col-md-3 w3ls_w3l_banner_left w3ls_w3l_banner_left_asdfdfd">
-				<div class="hover14 column">
-				<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-				<div class="agile_top_brand_left_grid_pos">
-				<img src="images/offer.png" alt=" " class="img-responsive" />
-				</div>
-				<div class="agile_top_brand_left_grid1">
-				<figure>
-				<div class="snipcart-item block">
-				<div class="snipcart-thumb">
-				<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-				<p>'.$results['prod_name'].'</p>
-				<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
-				</div>
-				<div class="snipcart-details">
-				<form action="#" method="post">
-				<fieldset>
-				<input type="hidden" name="cmd" value="_cart" />
-				<input type="hidden" name="add" value="1" />
-				<input type="hidden" name="business" value=" " />
-				<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-				<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-				<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
-				<input type="hidden" name="currency_code" value="INR" />
-				<input type="hidden" name="return" value=" " />
-				<input type="hidden" name="cancel_return" value=" " />
-				<input type="submit" name="submit" value="Add to cart" class="button" />
-				</fieldset>
-				</form>
-				</div>
-				</div>
-				</figure>
-				</div>
-				</div>
-				</div>
-				</div>
-				';
-				}
-				while($results=$records->fetch(PDO::FETCH_ASSOC));
-				?>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
+<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+	<h3>Pastries</h3>
+	<?php
+	$count=0;
+	$records = $connection->prepare('SELECT * FROM products WHERE  prod_quantity>0');
+	$records->execute();
+	$results=$records->fetch(PDO::FETCH_ASSOC);
+	do{
+		$count=$count+1;
+		echo '
+		<div class="col-md-3 w3ls_w3l_banner_left">
+		<div class="hover14 column">
+		<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+		<div class="agile_top_brand_left_grid_pos">
+		<img src="images/offer.png" alt=" " class="img-responsive" />
 		</div>
-		<div class="clearfix"></div>
+		<div class="agile_top_brand_left_grid1">
+		<figure>
+		<div class="snipcart-item block">
+		<div class="snipcart-thumb">
+		<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+		<p>'.$results['prod_name'].'</p>
+		<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+		</div>
+		<div class="snipcart-details">
+		<form action="#" method="post">
+		<fieldset>
+		<input type="hidden" name="cmd" value="_cart" />
+		<input type="hidden" name="add" value="1" />
+		<input type="hidden" name="business" value=" " />
+		<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+		<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+		<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+		<input type="hidden" name="currency_code" value="INR" />
+		<input type="hidden" name="return" value=" " />
+		<input type="hidden" name="cancel_return" value=" " />
+		<input type="submit" name="submit" value="Add to cart" class="button" />
+		</fieldset>
+		</form>
+		</div>
+		</div>
+		</figure>
+		</div>
+		</div>
+		</div>
+		</div>
+		';
+		if($count % 4 == 0)
+		echo '<div class="clearfix"> </div><br> ';
+	}
+	while($results=$records->fetch(PDO::FETCH_ASSOC));
+	?>
+
+
+	<div class="clearfix"> </div>
 	</div>
+	</div>
+	</div>
+	<div class="clearfix"></div>
+	</div>
+
 <!-- //banner -->
 
 <!-- newsletter -->

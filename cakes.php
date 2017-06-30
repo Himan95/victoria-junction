@@ -3,9 +3,6 @@ error_reporting(0);
 session_start();
 include('connect/connection.php');
 
-$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Cakes" AND prod_quantity>0');
-$records->execute();
-$results=$records->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -131,11 +128,12 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 				<div class="w3ls_w3l_banner_nav_right_grid1">
 					<h6>Cakes</h6>
 					<?php
-
-					$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Cakes" ');
+					$count=0;
+					$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Cakes" AND prod_quantity>0');
 					$records->execute();
 					$results=$records->fetch(PDO::FETCH_ASSOC);
 					do{
+						$count=$count+1;
 						echo '
 						<div class="col-md-3 w3ls_w3l_banner_left">
 						<div class="hover14 column">
@@ -174,9 +172,12 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 						</div>
 						</div>
 						';
+						if($count % 4 == 0)
+						echo '<div class="clearfix"> </div><br> ';
 					}
 					while($results=$records->fetch(PDO::FETCH_ASSOC));
 					?>
+
 
 					<div class="clearfix"> </div>
 					</div>

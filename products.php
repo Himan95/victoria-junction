@@ -5,9 +5,6 @@ session_start();
 include('connect/connection.php');
 
 
-$records = $connection->prepare('SELECT * FROM products WHERE prod_quantity>0 ORDER BY rand()');
-$records->execute();
-$results=$records->fetch(PDO::FETCH_ASSOC);
 
 ?>
 <!--
@@ -127,54 +124,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<h3>Best Deals For New Products<span class="blink_me"></span></h3>
 						</div>
 						<!---728x90--->
-						<div class="w3l_banner_nav_right_banner3_btm">
-							<div class="col-md-4 w3l_banner_nav_right_banner3_btml">
-								<div class="view view-tenth">
-									<img src="images/13.jpg" alt=" " class="img-responsive" />
-									<div class="mask">
-										<h4>Victoria Junction, Siliguri</h4>
-										<p>Best Cakes & Confectionaries around your locality.</p>
-									</div>
-								</div>
-								<h4>Utensils</h4>
-								<ol>
-									<li>Valiant Products</li>
-									<li>Daily Use</li>
-									<li>Stainless Steel</li>
-								</ol>
-							</div>
-							<div class="col-md-4 w3l_banner_nav_right_banner3_btml">
-								<div class="view view-tenth">
-									<img src="images/14.jpg" alt=" " class="img-responsive" />
-									<div class="mask">
-										<h4>Victoria Junction, Siliguri</h4>
-										<p>Best Cakes & Confectionaries around your locality.</p>
-									</div>
-								</div>
-								<h4>Hair Care</h4>
-								<ol>
-									<li>Branded Products</li>
-									<li>Effective Results</li>
-									<li>Wide Range</li>
-								</ol>
-							</div>
-							<div class="col-md-4 w3l_banner_nav_right_banner3_btml">
-								<div class="view view-tenth">
-									<img src="images/15.jpg" alt=" " class="img-responsive" />
-									<div class="mask">
-										<h4>Victoria Junction, Siliguri</h4>
-										<p>Best Cakes & Confectionaries around your locality.</p>
-									</div>
-								</div>
-								<h4>Cookies</h4>
-								<ol>
-									<li>Mouth watering</li>
-									<li>VJ Special</li>
-									<li>Home Delivery</li>
-								</ol>
-							</div>
+
 							<div class="clearfix"> </div>
-						</div>
+							<br><br><br>
+
 						<!---728x90--->
 						<div class="w3ls_w3l_banner_nav_right_grid">
 							<h3>Popular Brands</h3>
