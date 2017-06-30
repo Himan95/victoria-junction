@@ -4,7 +4,7 @@ session_start();
 include ('connect/connection.php');
 
 
-$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Pastries"');
+$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Pastries" AND prod_quantity>0');
 $records->execute();
 $results=$records->fetch(PDO::FETCH_ASSOC);
 ?>

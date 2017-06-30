@@ -8,7 +8,7 @@ include('../connect/connection.php');
 
 if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   echo "<script>alert('For admin only');</script>";
-	echo "<script>window.location.href='login.php';</script>";
+  echo "<script>window.location.href='login.php';</script>";
 }
 
 
@@ -142,12 +142,13 @@ table,td,tr{
                   <td style='padding:5px' align='left'<i><b>Coupon Status </b></i></td>
                   </tr>";
                   echo "<br />";
-
+                  $count=0;
                   do{
-                    echo "<tr><td style='padding:3px' align='left'>".$results2['coupon_id']."</td>";
+
+                    echo "<tr><td style='padding:3px' align='left'>".(++$count)."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['coupon_name']."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['coupon_status']."</td></tr>";
-
+                    
 
                   }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
                 }

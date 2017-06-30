@@ -5,16 +5,14 @@
 				<div class="col-md-3 w3l_fresh_vegetables_grid w3l_fresh_vegetables_grid_left">
 					<div class="w3l_fresh_vegetables_grid2">
 						<ul>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">All Brands</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Cakes</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="brands.php">All Brands</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="cakes.php">Cakes</a></li>
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Muffins</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Cookies</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="cookies.php">Cookies</a></li>
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Frozen Food</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Bread & Bakery</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Cold Drinks</a></li>
-
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Chocolates</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Dairy Products</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="bread.php">Bread & Bakery</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="drinks.php">Cold Drinks</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="chocolates.php">Chocolates</a></li>
 						</ul>
 					</div>
 				</div>

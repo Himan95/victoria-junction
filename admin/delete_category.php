@@ -14,7 +14,6 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 
 $records1 = $connection->prepare('SELECT * FROM category');
 $records1->execute();
-$results=$records1->fetch(PDO::FETCH_ASSOC);
 
 
 //Update Button clicked

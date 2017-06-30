@@ -3,7 +3,7 @@ error_reporting(0);
 session_start();
 include('connect/connection.php');
 
-$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Chocolates"');
+$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Chocolates" AND prod_quantity>0');
 $records->execute();
 $results=$records->fetch(PDO::FETCH_ASSOC);
 

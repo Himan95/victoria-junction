@@ -8,7 +8,7 @@ include('../connect/connection.php');
 
 if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   echo "<script>alert('For admin only');</script>";
-	echo "<script>window.location.href='login.php';</script>";
+  echo "<script>window.location.href='login.php';</script>";
 }
 
 
@@ -143,10 +143,10 @@ table,td,tr{
                   <td style='padding:5px' align='left'<i><b>Offer Status </b></i></td>
                   </tr>";
                   echo "<br />";
-
+                  $count=0;
                   do{
 
-                    echo "<tr><td style='padding:3px' align='left'>".$results2['offer_id']."</td>";
+                    echo "<tr><td style='padding:3px' align='left'>".(++$count)."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['offer_name']."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['offer_desc']."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['offer_status']."</td></tr>";

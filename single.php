@@ -11,7 +11,7 @@ $records->execute();
 $results=$records->fetch(PDO::FETCH_ASSOC);
 
 
-$records1 = $connection->prepare('SELECT * FROM products');
+$records1 = $connection->prepare('SELECT * FROM products WHERE prod_quantity>0 ORDER BY rand() LIMIT 4');
 $records1->execute();
 $results1=$records1->fetch(PDO::FETCH_ASSOC);
 ?>
