@@ -145,7 +145,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
 			<div class="w3l_banner_nav_right_banner3">
-				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
+				<?php
+				$records12 = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 1');
+				$records12->execute();
+				$result=$records12->fetch(PDO::FETCH_ASSOC);
+				 ?>
+				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 			</div>
 			<!---728x90--->
 			<div class="agileinfo_single">
@@ -171,7 +176,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>-->
 					<div class="w3agile_description">
 
-						<p><?php echo $results['prod_desc']; ?></p>
+						<p style="text-align:justify;"><?php echo $results['prod_desc']; ?></p>
 					</div>
 					<div class="snipcart-item block">
 						<div class="snipcart-thumb agileinfo_single_right_snipcart">
@@ -190,7 +195,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<input type="hidden" name="currency_code" value="INR" />
 							<input type="hidden" name="return" value=" " />
 							<input type="hidden" name="cancel_return" value=" " />
-							<input type="submit" name="submit" value="Add to cart" class="button" />
+							<input type="submit" name="submit" value="Add to cart" class="btn btn-success" />
 						</fieldset>
 					</form>
 

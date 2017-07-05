@@ -123,7 +123,12 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 	<?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
 			<div class="w3l_banner_nav_right_banner10">
-				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
+				<?php
+				$records12 = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 1');
+				$records12->execute();
+				$result=$records12->fetch(PDO::FETCH_ASSOC);
+				 ?>
+				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 			</div>
 			<!---728x90--->
 			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">

@@ -3,10 +3,13 @@ error_reporting(0);
 session_start();
 include('connect/connection.php');
 
+
 $records1 = $connection->prepare('SELECT * FROM web_info');
 $records1->execute();
 $results1=$records1->fetch(PDO::FETCH_ASSOC);
+
 ?>
+
 <!--
 
 
@@ -18,11 +21,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:01:53 GMT -->
 <head>
-<title><?php echo $results1['web_name']; ?> | Mithai</title>
+<title><?php echo $results1['web_name']; ?> | Bread & Bakery </title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Victoria Junction, Siliguri - Custom Cakes fro Every Occassion, Gluten, Dairy & Egg-Free Options Available
+<meta name="keywords" content="Victoria Junction, Siliguri - Custom Bread & Bakery fro Every Occassion, Gluten, Dairy & Egg-Free Options Available
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -110,7 +113,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		<div class="container">
 			<ul>
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-				<li>Mithai</li>
+				<li>Bread & Bakery</li>
 			</ul>
 		</div>
 	</div>
@@ -118,7 +121,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <!---728x90--->
 <!-- banner -->
 	<div class="banner">
-<?php include('left-nav-bar.php'); ?>
+	<?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
 			<div class="w3l_banner_nav_right_banner10">
 				<?php
@@ -128,71 +131,78 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 				 ?>
 				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 			</div>
-<!---728x90--->
-<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
-	<h3>Mithai</h3>
-	<br>
-	<?php
-	$count=0;
-	$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Mithai" AND prod_quantity>0');
-	$records->execute();
-	$results=$records->fetch(PDO::FETCH_ASSOC);
-	do{
-		$count=$count+1;
-		echo '
-		<div class="col-md-3 w3ls_w3l_banner_left">
-		<div class="hover14 column">
-		<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-		<div class="agile_top_brand_left_grid_pos">
-		<img src="images/offer.png" alt=" " class="img-responsive" />
-		</div>
-		<div class="agile_top_brand_left_grid1">
-		<figure>
-		<div class="snipcart-item block">
-		<div class="snipcart-thumb">
-		<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-		<p>'.$results['prod_name'].'</p>
-		<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
-		</div>
-		<div class="snipcart-details">
-		<form action="#" method="post">
-		<fieldset>
-		<input type="hidden" name="cmd" value="_cart" />
-		<input type="hidden" name="add" value="1" />
-		<input type="hidden" name="business" value=" " />
-		<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-		<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-		<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
-		<input type="hidden" name="currency_code" value="INR" />
-		<input type="hidden" name="return" value=" " />
-		<input type="hidden" name="cancel_return" value=" " />
-		<input type="submit" name="submit" value="Add to cart" class="button" />
-		</fieldset>
-		</form>
-		</div>
-		</div>
-		</figure>
-		</div>
-		</div>
-		</div>
-		</div>
-		';
-		if($count % 4 == 0)
-		echo '<div class="clearfix"> </div><br> ';
-	}
-	while($results=$records->fetch(PDO::FETCH_ASSOC));
-	?>
+			<!---728x90--->
+			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+				<h3>Bread & Bakery</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Bread & Bakery</h6>
+					<?php
+					$count=0;
+					$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Breads" AND prod_quantity>0');
+					$records->execute();
+					$results=$records->fetch(PDO::FETCH_ASSOC);
+					do{
 
 
-	<div class="clearfix"> </div>
-	</div>
-	</div>
-	</div>
-	<div class="clearfix"></div>
-	</div>
+						$count=$count+1;
 
-<!---728x90--->
-<!-- //banner -->
+						echo '
+						<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						<div class="agile_top_brand_left_grid_pos">
+						<img src="images/offer.png" alt=" " class="img-responsive" />
+						</div>
+						<div class="agile_top_brand_left_grid1">
+						<figure>
+						<div class="snipcart-item block">
+						<div class="snipcart-thumb">
+						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+						<p>'.$results['prod_name'].'</p>
+						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+						</div>
+						<div class="snipcart-details">
+						<form action="#" method="post">
+						<fieldset>
+						<input type="hidden" name="cmd" value="_cart" />
+						<input type="hidden" name="add" value="1" />
+						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+						<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+						<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+						<input type="hidden" name="currency_code" value="INR" />
+						<input type="hidden" name="return" value=" " />
+						<input type="hidden" name="cancel_return" value=" " />
+						<input type="submit" name="submit" value="Add to cart" class="button" />
+						</fieldset>
+						</form>
+						</div>
+						</div>
+						</figure>
+						</div>
+						</div>
+						</div>
+						</div>
+						';
+						if($count % 4 == 0)
+						echo '<div class="clearfix"> </div><br> ';
+
+
+
+					}
+					while($results=$records->fetch(PDO::FETCH_ASSOC));
+					?>
+
+
+					<div class="clearfix"> </div>
+					</div>
+					</div>
+					</div>
+					<div class="clearfix"></div>
+					</div>
+
+
+			<!---728x90--->
 <!-- newsletter -->
 	<?php include('newsletter.php');?>
 <!-- //newsletter -->

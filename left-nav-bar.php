@@ -94,6 +94,7 @@
 								</div>
 							</div>
 						</li>
+						<li><a href="breads.php">Bread & Bakery</a></li>
 						<li><a href="mithai.php">Mithai</a></li>
 						<li><a href="cookies.php">Cookies</a></li>
 
