@@ -1,14 +1,12 @@
-
 <?php
 error_reporting(0);
 session_start();
+
 include('connect/connection.php');
 
 
-$records = $connection->prepare('SELECT * FROM events');
-$records->execute();
-$results=$records->fetch(PDO::FETCH_ASSOC);
 ?>
+
 <!--
 
 
@@ -18,9 +16,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 
-<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/events.php  [XR&CO'2014], Thu, 04 May 2017 08:01:05 GMT -->
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:01:53 GMT -->
 <head>
-	<title>Victoria Junction | Events </title>
+	<title>Victoria Junction | Snacks </title>
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -52,14 +50,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</script>
 	<!-- start-smoth-scrolling -->
 </head>
-<style>
-.img{
-	padding: 5px;
-	max-width: 90%;
-	max-height: 89%;
-  margin: 0 auto;
-}
-</style>
 
 <body>
 	<script src='../../../../../../ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script><script>
@@ -74,7 +64,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<style type='text/css'>  .adsense_fixed{position:fixed;bottom:-8px;width:100%;z-index:999999999999;}.adsense_content{width:720px;margin:0 auto;position:relative;background:#fff;}.adsense_btn_close,.adsense_btn_info{font-size:12px;color:#fff;height:20px;width:20px;vertical-align:middle;text-align:center;background:#000;top:4px;left:4px;position:absolute;z-index:99999999;font-family:Georgia;cursor:pointer;line-height:18px}.adsense_btn_info{left:26px;font-family:Georgia;font-style:italic}.adsense_info_content{display:none;width:260px;height:340px;position:absolute;top:-360px;background:rgba(255,255,255,.9);font-size:14px;padding:20px;font-family:Arial;border-radius:4px;-webkit-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);-moz-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);box-shadow:0 1px 26px -2px rgba(0,0,0,.3)}.adsense_info_content:after{content:'';position:absolute;left:25px;top:100%;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #fff;clear:both}.adsense_info_content #adsense_h3{color:#000;margin:0;font-size:18px!important;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_info_content .adsense_p{color:#888;font-size:13px!important;line-height:20px;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_fh5co-team{color:#000;font-style:italic;}</style>
 
 	<!-- header -->
-	<?php include('header.php'); ?>
+	<?php include('header.php');?>
 	<!--header-->
 	<!-- script-for sticky-nav -->
 	<script>
@@ -120,168 +110,133 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container">
 			<ul>
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-				<li>Events</li>
+				<li>Snacks</li>
 			</ul>
 		</div>
 	</div>
 	<!-- //products-breadcrumb -->
 	<!---728x90--->
-	<!-- banner -->
 	<div class="banner">
 		<?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
-
-      <?php
-			echo
-			'<div class="container">
-			<img class="img" src="'.$results['events_image'].'" width="1200" height="300" />
-			'
-			;
-			?>
-			<div class="clearfix"> </div>
+			<div class="w3l_banner_nav_right_banner10">
+				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
 			</div>
-			<br><br>
-</div>
+			<!---728x90--->
+			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+				<h3>Snacks</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Snacks</h6>
+					<?php
+					$count=0;
+					$records = $connection->prepare('SELECT * FROM products WHERE prod_type IN("Cookies","Chocolates","Beverages") AND prod_quantity>0 ORDER BY rand()');
+					$records->execute();
+					$results=$records->fetch(PDO::FETCH_ASSOC);
+					do{
+						$count=$count+1;
+						echo '
+						<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						<div class="agile_top_brand_left_grid_pos">
+						<img src="images/offer.png" alt=" " class="img-responsive" />
+						</div>
+						<div class="agile_top_brand_left_grid1">
+						<figure>
+						<div class="snipcart-item block">
+						<div class="snipcart-thumb">
+						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+						<p>'.$results['prod_name'].'</p>
+						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+						</div>
+						<div class="snipcart-details">
+						<form action="#" method="post">
+						<fieldset>
+						<input type="hidden" name="cmd" value="_cart" />
+						<input type="hidden" name="add" value="1" />
+						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+						<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+						<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+						<input type="hidden" name="currency_code" value="INR" />
+						<input type="hidden" name="return" value=" " />
+						<input type="hidden" name="cancel_return" value=" " />
+						<input type="submit" name="submit" value="Add to cart" class="button" />
+						</fieldset>
+						</form>
+						</div>
+						</div>
+						</figure>
+						</div>
+						</div>
+						</div>
+						</div>
+						';
+						if($count % 4 == 0){
+						echo '<div class="clearfix"> </div><br>';
+					}
+					}
+					while($results=$records->fetch(PDO::FETCH_ASSOC));
+					?>
 
-<div class="container">
-			<!-- events -->
-			<div class="events">
-				<h3>Events</h3>
-				<!---728x90--->
-				<div class="w3agile_event_grids">
-					<div class="col-md-6 w3agile_event_grid">
-						<div class="col-md-3 w3agile_event_grid_left">
-							<i class="fa fa-bullhorn" aria-hidden="true"></i>
-						</div>
-						<div class="col-md-9 w3agile_event_grid_right">
-							<h4>Victoria junction</h4>
-							<p>Celebrate life’s sweetest moments with VJ. Our events team will work with you.
-							</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-6 w3agile_event_grid">
-						<div class="col-md-3 w3agile_event_grid_left">
-							<i class="fa fa-bullseye" aria-hidden="true"></i>
-						</div>
-						<div class="col-md-9 w3agile_event_grid_right">
-							<h4>Specials</h4>
-							<p>We bring variety in taste.
-								Come this January and we will take you to a creamy ride.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="w3agile_event_grids">
-						<div class="col-md-6 w3agile_event_grid">
-							<div class="col-md-3 w3agile_event_grid_left">
-								<i class="fa fa-credit-card" aria-hidden="true"></i>
-							</div>
-							<div class="col-md-9 w3agile_event_grid_right">
-								<h4>Favorites</h4>
-								<p>Our eye catching and mouth watering items are always there to uplift your mood.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="col-md-6 w3agile_event_grid">
-							<div class="col-md-3 w3agile_event_grid_left">
-								<i class="fa fa-eye" aria-hidden="true"></i>
-							</div>
-							<div class="col-md-9 w3agile_event_grid_right">
-								<h4>Our Attractions</h4>
-								<p>Name a celery, name any dish, and we won't let you down in it's preparations.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="w3agile_event_grids">
-						<div class="col-md-6 w3agile_event_grid">
-							<div class="col-md-3 w3agile_event_grid_left">
-								<i class="fa fa-cog" aria-hidden="true"></i>
-							</div>
-							<div class="col-md-9 w3agile_event_grid_right">
-								<h4>Our Creations</h4>
-								<p>	We create desserts for birthdays, graduations, bar or bat mitzvahs.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="col-md-6 w3agile_event_grid">
-							<div class="col-md-3 w3agile_event_grid_left">
-								<i class="fa fa-trophy" aria-hidden="true"></i>
-							</div>
-							<div class="col-md-9 w3agile_event_grid_right">
-								<h4>Our Creations</h4>
-								<p> We organise baby showers, bridal showers, bachelorette parties and more.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<!---728x90--->
+
 					<div class="clearfix"> </div>
 				</div>
-
 			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
 
-			<div class="clearfix"> </div>
-			</div>
-			<!-- //events -->
-			<div class="clearfix"></div>
-
-			<!-- //banner -->
-			<!-- newsletter -->
-			<?php include('newsletter.php');?>
-			<!-- //newsletter -->
-			<!-- footer -->
-			<?php include('footer.php');?>
-			<!-- //footer -->
-			<!-- Bootstrap Core JavaScript -->
-			<script src="js/bootstrap.min.js"></script>
-			<script>
-			$(document).ready(function(){
-				$(".dropdown").hover(
-					function() {
-						$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-						$(this).toggleClass('open');
-					},
-					function() {
-						$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-						$(this).toggleClass('open');
-					}
-				);
-			});
-			</script>
-			<!-- here stars scrolling icon -->
-			<script type="text/javascript">
-			$(document).ready(function() {
-				/*
-				var defaults = {
-					containerID: 'toTop', // fading element id
-					containerHoverID: 'toTopHover', // fading element hover id
-					scrollSpeed: 1200,
-					easingType: 'linear'
-				};
-				*/
-
-				$().UItoTop({ easingType: 'easeOutQuart' });
-
-			});
-			</script>
-			<!-- //here ends scrolling icon -->
-			<script src="js/minicart.min.js"></script>
-			<script>
-			// Mini Cart
-			paypal.minicart.render({
-				action: '#'
-			});
-
-			if (~window.location.search.indexOf('reset=true')) {
-				paypal.minicart.reset();
+	<?php include('newsletter.php');?>
+	<!-- //newsletter -->
+	<!-- footer -->
+	<?php include('footer.php');?>
+	<!-- //footer -->
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$(".dropdown").hover(
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+				$(this).toggleClass('open');
+			},
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+				$(this).toggleClass('open');
 			}
-			</script>
-			</body>
+		);
+	});
+	</script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+	$(document).ready(function() {
+		/*
+		var defaults = {
+		containerID: 'toTop', // fading element id
+		containerHoverID: 'toTopHover', // fading element hover id
+		scrollSpeed: 1200,
+		easingType: 'linear'
+	};
+	*/
 
-			<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/events.php  [XR&CO'2014], Thu, 04 May 2017 08:01:06 GMT -->
-			</html>
+	$().UItoTop({ easingType: 'easeOutQuart' });
+
+});
+</script>
+<!-- //here ends scrolling icon -->
+<script src="js/minicart.min.js"></script>
+<script>
+// Mini Cart
+paypal.minicart.render({
+	action: '#'
+});
+
+if (~window.location.search.indexOf('reset=true')) {
+	paypal.minicart.reset();
+}
+</script>
+</body>
+
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:02:05 GMT -->
+</html>

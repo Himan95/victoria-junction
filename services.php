@@ -54,7 +54,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <style>
 img{
-	border: 1px solid #000;
     border-radius: 200px;
     padding: 2px;
 }
@@ -133,13 +132,8 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 			<h3>Services</h3>
 			<div class="w3ls_service_grids">
 				<div class="col-md-12 w3ls_service_grid_left">
-					<h4>Our Services</h4>
-					<p style="text-align: justify">Celebrate life’s sweetest moments with Victoria Junction.
-						Our events team will work with you to create personalized desserts for birthdays, graduations, bar or bat mitzvahs,
-						 baby showers, bridal showers, bachelorette parties and more. No event is too large or too small for Victoria Junction.Celebrate life’s sweetest moments with Victoria Junction.
-			 				Our events team will work with you to create personalized desserts for birthdays, graduations, bar or bat mitzvahs,
-			 				 baby showers, bridal showers, bachelorette parties and more. No event is too large or too small for Victoria Junction. Whether planning an intimate dinner party, black-tie gala or corporate gathering,
-			 				 our team works closely with you to design a delicious, custom dessert menu.</p>
+					
+					<p style="text-align: justify"><?php echo  $results['description']; ?></p>
 				</div>
 
 				<div class="clearfix"> </div>
@@ -147,16 +141,22 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <!---728x90--->
 			<div class="w3ls_service_grids1">
 				<div class="col-md-6 w3ls_service_grids1_left">
-					<img src="images/offer1.jpg" alt=" " class="img-responsive" />
+					<?php
+					echo
+					'
+					<img class="img" src="'.$results['services_image'].'" />
+					'
+					;
+					?>
 				</div>
 				<div class="col-md-6 w3ls_service_grids1_right">
 					<ul>
 						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Personalised Cakes</li>
-						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Frozen Food</li>
+						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Pastries</li>
 						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Fast Home Delivery</li>
+						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Cookies & Muffins</li>
+						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Chocolates</li>
 						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>24 * 7 availability</li>
-						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Foreign Chocolates</li>
-						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Fruits, Vegetagles & more</li>
 					</ul>
 					<a href="products.php">Shop Now</a>
 				</div>

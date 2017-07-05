@@ -63,285 +63,407 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script async type='text/javascript' src='../../../../../../cdn.fancybar.net/ac/fancybar6a2f.js?zoneid=1502&amp;serve=C6ADVKE&amp;placement=w3layouts' id='_fancybar_js'></script>
 	<style type='text/css'>  .adsense_fixed{position:fixed;bottom:-8px;width:100%;z-index:999999999999;}.adsense_content{width:720px;margin:0 auto;position:relative;background:#fff;}.adsense_btn_close,.adsense_btn_info{font-size:12px;color:#fff;height:20px;width:20px;vertical-align:middle;text-align:center;background:#000;top:4px;left:4px;position:absolute;z-index:99999999;font-family:Georgia;cursor:pointer;line-height:18px}.adsense_btn_info{left:26px;font-family:Georgia;font-style:italic}.adsense_info_content{display:none;width:260px;height:340px;position:absolute;top:-360px;background:rgba(255,255,255,.9);font-size:14px;padding:20px;font-family:Arial;border-radius:4px;-webkit-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);-moz-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);box-shadow:0 1px 26px -2px rgba(0,0,0,.3)}.adsense_info_content:after{content:'';position:absolute;left:25px;top:100%;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #fff;clear:both}.adsense_info_content #adsense_h3{color:#000;margin:0;font-size:18px!important;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_info_content .adsense_p{color:#888;font-size:13px!important;line-height:20px;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_fh5co-team{color:#000;font-style:italic;}</style>
 
-				<!-- header -->
-				<?php include('header.php');?>
-				<!-- header -->
-				<!-- script-for sticky-nav -->
-				<script>
-				$(document).ready(function() {
-					var navoffeset=$(".agileits_header").offset().top;
-					$(window).scroll(function(){
-						var scrollpos=$(window).scrollTop();
-						if(scrollpos >=navoffeset){
-							$(".agileits_header").addClass("fixed");
-						}else{
-							$(".agileits_header").removeClass("fixed");
-						}
-					});
-
-				});
-				</script>
-				<!-- //script-for sticky-nav -->
-				<div class="logo_products">
-					<div class="container">
-						<div class="w3ls_logo_products_left">
-							<h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
-						</div>
-						<div class="w3ls_logo_products_left1">
-							<ul class="special_items">
-								<li><a href="events.php">Events</a><i>/</i></li>
-								<li><a href="about.php">About Us</a><i>/</i></li>
-
-								<li><a href="services.php">Services</a></li>
-							</ul>
-						</div>
-						<div class="w3ls_logo_products_left1">
-							<ul class="phone_email">
-								<li><i class="fa fa-phone" aria-hidden="true"></i>+91-9093200550</li>
-								<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
-							</ul>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<!-- //header -->
-				<!-- products-breadcrumb -->
-				<div class="products-breadcrumb">
-					<div class="container">
-						<ul>
-							<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-							<li>Products</li>
-						</ul>
-					</div>
-				</div>
-				<!-- //products-breadcrumb -->
-				<!---728x90--->
-				<!-- banner -->
-				<div class="banner">
-					<?php include('left-nav-bar.php'); ?>
-					<div class="w3l_banner_nav_right">
-						<div class="w3l_banner_nav_right_banner3">
-							<h3>Best Deals For New Products<span class="blink_me"></span></h3>
-						</div>
-						<!---728x90--->
-
-							<div class="clearfix"> </div>
-							<br><br><br>
-
-						<!---728x90--->
-						<div class="w3ls_w3l_banner_nav_right_grid">
-							<h3>Popular Brands</h3>
-							<div class="w3ls_w3l_banner_nav_right_grid1">
-								<h6>Cakes</h6>
-								<?php
-
-								$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Cakes" ORDER BY rand() LIMIT 4');
-								$records->execute();
-								$results=$records->fetch(PDO::FETCH_ASSOC);
-								do{
-								echo '
-								<div class="col-md-3 w3ls_w3l_banner_left">
-								<div class="hover14 column">
-								<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-								<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-								</div>
-								<div class="agile_top_brand_left_grid1">
-								<figure>
-								<div class="snipcart-item block">
-								<div class="snipcart-thumb">
-								<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-								<p>'.$results['prod_name'].'</p>
-								<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
-								</div>
-								<div class="snipcart-details">
-								<form action="#" method="post">
-								<fieldset>
-								<input type="hidden" name="cmd" value="_cart" />
-								<input type="hidden" name="add" value="1" />
-								<input type="hidden" name="business" value=" " />
-								<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-								<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-								<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
-								<input type="hidden" name="currency_code" value="INR" />
-								<input type="hidden" name="return" value=" " />
-								<input type="hidden" name="cancel_return" value=" " />
-								<input type="submit" name="submit" value="Add to cart" class="button" />
-								</fieldset>
-								</form>
-								</div>
-								</div>
-								</figure>
-								</div>
-								</div>
-								</div>
-								</div>
-								';
-							}
-							while($results=$records->fetch(PDO::FETCH_ASSOC));
-								?>
-								<div class="clearfix"> </div>
-							</div>
-							<div class="w3ls_w3l_banner_nav_right_grid1">
-								<h6>Cookies</h6>
-								<?php
-
-								$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Cookies" ORDER BY rand() LIMIT 4');
-								$records->execute();
-								$results=$records->fetch(PDO::FETCH_ASSOC);
-								do{
-								echo '
-								<div class="col-md-3 w3ls_w3l_banner_left">
-								<div class="hover14 column">
-								<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-								<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-								</div>
-								<div class="agile_top_brand_left_grid1">
-								<figure>
-								<div class="snipcart-item block">
-								<div class="snipcart-thumb">
-								<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-								<p>'.$results['prod_name'].'</p>
-								<h4>Rs.'.$results['prod_price'].'<span>95.00</span></h4>
-								</div>
-								<div class="snipcart-details">
-								<form action="#" method="post">
-								<fieldset>
-								<input type="hidden" name="cmd" value="_cart" />
-								<input type="hidden" name="add" value="1" />
-								<input type="hidden" name="business" value=" " />
-								<input type="hidden" name="item_name" value="knorr instant soup" />
-								<input type="hidden" name="amount" value="3.00" />
-								<input type="hidden" name="discount_amount" value="1.00" />
-								<input type="hidden" name="currency_code" value="USD" />
-								<input type="hidden" name="return" value=" " />
-								<input type="hidden" name="cancel_return" value=" " />
-								<input type="submit" name="submit" value="Add to cart" class="button" />
-								</fieldset>
-								</form>
-								</div>
-								</div>
-								</figure>
-								</div>
-								</div>
-								</div>
-								</div>
-								';
-								}
-								while($results=$records->fetch(PDO::FETCH_ASSOC));
-								?>
-
-								<div class="clearfix"> </div>
-							</div>
-							<div class="w3ls_w3l_banner_nav_right_grid1">
-								<h6>Muffins</h6>
-								<?php
-
-								$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Muffins" ORDER BY rand() LIMIT 4');
-								$records->execute();
-								$results=$records->fetch(PDO::FETCH_ASSOC);
-								do{
-								echo '
-								<div class="col-md-3 w3ls_w3l_banner_left">
-								<div class="hover14 column">
-								<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-								<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-								</div>
-								<div class="agile_top_brand_left_grid1">
-								<figure>
-								<div class="snipcart-item block">
-								<div class="snipcart-thumb">
-								<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-								<p>'.$results['prod_name'].'</p>
-								<h4>Rs.'.$results['prod_price'].'<span>95.00</span></h4>
-								</div>
-								<div class="snipcart-details">
-								<form action="#" method="post">
-								<fieldset>
-								<input type="hidden" name="cmd" value="_cart" />
-								<input type="hidden" name="add" value="1" />
-								<input type="hidden" name="business" value=" " />
-								<input type="hidden" name="item_name" value="knorr instant soup" />
-								<input type="hidden" name="amount" value="3.00" />
-								<input type="hidden" name="discount_amount" value="1.00" />
-								<input type="hidden" name="currency_code" value="USD" />
-								<input type="hidden" name="return" value=" " />
-								<input type="hidden" name="cancel_return" value=" " />
-								<input type="submit" name="submit" value="Add to cart" class="button" />
-								</fieldset>
-								</form>
-								</div>
-								</div>
-								</figure>
-								</div>
-								</div>
-								</div>
-								</div>
-								';
-								}
-								while($results=$records->fetch(PDO::FETCH_ASSOC));
-								?>
-								<div class="clearfix"> </div>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<!-- //banner -->
-				<!-- newsletter -->
-
-				<?php include('newsletter.php');?>
-				<!-- //newsletter -->
-				<!-- footer -->
-				<?php include('footer.php');?>
-				<!-- //footer -->
-				<!-- Bootstrap Core JavaScript -->
-				<script src="js/bootstrap.min.js"></script>
-				<script>
-				$(document).ready(function(){
-					$(".dropdown").hover(
-						function() {
-							$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-							$(this).toggleClass('open');
-						},
-						function() {
-							$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-							$(this).toggleClass('open');
-						}
-					);
-				});
-				</script>
-				<!-- here stars scrolling icon -->
-				<script type="text/javascript">
-				$(document).ready(function() {
-					/*
-					var defaults = {
-					containerID: 'toTop', // fading element id
-					containerHoverID: 'toTopHover', // fading element hover id
-					scrollSpeed: 1200,
-					easingType: 'linear'
-				};
-				*/
-
-				$().UItoTop({ easingType: 'easeOutQuart' });
-
-			});
-			</script>
-			<!-- //here ends scrolling icon -->
-			<script src="js/minicart.min.js"></script>
-			<script>
-			// Mini Cart
-			paypal.minicart.render({
-				action: '#'
-			});
-
-			if (~window.location.search.indexOf('reset=true')) {
-				paypal.minicart.reset();
+	<!-- header -->
+	<?php include('header.php');?>
+	<!-- header -->
+	<!-- script-for sticky-nav -->
+	<script>
+	$(document).ready(function() {
+		var navoffeset=$(".agileits_header").offset().top;
+		$(window).scroll(function(){
+			var scrollpos=$(window).scrollTop();
+			if(scrollpos >=navoffeset){
+				$(".agileits_header").addClass("fixed");
+			}else{
+				$(".agileits_header").removeClass("fixed");
 			}
-			</script>
-		</body>
+		});
 
-		<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/products.php  [XR&CO'2014], Thu, 04 May 2017 08:01:05 GMT -->
-		</html>
+	});
+	</script>
+	<!-- //script-for sticky-nav -->
+	<div class="logo_products">
+		<div class="container">
+			<div class="w3ls_logo_products_left">
+				<h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="special_items">
+					<li><a href="events.php">Events</a><i>/</i></li>
+					<li><a href="about.php">About Us</a><i>/</i></li>
+
+					<li><a href="services.php">Services</a></li>
+				</ul>
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="phone_email">
+					<li><i class="fa fa-phone" aria-hidden="true"></i>+91-9093200550</li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- //header -->
+	<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
+				<li>Products</li>
+			</ul>
+		</div>
+	</div>
+	<!-- //products-breadcrumb -->
+	<!---728x90--->
+	<!-- banner -->
+	<div class="banner">
+		<?php include('left-nav-bar.php'); ?>
+		<div class="w3l_banner_nav_right">
+			<div class="w3l_banner_nav_right_banner3">
+				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
+			</div>
+			<!---728x90--->
+
+			<div class="clearfix"> </div>
+			<br><br><br>
+
+			<!---728x90--->
+			<div class="w3ls_w3l_banner_nav_right_grid">
+				<h3>Popular Brands</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Cakes</h6>
+					<?php
+
+					$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Cakes" ORDER BY rand() LIMIT 6');
+					$records->execute();
+					$results=$records->fetch(PDO::FETCH_ASSOC);
+					$count=0;
+					do{
+						$count=$count+1;
+						echo '
+						<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						<div class="agile_top_brand_left_grid_pos">
+						<img src="images/offer.png" alt=" " class="img-responsive" />
+						</div>
+						<div class="agile_top_brand_left_grid1">
+						<figure>
+						<div class="snipcart-item block">
+						<div class="snipcart-thumb">
+						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+						<p>'.$results['prod_name'].'</p>
+						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+						</div>
+						<div class="snipcart-details">
+						<form action="#" method="post">
+						<fieldset>
+						<input type="hidden" name="cmd" value="_cart" />
+						<input type="hidden" name="add" value="1" />
+						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+						<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+						<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+						<input type="hidden" name="currency_code" value="INR" />
+						<input type="hidden" name="return" value=" " />
+						<input type="hidden" name="cancel_return" value=" " />
+						<input type="submit" name="submit" value="Add to cart" class="button" />
+						</fieldset>
+						</form>
+						</div>
+						</div>
+						</figure>
+						</div>
+						</div>
+						</div>
+						</div>
+						';
+						if($count % 4 == 0)
+						echo '<div class="clearfix"> </div><br> ';
+					}
+					while($results=$records->fetch(PDO::FETCH_ASSOC));
+					?>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Pastries</h6>
+					<?php
+
+					$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Pastries" ORDER BY rand() LIMIT 6');
+					$records->execute();
+					$results=$records->fetch(PDO::FETCH_ASSOC);
+					$count=0;
+					do{
+						$count=$count+1;
+						echo '
+						<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						<div class="agile_top_brand_left_grid_pos">
+						<img src="images/offer.png" alt=" " class="img-responsive" />
+						</div>
+						<div class="agile_top_brand_left_grid1">
+						<figure>
+						<div class="snipcart-item block">
+						<div class="snipcart-thumb">
+						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+						<p>'.$results['prod_name'].'</p>
+						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+						</div>
+						<div class="snipcart-details">
+						<form action="#" method="post">
+						<fieldset>
+						<input type="hidden" name="cmd" value="_cart" />
+						<input type="hidden" name="add" value="1" />
+						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+						<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+						<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+						<input type="hidden" name="currency_code" value="INR" />
+						<input type="hidden" name="return" value=" " />
+						<input type="hidden" name="cancel_return" value=" " />
+						<input type="submit" name="submit" value="Add to cart" class="button" />
+						</fieldset>
+						</form>
+						</div>
+						</div>
+						</figure>
+						</div>
+						</div>
+						</div>
+						</div>
+						';
+						if($count % 4 == 0)
+						echo '<div class="clearfix"> </div><br> ';
+					}
+					while($results=$records->fetch(PDO::FETCH_ASSOC));
+					?>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Chocolates</h6>
+					<?php
+
+					$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Chocolates" ORDER BY rand() LIMIT 6');
+					$records->execute();
+					$results=$records->fetch(PDO::FETCH_ASSOC);
+					$count=0;
+					do{
+						$count=$count+1;
+						echo '
+						<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						<div class="agile_top_brand_left_grid_pos">
+						<img src="images/offer.png" alt=" " class="img-responsive" />
+						</div>
+						<div class="agile_top_brand_left_grid1">
+						<figure>
+						<div class="snipcart-item block">
+						<div class="snipcart-thumb">
+						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+						<p>'.$results['prod_name'].'</p>
+						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+						</div>
+						<div class="snipcart-details">
+						<form action="#" method="post">
+						<fieldset>
+						<input type="hidden" name="cmd" value="_cart" />
+						<input type="hidden" name="add" value="1" />
+						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+						<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+						<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+						<input type="hidden" name="currency_code" value="INR" />
+						<input type="hidden" name="return" value=" " />
+						<input type="hidden" name="cancel_return" value=" " />
+						<input type="submit" name="submit" value="Add to cart" class="button" />
+						</fieldset>
+						</form>
+						</div>
+						</div>
+						</figure>
+						</div>
+						</div>
+						</div>
+						</div>
+						';
+						if($count % 4 == 0)
+						echo '<div class="clearfix"> </div><br> ';
+					}
+					while($results=$records->fetch(PDO::FETCH_ASSOC));
+					?>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Cookies</h6>
+					<?php
+
+					$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Cookies" ORDER BY rand() LIMIT 6');
+					$records->execute();
+					$results=$records->fetch(PDO::FETCH_ASSOC);
+					$count=0;
+					do{
+						$count=$count+1;
+						echo '
+						<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						<div class="agile_top_brand_left_grid_pos">
+						<img src="images/offer.png" alt=" " class="img-responsive" />
+						</div>
+						<div class="agile_top_brand_left_grid1">
+						<figure>
+						<div class="snipcart-item block">
+						<div class="snipcart-thumb">
+						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+						<p>'.$results['prod_name'].'</p>
+						<h4>Rs.'.$results['prod_price'].'<span>95.00</span></h4>
+						</div>
+						<div class="snipcart-details">
+						<form action="#" method="post">
+						<fieldset>
+						<input type="hidden" name="cmd" value="_cart" />
+						<input type="hidden" name="add" value="1" />
+						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_name" value="knorr instant soup" />
+						<input type="hidden" name="amount" value="3.00" />
+						<input type="hidden" name="discount_amount" value="1.00" />
+						<input type="hidden" name="currency_code" value="USD" />
+						<input type="hidden" name="return" value=" " />
+						<input type="hidden" name="cancel_return" value=" " />
+						<input type="submit" name="submit" value="Add to cart" class="button" />
+						</fieldset>
+						</form>
+						</div>
+						</div>
+						</figure>
+						</div>
+						</div>
+						</div>
+						</div>
+						';
+						if($count % 4 == 0)
+						echo '<div class="clearfix"> </div><br> ';
+					}
+					while($results=$records->fetch(PDO::FETCH_ASSOC));
+					?>
+
+					<div class="clearfix"> </div>
+				</div>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Muffins</h6>
+					<?php
+
+					$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Muffins" ORDER BY rand() LIMIT 6');
+					$records->execute();
+					$results=$records->fetch(PDO::FETCH_ASSOC);
+					$count=0;
+					do{
+						$count=$count+1;
+						echo '
+						<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						<div class="agile_top_brand_left_grid_pos">
+						<img src="images/offer.png" alt=" " class="img-responsive" />
+						</div>
+						<div class="agile_top_brand_left_grid1">
+						<figure>
+						<div class="snipcart-item block">
+						<div class="snipcart-thumb">
+						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+						<p>'.$results['prod_name'].'</p>
+						<h4>Rs.'.$results['prod_price'].'<span>95.00</span></h4>
+						</div>
+						<div class="snipcart-details">
+						<form action="#" method="post">
+						<fieldset>
+						<input type="hidden" name="cmd" value="_cart" />
+						<input type="hidden" name="add" value="1" />
+						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_name" value="knorr instant soup" />
+						<input type="hidden" name="amount" value="3.00" />
+						<input type="hidden" name="discount_amount" value="1.00" />
+						<input type="hidden" name="currency_code" value="USD" />
+						<input type="hidden" name="return" value=" " />
+						<input type="hidden" name="cancel_return" value=" " />
+						<input type="submit" name="submit" value="Add to cart" class="button" />
+						</fieldset>
+						</form>
+						</div>
+						</div>
+						</figure>
+						</div>
+						</div>
+						</div>
+						</div>
+						';
+						if($count % 4 == 0)
+						echo '<div class="clearfix"> </div><br> ';
+					}
+					while($results=$records->fetch(PDO::FETCH_ASSOC));
+					?>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<!-- //banner -->
+	<!-- newsletter -->
+
+	<?php include('newsletter.php');?>
+	<!-- //newsletter -->
+	<!-- footer -->
+	<?php include('footer.php');?>
+	<!-- //footer -->
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$(".dropdown").hover(
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+				$(this).toggleClass('open');
+			},
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+				$(this).toggleClass('open');
+			}
+		);
+	});
+	</script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+	$(document).ready(function() {
+		/*
+		var defaults = {
+		containerID: 'toTop', // fading element id
+		containerHoverID: 'toTopHover', // fading element hover id
+		scrollSpeed: 1200,
+		easingType: 'linear'
+	};
+	*/
+
+	$().UItoTop({ easingType: 'easeOutQuart' });
+
+});
+</script>
+<!-- //here ends scrolling icon -->
+<script src="js/minicart.min.js"></script>
+<script>
+// Mini Cart
+paypal.minicart.render({
+	action: '#'
+});
+
+if (~window.location.search.indexOf('reset=true')) {
+	paypal.minicart.reset();
+}
+</script>
+</body>
+
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/products.php  [XR&CO'2014], Thu, 04 May 2017 08:01:05 GMT -->
+</html>

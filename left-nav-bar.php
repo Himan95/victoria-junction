@@ -37,17 +37,12 @@
 						</li>
 
 						<li class="dropdown mega-dropdown active">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Combo / Snacks / Subs<span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Snacks<span class="caret"></span></a>
 							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
 								<div class="w3ls_vegetables">
 									<ul>
-										<li><a href="combos.php">Anniversary Combo</a></li>
-										<li><a href="combos.php">Birthday Combo</a></li>
-										<li><a href="combos.php">Mixed Combo Choice</a></li>
-										<li><a href="combos.php">Pasta Choices</a></li>
-										<li><a href="combos.php">Snacks Combo</a></li>
-										<li><a href="combos.php">Submarine Sandwich Choice</a></li>
-										<li><a href="combos.php">Show All Combos/Snacks/Subs</a></li>
+										<li><a href="drinks.php">Beverages</a></li>
+										<li><a href="snacks.php">Show All Snacks</a></li>
 
 									</ul>
 								</div>
@@ -87,23 +82,20 @@
 							</div>
 						</li>
                         <li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Gift Hampers<span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Muffins<span class="caret"></span></a>
 							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
 								<div class="w3ls_vegetables">
 									<ul>
-										<li><a href="gift-hampers.php">Creamless Cakes</a></li>
-										<li><a href="gift-hampers.php">Dry Fruit Gift Hampers</a></li>
-										<li><a href="gift-hampers.php">Rakhi Special</a></li>
-										<li><a href="gift-hampers.php">Regular Gift Hampers</a></li>
-										<li><a href="gift-hampers.php">Show All Gift Hampers</a></li>
+										<li><a href="muffins.php">Chocolate Muffins</a></li>
+										<li><a href="muffins.php">Cup Muffins</a></li>
+										<li><a href="muffins.php">Show All Muffins</a></li>
 
 									</ul>
 								</div>
 							</div>
 						</li>
-						<li><a href="mithai.php">Baked Mithai</a></li>
-						<li><a href="cookies.php">Hand Made Cookies</a></li>
-						<li><a href="cookies.php">Sugar Free Cookies</a></li>
+						<li><a href="mithai.php">Mithai</a></li>
+						<li><a href="cookies.php">Cookies</a></li>
 
 					</ul>
 				 </div><!-- /.navbar-collapse -->

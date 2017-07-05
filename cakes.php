@@ -133,7 +133,10 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 					$records->execute();
 					$results=$records->fetch(PDO::FETCH_ASSOC);
 					do{
+
+
 						$count=$count+1;
+
 						echo '
 						<div class="col-md-3 w3ls_w3l_banner_left">
 						<div class="hover14 column">
@@ -174,6 +177,9 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 						';
 						if($count % 4 == 0)
 						echo '<div class="clearfix"> </div><br> ';
+
+
+
 					}
 					while($results=$records->fetch(PDO::FETCH_ASSOC));
 					?>

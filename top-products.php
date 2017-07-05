@@ -5,14 +5,14 @@
 				<div class="col-md-3 w3l_fresh_vegetables_grid w3l_fresh_vegetables_grid_left">
 					<div class="w3l_fresh_vegetables_grid2">
 						<ul>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="brands.php">All Brands</a></li>
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="cakes.php">Cakes</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Muffins</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="muffins.php">Muffins</a></li>
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="cookies.php">Cookies</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.php">Frozen Food</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="bread.php">Bread & Bakery</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="drinks.php">Cold Drinks</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="pastries.php">Pastries</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="mithai.php">Sweets</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="drinks.php">Beverages</a></li>
 							<li><i class="fa fa-check" aria-hidden="true"></i><a href="chocolates.php">Chocolates</a></li>
+							<li><i class="fa fa-check" aria-hidden="true"></i><a href="snacks.php">Snacks</a></li>
 						</ul>
 					</div>
 				</div>
@@ -28,16 +28,14 @@
 								<img src="images/7.jpg" alt=" " class="img-responsive" />
 								<div class="w3l_fresh_vegetables_grid1_rel_pos">
 									<div class="more m1">
-										<a href="products.php" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
+
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="w3l_fresh_vegetables_grid1_bottom">
 							<img src="images/10.jpg" alt=" " class="img-responsive" />
-							<div class="w3l_fresh_vegetables_grid1_bottom_pos">
-								<h5>Special Offers</h5>
-							</div>
+
 						</div>
 					</div>
 					<div class="col-md-4 w3l_fresh_vegetables_grid">

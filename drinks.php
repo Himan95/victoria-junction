@@ -118,12 +118,13 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 	<div class="banner">
 		<?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
-			<div class="w3l_banner_nav_right_banner7">
+			<div class="w3l_banner_nav_right_banner10">
 				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
 			</div>
 <!---728x90--->
 <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
 	<h3>Beverages</h3>
+	<br>
 	<?php
 	$count=0;
 	$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Beverages" AND prod_quantity>0');

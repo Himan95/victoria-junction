@@ -145,12 +145,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<!---728x90--->
 			<div class="agileinfo_single">
-				<h5><?php echo $results['prod_name'].'-'.$results['prod_type']; ?></h5>
+				<h5><?php echo $results['prod_name']; ?></h5>
 				<div class="col-md-4 agileinfo_single_left">
 					<img id="example" src=<?php echo $results['prod_image']; ?> alt=" " class="img-responsive" />
 				</div>
 				<div class="col-md-8 agileinfo_single_right">
-					<div class="rating1">
+					<h4><?php echo $results['prod_type']; ?></h4>
+					<!--<div class="rating1">
 						<span class="starRating">
 							<input id="rating5" type="radio" name="rating" value="5">
 							<label for="rating5">5</label>
@@ -163,9 +164,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<input id="rating1" type="radio" name="rating" value="1">
 							<label for="rating1">1</label>
 						</span>
-					</div>
+					</div>-->
 					<div class="w3agile_description">
-						<h4>Description :</h4>
+
 						<p><?php echo $results['prod_desc']; ?></p>
 					</div>
 					<div class="snipcart-item block">
@@ -205,7 +206,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- brands -->
 	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_popular">
 		<div class="container">
-			<h3>Popular Brands</h3>
+			<h3>Other Products</h3>
 			<div class="w3ls_w3l_banner_nav_right_grid1">
 				<h6>Products</h6>
 				<?php

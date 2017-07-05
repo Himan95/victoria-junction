@@ -123,6 +123,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <!---728x90--->
 <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
 	<h3>Chocolates</h3>
+	<br>
 	<?php
 	$count=0;
 	$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Chocolates" AND prod_quantity>0');

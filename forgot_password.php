@@ -156,14 +156,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <br>
         <!---728x90--->
         <div class="w3_login_module">
-
+          <center>
             <div class="form">
-              <form action="forgot_password.php" method="post">
+              <form action="forgot_password.php" method="POST">
                 <div class="form-group">
-                  <label class="control-label col-md-3" >Email Id<span class="required">*</span>
+                  <label class="control-label col-md-6" >Enter Email Id<span class="required">*</span>
                   </label>
-                  <div class="col-md-7">
-                    <input type="email" required="required" autocomplete="off" name="email" class="form-control col-md-5 col-xs-12">
+                  <div class="col-md-4">
+                    <input type="email" required="required" autocomplete="off" name="email" class="form-control col-md-3 col-xs-3">
                   </div>
                 </div>
 
@@ -173,12 +173,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <p><font color="green" style="font-style:italic"><?php if($success!=null){echo $success;} ?></font> </p>
 
                 <div class="form-group">
-                  <div class="col-md-9">
+                  <div class="col-md-10">
                     <button type="submit" name="send_pass" class="btn btn-success">Send Password</button>
                   </div>
+
+
                 </div>
               </form>
             </div>
+          </center>
         </div>
       </div>
     </div>

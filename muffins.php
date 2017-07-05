@@ -4,10 +4,6 @@ session_start();
 include('connect/connection.php');
 
 
-$records = $connection->prepare('SELECT * FROM about');
-$records->execute();
-$results=$records->fetch(PDO::FETCH_ASSOC);
-
 ?>
 
 <!--
@@ -19,9 +15,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 
-
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:01:53 GMT -->
 <head>
-<title>Victoria Junction | About Us </title>
+<title>Victoria Junction | Muffins</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -53,14 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!-- start-smoth-scrolling -->
 </head>
-<style>
-.img{
-    padding: 5px;
-	max-width: 90%;
-    max-height: 89%;
-    margin: 0 auto;
-}
-</style>
+
 <body>
 <script src='../../../../../../ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -74,9 +63,8 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <style type='text/css'>  .adsense_fixed{position:fixed;bottom:-8px;width:100%;z-index:999999999999;}.adsense_content{width:720px;margin:0 auto;position:relative;background:#fff;}.adsense_btn_close,.adsense_btn_info{font-size:12px;color:#fff;height:20px;width:20px;vertical-align:middle;text-align:center;background:#000;top:4px;left:4px;position:absolute;z-index:99999999;font-family:Georgia;cursor:pointer;line-height:18px}.adsense_btn_info{left:26px;font-family:Georgia;font-style:italic}.adsense_info_content{display:none;width:260px;height:340px;position:absolute;top:-360px;background:rgba(255,255,255,.9);font-size:14px;padding:20px;font-family:Arial;border-radius:4px;-webkit-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);-moz-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);box-shadow:0 1px 26px -2px rgba(0,0,0,.3)}.adsense_info_content:after{content:'';position:absolute;left:25px;top:100%;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #fff;clear:both}.adsense_info_content #adsense_h3{color:#000;margin:0;font-size:18px!important;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_info_content .adsense_p{color:#888;font-size:13px!important;line-height:20px;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_fh5co-team{color:#000;font-style:italic;}</style>
 
 <!-- header -->
-<?php include('header.php');?>
-<!--Header-->
-
+	<?php include('header.php');?>
+	<!--header-->
 <!-- script-for sticky-nav -->
 	<script>
 	$(document).ready(function() {
@@ -121,7 +109,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		<div class="container">
 			<ul>
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-				<li>About Us</li>
+				<li>Muffins</li>
 			</ul>
 		</div>
 	</div>
@@ -129,60 +117,82 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <!---728x90--->
 <!-- banner -->
 	<div class="banner">
-		<?php include('left-nav-bar.php'); ?>
+	<?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
-<!-- about -->
-<?php
-echo
-'<div class="container">
-<img class="img" src="'.$results['about_image'].'" width="1200" height="300" />
-'
-;
-?>		<div class="clearfix"> </div>
+			<div class="w3l_banner_nav_right_banner10">
+				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
 			</div>
-</div>
-
-<br><br><br>
-<iv class="container">
-		<div class="privacy about">
-			<h3>About Us</h3>
-			<br>
-			<p style="text-align:justify" class="animi"><?php echo  $results['description']; ?></p>
 <!---728x90--->
-
-			<div class="agile_about_grids">
-				<div class="col-md-4 agile_about_grid_left">
-					<ol>
-						<li>Personalised Cakes</li>
-						<li>Frozen Food</li>
-						<li>Fast Home Delivery</li>
-						<li>24 * 7 available cakes</li>
-						<li>Foreign Chocolates</li>
-						<li>Fruits, Vegetables & more</li>
-					</ol>
-				</div>
-
-				<div class="clearfix"> </div>
-			</div>
-
+<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+	<h3>Muffins</h3>
+	<br>
+	<?php
+	$count=0;
+	$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Muffins"AND prod_quantity>0');
+	$records->execute();
+	$results=$records->fetch(PDO::FETCH_ASSOC);
+	do{
+		$count=$count+1;
+		echo '
+		<div class="col-md-3 w3ls_w3l_banner_left">
+		<div class="hover14 column">
+		<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+		<div class="agile_top_brand_left_grid_pos">
+		<img src="images/offer.png" alt=" " class="img-responsive" />
 		</div>
-<!-- //about -->
-
+		<div class="agile_top_brand_left_grid1">
+		<figure>
+		<div class="snipcart-item block">
+		<div class="snipcart-thumb">
+		<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+		<p>'.$results['prod_name'].'</p>
+		<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
 		</div>
-		<div class="clearfix"></div>
+		<div class="snipcart-details">
+		<form action="#" method="post">
+		<fieldset>
+		<input type="hidden" name="cmd" value="_cart" />
+		<input type="hidden" name="add" value="1" />
+		<input type="hidden" name="business" value=" " />
+		<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+		<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+		<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+		<input type="hidden" name="currency_code" value="INR" />
+		<input type="hidden" name="return" value=" " />
+		<input type="hidden" name="cancel_return" value=" " />
+		<input type="submit" name="submit" value="Add to cart" class="button" />
+		</fieldset>
+		</form>
+		</div>
+		</div>
+		</figure>
+		</div>
+		</div>
+		</div>
+		</div>
+		';
+		if($count % 4 == 0)
+		echo '<div class="clearfix"> </div><br> ';
+	}
+	while($results=$records->fetch(PDO::FETCH_ASSOC));
+	?>
+
+
+	<div class="clearfix"> </div>
 	</div>
-<!-- //banner -->
+	</div>
+	</div>
+	<div class="clearfix"></div>
+	</div>
+
 <!---728x90--->
-
-
+<!-- //banner -->
 <!-- newsletter -->
-<?php include ('newsletter.php'); ?>
+	<?php include('newsletter.php');?>
 <!-- //newsletter -->
-
 <!-- footer -->
-<?php include('footer.php');?>
+	<?php include('footer.php');?>
 <!-- //footer -->
-
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script>
@@ -229,5 +239,5 @@ $(document).ready(function(){
 </script>
 </body>
 
-<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/about.php  [XR&CO'2014], Thu, 04 May 2017 08:01:11 GMT -->
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:02:05 GMT -->
 </html>

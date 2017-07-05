@@ -4,7 +4,7 @@ session_start();
 include('connect/connection.php');
 
 
-$records = $connection->prepare('SELECT * FROM products WHERE pro_quantity>0 ORDER BY rand() LIMIT 8');
+$records = $connection->prepare('SELECT * FROM products WHERE prod_quantity>0 ORDER BY rand() LIMIT 8');
 $records->execute();
 $results=$records->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -126,8 +126,12 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 			<div class="w3l_banner_nav_right_banner10">
 				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
 			</div>
-<!---728x90--->
+		</div>
+	</div>
 
+<!---728x90-->
+<div class="container">
+</div>
 <!---728x90--->
 <!-- //banner -->
 <!-- newsletter -->

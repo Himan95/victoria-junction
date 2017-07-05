@@ -126,6 +126,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<!---728x90--->
 			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
 				<h3>Pastries</h3>
+				<br>
 				<?php
 				$count=0;
 				$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Pastries" AND prod_quantity>0');
