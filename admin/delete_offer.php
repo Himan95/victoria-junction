@@ -20,7 +20,7 @@ $records1->execute();
 if(isset($_POST['delete_offer'])){
 
       $offer_name=$_POST['offer_name'];
-      $stmt1=$connection->prepare('DELETE FROM offers WHERE offer_name=:offer_name');
+      $stmt1=$connection->prepare('UPDATE offers SET offer_status=0 WHERE offer_name=:offer_name');
       $stmt1->bindParam(':offer_name',$offer_name);
       $stmt1->execute();
       echo "<script>alert('Offer deleted!');</script>";

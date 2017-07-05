@@ -226,6 +226,7 @@ if(isset($_POST['add_product'])){
                       </label>
                       <div class="col-md-9">
                         <input type="file" id="imageUpload" required="required" autocomplete="off" name="imageUpload" class="form-control col-md-7 col-xs-12">
+                        Exact Size: 140 by 140 pixels
                       </div>
                     </div>
 

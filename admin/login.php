@@ -3,6 +3,10 @@ session_start();
 error_reporting(0);
 include('../connect/connection.php');
 
+if($_SESSION['admin']){
+  echo "<script>alert('Already Logged In');</script>";
+	echo "<script>window.location.href='select_user.php';</script>";
+}
 
 $records = $connection->prepare('SELECT * FROM admin_credentials');
 $records->execute();
@@ -21,7 +25,7 @@ if(isset($_POST['submit'])){
   else {
     echo "<script>alert('Wrong Credentials');</script>";
   }
-  
+
 
 }
 

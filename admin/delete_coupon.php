@@ -20,7 +20,7 @@ $records1->execute();
 if(isset($_POST['delete_coupon'])){
 
   $coupon_name=$_POST['coupon_name'];
-  $stmt1=$connection->prepare('DELETE FROM coupons WHERE coupon_name=:coupon_name');
+  $stmt1=$connection->prepare('UPDATE coupons SET coupon_status=0 WHERE coupon_name=:coupon_name');
   $stmt1->bindParam(':coupon_name',$coupon_name);
   $stmt1->execute();
   echo "<script>alert('Coupon deleted!');</script>";

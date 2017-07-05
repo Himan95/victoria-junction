@@ -113,7 +113,7 @@ table,td,tr{
 
                 <?php
 
-                $records2 = $connection->prepare('SELECT * FROM coupons WHERE coupon_status= "1" ');
+                $records2 = $connection->prepare('SELECT * FROM coupons');
                 $records2->execute();
                 $results2=$records2->fetch(PDO::FETCH_ASSOC);
 
@@ -148,11 +148,12 @@ table,td,tr{
                     echo "<tr><td style='padding:3px' align='left'>".(++$count)."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['coupon_name']."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['coupon_status']."</td></tr>";
-                    
+
+
 
                   }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
                 }
-
+                echo "<td colspan='4' style='background-color:#00FFCE; padding:3px' align='center'><i><b>Note: Coupon status 1 means that the coupon is still active</i></b></tr>";
 
                 ?>
               </div>

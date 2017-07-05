@@ -135,6 +135,7 @@ if(isset($_POST['add_slider'])){
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                       <input type="file" id="imageUpload" required="required" autocomplete="off" name="imageUpload" class="form-control col-md-7 col-xs-12">
+                      Image Size: 1200 by 400 pixels
                     </div>
                   </div>
 

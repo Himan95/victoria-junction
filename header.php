@@ -5,7 +5,7 @@ include('connect/connection.php');
 ?>
 <div class="agileits_header">
 	<div class="w3l_offers">
-		<a href="products.php">Today's special Offers !</a>
+		<a href="specials.php">Today's special Offers !</a>
 	</div>
 
 	<div class="w3l_search">

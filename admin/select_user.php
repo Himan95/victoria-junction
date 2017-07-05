@@ -4,6 +4,13 @@ error_reporting(0);
 
 include('../connect/connection.php');
 
+
+if($_SESSION['usertype']){
+  echo "<script>alert('Alreay Logged In');</script>";
+	echo "<script>window.location.href='index.php';</script>";
+}
+
+
 if(!$_SESSION['admin']){
   echo "<script>alert('For admin only');</script>";
 	echo "<script>window.location.href='login.php';</script>";

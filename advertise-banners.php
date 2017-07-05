@@ -11,29 +11,33 @@ include('connect/connection.php');
 }
 </style>
 <center>
-	<div class="banner_bottom">
-		<div class="wfour_banner_bottom_left_grid_sub">
-		</div>
-		<div class="wfour_banner_bottom_left_grid_sub1">
-			<?php
+	<div class="top-brands">
+		<div class="container">
+			<h2>Specializations</h2>
+			<br><br>
+			<div class="wfour_banner_bottom_left_grid_sub">
+			</div>
+			<div class="wfour_banner_bottom_left_grid_sub1">
+				<?php
 
-			$records = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 3');
-			$records->execute();
-			$results=$records->fetch(PDO::FETCH_ASSOC);
-			do{
-				echo '
-				<div class="col-md-4 wfour_banner_bottom_left">
-				<div class="wthree_banner_bottom_left_grid">
-				<img src="'.$results['offer_image'].'" alt=" " class="img img-responsive" />
-				</div>
-				</div>
+				$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Cakes" ORDER BY rand() LIMIT 4');
+				$records->execute();
+				$results=$records->fetch(PDO::FETCH_ASSOC);
+				do{
+					echo '
+					<div class="col-md-3 wfour_banner_bottom_left">
+					<div class="wthree_banner_bottom_left_grid">
+					<img src="'.$results['prod_image'].'" alt=" " class="img img-responsive" />
+					</div>
+					</div>
 
-				';
-			}
-			while($results=$records->fetch(PDO::FETCH_ASSOC));
-			?>
+					';
+				}
+				while($results=$records->fetch(PDO::FETCH_ASSOC));
+				?>
+				<div class="clearfix"> </div>
+			</div>
 			<div class="clearfix"> </div>
 		</div>
-		<div class="clearfix"> </div>
 	</div>
-</center>
+	</center>

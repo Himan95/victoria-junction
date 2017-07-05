@@ -128,6 +128,7 @@ if(isset($_POST['add_offer'])){
                     </label>
                     <div class="col-md-6  col-sm-6 col-xs-12">
                       <input type="file" id="imageUpload" required="required" autocomplete="off" name="imageUpload" class="form-control col-md-7 col-xs-12">
+                      Image Size: 300 by 300 pixels
                     </div>
                   </div>
 

@@ -28,7 +28,7 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Victoria Junction | Offers</title>
+  <title>Victoria Junction | Categories</title>
 
   <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -102,10 +102,10 @@ table,td,tr{
 
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <center><h2>Victoria Junction | View Offers  </h2></center>
+            <center><h2>Victoria Junction | Categories  </h2></center>
             <div class="x_panel tile fixed_height_450">
               <div class="x_title">
-                <h2>View Offers</h2>
+                <h2>View Categories</h2>
 
                 <div class="clearfix"></div>
               </div>
@@ -113,18 +113,19 @@ table,td,tr{
 
                 <?php
 
-                $records2 = $connection->prepare('SELECT * FROM offers ORDER BY offer_id DESC');
+                $records2 = $connection->prepare('SELECT * FROM category ORDER BY category_name');
                 $records2->execute();
                 $results2=$records2->fetch(PDO::FETCH_ASSOC);
 
-                if(!$results2['offer_id'])  // No Order exists
+
+                if(!$results2['category_id'])  // No Order exists
                 {
-                  echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+                  echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
                   <tr style='background-color:#EDEDED;padding:5px'>
 
-                  <td style='padding:5px' align='left'<i><b>Offer Id. </b></i></td>
-                  <td style='padding:5px' align='left'<i><b>Offer Description</b></i></td>
-                  <td style='padding:5px' align='left'<i><b>Offer Status</b></i></td>
+                  <td style='padding:5px' align='left'<i><b>Category Id </b></i></td>
+                  <td style='padding:5px' align='left'<i><b>Category Name</b></i></td>
+                  <td style='padding:5px' align='left'<i><b>Category Description </b></i></td>
                   </tr>";
                   echo "<br />";
 
@@ -133,27 +134,24 @@ table,td,tr{
                 }
                 else {
 
-                  echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+                  echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap'  border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
                   <tr style='background-color:#EDEDED;padding:5px'>
 
-                  <td style='padding:5px' align='left'<i><b>Offer Id </b></i></td>
-                  <td style='padding:5px' align='left'<i><b>Offer Name </b></i></td>
-
-                  <td style='padding:5px' align='left'<i><b>Offer Description </b></i></td>
-                  <td style='padding:5px' align='left'<i><b>Offer Status </b></i></td>
+                  <td style='padding:5px' align='left'<i><b>Category Id </b></i></td>
+                  <td style='padding:5px' align='left'<i><b>Category Name </b></i></td>
+                  <td style='padding:5px' align='left'<i><b>Category Description </b></i></td>
                   </tr>";
                   echo "<br />";
                   $count=0;
                   do{
 
                     echo "<tr><td style='padding:3px' align='left'>".(++$count)."</td>";
-                    echo "<td style='padding:3px' align='left'>".$results2['offer_name']."</td>";
-                    echo "<td style='padding:3px' align='left'>".$results2['offer_desc']."</td>";
-                    echo "<td style='padding:3px' align='left'>".$results2['offer_status']."</td></tr>";
+                    echo "<td style='padding:3px' align='left'>".$results2['category_name']."</td>";
+                    echo "<td style='padding:3px' align='left'>".$results2['category_desc']."</td></tr>";
+
 
                   }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
                 }
-                echo "<td colspan='4' style='background-color: #00ffce; padding:3px' align='center'><i><b>Note: Offer status 1 means that the offer is still active</i></b></tr>";
 
 
                 ?>
