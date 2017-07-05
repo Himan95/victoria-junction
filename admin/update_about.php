@@ -11,7 +11,7 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 	echo "<script>window.location.href='login.php';</script>";
 }
 
-$description=$_POST['description'];
+$description=$_POST['editor1'];
 
   //Process the image that is uploaded by the user
   $target_dir = "../images/";
@@ -56,6 +56,7 @@ if(isset($_POST['update_about'])){
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
+  <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
 </head>
 
 <body class="nav-md">
@@ -134,7 +135,11 @@ if(isset($_POST['update_about'])){
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" >Add Description<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" required="required" autocomplete="off" name="description" class="form-control col-md-7 col-xs-12">
+                      <textarea name="editor1" required></textarea>
+                      <script>
+                      CKEDITOR.replace('editor1');
+                      </script>
+                      <!--<input type="text" required="required" autocomplete="off" name="description" class="form-control col-md-7 col-xs-12"> -->
                     </div>
                   </div>
 

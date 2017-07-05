@@ -8,6 +8,11 @@ $records = $connection->prepare('SELECT * FROM about');
 $records->execute();
 $results=$records->fetch(PDO::FETCH_ASSOC);
 
+
+$records1 = $connection->prepare('SELECT * FROM web_info');
+$records1->execute();
+$results1=$records1->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <!--
@@ -21,7 +26,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 <head>
-<title>Victoria Junction | About Us </title>
+<title><?php echo $results1['web_name']; ?> | About Us </title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -108,8 +113,8 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>+91-9093200550</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -149,21 +154,6 @@ echo
 			<br>
 			<p style="text-align:justify" class="animi"><?php echo  $results['description']; ?></p>
 <!---728x90--->
-
-			<div class="agile_about_grids">
-				<div class="col-md-4 agile_about_grid_left">
-					<ol>
-						<li>Personalised Cakes</li>
-						<li>Frozen Food</li>
-						<li>Fast Home Delivery</li>
-						<li>24 * 7 available cakes</li>
-						<li>Foreign Chocolates</li>
-						<li>Fruits, Vegetables & more</li>
-					</ol>
-				</div>
-
-				<div class="clearfix"> </div>
-			</div>
 
 		</div>
 <!-- //about -->

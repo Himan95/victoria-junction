@@ -91,10 +91,6 @@ include('sidebarmenu.php');
             <div class="col-md-12 col-sm-12 col-xs-12">
               <center><h2>Victoria Junction | Dashboard  </h2></center>
 
-
-
-
-
             </div>
           </div>
          </div>

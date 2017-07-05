@@ -3,6 +3,9 @@ error_reporting(0);
 session_start();
 include('connect/connection.php');
 
+$records1 = $connection->prepare('SELECT * FROM web_info');
+$records1->execute();
+$results1=$records1->fetch(PDO::FETCH_ASSOC);
 
 $records = $connection->prepare('SELECT * FROM services');
 $records->execute();
@@ -19,7 +22,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/services.php  [XR&CO'2014], Thu, 04 May 2017 08:01:11 GMT -->
 <head>
-<title>Victoria Junction | Services </title>
+<title><?php echo $results1['web_name']; ?>  | Services </title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -104,8 +107,8 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>+91-9093200550</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -132,7 +135,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 			<h3>Services</h3>
 			<div class="w3ls_service_grids">
 				<div class="col-md-12 w3ls_service_grid_left">
-					
+
 					<p style="text-align: justify"><?php echo  $results['description']; ?></p>
 				</div>
 
@@ -174,23 +177,23 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		<div class="container">
 			<div class="col-md-3 about_counter_left">
 				<i class="glyphicon glyphicon-user" aria-hidden="true"></i>
-				<p class="counter">89,147</p>
-				<h3>Followers</h3>
+				<p style="color:black;" class="counter">89,147</p>
+				<h3 style="color:black;">Followers</h3>
 			</div>
 			<div class="col-md-3 about_counter_left">
 				<i class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></i>
-				<p class="counter">54,598</p>
-				<h3>Savings</h3>
+				<p style="color:black;" class="counter">54,598</p>
+				<h3 style="color:black;">Savings</h3>
 			</div>
 			<div class="col-md-3 about_counter_left">
 				<i class="glyphicon glyphicon-export" aria-hidden="true"></i>
-				<p class="counter">83,983</p>
-				<h3>Support</h3>
+				<p style="color:black;" class="counter">83,983</p>
+				<h3 style="color:black;">Support</h3>
 			</div>
 			<div class="col-md-3 about_counter_left">
 				<i class="glyphicon glyphicon-bullhorn" aria-hidden="true"></i>
-				<p class="counter">45,894</p>
-				<h3>Popularity</h3>
+				<p style="color:black;" class="counter">45,894</p>
+				<h3 style="color:black;">Popularity</h3>
 			</div>
 			<div class="clearfix"> </div>
 			<!-- Stats-Number-Scroller-Animation-JavaScript -->

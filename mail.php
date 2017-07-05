@@ -3,6 +3,10 @@ error_reporting(0);
 session_start();
 include ('connect/connection.php');
 
+$records1 = $connection->prepare('SELECT * FROM web_info');
+$records1->execute();
+$results1=$records1->fetch(PDO::FETCH_ASSOC);
+
 if(isset($_POST['send_mail'])){
 $name=$_POST['name'];
 $email=$_POST['email'];
@@ -45,7 +49,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/mail.php  [XR&CO'2014], Thu, 04 May 2017 08:01:05 GMT -->
 <head>
-<title>Victoria Junction | Mail Us </title>
+<title><?php echo $results1['web_name']; ?>| Mail Us </title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -125,8 +129,8 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>+91-9093200550</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -156,15 +160,15 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 				<div class="col-md-4 agileinfo_mail_grid_left">
 					<ul>
 						<li><i class="fa fa-home" aria-hidden="true"></i></li>
-						<li>address<span>868 1st Avenue NYC.</span></li>
+						<li>address<span><?php echo $results1['web_address']; ?></span></li>
 					</ul>
 					<ul>
 						<li><i class="fa fa-envelope" aria-hidden="true"></i></li>
-						<li>email<span><a href="mailto:info@example.com">info@example.com</a></span></li>
+						<li>email<span><a href="mailto:info@example.com"><?php echo $results1['web_email']; ?></a></span></li>
 					</ul>
 					<ul>
 						<li><i class="fa fa-phone" aria-hidden="true"></i></li>
-						<li>call to us<span>(+123) 233 2362 826</span></li>
+						<li>call to us<span><?php echo $results1['web_contact']; ?></span></li>
 					</ul>
 				</div>
 				<div class="col-md-8 agileinfo_mail_grid_right">
@@ -194,7 +198,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <!---728x90--->
 <!-- map -->
 	<div class="map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d96748.15352429623!2d-74.25419879353115!3d40.731667701988506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sshopping+mall+in+New+York%2C+NY%2C+United+States!5e0!3m2!1sen!2sin!4v1467205237951" style="border:0"></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d96748.15352429623!2d-74.25419879353115!3d40.731667701988506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sshopping+mall+in+New+York%2C+NY%2C+United+States!5e0!3m2!1sen!2sin!4v1467205237951" style="border:0"></iframe> 
 	</div>
 <!-- //map -->
 <!-- newsletter -->

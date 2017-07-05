@@ -31,7 +31,7 @@ if(isset($_POST['update_details'])){
     $records32->execute();
 
     echo "<script>alert('Username updated successfully. Login again to continue');</script>";
-    echo "<script>window.location.href='../checksession.php';</script>";
+    echo "<script>window.location.href='checksession.php';</script>";
   }
   else{
     echo "<script>alert('Wrong Password');</script>";

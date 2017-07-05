@@ -76,6 +76,8 @@ if(isset($_POST['add_coupon'])){
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
+
+  <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
 </head>
 
 <body class="nav-md">

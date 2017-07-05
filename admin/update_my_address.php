@@ -8,28 +8,22 @@ include('../connect/connection.php');
 
 if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   echo "<script>alert('For admin only');</script>";
-	echo "<script>window.location.href='login.php';</script>";
+  echo "<script>window.location.href='login.php';</script>";
 }
 
 //Update Button clicked
-if(isset($_POST['send'])){
+if(isset($_POST['update_address'])){
 
-  $to=$_GET['email'];
-  $email="rm46@gmail.com";
-  $message=$_POST['editor1'];
-  $subject='Victoria Junction | Customer Support';
-  $message='Message: '.$message;
-  $headers='From:'.$email;
-  $m=mail($to,$subject,$message,$headers);
-  if($m){
-  echo "<script>alert('Message sent!');</script>";
-  }
-  else {
-  echo "<script>alert('Sorry, Mail could not be sent!');</script>";
-  }
+  $web_address=$_POST['web_address'];
+  $records2 = $connection->prepare('UPDATE web_info SET web_address=:web_address');
+  $records2->bindParam(':web_address',$web_address);
+  $records2->execute();
+
+  echo "<script>alert('Address Updated');</script>";
+
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +47,6 @@ if(isset($_POST['send'])){
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
-  <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
 </head>
 
 <body class="nav-md">
@@ -73,7 +66,7 @@ if(isset($_POST['send'])){
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2><?php echo $_SESSION['username']; ?></h2>
+              <h2><?php echo $_SESSION['usertype']; ?></h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -97,7 +90,7 @@ if(isset($_POST['send'])){
             </div>
             <ul class="nav navbar-nav navbar-right" style="text-align:right;margin-top:7px;margin-right:5px;">
 
-              <b>Logged in as :</b> <i><?php echo $_SESSION['username']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
+              <b>Logged in as :</b> <i><?php echo $_SESSION['usertype']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
             </ul>
           </nav>
         </div>
@@ -110,39 +103,42 @@ if(isset($_POST['send'])){
 
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <center><h2>Victoria Junction | Reply  </h2></center>
+            <center><h2>Victoria Junction | Update Address  </h2></center>
             <div class="x_panel tile fixed_height_450">
               <div class="x_title">
-                <h2>Reply</h2>
+                <h2>Update Address</h2>
 
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
-                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="reply_customer.php" method="post">
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="update_my_address.php" method="post">
                   <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Add Customer Name<span class="required">*</span>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Enter Address<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" disabled autocomplete="off" value="<?php echo $_GET['email']; ?>" class="form-control col-md-7 col-xs-12">
+                      <input type="text" required="required" placeholder="eg: Golden Enclave, Siliguri" autocomplete="off" name="web_address" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Add Message<span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <textarea name="editor1" required></textarea>
-                      <script>
-                      CKEDITOR.replace('editor1');
-                      </script>
-                      <!--<input type="text" required="required" placeholder="Enter a short reply for the customer" autocomplete="off" name="message" class="form-control col-md-7 col-xs-12">-->
-                    </div>
-                  </div>
+                  <i><font color="green" style="font-style:italic;font-weight:bold;">
+                    <?php if($success!=null){ ?>
+                      <img src="../images/tick.png">
+                      <?php
+                      echo $success;
+                    } ?>
+                  </font></i>
+                  <i><font color="red" style="font-style:italic;font-weight:bold;">
+                    <?php if($error_alert!=null){ ?>
+                      <img src="../images/cross.gif">
+                      <?php
+                      echo $error_alert;
+                    } ?>
+                  </font></i>
 
                   <div class="ln_solid"></div>
                   <div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                       <button type="reset" class="btn btn-primary">Reset</button>
-                      <button type="submit" name="send" class="btn btn-success">Send</button>
+                      <button type="submit" name="update_address" class="btn btn-success">Update</button>
                     </div>
                   </div>
 

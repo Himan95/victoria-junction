@@ -22,7 +22,6 @@
 				<h3>Extras</h3>
 				<ul class="w3_footer_grid_list">
 					<li><a href="brands.php">Brands</a></li>
-					<li><a href="gift-vouchers.php">Gift Vouchers</a></li>
 					<li><a href="affiliates.php">Affiliates</a></li>
 					<li><a href="specials.php">Specials</a></li>
 

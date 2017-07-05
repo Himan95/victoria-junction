@@ -59,7 +59,7 @@ if(isset($_POST['add_category'])){
 
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
-
+<script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
 </head>
 
 <body class="nav-md">
@@ -137,6 +137,7 @@ if(isset($_POST['add_category'])){
                     </label>
 
                     <div class="col-md-6 col-sm-6 col-xs-12">
+
                       <input type="text" required="required" placeholder="Describe the category here" autocomplete="off" name="category_desc" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>

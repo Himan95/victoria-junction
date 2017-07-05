@@ -7,7 +7,7 @@ include('connect/connection.php');
 .img{
 	margin-bottom:10px;
 	border-radius: 14px;
-	zoom: 110%;
+	zoom: 120%;
 }
 </style>
 <center>

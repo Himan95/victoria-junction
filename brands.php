@@ -4,6 +4,9 @@ session_start();
 include('connect/connection.php');
 
 
+$records1 = $connection->prepare('SELECT * FROM web_info');
+$records1->execute();
+$results1=$records1->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -18,7 +21,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:01:53 GMT -->
 <head>
-<title>Victoria Junction | Brands </title>
+<title><?php echo $results1['web_name']; ?> | Brands </title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -97,8 +100,8 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>+91-9093200550</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -110,7 +113,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		<div class="container">
 			<ul>
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-				<li>Frozen Food</li>
+				<li>Brands</li>
 			</ul>
 		</div>
 	</div>
@@ -126,6 +129,8 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <!---728x90--->
 <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
 	<h3>Brands</h3>
+	<div class="clearfix"> </div>
+</div>
 	<?php
 	$count=0;
 	$records = $connection->prepare('SELECT * FROM products WHERE prod_quantity>0');

@@ -21,7 +21,7 @@ if(isset($_POST['add_product'])){
   $prod_type=$_POST['prod_type'];
   $prod_price=$_POST['prod_price'];
   $prod_quantity=$_POST['prod_quantity'];
-  $prod_desc=$_POST['prod_desc'];
+  $prod_desc=$_POST['editor1'];
   $prod_discount=$_POST['prod_discount'];
   $prod_span_price=$_POST['prod_span_price'];
 
@@ -94,6 +94,7 @@ if(isset($_POST['add_product'])){
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
+  <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
 </head>
 
 <body class="nav-md">
@@ -237,7 +238,12 @@ if(isset($_POST['add_product'])){
                       <label class="control-label col-md-3" >Product Description<span class="required">*</span>
                       </label>
                       <div class="col-md-9">
-                        <textarea required="required" placeholder="Enter description here" autocomplete="off" rows="4" columns="20" name="prod_desc" class="form-control col-md-7 col-xs-12"></textarea>
+                        <textarea name="editor1" required></textarea>
+                        <script>
+                        CKEDITOR.replace('editor1');
+                        </script>
+
+                        <!--<textarea required="required" placeholder="Enter description here" autocomplete="off" rows="4" columns="20" name="prod_desc" class="form-control col-md-7 col-xs-12"></textarea>-->
                       </div>
                     </div>
 

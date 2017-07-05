@@ -98,10 +98,19 @@ while($row=$records->fetch(PDO::FETCH_ASSOC)){
     </ul>
     </li>
 
+
+        <li><a><i class="fa fa-folder-o"></i> Web Basic Info <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+        <li><a href="update_my_address.php">Update Address</a></li>
+        <li><a href="update_my_contact.php">Update Contact No</a></li>
+        <li><a href="update_my_email.php">Update Support Email</a></li>
+        </ul>
+        </li>
+
     <li><a><i class="fa fa-folder-o"></i> Accounts <span class="fa fa-chevron-down"></span></a>
     <ul class="nav child_menu">
     <li><a href="update_password.php">Update Password</a></li>
-    <!--<li><a href="update_my_profile.php">Update Admin Profile</a></li>-->
+    <li><a href="update_my_profile.php">Update Admin Profile</a></li>
     </ul>
     </li>
 

@@ -8,6 +8,11 @@ include('connect/connection.php');
 $records = $connection->prepare('SELECT * FROM events');
 $records->execute();
 $results=$records->fetch(PDO::FETCH_ASSOC);
+
+
+$records1 = $connection->prepare('SELECT * FROM web_info');
+$records1->execute();
+$results1=$records1->fetch(PDO::FETCH_ASSOC);
 ?>
 <!--
 
@@ -20,7 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/events.php  [XR&CO'2014], Thu, 04 May 2017 08:01:05 GMT -->
 <head>
-	<title>Victoria Junction | Events </title>
+	<title><?php echo $results1['web_name']; ?>  | Events </title>
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -107,8 +112,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>+91-9093200550</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -148,77 +153,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="events">
 				<h3>Events</h3>
 				<!---728x90--->
-				<div class="w3agile_event_grids">
-					<div class="col-md-6 w3agile_event_grid">
-						<div class="col-md-3 w3agile_event_grid_left">
-							<i class="fa fa-bullhorn" aria-hidden="true"></i>
-						</div>
-						<div class="col-md-9 w3agile_event_grid_right">
-							<h4>Victoria junction</h4>
-							<p>Celebrate life’s sweetest moments with VJ. Our events team will work with you.
-							</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-6 w3agile_event_grid">
-						<div class="col-md-3 w3agile_event_grid_left">
-							<i class="fa fa-bullseye" aria-hidden="true"></i>
-						</div>
-						<div class="col-md-9 w3agile_event_grid_right">
-							<h4>Specials</h4>
-							<p>We bring variety in taste.
-								Come this January and we will take you to a creamy ride.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="w3agile_event_grids">
-						<div class="col-md-6 w3agile_event_grid">
-							<div class="col-md-3 w3agile_event_grid_left">
-								<i class="fa fa-credit-card" aria-hidden="true"></i>
-							</div>
-							<div class="col-md-9 w3agile_event_grid_right">
-								<h4>Favorites</h4>
-								<p>Our eye catching and mouth watering items are always there to uplift your mood.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="col-md-6 w3agile_event_grid">
-							<div class="col-md-3 w3agile_event_grid_left">
-								<i class="fa fa-eye" aria-hidden="true"></i>
-							</div>
-							<div class="col-md-9 w3agile_event_grid_right">
-								<h4>Our Attractions</h4>
-								<p>Name a celery, name any dish, and we won't let you down in it's preparations.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="w3agile_event_grids">
-						<div class="col-md-6 w3agile_event_grid">
-							<div class="col-md-3 w3agile_event_grid_left">
-								<i class="fa fa-cog" aria-hidden="true"></i>
-							</div>
-							<div class="col-md-9 w3agile_event_grid_right">
-								<h4>Our Creations</h4>
-								<p>	We create desserts for birthdays, graduations, bar or bat mitzvahs.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="col-md-6 w3agile_event_grid">
-							<div class="col-md-3 w3agile_event_grid_left">
-								<i class="fa fa-trophy" aria-hidden="true"></i>
-							</div>
-							<div class="col-md-9 w3agile_event_grid_right">
-								<h4>Our Creations</h4>
-								<p> We organise baby showers, bridal showers, bachelorette parties and more.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
+				<?php echo  $results['description']; ?>
 					<!---728x90--->
 					<div class="clearfix"> </div>
 				</div>

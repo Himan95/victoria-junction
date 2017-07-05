@@ -11,7 +11,7 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 	echo "<script>window.location.href='login.php';</script>";
 }
 
-$description=$_POST['description'];
+$description=$_POST['editor1'];
 
   //Process the image that is uploaded by the user
   $target_dir = "../images/";
@@ -24,7 +24,8 @@ $description=$_POST['description'];
 //Update Button clicked
 if(isset($_POST['update_events'])){
 
-      $stmt1=$connection->prepare('UPDATE events SET events_image=:events_image');
+      $stmt1=$connection->prepare('UPDATE events SET description=:desciption,events_image=:events_image');
+      $stmt1->bindParam(':description',$description);
       $stmt1->bindParam(':events_image',$final_image);
       $stmt1->execute();
       echo "<script>alert('Events Page updated!');</script>";
@@ -53,6 +54,9 @@ if(isset($_POST['update_events'])){
 
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
+
+
+<script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
 
 </head>
 
@@ -121,13 +125,24 @@ if(isset($_POST['update_events'])){
                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data" action="update_events.php" method="post">
 
                   <div class="form-group">
-                    <div class="form-group">
                       <label class="control-label col-md-3" >Add Image<span class="required">*</span>
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
                         <input type="file" id="imageUpload" required="required" autocomplete="off" name="imageUpload" class="form-control col-md-7 col-xs-12">
                       </div>
-                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+                      <label class="control-label col-md-3" >Add Description<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <textarea name="editor1"></textarea>
+                        <script>
+                        CKEDITOR.replace('editor1');
+                      </script>
+                        </div>
+                  </div>
 
                   <div class="ln_solid"></div>
                   <div class="form-group">
@@ -138,11 +153,12 @@ if(isset($_POST['update_events'])){
                   </div>
 
                 </form>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
+    </div>
       <?php //include('report-card-display.php'); ?>
     </div>
   </div>

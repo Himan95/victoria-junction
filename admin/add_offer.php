@@ -20,7 +20,7 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   $final_image=substr($target_file, 3);
 
   $offer_name=$_POST['offer_name'];
-  $offer_desc=$_POST['offer_desc'];
+  $offer_desc=$_POST['editor1'];
   $offer_status=1;
 //Update Button clicked
 if(isset($_POST['add_offer'])){
@@ -58,6 +58,9 @@ if(isset($_POST['add_offer'])){
 
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
+
+
+  <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
 
 </head>
 
@@ -144,7 +147,11 @@ if(isset($_POST['add_offer'])){
                     <label class="control-label col-md-3" >Add Offer Description<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" required="required" placeholder="eg: Enter offer description here" autocomplete="off" name="offer_desc" class="form-control col-md-7 col-xs-12">
+                      <textarea name="editor1" required></textarea>
+                      <script>
+                      CKEDITOR.replace('editor1');
+                      </script>
+                        <!--<input type="text" required="required" placeholder="eg: Enter offer description here" autocomplete="off" name="offer_desc" class="form-control col-md-7 col-xs-12">-->
                     </div>
                   </div>
 

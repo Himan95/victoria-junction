@@ -2,6 +2,10 @@
 error_reporting(0);
 session_start();
 include('connect/connection.php');
+
+$records1 = $connection->prepare('SELECT * FROM web_info');
+$records1->execute();
+$results1=$records1->fetch(PDO::FETCH_ASSOC);
 ?>
 <div class="agileits_header">
 	<div class="w3l_offers">
@@ -9,7 +13,7 @@ include('connect/connection.php');
 	</div>
 
 	<div class="w3l_search">
-		<h2 style="color:red;margin-top:5px;margin-left:5px" align="center">Welcome To Victoria Junction</h2>
+		<h3 style="color:red;margin-top:5px;margin-left:5px" align="center">Welcome To <?php echo $results1['web_name'];  ?></h3>
 	</div>
 
 	<div class="product_list_header">
