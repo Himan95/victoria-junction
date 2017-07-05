@@ -129,7 +129,7 @@ if(isset($_POST['add_category'])){
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" >Add a Category<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" required="required" autocomplete="off" name="category_name" class="form-control col-md-7 col-xs-12">
+                      <input type="text" required="required" placeholder="eg: Cakes, Cookies, Muffins, Pastries" autocomplete="off" name="category_name" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
                   <div class="form-group">
@@ -137,7 +137,7 @@ if(isset($_POST['add_category'])){
                     </label>
 
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" required="required" autocomplete="off" name="category_desc" class="form-control col-md-7 col-xs-12">
+                      <input type="text" required="required" placeholder="Describe the category here" autocomplete="off" name="category_desc" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
 

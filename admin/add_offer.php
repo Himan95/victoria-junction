@@ -136,7 +136,7 @@ if(isset($_POST['add_offer'])){
                     <label class="control-label col-md-3" >Add Offer Name<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" required="required" autocomplete="off" name="offer_name" class="form-control col-md-7 col-xs-12">
+                      <input type="text" required="required" placeholder="eg: 25% off on All products" autocomplete="off" name="offer_name" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
 
@@ -144,7 +144,7 @@ if(isset($_POST['add_offer'])){
                     <label class="control-label col-md-3" >Add Offer Description<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" required="required" autocomplete="off" name="offer_desc" class="form-control col-md-7 col-xs-12">
+                      <input type="text" required="required" placeholder="eg: Enter offer description here" autocomplete="off" name="offer_desc" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
 

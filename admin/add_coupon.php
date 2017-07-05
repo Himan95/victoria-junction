@@ -13,21 +13,34 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 
 $coupon_name=$_POST['coupon_name'];
 $coupon_discount=$_POST['coupon_discount'];
+$coupon_startdate=$_POST['coupon_startdate'];
+$coupon_enddate=$_POST['coupon_enddate'];
 $coupon_status=1;
+
+$today= date('Y-m-d');
+
 
 $records = $connection->prepare('SELECT * FROM coupons WHERE coupon_name=:coupon_name');
 $records->bindParam(':coupon_name', $coupon_name);
 $records->execute();
 $results=$records->fetch(PDO::FETCH_ASSOC);
 
+
 //Update Button clicked
 if(isset($_POST['add_coupon'])){
 
+  if ($coupon_enddate < $coupon_startdate || $coupon_enddate > $today || $coupon_startdate > $today) {
+    echo "<script>alert('Date Invalid');</script>";
+  }
+  else {
+
     if(($results['coupon_name'])!=true)
     {
-      $stmt1=$connection->prepare('INSERT INTO coupons (coupon_name,coupon_discount,coupon_status)  VALUES (:coupon_name,:coupon_discount,:coupon_status)');
+      $stmt1=$connection->prepare('INSERT INTO coupons (coupon_name,coupon_discount,coupon_startdate,coupon_enddate,coupon_status)  VALUES (:coupon_name,:coupon_discount,:coupon_startdate,:coupon_enddate,:coupon_status)');
       $stmt1->bindParam(':coupon_name',$coupon_name);
       $stmt1->bindParam(':coupon_discount',$coupon_discount);
+      $stmt1->bindParam(':coupon_startdate',$coupon_startdate);
+      $stmt1->bindParam(':coupon_enddate',$coupon_enddate);
       $stmt1->bindParam(':coupon_status',$coupon_status);
       $stmt1->execute();
       echo "<script>alert('New Coupon added!');</script>";
@@ -36,6 +49,7 @@ if(isset($_POST['add_coupon'])){
     else {
       echo "<script>alert('Coupon already exists!');</script>";
     }
+  }
 }
 
 ?>
@@ -130,15 +144,32 @@ if(isset($_POST['add_coupon'])){
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" >Add Coupon Name<span class="required">*</span>
                     </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" required="required" autocomplete="off" name="coupon_name" class="form-control col-md-7 col-xs-12">
+                    <div class="col-md-9 col-sm-6 col-xs-12">
+                      <input type="text" required="required" placeholder="eg: GRAB10, SUMMER15" autocomplete="off" name="coupon_name" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
+
+                  <div class="form-group">
+
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Add Coupon Start Date<span class="required">*</span>
+                    </label>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                      <input type="date" required="required" autocomplete="off" name="coupon_startdate" class="form-control col-md-4 col-xs-12">
+                    </div>
+
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Add Coupon End Date<span class="required">*</span>
+                    </label>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                      <input type="date" required="required" autocomplete="off" name="coupon_enddate" class="form-control col-md-4 col-xs-12">
+                    </div>
+
+                  </div>
+
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" >Add Coupon Discount<span class="required">*</span>
                     </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="number" required="required" autocomplete="off" name="coupon_discount" class="form-control col-md-7 col-xs-12">
+                    <div class="col-md-9 col-sm-6 col-xs-12">
+                      <input type="number" required="required" placeholder="Enter a valid discount value (1-100)" autocomplete="off" name="coupon_discount" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
 

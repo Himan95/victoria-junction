@@ -163,7 +163,7 @@ if(isset($_POST['add_product'])){
                     <label class="control-label col-md-3" >Product Id<span class="required">*</span>
                     </label>
                     <div class="col-md-9">
-                      <input type="text" required="required" autocomplete="off" name="prod_id" class="form-control col-md-7 col-xs-12">
+                      <input type="text" required="required" autocomplete="off" placeholder="eg: Cake_01, Muffin_02, Cookie_03" name="prod_id" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
                   <br><br><br>
@@ -171,7 +171,7 @@ if(isset($_POST['add_product'])){
                     <label class="control-label col-md-3" >Product Name<span class="required">*</span>
                     </label>
                     <div class="col-md-3">
-                      <input type="text" required="required" autocomplete="off" name="prod_name" class="form-control col-md-7 col-xs-12">
+                      <input type="text" required="required" placeholder="eg: Chocolate Cake, Vanilla Pastry" autocomplete="off" name="prod_name" class="form-control col-md-7 col-xs-12">
                     </div>
                     <label class="control-label col-md-3">Product Type<span class="required">*</span>
                     </label>
@@ -194,7 +194,7 @@ if(isset($_POST['add_product'])){
                       <label class="control-label col-md-3" >Product Price<span class="required">*</span>
                       </label>
                       <div class="col-md-3">
-                        <input type="number" required="required" autocomplete="off" name="prod_price" class="form-control col-md-7 col-xs-12">
+                        <input type="number" required="required" placeholder="Enter actual price" autocomplete="off" name="prod_price" class="form-control col-md-7 col-xs-12">
                       </div>
                       <label class="control-label col-md-3">Product Quantity<span class="required">*</span>
                       </label>
@@ -209,13 +209,13 @@ if(isset($_POST['add_product'])){
                       <label class="control-label col-md-3" >Product Span Price<span class="required">*</span>
                       </label>
                       <div class="col-md-3">
-                        <input type="number" required="required" autocomplete="off" name="prod_span_price" class="form-control col-md-7 col-xs-12">
+                        <input type="number" required="required"  placeholder="Enter dummy price" autocomplete="off" name="prod_span_price" class="form-control col-md-7 col-xs-12">
                       </div>
 
                       <label class="control-label col-md-3" >Product Discount<span class="required">*</span>
                       </label>
                       <div class="col-md-3">
-                        <input type="number" required="required" autocomplete="off" name="prod_discount" class="form-control col-md-7 col-xs-12">
+                        <input type="number" required="required" placeholder="Enter discount to be given in Rupees"  autocomplete="off" name="prod_discount" class="form-control col-md-7 col-xs-12">
                       </div>
                     </div>
 
@@ -237,7 +237,7 @@ if(isset($_POST['add_product'])){
                       <label class="control-label col-md-3" >Product Description<span class="required">*</span>
                       </label>
                       <div class="col-md-9">
-                        <textarea required="required" autocomplete="off" rows="4" columns="20" name="prod_desc" class="form-control col-md-7 col-xs-12"></textarea>
+                        <textarea required="required" placeholder="Enter description here" autocomplete="off" rows="4" columns="20" name="prod_desc" class="form-control col-md-7 col-xs-12"></textarea>
                       </div>
                     </div>
 

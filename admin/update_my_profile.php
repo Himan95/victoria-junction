@@ -12,30 +12,14 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 }
 
 
+  $records1 = $connection->prepare('SELECT * FROM admin_credentials');
+  $records1->execute();
+  $results1=$records1->fetch(PDO::FETCH_ASSOC);
 
 //Update Button clicked
 if(isset($_POST['update_details'])){
 
-  $records1 = $connection->prepare('SELECT * FROM login WHERE username=:username');
-  $records1->bindParam(':username', $_SESSION['username']);
-  $records1->execute();
-  $results1=$records1->fetch(PDO::FETCH_ASSOC);
-
-  if($_POST['password']==$results1['password'] && $_SESSION['username']==$results1['username'] ){
-
-    $records3 = $connection->prepare('UPDATE login SET username=:username WHERE password=:password');
-    $records3->bindParam(':username', $username);
-    $records3->bindParam(':password', $password);
-    $username=$_POST['new_username'];
-    $password=$_POST['password'];
-    $records3->execute();
-
-    $records31 = $connection->prepare('UPDATE register SET username=:username WHERE password=:password');
-    $records31->bindParam(':username', $username);
-    $records31->bindParam(':password', $password);
-    $username=$_POST['new_username'];
-    $password=$_POST['password'];
-    $records31->execute();
+  if($_POST['password']==$results1['password']){
 
     $records32 = $connection->prepare('UPDATE admin_credentials SET username=:username,contact=:contact WHERE password=:password');
     $records32->bindParam(':username', $username);
@@ -98,7 +82,7 @@ if(isset($_POST['update_details'])){
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2><?php echo $_SESSION['username']; ?></h2>
+              <h2><?php echo $_SESSION['usertype']; ?></h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -122,7 +106,7 @@ if(isset($_POST['update_details'])){
             </div>
             <ul class="nav navbar-nav navbar-right" style="text-align:right;margin-top:7px;margin-right:5px;">
 
-              <b>Logged in as :</b> <i><?php echo $_SESSION['username']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
+              <b>Logged in as :</b> <i><?php echo $_SESSION['usertype']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
             </ul>
           </nav>
         </div>
@@ -148,21 +132,21 @@ if(isset($_POST['update_details'])){
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" >Current Admin Name<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" required="required" autocomplete="off" value="<?php echo $_SESSION['username']; ?>" name="username" class="form-control col-md-7 col-xs-12">
+                      <input type="text" required="required" autocomplete="off" value="<?php echo $_SESSION['usertype']; ?>" name="username" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" >Password<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="password" required="required" autocomplete="off" name="password" class="form-control col-md-7 col-xs-12">
+                      <input type="password" required="required" autocomplete="off" placeholder="Enter current password" name="password" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" >Contact Number<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" required="required" minlength="10" maxlength="10" autocomplete="off" value="<?php echo $results2['contact']; ?>" name="contact" class="form-control col-md-7 col-xs-12">
+                      <input type="text" required="required" minlength="10" maxlength="10" autocomplete="off" value="<?php echo $results1['contact']; ?>" name="contact" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
                   <div class="form-group">

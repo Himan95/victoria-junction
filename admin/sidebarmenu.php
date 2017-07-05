@@ -101,7 +101,7 @@ while($row=$records->fetch(PDO::FETCH_ASSOC)){
     <li><a><i class="fa fa-folder-o"></i> Accounts <span class="fa fa-chevron-down"></span></a>
     <ul class="nav child_menu">
     <li><a href="update_password.php">Update Password</a></li>
-    <li><a href="update_my_profile.php">Update Admin Profile</a></li>
+    <!--<li><a href="update_my_profile.php">Update Admin Profile</a></li>-->
     </ul>
     </li>
 
@@ -145,7 +145,6 @@ while($row=$records->fetch(PDO::FETCH_ASSOC)){
     <li><a href="view_offers.php">View Offers</a></li>
     <li><a href="view_coupons.php">View Coupons</a></li>
     <li><a href="view_customer_support.php">View Customer Queries</a></li>
-
 
     </ul>
     </li>

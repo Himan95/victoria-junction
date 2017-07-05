@@ -93,7 +93,7 @@ if($_POST['old_password']==$results2['password']){
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2><?php echo $_SESSION['username']; ?></h2>
+                <h2><?php echo $_SESSION['usertype']; ?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -117,7 +117,7 @@ include('sidebarmenu.php');
               </div>
 			  <ul class="nav navbar-nav navbar-right" style="text-align:right;margin-top:7px;margin-right:5px;">
 
-                  <b>Logged in as :</b> <i><?php echo $_SESSION['username']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
+                  <b>Logged in as :</b> <i><?php echo $_SESSION['usertype']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
               </ul>
             </nav>
           </div>
@@ -143,14 +143,14 @@ include('sidebarmenu.php');
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" >Old password<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="password" required="required" autocomplete="off" name="old_password" class="form-control col-md-7 col-xs-12">
+                              <input type="password" required="required" placeholder="Enter current password" autocomplete="off" name="old_password" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                            <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" >New password<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="password" required="required" autocomplete="off" name="password" class="form-control col-md-7 col-xs-12">
+                              <input type="password" required="required" autocomplete="off" name="password" placeholder="Enter new password" class="form-control col-md-7 col-xs-12">
                    <i><font color="green" style="font-style:italic;font-weight:bold;">
                   <?php if($success!=null){ ?>
                   <img src="../images/tick.png">
