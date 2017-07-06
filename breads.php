@@ -21,11 +21,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:01:53 GMT -->
 <head>
-<title><?php echo $results1['web_name']; ?> | Bread & Bakery </title>
+<title><?php echo $results1['web_name']; ?> | Breads   </title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Victoria Junction, Siliguri - Custom Bread & Bakery fro Every Occassion, Gluten, Dairy & Egg-Free Options Available
+<meta name="keywords" content="Victoria Junction, Siliguri - Custom Breads   fro Every Occassion, Gluten, Dairy & Egg-Free Options Available
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -113,7 +113,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		<div class="container">
 			<ul>
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-				<li>Bread & Bakery</li>
+				<li>Breads  </li>
 			</ul>
 		</div>
 	</div>
@@ -133,9 +133,9 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 			</div>
 			<!---728x90--->
 			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
-				<h3>Bread & Bakery</h3>
+				<h3>Breads  </h3>
 				<div class="w3ls_w3l_banner_nav_right_grid1">
-					<h6>Bread & Bakery</h6>
+					<h6>Breads  </h6>
 					<?php
 					$count=0;
 					$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Breads" AND prod_quantity>0');
@@ -160,6 +160,9 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
 						<p>'.$results['prod_name'].'</p>
 						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+
+						<div>
+						<p class="text">'.$results['prod_desc'].'</p>
 						</div>
 						<div class="snipcart-details">
 						<form action="#" method="post">

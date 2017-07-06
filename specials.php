@@ -128,10 +128,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				$records12 = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 1');
 				$records12->execute();
 				$result=$records12->fetch(PDO::FETCH_ASSOC);
-				 ?>
+				?>
 				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 			</div>
 		</div>
+
 	</div>
 
 	<!---728x90-->
@@ -164,8 +165,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<br>
 					<p><span>From: '.$start.'</span></p>
 					<p><span>To: '.$end.' </span></p>
+
+					<br><br>
+
 					</div>
-					</div>';
+					</div>
+
+					';
 				}
 				while($results=$records->fetch(PDO::FETCH_ASSOC));
 				?>

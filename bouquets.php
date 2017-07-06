@@ -3,7 +3,6 @@ error_reporting(0);
 session_start();
 include('connect/connection.php');
 
-
 $records1 = $connection->prepare('SELECT * FROM web_info');
 $records1->execute();
 $results1=$records1->fetch(PDO::FETCH_ASSOC);
@@ -17,9 +16,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 
-<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/drinks.php  [XR&CO'2014], Thu, 04 May 2017 08:01:37 GMT -->
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:01:53 GMT -->
 <head>
-<title><?php echo $results1['web_name']; ?> | Beverages </title>
+<title><?php echo $results1['web_name']; ?> | Bouquets</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -65,9 +64,8 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <style type='text/css'>  .adsense_fixed{position:fixed;bottom:-8px;width:100%;z-index:999999999999;}.adsense_content{width:720px;margin:0 auto;position:relative;background:#fff;}.adsense_btn_close,.adsense_btn_info{font-size:12px;color:#fff;height:20px;width:20px;vertical-align:middle;text-align:center;background:#000;top:4px;left:4px;position:absolute;z-index:99999999;font-family:Georgia;cursor:pointer;line-height:18px}.adsense_btn_info{left:26px;font-family:Georgia;font-style:italic}.adsense_info_content{display:none;width:260px;height:340px;position:absolute;top:-360px;background:rgba(255,255,255,.9);font-size:14px;padding:20px;font-family:Arial;border-radius:4px;-webkit-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);-moz-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);box-shadow:0 1px 26px -2px rgba(0,0,0,.3)}.adsense_info_content:after{content:'';position:absolute;left:25px;top:100%;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #fff;clear:both}.adsense_info_content #adsense_h3{color:#000;margin:0;font-size:18px!important;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_info_content .adsense_p{color:#888;font-size:13px!important;line-height:20px;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_fh5co-team{color:#000;font-style:italic;}</style>
 
 <!-- header -->
-<?php include('header.php');?>
-<!--header-->
-
+	<?php include('header.php');?>
+	<!--header-->
 <!-- script-for sticky-nav -->
 	<script>
 	$(document).ready(function() {
@@ -112,7 +110,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		<div class="container">
 			<ul>
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-				<li>Beverages</li>
+				<li>Bouquets</li>
 			</ul>
 		</div>
 	</div>
@@ -120,7 +118,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <!---728x90--->
 <!-- banner -->
 	<div class="banner">
-		<?php include('left-nav-bar.php'); ?>
+<?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
 			<div class="w3l_banner_nav_right_banner10">
 				<?php
@@ -132,11 +130,11 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 			</div>
 <!---728x90--->
 <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
-	<h3>Beverages</h3>
+	<h3>Bouquets</h3>
 	<br>
 	<?php
 	$count=0;
-	$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Beverages" AND prod_quantity>0');
+	$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Bouquets" AND prod_quantity>0');
 	$records->execute();
 	$results=$records->fetch(PDO::FETCH_ASSOC);
 	do{
@@ -194,12 +192,14 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 	</div>
 	<div class="clearfix"></div>
 	</div>
+
+<!---728x90--->
 <!-- //banner -->
 <!-- newsletter -->
-<?php include('newsletter.php');?>
+	<?php include('newsletter.php');?>
 <!-- //newsletter -->
 <!-- footer -->
-<?php include('footer.php');?>
+	<?php include('footer.php');?>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
@@ -247,5 +247,5 @@ $(document).ready(function(){
 </script>
 </body>
 
-<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/drinks.php  [XR&CO'2014], Thu, 04 May 2017 08:01:45 GMT -->
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:02:05 GMT -->
 </html>

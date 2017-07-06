@@ -304,7 +304,7 @@ ul.dropdown-menu.drp-mnu li a i {
 }
 .w3l_banner_nav_right_banner{
 	background:url(../images/1.jpg) no-repeat 0px 0px;
-  
+
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -4273,4 +4273,17 @@ ul.wmuSliderPagination {
 		background: url(../images/cart.png) no-repeat 105px 5px;
 		font-size: 13px;
 	}
+}
+.snipcart-thumb:hover .text{
+	height: auto;
+  text-align: justify;
+	opacity:1;
+	-webkit-transition: all 0.5s ease-in;
+	-moz-transition: all 0.5s ease-in;
+	-o-transition: all 0.5s ease-in;
+	transition: all 0.5s ease-in;
+}
+.snipcart-thumb .text{
+	height: 0;
+	opacity:0;
 }

@@ -154,6 +154,8 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
 		<p>'.$results['prod_name'].'</p>
 		<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+		<div>
+		<p class="text">'.$results['prod_desc'].'</p>
 		</div>
 		<div class="snipcart-details">
 		<form action="#" method="post">

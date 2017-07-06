@@ -136,7 +136,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<h6>Snacks</h6>
 					<?php
 					$count=0;
-					$records = $connection->prepare('SELECT * FROM products WHERE prod_type IN("Cookies","Chocolates","Beverages") AND prod_quantity>0 ORDER BY rand()');
+					$records = $connection->prepare('SELECT * FROM products WHERE prod_type IN("Snacks","Cookies","Chocolates","Beverages") AND prod_quantity>0 ORDER BY rand()');
 					$records->execute();
 					$results=$records->fetch(PDO::FETCH_ASSOC);
 					do{
@@ -155,6 +155,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
 						<p>'.$results['prod_name'].'</p>
 						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+						<div>
+						<p class="text">'.$results['prod_desc'].'</p>
 						</div>
 						<div class="snipcart-details">
 						<form action="#" method="post">
