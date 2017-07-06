@@ -88,6 +88,7 @@ if(isset($_POST['login'])){
 			}
 			else if($_SESSION['username']!=''){
 				$stmt1->execute();
+				$_SESSION['logged_in']=true;
 				header('location:index.php');
 			}
 			else{$errMsg ='Wrong credentials. Please enter correct username & password';}

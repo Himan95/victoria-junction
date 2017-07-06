@@ -16,8 +16,9 @@ $results1=$records1->fetch(PDO::FETCH_ASSOC);
 		<h3 style="color:red;margin-top:5px;margin-left:5px" align="center">Welcome To <?php echo $results1['web_name'];  ?></h3>
 	</div>
 
+ ?>
 	<div class="product_list_header">
-		<form action="#" method="post" class="last">
+		<form action="cart.php" method="post" class="last">
 			<fieldset>
 				<input type="hidden" name="cmd" value="_cart" />
 				<input type="hidden" name="display" value="1" />

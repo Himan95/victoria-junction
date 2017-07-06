@@ -14,7 +14,8 @@ if(isset($_SESSION['username'])){
   $logout_time=date('Y-m-d h:i:s');
   $records1->execute();
 
-  $_SESSION['username']='';
+  $_SESSION['username']="";
+  $_SESSION['logged_in']=false;
   echo "<script>alert('You have successfully logged out!');</script>";
   session_destroy();
   echo "<script>window.location.href='login.php';</script>";

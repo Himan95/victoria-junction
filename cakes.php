@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(0);
 session_start();
 include('connect/connection.php');
@@ -8,7 +9,9 @@ $records1 = $connection->prepare('SELECT * FROM web_info');
 $records1->execute();
 $results1=$records1->fetch(PDO::FETCH_ASSOC);
 
+
 ?>
+
 
 <!--
 
@@ -146,8 +149,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					$records->execute();
 					$results=$records->fetch(PDO::FETCH_ASSOC);
 					do{
-
-
 						$count=$count+1;
 
 						echo '
@@ -170,11 +171,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 
 						<div class="snipcart-details">
-						<form action="#" method="post">
+						<form action="cart.php" method="GET">
 						<fieldset>
 						<input type="hidden" name="cmd" value="_cart" />
 						<input type="hidden" name="add" value="1" />
 						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
 						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
 						<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
 						<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
@@ -249,8 +251,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 });
 </script>
-<!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
+<!-- //here ends scrolling icon
+<script src="js/minicart.min.js"></script>-->
 <script>
 // Mini Cart
 paypal.minicart.render({
