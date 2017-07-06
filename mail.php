@@ -14,6 +14,70 @@ $subject=$_POST['subject'];
 $message=$_POST['message'];
 $telephone=$_POST['telephone'];
 
+$messageToSend= "<html>
+
+
+<head>
+  <link href='css/bootstrap.css' rel='stylesheet' type='text/css' media='all' />
+  <link href='css/style.css' rel='stylesheet' type='text/css' media='all' />
+  <link href='css/font-awesome.css' rel='stylesheet' type='text/css' media='all' />
+  <script src='js/jquery-1.11.1.min.js'></script>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+</head>
+<style>
+
+body {
+  padding: 10px;
+  margin: 0 auto;
+}
+h1{
+  text-align: center;
+  font-weight: bold;
+  color:#0000EE;
+}
+h3{
+  text-align: center;
+}
+h4{
+  margin:22px;
+  text-align: center;
+  font-size: 20px;
+}
+#content{
+  margin: 0px auto;
+  border: 1px oli;
+}
+.paragraph{
+  text-align: center;
+  margin-top: 30px;
+  font-size: 18px;
+  font-family:serif;
+}
+.foot{
+  text-align: center;
+  margin-top: 30px;
+  font-size: 16px;
+  font-family:sans-serif;
+}
+</style>
+<body>
+  <div id='content'>
+    <h1>Victoria Junction</h1>
+    <h3>Confectionaries Shop</h3>
+
+    <h4>REPLY: Email from Victoria Junction</h4>
+
+    <p class='paragraph'>Message: $message</p>
+
+    <p class='foot'>Victoria Junction, Golden Enclave Building, Siliguri</p>
+  </div>
+</body>
+<script src='js/bootstrap.min.js'></script>
+</html>";
+
+
+
 date_default_timezone_set('Asia/Kolkata');
 
 $stmt=$connection->prepare('INSERT INTO support (name,email,subject,message,telephone,submitted_at) VALUES (:name,:email,:subject,:message,:telephone,:submitted_at)');
@@ -28,8 +92,9 @@ $stmt->execute();
 $to='cooldudehiman@gmail.com';
 $subject='Customer Support';
 $message='Message: '.$message;
-$headers='From:'.$email;
-$m=mail($to,$subject,$message,$headers);
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-type: text/html; charset: utf8\r\n";
+$m=mail($to,$subject,$messageToSend,$headers);
 if($m){
 echo "<script>alert('Thank You! We will get back to you pretty soon!');</script>";
 }
@@ -198,7 +263,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <!---728x90--->
 <!-- map -->
 	<div class="map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d96748.15352429623!2d-74.25419879353115!3d40.731667701988506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sshopping+mall+in+New+York%2C+NY%2C+United+States!5e0!3m2!1sen!2sin!4v1467205237951" style="border:0"></iframe> 
+		<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d96748.15352429623!2d-74.25419879353115!3d40.731667701988506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sshopping+mall+in+New+York%2C+NY%2C+United+States!5e0!3m2!1sen!2sin!4v1467205237951" style="border:0"></iframe>
 	</div>
 <!-- //map -->
 <!-- newsletter -->
