@@ -3,18 +3,55 @@
 error_reporting(0);
 session_start();
 include('connect/connection.php');
+date_default_timezone_set('Asia/Kolkata');
 
-if(isset($_SESSION['logged_in']))
-{
 
-}
-else {
+if(!$_SESSION['logged_in']){
+
   echo "<script>alert('You need to login to buy products!');</script>";
   echo "<script>window.location.href='login.php';</script>";
 }
+
+  $username=$_SESSION['username'];
+  //echo $username;
+  $product=$_SESSION['prod_name'];
+  $price=$_SESSION['prod_price'];
+  $quantity=$_SESSION['prod_quantity'];
+
 if(isset($_POST['confirm'])){
 
+  $order_no=mt_rand(100000, 999999);
+  $order_status="Pending";
+
+  $customer_name=$_SESSION['username'];
+  $customer_contact=$_POST['contact'];
+  $customer_email=$_POST['email'];
+
+//  $prod_quantity=$results2['prod_quantity'];
+
+  $created_at=date('Y-m-d');
+  $created_at=date('h:i:s');
+
+  $shipping_address=$_POST['address'];
+
+  $total= $_POST['total'];
+
   //Write code for creating order and adding in db
+  $records2 = $connection->prepare('INSERT INTO orders(order_no,product,price,quantity,order_status,customer_name,customer_contact,customer_email,created_at,created_time,shipping_address,total) VALUES(:order_no,:product,:price,:quantity,:order_status,:customer_name,:customer_contact,:customer_email,:created_at,:created_time,:shipping_address,:total)');
+  $records2->bindParam(':order_no',$order_no);
+  $records2->bindParam(':product',$product);
+  $records2->bindParam(':price',$price);
+  $records2->bindParam(':quantity',$quantity);
+  $records2->bindParam(':order_status',$order_status);
+  $records2->bindParam(':customer_name',$customer_name);
+  $records2->bindParam(':customer_contact',$customer_contact);
+  $records2->bindParam(':customer_email',$customer_email);
+  $records2->bindParam(':created_at',$created_at);
+  $records2->bindParam(':created_time',$created_time);
+  $records2->bindParam(':shipping_address',$shipping_address);
+  $records2->bindParam(':total',$total);
+  $records2->execute();
+
   echo "<script>alert('Redirecting to Payment Gateway!');</script>";
 }
 
@@ -145,7 +182,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Total Amount<span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-          <input type="number" required="required" placeholder="eg: Rs. 25000" autocomplete="off" value="<?php echo $_SESSION['tot_amount'];?>" name="amount" class="form-control col-md-7 col-xs-12">
+          <input type="number" disabled required="required" placeholder="eg: Rs. 25000" autocomplete="off" value="<?php echo $_SESSION['tot_amount'];?>" name="total" class="form-control col-md-7 col-xs-12">
         </div>
       </div>
       <div class="ln_solid"></div>
@@ -156,6 +193,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <a class="btn btn-warning" href="javascript:history.go(-1)">Back</a>
         </div>
       </div>
+    </form>
   </div>
 
 <div class="clearfix"></div>

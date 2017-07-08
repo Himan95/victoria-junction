@@ -1,59 +1,60 @@
-
-
 <?php
-
 error_reporting(0);
 session_start();
 include('connect/connection.php');
-date_default_timezone_set('Asia/Kolkata');
+require 'item.php';
 
-$order_id=mt_rand(100000, 999999);
-$username=$_SESSION['username'];
-$SESSION['order_id']=$order_id;
+$records1 = $connection->prepare('SELECT * FROM web_info');
+$records1->execute();
+$results1=$records1->fetch(PDO::FETCH_ASSOC);
 
-$prod_id=$_GET['item_id'];
 
-$records2 = $connection->prepare('SELECT * FROM products WHERE prod_id=:prod_id');
-$records2->bindParam(':prod_id',$prod_id);
-$records2->execute();
-$results2=$records2->fetch(PDO::FETCH_ASSOC);
+if(isset($_GET['item_id'])){
 
-/*
+  $prod_id=$_GET['item_id'];
 
-$username=$_SESSION['username'];
-$SESSION['order_id']=$order_id;
-$order_date=date('Y-m-d');
-$order_time=date('h:i:s');
-$prod_name=$results2['prod_name'];
-$prod_price=$results2['prod_price'];
-$prod_quantity=$results2['prod_quantity'];
-$total= $results2['prod_price'];
+  $records2 = $connection->prepare('SELECT * FROM products WHERE prod_id=:prod_id');
+  $records2->bindParam(':prod_id',$prod_id);
+  $records2->execute();
+  $results2=$records2->fetch(PDO::FETCH_ASSOC);
 
-$records2 = $connection->prepare('INSERT INTO user_cart(order_id,username,order_date,order_time,prod_name,prod_price,prod_quantity,prod_total) VALUES(:order_id,:username,:order_date,:order_time,:prod_name,:prod_price,:prod_quantity,:total)');
-$records2->bindParam(':order_id',$order_id);
-$records2->bindParam(':username',$username);
-$records2->bindParam(':order_date',$order_date);
-$records2->bindParam(':order_time',$order_time);
-$records2->bindParam(':prod_name',$prod_name);
-$records2->bindParam(':prod_price',$prod_price);
-$records2->bindParam(':prod_quantity',$prod_quantity);
-$records2->bindParam(':total',$total);
-$records2->execute();
+  $item=new Item();
+  $item->id=$results2['prod_id'];
+  $item->name=$results2['prod_name'];
+  $item->price=$results2['prod_price'];
+  $item->quantity=1;
+  //Check if product exists
+  $cart = unserialize(serialize($_SESSION['cart']));
+  $index=-1;
+  for($i=0;  $i<count($cart); $i++){
+    if($cart[$i]->id == $_GET['item_id'])
+    {
+      $index = $i;
+      break;
+    }
+  }
 
-*/
+  if($index==-1){
+    $_SESSION['cart'][]=$item;
+  }
+  else
+  {
+    $cart[$index]->quantity=$cart[$index]->quantity+1;
+    $_SESSION['cart']= $cart;
+  }
+}
 
-if(isset($_POST['checkout'])){
-
-  $_SESSION['tot_amount']=$_POST['tot'];
-  echo "<script>alert('Redirecting to Billing Section! ')</script>";
-  echo "<script>window.location.href='checkout.php';</script>";
+if(isset($_GET['index'])){
+  $cart = unserialize(serialize($_SESSION['cart']));
+  unset($cart[$_GET['index']]);
+  $cart=array_values($cart);
+  $_SESSION['cart']=$cart;
 }
 ?>
 
-
 <html>
 <head>
-  <title>My Cart</title>
+  <title><?php echo $results1['web_name']; ?> | My Cart</title>
   <!-- for-mobile-apps -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -78,161 +79,152 @@ if(isset($_POST['checkout'])){
   <!-- start-smoth-scrolling -->
   <script type="text/javascript" src="js/move-top.js"></script>
   <script type="text/javascript" src="js/easing.js"></script>
+  <script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+	</script>
+	<!-- start-smoth-scrolling -->
 
 </head>
 <body>
+  <script src='../../../../../../ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-30027142-1', 'w3layouts.com');
+  ga('send', 'pageview');
+  </script>
+  <script async type='text/javascript' src='../../../../../../cdn.fancybar.net/ac/fancybar6a2f.js?zoneid=1502&amp;serve=C6ADVKE&amp;placement=w3layouts' id='_fancybar_js'></script>
+  <style type='text/css'>  .adsense_fixed{position:fixed;bottom:-8px;width:100%;z-index:999999999999;}.adsense_content{width:720px;margin:0 auto;position:relative;background:#fff;}.adsense_btn_close,.adsense_btn_info{font-size:12px;color:#fff;height:20px;width:20px;vertical-align:middle;text-align:center;background:#000;top:4px;left:4px;position:absolute;z-index:99999999;font-family:Georgia;cursor:pointer;line-height:18px}.adsense_btn_info{left:26px;font-family:Georgia;font-style:italic}.adsense_info_content{display:none;width:260px;height:340px;position:absolute;top:-360px;background:rgba(255,255,255,.9);font-size:14px;padding:20px;font-family:Arial;border-radius:4px;-webkit-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);-moz-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);box-shadow:0 1px 26px -2px rgba(0,0,0,.3)}.adsense_info_content:after{content:'';position:absolute;left:25px;top:100%;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #fff;clear:both}.adsense_info_content #adsense_h3{color:#000;margin:0;font-size:18px!important;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_info_content .adsense_p{color:#888;font-size:13px!important;line-height:20px;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_fh5co-team{color:#000;font-style:italic;}</style>
 
-  <?php include('header.php'); ?>
+  <!-- header -->
+  <?php include('header.php');?>
+  <!--Header-->
+
+  <!-- script-for sticky-nav -->
+  <script>
+  $(document).ready(function() {
+    var navoffeset=$(".agileits_header").offset().top;
+    $(window).scroll(function(){
+      var scrollpos=$(window).scrollTop();
+      if(scrollpos >=navoffeset){
+        $(".agileits_header").addClass("fixed");
+      }else{
+        $(".agileits_header").removeClass("fixed");
+      }
+    });
+
+  });
+  </script>
   <!-- //script-for sticky-nav -->
-  <div style=" margin-bottom:100px;" class="container">
-    <h1 style="font-weight:bold; text-align:center; margin-top:40px;">Shopping Cart</h1>
-
-    <div style="margin-top:40px;" class="shopping-cart">
-
-      <div class="column-labels">
-        <label style="text-align:center; padding:10px; border: 1px solid; margin-bottom:40px;" class="product-details">Product Name </label>
-        <label style="text-align:center; padding:10px; border: 1px solid; margin-bottom:40px;" class="product-price">Price</label>
-        <label style="text-align:center; padding:10px; border: 1px solid; margin-bottom:40px;" class="product-quantity">Quantity</label>
-        <label style="text-align:center; padding:10px; border: 1px solid; margin-bottom:40px;" class="product-removal">Total</label>
-        <label style="text-align:center; padding:10px; border: 1px solid; margin-bottom:40px;" class="product-line-price">Remove</label>
+  <div class="logo_products">
+    <div class="container">
+      <div class="w3ls_logo_products_left">
+        <h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
       </div>
+      <div class="w3ls_logo_products_left1">
+        <ul class="special_items">
+          <li><a href="events.php">Events</a><i>/</i></li>
+          <li><a href="about.php">About Us</a><i>/</i></li>
 
-      <div class="product">
-        <div class="product-details">
-          <div style="text-align:center;" class="product-title"><?php echo $results2['prod_name']; ?></div>
-        </div>
-        <div style="text-align:center;" class="product-price"><?php echo $results2['prod_price']; ?></div>
-        <div style="text-align:center;" class="product-quantity">
-          <input style="width:30%;border:none;text-align:center;" type="number" value="1" min="1"/>
-        </div>
-
-        <div style="text-align:center;" class="product-line-price"><?php echo $results2['prod_price']; ?></div>
-        <div style="text-align:center;" class="product-removal">
-          <button class="btn btn-warning remove-product">Remove</button>
-        </div>
-        <div style=" border: 2px dashed; border-radius:4px; padding:15px; float:right">
-          <div style="float:right;" class="totals">
-            <div style="margin-bottom:10px;" class="totals-item">
-              <label  style="text-align:center;">Subtotal</label>
-              <div class="totals-value" id="cart-subtotal"><?php echo $results2['prod_price']; ?></div>
-            </div>
-            <?php
-            $delivery=50;
-            $gst=$results2['prod_price'] * 0.05;
-            ?>
-            <div style="margin-bottom:10px;" class="totals-item">
-              <label  style="text-align:center;">GST (5%)</label>
-              <div class="totals-value" id="cart-tax"><?php echo $gst; ?></div>
-            </div>
-            <div style="margin-bottom:10px;" class="totals-item">
-              <label  style="text-align:center;">Delivery</label>
-              <div class="totals-value" id="cart-shipping"><?php echo $delivery;?></div>
-            </div>
-            <div class="totals-item totals-item-total">
-              <label  style=" text-align:center;">Grand Total</label>
-              <div class="totals-value" id="cart-total"><?php echo $results2['prod_price'] + $delivery + $gst;  ?></div>
-            </div>
-          </div>
-        </div>
+          <li><a href="services.php">Services</a></li>
+        </ul>
       </div>
+      <div class="w3ls_logo_products_left1">
+        <ul class="phone_email">
+          <li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
+          <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
+        </ul>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+  <!-- //header -->
+  <!-- products-breadcrumb -->
+  <div class="products-breadcrumb">
+    <div class="container">
+      <ul>
+        <li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
+        <li>My Cart</li>
+      </ul>
     </div>
   </div>
 
-  <div style="text-align:center;"class="ln_solid">
-    <form action="cart.php" method="POST">
-      <input type="hidden" style="" value="<?php echo $results2['prod_price'] + $delivery+ $gst; ?>" name="tot" id="mytext"/>
-      <input style="" type="submit" name="checkout" class="btn btn-success"  value="Checkout" class="checkout"/>
-      <a style="" class="btn btn-warning" href="javascript:history.go(-1)">Back</a>
-    </form>
-  </div>
+  <div style="margin-top:70px;" class="container">
+    <h1 style="text-align:center;margin-top:20px;">Shopping Cart</h1>
+    <table id="datatable-responsive" style="margin-top:20px;" class="table table-striped table-bordered dt-responsive nowrap" align="left" border="1"  cellspacing="2" cellpadding="2" >
+      <tr>
+        <th>Remove</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+      </tr>
+      <?php
+      $cart=unserialize(serialize($_SESSION['cart']));
+      $index=0;
+      $s=0;
+      for($i=0;$i<count($cart);$i++){
+        $s+=$cart[$i]->price * $cart[$i]->quantity;
 
-</div>
+        ?>
 
-<div class="clearfix"></div>
+        <tr>
+          <td><a onclick="return confirm('Are You Sure?')" href="cart.php?index=<?php echo $index;?>">Delete</td>
 
-<script>
+            <td><?php echo $cart[$i]->name;?></td>
+            <td><?php echo $cart[$i]->price;?></td>
+            <td><?php echo $cart[$i]->quantity;?></td>
+            <td><?php echo $cart[$i]->price * $cart[$i]->quantity;?></td>
+          </tr>
+          <?php $index++; } ?>
+          <tr>
+            <?php
+            if($s==0)
+            {
+              echo '<td colspan="5" align="center">No Products Added</td>';
+            }
+            else
+            {
+             ?>
+            <td colspan="4" align="right">TOTAL:</td>
+            <td align="left"><?php $_SESSION['tot_amount']=$s; echo $s; ?></td>
+            <?php } ?>
+          </tr>
+        </table>
+        <div class="ln_solid"></div>
+        <div class="form-group">
+          <div style="margin-bottom:20px;" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+        <center><a style="margin-right:20px;" class="btn btn-warning" href="index.php">Shop More</a>
+        <a  class="btn btn-success" href="checkout.php">Confirm</a></center>
+      </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
 
-/* Set rates + misc */
-var taxRate = 0.05;
-var shippingRate = 50.00;
-var fadeTime = 300;
+      <script src="js/bootstrap.min.js"></script>
 
+      <script>
+      $(document).ready(function(){
+      	$(".dropdown").hover(
+      		function() {
+      			$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+      			$(this).toggleClass('open');
+      		},
+      		function() {
+      			$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+      			$(this).toggleClass('open');
+      		}
+      	);
+      });
+      </script>
+    </body>
+    <?php include('newsletter.php');?>
 
-/* Assign actions */
-$('.product-quantity input').change( function() {
-  updateQuantity(this);
-});
-
-$('.product-removal button').click( function() {
-  removeItem(this);
-});
-
-/* Recalculate cart */
-function recalculateCart()
-{
-  var subtotal = 0;
-
-  /* Sum up row totals */
-  $('.product').each(function () {
-    subtotal += parseFloat($(this).children('.product-line-price').text());
-  });
-
-  /* Calculate totals */
-  var tax = subtotal * taxRate;
-  var shipping = (subtotal > 0 ? shippingRate : 0);
-  var total = subtotal + tax + shipping;
-  document.getElementById("mytext").value = total;
-  /* Update totals display */
-  $('.totals-value').fadeOut(fadeTime, function() {
-    $('#cart-subtotal').html(subtotal.toFixed(2));
-    $('#cart-tax').html(tax.toFixed(2));
-    $('#cart-shipping').html(shipping.toFixed(2));
-    $('#cart-total').html(total.toFixed(2));
-
-    if(total == 0){
-      $('.checkout').fadeOut(fadeTime);
-    }else{
-      $('.checkout').fadeIn(fadeTime);
-    }
-    $('.totals-value').fadeIn(fadeTime);
-  });
-}
-
-
-/* Update quantity */
-function updateQuantity(quantityInput)
-{
-  /* Calculate line price */
-  var productRow = $(quantityInput).parent().parent();
-  var price = parseFloat(productRow.children('.product-price').text());
-  var quantity = $(quantityInput).val();
-  var linePrice = price * quantity;
-
-  /* Update line price display and recalc cart totals */
-  productRow.children('.product-line-price').each(function () {
-    $(this).fadeOut(fadeTime, function() {
-      $(this).text(linePrice.toFixed(2));
-      recalculateCart();
-      $(this).fadeIn(fadeTime);
-    });
-  });
-}
-
-
-/* Remove item from cart */
-function removeItem(removeButton)
-{
-  /* Remove row from DOM and recalc cart total */
-  var productRow = $(removeButton).parent().parent();
-  productRow.slideUp(fadeTime, function() {
-    productRow.remove();
-    recalculateCart();
-  });
-}
-</script>
-<script src="js/bootstrap.min.js"></script>
-</body>
-<?php include('newsletter.php');?>
-
-<?php include('footer.php');?>
-</html>
+    <?php include('footer.php');?>
+    </html>
