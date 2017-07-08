@@ -57,6 +57,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <style>
 img{
+		width:auto;
+		height:200px;
     border-radius: 200px;
     padding: 2px;
 }
@@ -131,11 +133,9 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
 <!-- services -->
-		<div class="services">
-			<h3>Services</h3>
+			<h2 style="margin-top:20px;font-size:250%; text-align:center;">Services</h2>
 			<div class="w3ls_service_grids">
 				<div class="col-md-12 w3ls_service_grid_left">
-
 					<p style="text-align: justify"><?php echo  $results['description']; ?></p>
 				</div>
 
@@ -152,6 +152,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 					;
 					?>
 				</div>
+
 				<div class="col-md-6 w3ls_service_grids1_right">
 					<ul>
 						<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Personalised Cakes</li>
@@ -169,7 +170,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <!-- //services -->
 		</div>
 		<div class="clearfix"></div>
-	</div>
+	<br><br><br>
 <!-- //banner -->
 <!---728x90--->
 <!-- services-bottom -->
@@ -279,7 +280,7 @@ $(document).ready(function(){
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
+
 <script>
 	// Mini Cart
 	paypal.minicart.render({

@@ -4274,16 +4274,13 @@ ul.wmuSliderPagination {
 		font-size: 13px;
 	}
 }
-.snipcart-thumb:hover .text{
-	height: auto;
+.snipcart-item:hover .text{
+	height: 200px;
   text-align: justify;
 	opacity:1;
-	-webkit-transition: all 0.5s ease-in;
-	-moz-transition: all 0.5s ease-in;
-	-o-transition: all 0.5s ease-in;
-	transition: all 0.5s ease-in;
+	transition:  height 1s ease-in ;
 }
-.snipcart-thumb .text{
+.snipcart-item .text{
 	height: 0;
 	opacity:0;
 }

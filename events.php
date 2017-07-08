@@ -59,10 +59,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <style>
 .img{
-	padding: 5px;
-	max-width: 90%;
-	max-height: 89%;
-  margin: 0 auto;
+width: auto;
+height:350px;
 }
 </style>
 
@@ -138,8 +136,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
       <?php
 			echo
-			'<div class="container">
-			<img class="img" src="'.$results['events_image'].'" width="1200" height="300" />
+			'<div class="">
+			<img class="img" src="'.$results['events_image'].'"  />
 			'
 			;
 			?>
@@ -205,7 +203,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			});
 			</script>
 			<!-- //here ends scrolling icon -->
-			<script src="js/minicart.min.js"></script>
+			
 			<script>
 			// Mini Cart
 			paypal.minicart.render({

@@ -170,7 +170,7 @@ $(document).ready(function(){
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
+
 <script>
 	// Mini Cart
 	paypal.minicart.render({

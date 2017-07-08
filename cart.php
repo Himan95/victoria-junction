@@ -5,16 +5,46 @@
 error_reporting(0);
 session_start();
 include('connect/connection.php');
+date_default_timezone_set('Asia/Kolkata');
+
+$order_id=mt_rand(100000, 999999);
+$username=$_SESSION['username'];
+$SESSION['order_id']=$order_id;
 
 $prod_id=$_GET['item_id'];
 
 $records1 = $connection->prepare('SELECT * FROM products WHERE prod_id=:prod_id');
-$records1->bindParam('prod_id',$prod_id);
+$records1->bindParam(':prod_id',$prod_id);
 $records1->execute();
 $results1=$records1->fetch(PDO::FETCH_ASSOC);
 
+/*
+
+$username=$_SESSION['username'];
+$SESSION['order_id']=$order_id;
+$order_date=date('Y-m-d');
+$order_time=date('h:i:s');
+$prod_name=$results2['prod_name'];
+$prod_price=$results2['prod_price'];
+$prod_quantity=$results2['prod_quantity'];
+$total= $results2['prod_price'];
+
+$records2 = $connection->prepare('INSERT INTO user_cart(order_id,username,order_date,order_time,prod_name,prod_price,prod_quantity,prod_total) VALUES(:order_id,:username,:order_date,:order_time,:prod_name,:prod_price,:prod_quantity,:total)');
+$records2->bindParam(':order_id',$order_id);
+$records2->bindParam(':username',$username);
+$records2->bindParam(':order_date',$order_date);
+$records2->bindParam(':order_time',$order_time);
+$records2->bindParam(':prod_name',$prod_name);
+$records2->bindParam(':prod_price',$prod_price);
+$records2->bindParam(':prod_quantity',$prod_quantity);
+$records2->bindParam(':total',$total);
+$records2->execute();
+
+*/
 
 if(isset($_POST['checkout'])){
+
+  $_SESSION['tot_amount']=$_POST['tot'];
     echo "<script>alert('Redirecting to Billing Section! ')</script>";
   echo "<script>window.location.href='checkout.php';</script>";
 }
@@ -287,58 +317,47 @@ label {
 
 </style>
 <body>
+<a style="margin:10px;font-size:22px; color:blue;" href="javascript:history.go(-1)">Back</a>
 
-  <a style="margin:10px;font-size:22px; color:blue; " href="" class="">Back</a>
   <h1 style="font-weight:bold; text-align:center; margin-top:40px;">Shopping Cart</h1>
-
+<center>
   <div style="margin-top:40px;" class="shopping-cart">
 
     <div class="column-labels">
-      <label style="border: 1px solid; margin-bottom:40px;" class="product-details">Product Name </label>
-      <label style="border: 1px solid; margin-bottom:40px;" class="product-price">Price</label>
-      <label style="border: 1px solid; margin-bottom:40px;" class="product-quantity">Quantity</label>
-      <label style="border: 1px solid; margin-bottom:40px;" class="product-removal">Remove</label>
-      <label style="border: 1px solid; margin-bottom:40px;" class="product-line-price">Total</label>
+      <label style="text-align:center; border: 1px solid; margin-bottom:40px;" class="product-details">Product Name </label>
+      <label style="text-align:center; border: 1px solid; margin-bottom:40px;" class="product-price">Price</label>
+      <label style="text-align:center; border: 1px solid; margin-bottom:40px;" class="product-quantity">Quantity</label>
+      <label style="text-align:center; border: 1px solid; margin-bottom:40px;" class="product-removal">Remove</label>
+      <label style="text-align:center; border: 1px solid; margin-bottom:40px;" class="product-line-price">Total</label>
     </div>
 
     <div class="product">
       <div class="product-details">
-        <div class="product-title"><?php echo $results1['prod_name']; ?></div>
+        <div style="text-align:center;" class="product-title"><?php echo $results1['prod_name']; ?></div>
       </div>
-      <div class="product-price"><?php echo $results1['prod_price']; ?></div>
-      <div class="product-quantity">
-        <input type="number" value="1" min="1"/>
+      <div style="text-align:center;" class="product-price"><?php echo $results1['prod_price']; ?></div>
+      <div style="text-align:center;" class="product-quantity">
+        <input style="border:none;text-align:center;" type="number" value="1" min="1"/>
       </div>
-      <div class="product-removal">
+      <div style="text-align:center;" class="product-removal">
         <button class="remove-product">Remove</button>
       </div>
-      <div class="product-line-price"><?php echo $results1['prod_price']; ?></div>
+      <div style="text-align:center;" class="product-line-price"><?php echo $results1['prod_price']; ?></div>
     </div>
   </div>
 
 <br><br><br>
 <br>
-<div class="product">
-  <div class="product-details">
-    <div class="product-title"><?php echo $results1['prod_name']; ?></div>
-  </div>
-  <div class="product-price"><?php echo $results1['prod_price']; ?></div>
-  <div class="product-quantity">
-    <input type="number" value="1" min="1"/>
-  </div>
-  <div class="product-removal">
-    <button class="remove-product">Remove</button>
-  </div>
-  <div class="product-line-price"><?php echo $results1['prod_price']; ?></div>
-</div>
-</div>
-<br>
+</center>
+
     <div style="float:right;" class="totals">
       <div style="margin-bottom:10px;" class="totals-item">
         <label  style="margin-right:50px;">Subtotal</label>
         <div class="totals-value" id="cart-subtotal"><?php echo $results1['prod_price']; ?></div>
       </div>
       <?php
+
+        $delivery=50;
         $gst=$results1['prod_price'] * 0.05;
        ?>
       <div style="margin-bottom:10px;" class="totals-item">
@@ -347,25 +366,28 @@ label {
       </div>
       <div style="margin-bottom:10px;" class="totals-item">
         <label  style="margin-right:50px;">Delivery</label>
-        <div class="totals-value" id="cart-shipping">50.00</div>
+        <div class="totals-value" id="cart-shipping"><?php echo $delivery;?></div>
       </div>
       <div class="totals-item totals-item-total">
         <label  style="margin-right:50px;">Grand Total</label>
-        <div class="totals-value" id="cart-total"><?php echo $results1['prod_price'] + 50 + $gst;  ?></div>
+        <div class="totals-value" id="cart-total"><?php echo $results1['prod_price'] + $delivery+ $gst;  ?></div>
 
       </div>
     </div>
     <div>
       <form action="cart.php" method="POST">
-    <input type="submit" name="checkout" style="margin-top:200px;" value="Checkout" class="checkout"/>
+        <input type="hidden" value="<?php echo $results1['prod_price'] + $delivery+ $gst; ?>" name="tot" id="mytext"/>
+    <input style="float:left; margin-top:200px;" type="submit" name="checkout"  value="Checkout" class="checkout"/>
   </form>
 </div>
   </div>
+
+
   <script>
 
   /* Set rates + misc */
   var taxRate = 0.05;
-  var shippingRate = 15.00;
+  var shippingRate = 50.00;
   var fadeTime = 300;
 
 
@@ -377,7 +399,6 @@ label {
   $('.product-removal button').click( function() {
     removeItem(this);
   });
-
 
   /* Recalculate cart */
   function recalculateCart()
@@ -393,7 +414,7 @@ label {
     var tax = subtotal * taxRate;
     var shipping = (subtotal > 0 ? shippingRate : 0);
     var total = subtotal + tax + shipping;
-
+    document.getElementById("mytext").value = total;
     /* Update totals display */
     $('.totals-value').fadeOut(fadeTime, function() {
       $('#cart-subtotal').html(subtotal.toFixed(2));

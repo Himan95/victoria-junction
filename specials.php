@@ -220,7 +220,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 });
 </script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
+
 <script>
 // Mini Cart
 paypal.minicart.render({

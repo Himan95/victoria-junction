@@ -133,7 +133,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
 				<h3>Snacks</h3>
 				<div class="w3ls_w3l_banner_nav_right_grid1">
-					<h6>Snacks</h6>
+
 					<?php
 					$count=0;
 					$records = $connection->prepare('SELECT * FROM products WHERE prod_type IN("Snacks","Cookies","Chocolates","Beverages") AND prod_quantity>0 ORDER BY rand()');
@@ -145,9 +145,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="col-md-3 w3ls_w3l_banner_left">
 						<div class="hover14 column">
 						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-						<div class="agile_top_brand_left_grid_pos">
-						<img src="images/offer.png" alt=" " class="img-responsive" />
-						</div>
 						<div class="agile_top_brand_left_grid1">
 						<figure>
 						<div class="snipcart-item block">
@@ -159,11 +156,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<p class="text">'.$results['prod_desc'].'</p>
 						</div>
 						<div class="snipcart-details">
-						<form action="#" method="post">
+						<form action="cart.php" method="GET">
 						<fieldset>
 						<input type="hidden" name="cmd" value="_cart" />
 						<input type="hidden" name="add" value="1" />
 						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
 						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
 						<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
 						<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
@@ -234,7 +232,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 });
 </script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
+
 <script>
 // Mini Cart
 paypal.minicart.render({

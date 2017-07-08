@@ -160,11 +160,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<p class="text">'.$results['prod_desc'].'</p>
 					</div>
 					<div class="snipcart-details">
-					<form action="#" method="post">
+					<form action="cart.php" method="GET">
 					<fieldset>
 					<input type="hidden" name="cmd" value="_cart" />
 					<input type="hidden" name="add" value="1" />
 					<input type="hidden" name="business" value=" " />
+					<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
 					<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
 					<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
 					<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
@@ -237,7 +238,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		});
 		</script>
 		<!-- //here ends scrolling icon -->
-		<script src="js/minicart.min.js"></script>
+
 		<script>
 		// Mini Cart
 		paypal.minicart.render({

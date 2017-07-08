@@ -155,10 +155,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<!---728x90--->
 			<div class="agileinfo_single">
 				<h5><?php echo $results['prod_name']; ?></h5>
-				<div class="col-md-4 agileinfo_single_left">
-					<img id="example" src=<?php echo $results['prod_image']; ?> alt=" " class="img-responsive" />
+				<div  class="col-md-3 agileinfo_single_left">
+					<img style="border:4px solid black" id="example" src=<?php echo $results['prod_image']; ?> alt=" " class="img-responsive" />
 				</div>
-				<div class="col-md-8 agileinfo_single_right">
+				<div class="col-md-9 agileinfo_single_right">
 					<h4><?php echo $results['prod_type']; ?></h4>
 					<!--<div class="rating1">
 						<span class="starRating">
@@ -184,20 +184,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
 							</div>
 							<div class="snipcart-details">
-							<form action="#" method="post">
+							<form action="cart.php" method="GET">
 							<fieldset>
 							<input type="hidden" name="cmd" value="_cart" />
 							<input type="hidden" name="add" value="1" />
 							<input type="hidden" name="business" value=" " />
+							<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
 							<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
 							<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
 							<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
 							<input type="hidden" name="currency_code" value="INR" />
 							<input type="hidden" name="return" value=" " />
 							<input type="hidden" name="cancel_return" value=" " />
-							<input type="submit" name="submit" value="Add to cart" class="btn btn-success" />
-						</fieldset>
-					</form>
+							<input type="submit" name="submit" value="Add to cart" class="button" />
+							</fieldset>
+							</form>
 
 						</div>
 					</div>
@@ -242,19 +243,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											<p class="text">'.$results['prod_desc'].'</p>
 											</div>
 											<div class="snipcart-details">
-											<form action="#" method="post">
+											<form action="cart.php" method="GET">
 											<fieldset>
 											<input type="hidden" name="cmd" value="_cart" />
 											<input type="hidden" name="add" value="1" />
 											<input type="hidden" name="business" value=" " />
+											<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
 											<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
 											<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
 											<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
 											<input type="hidden" name="currency_code" value="INR" />
-													<input type="hidden" name="return" value=" " />
-													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
-												</fieldset>
+											<input type="hidden" name="return" value=" " />
+											<input type="hidden" name="cancel_return" value=" " />
+											<input type="submit" name="submit" value="Add to cart" class="button" />
+											</fieldset>
 											</form>
 										</div>
 									</div>
@@ -314,7 +316,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 });
 </script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
+
 <script>
 // Mini Cart
 paypal.minicart.render({

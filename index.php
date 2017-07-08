@@ -152,6 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- footer -->
 	<?php include('footer.php'); ?>
     <!-- //footer -->
+
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script>
@@ -185,17 +186,8 @@ $(document).ready(function(){
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
-<script>
-	// Mini Cart
-	paypal.minicart.render({
-		action: '#'
-	});
 
-	if (~window.location.search.indexOf('reset=true')) {
-		paypal.minicart.reset();
-	}
-</script>
+
 </body>
 
 <!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/  [XR&CO'2014], Thu, 04 May 2017 08:00:21 GMT -->

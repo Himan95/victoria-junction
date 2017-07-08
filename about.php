@@ -60,11 +60,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <style>
 .img{
-	padding: 5px;
-	max-width: 90%;
-	height:auto;
-	margin: 0px auto;
-	background-size: cover;
+width:auto;
+height:335px;
 }
 </style>
 <body>
@@ -140,15 +137,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<!-- about -->
 			<?php
 			echo
-			'<div class="container">
-			<img class="img" src="'.$results['about_image'].'" width="1100" height="400" />
+			'
+			<img class="img" src="'.$results['about_image'].'" />
 			'
 			;
-			?>		<div class="clearfix"> </div>
+			?>
+			<div class="clearfix"> </div>
 		</div>
 	</div>
 
+
 	<br><br><br>
+
 	<iv class="container">
 		<div style="text-align:justify" class="privacy about">
 			<h3>About Us</h3>
@@ -159,9 +159,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 		<!-- //about -->
 
-	</div>
 	<div class="clearfix"></div>
-</div>
 <!-- //banner -->
 <!---728x90--->
 
@@ -207,7 +205,7 @@ $().UItoTop({ easingType: 'easeOutQuart' });
 });
 </script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
+
 <script>
 // Mini Cart
 paypal.minicart.render({

@@ -1,6 +1,7 @@
-<div class="fresh-vegetables">
+<div class="vegetables">
 		<div class="container">
-			<h3>Top Products</h3>
+			<br>
+			<h2 style="font-size: 220%; text-align:center;">Top Products</h2>
 			<div class="w3l_fresh_vegetables_grids">
 				<div class="col-md-3 w3l_fresh_vegetables_grid w3l_fresh_vegetables_grid_left">
 					<div class="w3l_fresh_vegetables_grid2">
@@ -46,7 +47,6 @@
 							<img src="images/11.jpg" alt=" " class="img-responsive" />
 						</div>
 					</div>
-					<div class="clearfix"> </div>
 					<div class="agileinfo_move_text">
 						<div class="agileinfo_marquee">
 							<h4>get <span class="blink_me">25% off</span> on first order and also get gift voucher</h4>
@@ -54,10 +54,9 @@
 						<div class="agileinfo_breaking_news">
 							<span> </span>
 						</div>
-						<div class="clearfix"></div>
+						</div>
 					</div>
 				</div>
-				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>

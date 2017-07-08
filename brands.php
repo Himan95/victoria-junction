@@ -147,9 +147,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		<div class="col-md-3 w3ls_w3l_banner_left">
 		<div class="hover14 column">
 		<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-		<div class="agile_top_brand_left_grid_pos">
-		<img src="images/offer.png" alt=" " class="img-responsive" />
-		</div>
+
 		<div class="agile_top_brand_left_grid1">
 		<figure>
 		<div class="snipcart-item block">
@@ -162,11 +160,12 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		<p class="text">'.$results['prod_desc'].'</p>
 		</div>
 		<div class="snipcart-details">
-		<form action="#" method="post">
+		<form action="cart.php" method="GET">
 		<fieldset>
 		<input type="hidden" name="cmd" value="_cart" />
 		<input type="hidden" name="add" value="1" />
 		<input type="hidden" name="business" value=" " />
+		<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
 		<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
 		<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
 		<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
@@ -175,8 +174,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		<input type="hidden" name="cancel_return" value=" " />
 		<input type="submit" name="submit" value="Add to cart" class="button" />
 		</fieldset>
-		</form>
-		</div>
+		</form>		</div>
 		</div>
 		</figure>
 		</div>
@@ -239,7 +237,7 @@ $(document).ready(function(){
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script src="js/minicart.min.js"></script>
+
 <script>
 	// Mini Cart
 	paypal.minicart.render({
