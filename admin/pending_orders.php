@@ -127,7 +127,7 @@ table,td,tr{
                   <td style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
                   <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
-                  <td style='padding:5px' align='left'<i><b>DELIVERY ADDRESS</b></i></td>
+                  <td style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
                   <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
@@ -146,7 +146,7 @@ table,td,tr{
                   <td style='padding:5px' align='left'<i><b>ORDER DATE. </b></i></td>
                   <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
-                  <td style='padding:5px' align='left'<i><b>DELIVERY ADDRESS</b></i></td>
+                  <td style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
                   <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>

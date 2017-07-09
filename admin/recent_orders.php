@@ -164,7 +164,7 @@ table,td,tr{
                   <td style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
                   <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
-                  <td style='padding:5px' align='left'<i><b>DELIVERY ADDRESS</b></i></td>
+                  <td style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
                   <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
@@ -180,9 +180,10 @@ table,td,tr{
                 <tr style='background-color:#EDEDED;padding:5px'>
 
                 <td style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
+                <td style='padding:5px' align='left'<i><b>ORDER DATE. </b></i></td>
                 <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
                 <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
-                <td style='padding:5px' align='left'<i><b>DELIVERY ADDRESS</b></i></td>
+                <td style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
                 <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
                 <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
                 <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
@@ -190,8 +191,9 @@ table,td,tr{
                 echo "<br />";
 
                 do{
-
+                  $orderDate = date_format(date_create_from_format('Y-m-d', $results2['created_at']), 'd-m-Y');
                   echo "<tr><td style='padding:3px' align='left'>".$results2['order_no']."</td>";
+                  echo "<td style='padding:3px' align='left'>".$orderDate."</td>";
                   echo "<td style='padding:3px' align='left'>".$results2['customer_name']."</td>";
                   echo "<td style='padding:3px' align='left'>".$results2['customer_contact']."</td>";
                   echo "<td style='padding:3px' align='left'>".$results2['shipping_address']."</td>";
