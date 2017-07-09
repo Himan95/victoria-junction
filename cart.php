@@ -22,7 +22,9 @@ if(isset($_GET['item_id'])){
   $item->id=$results2['prod_id'];
   $item->name=$results2['prod_name'];
   $item->price=$results2['prod_price'];
+
   $item->quantity=1;
+
   //Check if product exists
   $cart = unserialize(serialize($_SESSION['cart']));
   $index=-1;
@@ -43,7 +45,7 @@ if(isset($_GET['item_id'])){
     $_SESSION['cart']= $cart;
   }
 }
-
+//Delete item from cart
 if(isset($_GET['index'])){
   $cart = unserialize(serialize($_SESSION['cart']));
   unset($cart[$_GET['index']]);
@@ -201,7 +203,7 @@ if(isset($_GET['index'])){
         <div class="form-group">
           <div style="margin-bottom:20px;" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
         <center><a style="margin-right:20px;" class="btn btn-warning" href="index.php">Shop More</a>
-        <a  class="btn btn-success" href="checkout.php">Confirm</a></center>
+        <a class="btn btn-success" href="checkout.php">Confirm</a></center>
       </div>
         </div>
         <div class="clearfix"></div>
