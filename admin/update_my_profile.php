@@ -30,6 +30,14 @@ if(isset($_POST['update_details'])){
     $password=$_POST['password'];
     $records32->execute();
 
+
+        $records33 = $connection->prepare('UPDATE users SET user_type=:user_type WHERE user_type=:usertype');
+        $records33->bindParam(':user_type', $user_type);
+        $records33->bindParam(':usertype', $usertype);
+        $user_type=$_POST['new_username'];
+        $usertype=$_SESSION['usertype'];
+        $records33->execute();
+
     echo "<script>alert('Username updated successfully. Login again to continue');</script>";
     echo "<script>window.location.href='checksession.php';</script>";
   }
@@ -132,7 +140,7 @@ if(isset($_POST['update_details'])){
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" >Current Admin Name<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" required="required" autocomplete="off" value="<?php echo $_SESSION['usertype']; ?>" name="username" class="form-control col-md-7 col-xs-12">
+                      <input type="text" readonly required="required" autocomplete="off" value="<?php echo $_SESSION['usertype']; ?>" name="username" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
                   <div class="form-group">

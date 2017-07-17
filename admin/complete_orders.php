@@ -131,7 +131,6 @@ table,td,tr{
                   <td style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
-                  <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
                   </tr>";
                   echo "<br />";
 
@@ -150,7 +149,6 @@ table,td,tr{
                   <td style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
-                  <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
                   </tr>";
                   echo "<br />";
 
@@ -162,8 +160,7 @@ table,td,tr{
                     echo "<td style='padding:3px' align='left'>".$results2['customer_contact']."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['shipping_address']."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['product']."</td>";
-                    echo "<td style='padding:3px' align='left'>".$results2['price']."</td>";
-                    echo "<td style='padding:3px' align='left'>".$results2['order_status']."</td></tr>";
+                    echo "<td style='padding:3px' align='left'>".$results2['price']."</td></tr>";
 
                   }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
                 }

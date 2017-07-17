@@ -113,10 +113,10 @@ if(isset($_POST['update_email'])){
               <div class="x_content">
                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="update_my_email.php" method="post">
                   <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Enter Email<span class="required">*</span>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Enter Email <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="email" required="required" placeholder="eg: abc@xyz.com" autocomplete="off" name="web_email" class="form-control col-md-7 col-xs-12">
+                      <input type="email" required="required" placeholder="eg: support@victoriajunction.com" autocomplete="off" name="web_email" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
 

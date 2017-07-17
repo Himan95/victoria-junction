@@ -90,21 +90,84 @@ include('sidebarmenu.php');
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
               <center><h2>Victoria Junction | Dashboard  </h2></center>
+              <div class="x_panel tile fixed_height_450">
+                <div class="x_title">
+                  <h2>View Pending Orders</h2>
 
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                  <?php
+
+                  $records2 = $connection->prepare('SELECT * FROM orders WHERE order_status= "Pending" ORDER BY created_at DESC');
+
+                  $records2->execute();
+                  $results2=$records2->fetch(PDO::FETCH_ASSOC);
+
+
+                  if(!$results2['order_id'])  // No Order exists
+                  {
+                    echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+                    <tr style='background-color:#EDEDED;padding:5px'>
+
+                    <td style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
+                    <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
+                    <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
+                    <td style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
+                    <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
+                    <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
+                    </tr>";
+                    echo "<br />";
+
+                    echo "<tr><td colspan='7' style='padding:3px' align='left'>No Records Found</td>";
+
+                  }
+                  else {
+
+                    echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
+                    <tr style='background-color:#EDEDED;padding:5px'>
+
+                    <td style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
+                    <td style='padding:5px' align='left'<i><b>ORDER DATE. </b></i></td>
+                    <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
+                    <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
+                    <td style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
+                    <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
+                    <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
+                    </tr>";
+                    echo "<br />";
+
+                    do{
+                      $orderDate = date_format(date_create_from_format('Y-m-d', $results2['created_at']), 'd-m-Y');
+                      echo "<tr><td style='padding:3px' align='left'>".$results2['order_no']."</td>";
+                      echo "<td style='padding:3px' align='left'>".$orderDate."</td>";
+                      echo "<td style='padding:3px' align='left'>".$results2['customer_name']."</td>";
+                      echo "<td style='padding:3px' align='left'>".$results2['customer_contact']."</td>";
+                      echo "<td style='padding:3px' align='left'>".$results2['shipping_address']."</td>";
+                      echo "<td style='padding:3px' align='left'>".$results2['product']."</td>";
+                      echo "<td style='padding:3px' align='left'>".$results2['price']."</td></tr>";
+
+
+                    }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
+                  }
+
+                  ?>
+                </div>
+              </div>
             </div>
+
           </div>
-         </div>
+        </div>
 
-        <!-- /page content -->
-
-        <!-- footer content -->
+        <!-- footer content
         <footer style="margin-top:px;">
           <div class="pull-right">
             Designed and maintained by <b><a href="#">Empreus Labs</a></b>
           </div>
           <div class="clearfix"></div>
         </footer>
-        <!-- /footer content -->
+         /footer content -->
       </div>
     </div>
 

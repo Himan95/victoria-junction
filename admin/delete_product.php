@@ -22,11 +22,6 @@ if(isset($_POST['delete_product'])){
   $prod_id=$_POST['prod_id'];
   $prod_name=$_POST['prod_name'];
   $prod_type=$_POST['prod_type'];
-  $prod_price=$_POST['prod_price'];
-  $prod_quantity=$_POST['prod_quantity'];
-  $prod_desc=$_POST['prod_desc'];
-  $prod_discount=$_POST['prod_discount'];
-  $prod_span_price=$_POST['prod_span_price'];
 
 
   $records = $connection->prepare('SELECT * FROM product_master WHERE prod_id=:prod_id');
@@ -185,47 +180,6 @@ if(isset($_POST['delete_product'])){
                       <br><br><br>
 
                       <div class="form-group">
-                        <label class="control-label col-md-3" >Product Price<span class="required">*</span>
-                        </label>
-                        <div class="col-md-3">
-                          <input id="prod_price" type="number" required="required" autocomplete="off" name="prod_price" class="form-control col-md-7 col-xs-12">
-                        </div>
-                        <label class="control-label col-md-3">Product Quantity<span class="required">*</span>
-                        </label>
-                        <div class="col-md-3">
-                          <input type="number" id="prod_quantity" required="required" autocomplete="off" name="prod_quantity" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-
-                      <br><br><br>
-
-                      <div class="form-group">
-                        <label class="control-label col-md-3" >Product Span Price<span class="required">*</span>
-                        </label>
-                        <div class="col-md-3">
-                          <input type="number"  id="prod_span_price" required="required" autocomplete="off" name="prod_span_price" class="form-control col-md-7 col-xs-12">
-                        </div>
-
-                        <label class="control-label col-md-3" >Product Discount<span class="required">*</span>
-                        </label>
-                        <div class="col-md-3">
-                          <input type="number" id="prod_discount" required="required" autocomplete="off" name="prod_discount" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-
-                      <br><br><br>
-
-                      <div class="form-group">
-                        <label class="control-label col-md-3" >Product Description<span class="required">*</span>
-                        </label>
-                        <div class="col-md-9">
-                          <textarea required="required" autocomplete="off" rows="4" columns="20" id="prod_desc" name="prod_desc" class="form-control col-md-7 col-xs-12"></textarea>
-                        </div>
-                      </div>
-
-                      <br><br><br>
-
-                      <div class="form-group">
                         <div class="col-md-9">
                           <button type="reset" class="btn btn-primary">Reset</button>
                           <button type="submit" name="delete_product" class="btn btn-success">Delete Product</button>
@@ -295,12 +249,6 @@ if(isset($_POST['delete_product'])){
       //alert(splitt[0]);
       $('#prod_name').val(splitt[0]);
       $('#prod_type').val(splitt[1]);
-      $('#prod_price').val(splitt[2]);
-      $('#prod_quantity').val(splitt[3]);
-      $('#prod_span_price').val(splitt[4]);
-      $('#prod_discount').val(splitt[5]);
-      $('#prod_desc').val(splitt[6]);
-
     });
 
     // Callback handler that will be called on failure

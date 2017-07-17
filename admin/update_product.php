@@ -6,7 +6,7 @@ include('../connect/connection.php');
 
 if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   echo "<script>alert('For admin only');</script>";
-	echo "<script>window.location.href='login.php';</script>";
+  echo "<script>window.location.href='login.php';</script>";
 }
 
 $records11 = $connection->prepare('SELECT * FROM products ORDER BY prod_id');
@@ -24,7 +24,7 @@ if(isset($_POST['update_product'])){
   $prod_type=$_POST['prod_type'];
   $prod_price=$_POST['prod_price'];
   $prod_quantity=$_POST['prod_quantity'];
-  $prod_desc=$_POST['prod_desc'];
+  $prod_desc=$_POST['editor1'];
   $prod_discount=$_POST['prod_discount'];
   $prod_span_price=$_POST['prod_span_price'];
 
@@ -90,6 +90,7 @@ if(isset($_POST['update_product'])){
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
 
 </head>
 
@@ -228,7 +229,19 @@ if(isset($_POST['update_product'])){
                         <label class="control-label col-md-3" >Product Description<span class="required">*</span>
                         </label>
                         <div class="col-md-9">
-                          <textarea required="required" autocomplete="off" rows="4" columns="20" id="prod_desc" name="prod_desc" class="form-control col-md-7 col-xs-12"></textarea>
+                          <textarea name="editor1" required></textarea>
+                          <script>
+                          CKEDITOR.replace('editor1');
+                          </script>
+                          <br>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3" >Previous Description<span class="required">*</span>
+                        </label>
+                        <div class="col-md-9">
+                          <textarea readonly rows="4" columns="20" id="prod_desc" name="prod_desc" class="form-control col-md-7 col-xs-12"></textarea>
                         </div>
                       </div>
 

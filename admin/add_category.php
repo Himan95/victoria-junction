@@ -140,7 +140,12 @@ if(isset($_POST['add_category'])){
 
                       <input type="text" required="required" placeholder="Describe the category here" autocomplete="off" name="category_desc" class="form-control col-md-7 col-xs-12">
                     </div>
+
                   </div>
+                  <div style="margin-left:270px;">
+                      <b>Note: </b><i>Category Description is only for database purposes.</i>
+                    </div>
+
 
                   <div class="ln_solid"></div>
                   <div class="form-group">
