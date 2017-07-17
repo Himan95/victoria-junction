@@ -113,7 +113,7 @@ table,td,tr{
 
                 <?php
 
-                $records2 = $connection->prepare('SELECT * FROM offers ORDER BY offer_id DESC');
+                $records2 = $connection->prepare('SELECT * FROM offers WHERE offer_status=1 ORDER BY offer_id DESC');
                 $records2->execute();
                 $results2=$records2->fetch(PDO::FETCH_ASSOC);
 
@@ -140,7 +140,8 @@ table,td,tr{
                   <td style='padding:5px' align='left'<i><b>Offer Name </b></i></td>
 
                   <td style='padding:5px' align='left'<i><b>Offer Description </b></i></td>
-                  <td style='padding:5px' align='left'<i><b>Offer Status </b></i></td>
+
+                                    <td style='padding:5px' align='left'<i><b>Delete </b></i></td>
                   </tr>";
                   echo "<br />";
                   $count=0;
@@ -149,11 +150,11 @@ table,td,tr{
                     echo "<tr><td style='padding:3px' align='left'>".(++$count)."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['offer_name']."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['offer_desc']."</td>";
-                    echo "<td style='padding:3px' align='left'>".$results2['offer_status']."</td></tr>";
+                    echo "<td style='padding:3px' align='center'><a class='btn-success' href='delete_offer.php'>DELETE</a></td></tr>";
 
                   }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
                 }
-                echo "<td colspan='4' style='background-color: #00ffce; padding:3px' align='center'><i><b>Note: Offer status 1 means that the offer is still active</i></b></tr>";
+                echo "<td colspan='4' style='background-color: #00ffce; padding:3px' align='center'><i><b>Note: Only Active Offers are displayed</i></b></tr>";
 
 
                 ?>

@@ -113,7 +113,7 @@ table,td,tr{
 
                 <?php
 
-                $records2 = $connection->prepare('SELECT * FROM coupons');
+                $records2 = $connection->prepare('SELECT * FROM coupons WHERE coupon_status=1');
                 $records2->execute();
                 $results2=$records2->fetch(PDO::FETCH_ASSOC);
 
@@ -139,7 +139,7 @@ table,td,tr{
 
                   <td style='padding:5px' align='left'<i><b>Coupon Id </b></i></td>
                   <td style='padding:5px' align='left'<i><b>Coupon Name </b></i></td>
-                  <td style='padding:5px' align='left'<i><b>Coupon Status </b></i></td>
+                                    <td style='padding:5px' align='left'<i><b>Delete </b></i></td>
                   </tr>";
                   echo "<br />";
                   $count=0;
@@ -147,13 +147,14 @@ table,td,tr{
 
                     echo "<tr><td style='padding:3px' align='left'>".(++$count)."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['coupon_name']."</td>";
-                    echo "<td style='padding:3px' align='left'>".$results2['coupon_status']."</td></tr>";
+
+                    echo "<td style='padding:3px' align='center'><a class='btn-success' href='delete_coupon.php'>DELETE</a></td></tr>";
 
 
 
                   }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
                 }
-                echo "<td colspan='4' style='background-color:#00FFCE; padding:3px' align='center'><i><b>Note: Coupon status 1 means that the coupon is still active</i></b></tr>";
+                echo "<td colspan='4' style='background-color:#00FFCE; padding:3px' align='center'><i><b>Note: Only Active Coupons are displayed here</i></b></tr>";
 
                 ?>
               </div>
