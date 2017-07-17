@@ -9,7 +9,7 @@ $results1=$records1->fetch(PDO::FETCH_ASSOC);
 ?>
 <div class="agileits_header">
 	<div class="w3l_offers">
-		<a href="specials1.php">Today's special Offers !</a>
+		<a href="specials.php">Today's special Offers !</a>
 	</div>
 
 	<div class="w3l_search">

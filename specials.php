@@ -1,12 +1,15 @@
 <?php
-error_reporting(0);
+
+//error_reporting(0);
 session_start();
 include('connect/connection.php');
 
 
-$records = $connection->prepare('SELECT * FROM products WHERE prod_quantity>0 ORDER BY rand() LIMIT 8');
-$records->execute();
-$results=$records->fetch(PDO::FETCH_ASSOC);
+$records1 = $connection->prepare('SELECT * FROM web_info');
+$records1->execute();
+$results1=$records1->fetch(PDO::FETCH_ASSOC);
+
+
 ?>
 
 
@@ -21,7 +24,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:01:53 GMT -->
 <head>
-	<title>Victoria Junction | Specials</title>
+	<title><?php echo $results1['web_name']; ?> | Offers </title>
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -53,7 +56,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</script>
 	<!-- start-smoth-scrolling -->
 </head>
+<style type="text/css">
 
+
+
+</style>
 <body>
 	<script src='../../../../../../ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script><script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -100,8 +107,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>+91-9093200550</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -113,7 +120,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container">
 			<ul>
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-				<li>Specials</li>
+				<li>Offers</li>
 			</ul>
 		</div>
 	</div>
@@ -131,56 +138,123 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				?>
 				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 			</div>
-		</div>
+			<!---728x90--->
+			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+				<h3>Latest Offers</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
 
-	</div>
+					<?php
+					$count=0;
+					$records = $connection->prepare('SELECT * FROM hot_offers INNER JOIN products ON hot_offers.offer_id=products.prod_id');
+					$records->execute();
+					$results=$records->fetch(PDO::FETCH_ASSOC);
+					do{
+						$count=$count+1;
 
-	<!---728x90-->
-	<center>
+						echo '
+						<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+            <div class="agile_top_brand_left_grid_pos">
+        		<img src="images/offer.png" alt=" " class="img-responsive" />
+        		</div>
+						<div class="agile_top_brand_left_grid1">
+						<figure>
+						<div class="snipcart-item block">
+						<div class="snipcart-thumb">
+						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+						<p>'.$results['prod_name'].'</p>
+						<h4>Rs.'.$results['offer_price'].'<span>Rs.'.$results['prod_price'].'</span></h4>
 
-		<div class="clearfix"> </div>
-		<div class="top-brands">
-			<div class="container">
-				<h3>Coupons</h3>
-				<?php
-				error_reporting(0);
-				session_start();
+						<div class="text">
+							<p>'.$results['prod_desc'].'</p>
+						</div>
 
-				include('connect/connection.php');
-				$records = $connection->prepare('SELECT * FROM coupons WHERE coupon_status=1');
-				$records->execute();
-				$results=$records->fetch(PDO::FETCH_ASSOC);
-				echo '<br><br><br>';
-				do{
-					$start = date_format(date_create_from_format('Y-m-d', $results['coupon_startdate']), 'd-m-Y');
-					$end = date_format(date_create_from_format('Y-m-d', $results['coupon_enddate']), 'd-m-Y');
+						<div class="snipcart-details">
+						<form action="cart.php" method="GET">
+						<fieldset>
+						<input type="hidden" name="cmd" value="_cart" />
+						<input type="hidden" name="add" value="1" />
+						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
+						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+						<input type="hidden" name="amount" value="'.$results['offer_price'].'" />
+						<input type="hidden" name="discount_amount" value="'.$results['offer_discount'].'" />
+						<input type="hidden" name="currency_code" value="INR" />
+						<input type="hidden" name="return" value=" " />
+						<input type="hidden" name="cancel_return" value=" " />
+						<input type="submit" name="submit" value="Add to cart" class="button" />
+						</fieldset>
+						</form>
+						</div>
+						</div>
+						</figure>
+						</div>
+						</div>
+						</div>
+						</div>
+						';
+						if($count % 4 == 0)
+						echo '<div class="clearfix"> </div><br> ';
 
-					echo '
 
-					<div class="col-md-4 top_brand_left">
-					<div class="hover14 column">
-					<h3>'.$results['coupon_name'].'*</h3>
-					<br>
-					<h4>Discount: '.$results['coupon_discount'].'%</h4>
-					<br>
-					<p><span>From: '.$start.'</span></p>
-					<p><span>To: '.$end.' </span></p>
 
-					<br><br>
+					}
+					while($results=$records->fetch(PDO::FETCH_ASSOC));
+					?>
 
-					</div>
-					</div>
 
-					';
-				}
-				while($results=$records->fetch(PDO::FETCH_ASSOC));
-				?>
-				<div class="clearfix"> </div>
+					<div class="clearfix"> </div>
+				</div>
 			</div>
 		</div>
-	</center>
-	<!---728x90--->
-	<!-- //banner -->
+		<div class="clearfix"></div>
+	</div>
+<!-- Coupons -->
+<center>
+
+	<div class="clearfix"> </div>
+	<div class="top-brands">
+		<div class="container">
+			<h3>Coupons</h3>
+			<?php
+			error_reporting(0);
+			session_start();
+
+			include('connect/connection.php');
+			$records = $connection->prepare('SELECT * FROM coupons WHERE coupon_status=1');
+			$records->execute();
+			$results=$records->fetch(PDO::FETCH_ASSOC);
+			echo '<br><br><br>';
+			do{
+				$start = date_format(date_create_from_format('Y-m-d', $results['coupon_startdate']), 'd-m-Y');
+				$end = date_format(date_create_from_format('Y-m-d', $results['coupon_enddate']), 'd-m-Y');
+
+				echo '
+
+				<div class="col-md-4 top_brand_left">
+				<div class="hover14 column">
+				<h3>'.$results['coupon_name'].'*</h3>
+				<br>
+				<h4>Discount: '.$results['coupon_discount'].'%</h4>
+				<br>
+				<p><span>From: '.$start.'</span></p>
+				<p><span>To: '.$end.' </span></p>
+
+				<br><br>
+
+				</div>
+				</div>
+
+				';
+			}
+			while($results=$records->fetch(PDO::FETCH_ASSOC));
+			?>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</center>
+	<!---Coupons--->
 	<!-- newsletter -->
 	<?php include('newsletter.php');?>
 	<!-- //newsletter -->
@@ -219,8 +293,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 });
 </script>
-<!-- //here ends scrolling icon -->
-
+<!-- //here ends scrolling icon
+<script src="js/minicart.min.js"></script>-->
 <script>
 // Mini Cart
 paypal.minicart.render({
