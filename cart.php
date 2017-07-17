@@ -21,7 +21,7 @@ if(isset($_GET['item_id'])){
   $item=new Item();
   $item->id=$results2['prod_id'];
   $item->name=$results2['prod_name'];
-  $item->price=$results2['prod_price'];
+  $item->price=($results2['prod_price'] - $results2['prod_discount']) ;
 
   $item->quantity=1;
 

@@ -1,24 +1,18 @@
 <?php
-error_reporting(0);
+
+//error_reporting(0);
 session_start();
 include('connect/connection.php');
 
-$records11 = $connection->prepare('SELECT * FROM web_info');
-$records11->execute();
-$results11=$records11->fetch(PDO::FETCH_ASSOC);
 
-$id=$_GET['product'];
-
-$records = $connection->prepare('SELECT * FROM products WHERE prod_id=:prod_id');
-$records->bindParam(':prod_id', $id);
-$records->execute();
-$results=$records->fetch(PDO::FETCH_ASSOC);
-
-
-$records1 = $connection->prepare('SELECT * FROM products WHERE prod_quantity>0 ORDER BY rand() LIMIT 4');
+$records1 = $connection->prepare('SELECT * FROM web_info');
 $records1->execute();
 $results1=$records1->fetch(PDO::FETCH_ASSOC);
+
+
 ?>
+
+
 <!--
 
 
@@ -28,9 +22,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 
-<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/single.php  [XR&CO'2014], Thu, 04 May 2017 08:02:15 GMT -->
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:01:53 GMT -->
 <head>
-	<title><?php echo $results11['web_name']; ?> | Single </title>
+	<title><?php echo $results1['web_name']; ?> | Offers </title>
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -47,17 +41,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- js -->
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<!-- //js -->
-	<script src='js/okzoom.js'></script>
-	<script>
-	$(function(){
-		$('#example').okzoom({
-			width: 150,
-			height: 150,
-			border: "1px solid black",
-			shadow: "0 0 5px #000"
-		});
-	});
-	</script>
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 	<!-- start-smoth-scrolling -->
@@ -73,7 +56,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</script>
 	<!-- start-smoth-scrolling -->
 </head>
+<style type="text/css">
 
+
+
+</style>
 <body>
 	<script src='../../../../../../ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script><script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -88,8 +75,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<!-- header -->
 	<?php include('header.php');?>
-	<!-- header -->
-
+	<!--header-->
 	<!-- script-for sticky-nav -->
 	<script>
 	$(document).ready(function() {
@@ -121,8 +107,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results11['web_contact']; ?></li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results11['web_email']; ?></a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -134,7 +120,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container">
 			<ul>
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-				<li>Single Page</li>
+				<li>Offers</li>
 			</ul>
 		</div>
 	</div>
@@ -142,146 +128,91 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!---728x90--->
 	<!-- banner -->
 	<div class="banner">
-<?php include('left-nav-bar.php'); ?>
+		<?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
-			<div class="w3l_banner_nav_right_banner3">
+			<div class="w3l_banner_nav_right_banner10">
 				<?php
 				$records12 = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 1');
 				$records12->execute();
 				$result=$records12->fetch(PDO::FETCH_ASSOC);
-				 ?>
+				?>
 				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 			</div>
 			<!---728x90--->
-			<div class="agileinfo_single">
-				<h5><?php echo $results['prod_name']; ?></h5>
-				<div  class="col-md-3 agileinfo_single_left">
-					<img style="border:4px solid black" id="example" src=<?php echo $results['prod_image']; ?> alt=" " class="img-responsive" />
-				</div>
-				<div class="col-md-9 agileinfo_single_right">
-					<h3><?php echo $results['prod_type']; ?></h3>
-					<!--<div class="rating1">
-						<span class="starRating">
-							<input id="rating5" type="radio" name="rating" value="5">
-							<label for="rating5">5</label>
-							<input id="rating4" type="radio" name="rating" value="4">
-							<label for="rating4">4</label>
-							<input id="rating3" type="radio" name="rating" value="3" checked>
-							<label for="rating3">3</label>
-							<input id="rating2" type="radio" name="rating" value="2">
-							<label for="rating2">2</label>
-							<input id="rating1" type="radio" name="rating" value="1">
-							<label for="rating1">1</label>
-						</span>
-					</div>-->
-					<div class="w3agile_description">
-						<p style="text-align:justify;"><?php echo $results['prod_desc']; ?></p>
-					</div>
-					<div class="snipcart-item block">
-						<h3> Price: Rs.<?php echo $results['prod_price'];?></h3><br>
+			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+				<h3>Latest Offers</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
 
-						<div class="snipcart-thumb agileinfo_single_right_snipcart">
+					<?php
+					$count=0;
+					$records = $connection->prepare('SELECT * FROM hot_offers INNER JOIN products ON hot_offers.offer_id=products.prod_id');
+					$records->execute();
+					$results=$records->fetch(PDO::FETCH_ASSOC);
+					do{
+						$count=$count+1;
 
-<?php
-if($results['prod_discount'] >0){
-	echo '<h4>Additional Discount: Rs. '.$results['prod_discount'].'</h4>';
-}
-echo '
-							</div>
-							<div class="snipcart-details">
-							<form action="cart.php" method="GET">
-							<fieldset>
-							<input type="hidden" name="cmd" value="_cart" />
-							<input type="hidden" name="add" value="1" />
-							<input type="hidden" name="business" value=" " />
-							<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
-							<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-							<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-							<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
-							<input type="hidden" name="currency_code" value="INR" />
-							<input type="hidden" name="return" value=" " />
-							<input type="hidden" name="cancel_return" value=" " />
-							<input type="submit" name="submit" value="Add to cart" class="button" />
-							</fieldset>
-							</form>
+						echo '
+						<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+            <div class="agile_top_brand_left_grid_pos">
+        		<img src="images/offer.png" alt=" " class="img-responsive" />
+        		</div>
+						<div class="agile_top_brand_left_grid1">
+						<figure>
+						<div class="snipcart-item block">
+						<div class="snipcart-thumb">
+						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+						<p>'.$results['prod_name'].'</p>
+						<h4>Rs.'.$results['offer_price'].'<span>Rs.'.$results['prod_price'].'</span></h4>
 
+						<div class="text">
+							<p>'.$results['prod_desc'].'</p>
 						</div>
-					</div>
 
-					';
+						<div class="snipcart-details">
+						<form action="cart.php" method="GET">
+						<fieldset>
+						<input type="hidden" name="cmd" value="_cart" />
+						<input type="hidden" name="add" value="1" />
+						<input type="hidden" name="business" value=" " />
+						<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
+						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+						<input type="hidden" name="amount" value="'.$results['offer_price'].'" />
+						<input type="hidden" name="discount_amount" value="'.$results['offer_discount'].'" />
+						<input type="hidden" name="currency_code" value="INR" />
+						<input type="hidden" name="return" value=" " />
+						<input type="hidden" name="cancel_return" value=" " />
+						<input type="submit" name="submit" value="Add to cart" class="button" />
+						</fieldset>
+						</form>
+						</div>
+						</div>
+						</figure>
+						</div>
+						</div>
+						</div>
+						</div>
+						';
+						if($count % 4 == 0)
+						echo '<div class="clearfix"> </div><br> ';
+
+
+
+					}
+					while($results=$records->fetch(PDO::FETCH_ASSOC));
 					?>
+
+
+					<div class="clearfix"> </div>
 				</div>
-				<div class="clearfix"> </div>
 			</div>
 		</div>
 		<div class="clearfix"></div>
 	</div>
-	<!-- //banner -->
+
+
 	<!---728x90--->
-	<!-- brands -->
-	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_popular">
-		<div class="container">
-			<h3>Other Products</h3>
-			<div class="w3ls_w3l_banner_nav_right_grid1">
-				<h6>Products</h6>
-				<?php
-				$records = $connection->prepare('SELECT * FROM products ORDER BY rand() LIMIT 4');
-				$records->execute();
-				$results=$records->fetch(PDO::FETCH_ASSOC);
-				do{
-					echo '
-
-					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-											<p>'.$results['prod_name'].'</p>
-											<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
-											<div>
-											<p class="text">'.$results['prod_desc'].'</p>
-											</div>
-											<div class="snipcart-details">
-											<form action="cart.php" method="GET">
-											<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
-											<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-											<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-											<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
-											<input type="hidden" name="currency_code" value="INR" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
-					</div>
-					';
-				}
-				while($results=$records->fetch(PDO::FETCH_ASSOC));
-				echo '<div class="clearfix"> </div>';
-				?>
-			<br><br>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-
-	<!-- //brands -->
 	<!-- newsletter -->
 	<?php include('newsletter.php');?>
 	<!-- //newsletter -->
@@ -320,8 +251,8 @@ echo '
 
 });
 </script>
-<!-- //here ends scrolling icon -->
-
+<!-- //here ends scrolling icon
+<script src="js/minicart.min.js"></script>-->
 <script>
 // Mini Cart
 paypal.minicart.render({
@@ -334,5 +265,5 @@ if (~window.location.search.indexOf('reset=true')) {
 </script>
 </body>
 
-<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/single.php  [XR&CO'2014], Thu, 04 May 2017 08:02:16 GMT -->
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:02:05 GMT -->
 </html>

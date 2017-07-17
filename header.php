@@ -9,14 +9,14 @@ $results1=$records1->fetch(PDO::FETCH_ASSOC);
 ?>
 <div class="agileits_header">
 	<div class="w3l_offers">
-		<a href="specials.php">Today's special Offers !</a>
+		<a href="specials1.php">Today's special Offers !</a>
 	</div>
 
 	<div class="w3l_search">
 		<h3 style="color:red;margin-top:5px;margin-left:5px" align="center">Welcome To <?php echo $results1['web_name'];  ?></h3>
 	</div>
 
- 
+
 	<div class="product_list_header">
 		<form action="cart.php" method="post" class="last">
 			<fieldset>
