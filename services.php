@@ -174,27 +174,54 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 <!-- //banner -->
 <!---728x90--->
 <!-- services-bottom -->
+
+<?php
+
+$orders=$pending=$complete=$customers=0;
+
+$records1 = $connection->prepare('SELECT * FROM orders');
+$records1->execute();
+while($results1=$records1->fetch(PDO::FETCH_ASSOC))
+$orders++;
+
+$records2 = $connection->prepare('SELECT * FROM orders WHERE order_status="Pending"');
+$records2->execute();
+while($results2=$records2->fetch(PDO::FETCH_ASSOC))
+$pending++;
+
+$records3 = $connection->prepare('SELECT * FROM orders WHERE order_status="Complete"');
+$records3->execute();
+while($results3=$records3->fetch(PDO::FETCH_ASSOC))
+$complete++;
+
+$records4 = $connection->prepare('SELECT DISTINCT(order_id) FROM orders');
+$records4->execute();
+while($results4=$records4->fetch(PDO::FETCH_ASSOC))
+$customers++;
+
+
+ ?>
 	<div class="services-bottom">
 		<div class="container">
 			<div class="col-md-3 about_counter_left">
 				<i class="glyphicon glyphicon-user" aria-hidden="true"></i>
-				<p style="color:black;" class="counter">89,147</p>
-				<h3 style="color:black;">Followers</h3>
+				<p style="color:black;" class="counter"><?php echo $orders; ?></p>
+				<h3 style="color:black;">Orders</h3>
 			</div>
 			<div class="col-md-3 about_counter_left">
 				<i class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></i>
-				<p style="color:black;" class="counter">54,598</p>
-				<h3 style="color:black;">Savings</h3>
+				<p style="color:black;" class="counter"><?php echo $complete; ?></p>
+				<h3 style="color:black;">Completed</h3>
 			</div>
 			<div class="col-md-3 about_counter_left">
 				<i class="glyphicon glyphicon-export" aria-hidden="true"></i>
-				<p style="color:black;" class="counter">83,983</p>
-				<h3 style="color:black;">Support</h3>
+				<p style="color:black;" class="counter"><?php echo $pending; ?></p>
+				<h3 style="color:black;">Pending</h3>
 			</div>
 			<div class="col-md-3 about_counter_left">
 				<i class="glyphicon glyphicon-bullhorn" aria-hidden="true"></i>
-				<p style="color:black;" class="counter">45,894</p>
-				<h3 style="color:black;">Popularity</h3>
+				<p style="color:black;" class="counter"><?php echo $customers; ?></p>
+				<h3 style="color:black;">Customers</h3>
 			</div>
 			<div class="clearfix"> </div>
 			<!-- Stats-Number-Scroller-Animation-JavaScript -->
