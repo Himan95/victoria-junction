@@ -35,6 +35,12 @@ while($row=$records->fetch(PDO::FETCH_ASSOC)){
     <li><a href="add_category.php">Add Category</a></li>
     <li><a href="delete_category.php">Delete Category</a></li>
     </ul>
+
+        <li><a> Hot Offers <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+        <li><a href="add_hot_offer.php">Add Hot Offer</a></li>
+        <li><a href="delete_hot_offer.php">Delete Hot Offer</a></li>
+        </ul>
     </ul>
 
     <li><a><i class="fa fa-file-excel-o"></i> Reports <span class="fa fa-chevron-down"></span></a>
@@ -63,6 +69,16 @@ while($row=$records->fetch(PDO::FETCH_ASSOC)){
     <li><a href="update_about.php">Update About Us</a></li>
     <li><a href="update_events.php">Update Events</a></li>
     <li><a href="update_services.php">Update Services</a></li>
+    </ul>
+
+    <li><a> Policies <span class="fa fa-chevron-down"></span></a>
+    <ul class="nav child_menu">
+    <li><a href="privacy.php">Privacy</a></li>
+    <li><a href="shipping.php">Shipping</a></li>
+    <li><a href="refunds.php">Refunds</a></li>
+    <li><a href="termsandconditions.php">Terms & Conditions</a></li>
+    <li><a href="affiliates.php">Affiliates</a></li>
+    <li><a href="faqs.php">FAQs</a></li>
     </ul>
 
     <li><a> Offers <span class="fa fa-chevron-down"></span></a>

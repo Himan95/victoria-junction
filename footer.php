@@ -21,6 +21,7 @@
 			<div class="col-md-3 w3_footer_grid">
 				<h3>Extras</h3>
 				<ul class="w3_footer_grid_list">
+					<li><a href="faqs.php">FAQs</a></li>
 					<li><a href="brands.php">Brands</a></li>
 					<li><a href="affiliates.php">Affiliates</a></li>
 					<li><a href="specials.php">Specials</a></li>

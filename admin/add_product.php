@@ -225,14 +225,17 @@ if(isset($_POST['add_product'])){
                     <div class="form-group">
                       <label class="control-label col-md-3" >Product Image<span class="required">*</span>
                       </label>
-                      <div class="col-md-9">
-                        <input type="file" id="imageUpload" required="required" autocomplete="off" name="imageUpload" class="form-control col-md-7 col-xs-12">
+                      <div class="col-md-6">
+                        <input type="file" onchange="readURL(this);" id="imageUpload" required="required" autocomplete="off" name="imageUpload" class="form-control col-md-7 col-xs-12">
                         Exact Size: 140 by 140 pixels
+                      </div>
+                      <div style="text-align:center;" class="col-md-3">
+                        <img id="blah" alt="Image" width="100" height="85"/>
                       </div>
                     </div>
 
                     <br><br><br>
-
+                    <br><br><br>
 
                     <div class="form-group">
                       <label class="control-label col-md-3" >Product Description<span class="required">*</span>
@@ -292,7 +295,21 @@ if(isset($_POST['add_product'])){
 <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
 <!-- gauge.js -->
 <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+<script>
+function readURL(input) {
+           if (input.files && input.files[0]) {
+               var reader = new FileReader();
 
+               reader.onload = function (e) {
+                   $('#blah')
+                       .attr('src', e.target.result)
+                       ;
+               };
+
+               reader.readAsDataURL(input.files[0]);
+           }
+       }
+     </script>
 <!-- iCheck -->
 <script src="../vendors/iCheck/icheck.min.js"></script>
 <!-- Skycons -->

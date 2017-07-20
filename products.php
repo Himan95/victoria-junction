@@ -147,6 +147,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					$records->execute();
 					$results=$records->fetch(PDO::FETCH_ASSOC);
 					$count=0;
+					if(!$results['prod_name'])
+					{
+						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
+					}
+					else{
 					do{
 						$count=$count+1;
 						echo '
@@ -192,7 +197,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						echo '<div class="clearfix"> </div><br> ';
 					}
 					while($results=$records->fetch(PDO::FETCH_ASSOC));
-					?>
+				}?>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="w3ls_w3l_banner_nav_right_grid1">
@@ -203,6 +208,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					$records->execute();
 					$results=$records->fetch(PDO::FETCH_ASSOC);
 					$count=0;
+					if(!$results['prod_name'])
+					{
+						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
+					}
+					else{
 					do{
 						$count=$count+1;
 						echo '
@@ -248,7 +258,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						echo '<div class="clearfix"> </div><br> ';
 					}
 					while($results=$records->fetch(PDO::FETCH_ASSOC));
-					?>
+				}?>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="w3ls_w3l_banner_nav_right_grid1">
@@ -259,6 +269,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					$records->execute();
 					$results=$records->fetch(PDO::FETCH_ASSOC);
 					$count=0;
+					if(!$results['prod_name'])
+					{
+						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
+					}
+					else{
 					do{
 						$count=$count+1;
 						echo '
@@ -302,8 +317,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						if($count % 4 == 0)
 						echo '<div class="clearfix"> </div><br> ';
 					}
-					while($results=$records->fetch(PDO::FETCH_ASSOC));
-					?>
+				while($results=$records->fetch(PDO::FETCH_ASSOC));
+			}?>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="w3ls_w3l_banner_nav_right_grid1">
@@ -314,6 +329,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					$records->execute();
 					$results=$records->fetch(PDO::FETCH_ASSOC);
 					$count=0;
+					if(!$results['prod_name'])
+					{
+						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
+					}
+					else{
 					do{
 						$count=$count+1;
 						echo '
@@ -358,7 +378,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						echo '<div class="clearfix"> </div><br> ';
 					}
 					while($results=$records->fetch(PDO::FETCH_ASSOC));
-					?>
+				}?>
 
 					<div class="clearfix"> </div>
 				</div>
@@ -370,6 +390,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					$records->execute();
 					$results=$records->fetch(PDO::FETCH_ASSOC);
 					$count=0;
+					if(!$results['prod_name'])
+					{
+						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
+					}
+					else{
 					do{
 						$count=$count+1;
 						echo '
@@ -414,7 +439,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						echo '<div class="clearfix"> </div><br> ';
 					}
 					while($results=$records->fetch(PDO::FETCH_ASSOC));
-					?>
+				}?>
 					<div class="clearfix"> </div>
 				</div>
 			</div>

@@ -13,22 +13,14 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 
 $description=$_POST['editor1'];
 
-  //Process the image that is uploaded by the user
-  $target_dir = "../images/";
-  $target_file = $target_dir . basename($_FILES['imageUpload']['name']);
-  $uploadOk = 1;
-  $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-  move_uploaded_file($_FILES['imageUpload']['tmp_name'], $target_file);
-  $final_image=substr($target_file, 3);
-
 //Update Button clicked
-if(isset($_POST['update_events'])){
+if(isset($_POST['update_shipping'])){
 
-      $stmt1=$connection->prepare('UPDATE events SET description=:description,events_image=:events_image');
+      $stmt1=$connection->prepare('UPDATE shipping SET description=:description');
       $stmt1->bindParam(':description',$description);
-      $stmt1->bindParam(':events_image',$final_image);
       $stmt1->execute();
-      echo "<script>alert('Events Page updated!');</script>";
+
+      echo "<script>alert('Shipping Page updated!');</script>";
 }
 
 ?>
@@ -114,27 +106,18 @@ if(isset($_POST['update_events'])){
 
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <center><h2>Victoria Junction | Update Events Page  </h2></center>
+            <center><h2>Victoria Junction | Update Shipping Page  </h2></center>
             <div class="x_panel tile fixed_height_450">
               <div class="x_title">
-                <h2>Update Events Page</h2>
+                <h2>Update Shipping Page</h2>
 
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
-                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data" action="update_events.php" method="post">
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data" action="shipping.php" method="post">
 
                   <div class="form-group">
-                      <label class="control-label col-md-3" >Add Image<span class="required">*</span>
-                      </label>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="file" id="imageUpload" required="required" autocomplete="off" name="imageUpload" class="form-control col-md-7 col-xs-12">
-                      </div>
-
-                  </div>
-
-                  <div class="form-group">
-                      <label class="control-label col-md-3" >Add Description<span class="required">*</span>
+                      <label class="control-label col-md-3" >Change Shipping Content<span class="required">*</span>
                       </label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
                         <textarea name="editor1"></textarea>
@@ -148,7 +131,7 @@ if(isset($_POST['update_events'])){
                   <div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                       <button type="reset" class="btn btn-primary">Reset</button>
-                      <button type="submit" name="update_events" class="btn btn-success">Update</button>
+                      <button type="submit" name="update_shipping" class="btn btn-success">Update Shipping</button>
                     </div>
                   </div>
 

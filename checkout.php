@@ -12,30 +12,20 @@ if(!$_SESSION['logged_in']){
 }
 
     $cart = unserialize(serialize($_SESSION['cart']));
-
     $r=sizeof($cart);
-  /*  while($r--){
-
-      $prod_id=$cart[$r]->id;
-      $records21 = $connection->prepare('SELECT * FROM products WHERE prod_id=:prod_id');
-      $records21->bindParam(':prod_id',$prod_id);
-      $records21->execute();
-      $results21=$records21->fetch(PDO::FETCH_ASSOC);
-
-      $product=$results21['prod_name'];
-      $price=$results21['prod_price'];
-      $quantity=$results21['prod_quantity'];
-
-    }*/
-
-  //echo $username;
-//  $product=$cart[$_GET['index']];
-//  $price=$cart[$_GET['index']];
-//  $quantity=$cart[$_GET['index']];
-//  echo $_SESSION['cart'];
 
 if(isset($_POST['confirm'])){
 
+  $coupon_name=strtoupper($_POST['coupon_name']);
+
+  $records = $connection->prepare('SELECT * FROM coupons WHERE coupon_name=:coupon_name');
+  $records->bindParam(':coupon_name',$coupon_name);
+  $records->execute();
+  $results=$records->fetch(PDO::FETCH_ASSOC);
+
+  if(!$results['coupon_name'])
+    echo "<script>alert('Coupon Invalid!');</script>";
+  else{
   $order_no=mt_rand(100000, 999999);
   $order_status="Pending";
   $payment_status="Pending";
@@ -44,11 +34,11 @@ if(isset($_POST['confirm'])){
   $customer_contact=$_POST['contact'];
   $customer_email=$_POST['email'];
 
-//  $prod_quantity=$results2['prod_quantity'];
   $created_at=date('Y-m-d');
   $created_time=date('h:i:s');
   $shipping_address=$_POST['address'];
   $total= $_SESSION['tot_amount'];
+  $_SESSION['payment'] = $total - ($total * ($results['coupon_discount']/100));
 
   while($r--){
 
@@ -76,13 +66,13 @@ if(isset($_POST['confirm'])){
     $records2->bindParam(':created_at',$created_at);
     $records2->bindParam(':created_time',$created_time);
     $records2->bindParam(':shipping_address',$shipping_address);
-    $records2->bindParam(':total',$total);
+    $records2->bindParam(':total',$_SESSION['payment']);
     $records2->execute();
-
 
   }
 
   echo "<script>alert('Redirecting to Payment Gateway!');</script>";
+}
 }
 
 $records1 = $connection->prepare('SELECT * FROM web_info');
@@ -92,17 +82,13 @@ $results1=$records1->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!--
-
-
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <html>
-
-
 <head>
-	<title><?php echo $results1['web_name']; ?> | About Us </title>
+	<title><?php echo $results1['web_name']; ?> | Checkout </title>
 	<!-- for-mobile-apps -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -214,6 +200,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
           <input type="number" readonly required="required" placeholder="eg: Rs. 25000" autocomplete="off" value="<?php echo $_SESSION['tot_amount'];?>" name="total" class="form-control col-md-7 col-xs-12">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" >Apply Coupon
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <input type="text" placeholder="eg: SUMMER15" autocomplete="off" name="coupon_name" class="form-control col-md-7 col-xs-12">
         </div>
       </div>
       <div class="ln_solid"></div>

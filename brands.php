@@ -141,6 +141,11 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 	$records = $connection->prepare('SELECT * FROM products WHERE prod_quantity>0');
 	$records->execute();
 	$results=$records->fetch(PDO::FETCH_ASSOC);
+	if(!$results['prod_name'])
+	{
+		echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
+	}
+	else{
 	do{
 		$count=$count+1;
 		echo '
@@ -186,6 +191,7 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		echo '<div class="clearfix"> </div><br> ';
 	}
 	while($results=$records->fetch(PDO::FETCH_ASSOC));
+}
 	?>
 
 

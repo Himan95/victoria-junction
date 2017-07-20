@@ -1,4 +1,4 @@
-<?php
+ <?php
 error_reporting(0);
 session_start();
 include('connect/connection.php');
@@ -117,16 +117,27 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 		</div>
 	</div>
 <!-- //products-breadcrumb -->
-<!---728x90--->
-<!-- banner -->
-	<div class="banner">
-<?php include('left-nav-bar.php'); ?>
-		<div class="w3l_banner_nav_right">
-			<div class="w3l_banner_nav_right_banner10">
-				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
-			</div>
+<div class="banner">
+	<?php include('left-nav-bar.php'); ?>
+	<div class="w3l_banner_nav_right">
+		<div class="w3l_banner_nav_right_banner10">
+			<?php
+			$records12 = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 1');
+			$records12->execute();
+			$result=$records12->fetch(PDO::FETCH_ASSOC);
+			?>
+			<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 		</div>
+		<!---728x90--->
+		<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+			<h3>My Account</h3>
+			<div class="clearfix"> </div>
+			<!-- Affiliates section here -->
+		</div>
+		<div class="clearfix"> </div>
 	</div>
+</div>
+<div class="clearfix"></div>
 <!---728x90--->
 
 <!---728x90--->

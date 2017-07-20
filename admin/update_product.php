@@ -160,7 +160,7 @@ if(isset($_POST['update_product'])){
                   <div class="form-group">
                     <label class="control-label col-md-3" >Product Id<span class="required">*</span>
                     </label>
-                    <div class="col-md-9">
+                    <div class="col-md-6">
                       <select id="foo" name="prod_id" class="form-control col-md-7 col-xs-12">
                         <option selected disabled>Choose here</option>
                         <?php
@@ -169,8 +169,11 @@ if(isset($_POST['update_product'])){
                           ?>
                         </select>
                       </div>
-
+                      <div style="text-align:center;" class="col-md-3">
+                        <img id="hiddenImg" alt="Image" width="100" height="85"/>
+                      </div>
                     </div>
+                    <br><br><br>
                     <br><br><br>
                     <div class="form-group">
                       <label class="control-label col-md-3" >Product Name<span class="required">*</span>
@@ -248,7 +251,7 @@ if(isset($_POST['update_product'])){
                       <br><br><br>
 
                       <div class="form-group">
-                        <div class="col-md-9">
+                        <div style="margin-top:20px;text-align:center;" class="col-md-9">
                           <button type="reset" class="btn btn-primary">Reset</button>
                           <button type="submit" name="update_product" class="btn btn-success">Update Product</button>
                         </div>
@@ -322,6 +325,13 @@ if(isset($_POST['update_product'])){
       $('#prod_span_price').val(splitt[4]);
       $('#prod_discount').val(splitt[5]);
       $('#prod_desc').val(splitt[6]);
+      $('#prod_image').val(splitt[7]);
+
+//      var imageVal=$('#prod_image').val(splitt[7]);
+//      $('#hiddenImg').src(splitt[7]);
+      document.getElementById("hiddenImg").src= "../" + splitt[7];
+
+
 
     });
 

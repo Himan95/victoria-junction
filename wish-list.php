@@ -117,15 +117,15 @@ ga('create', 'UA-30027142-1', 'w3layouts.com');
 	</div>
 <!-- //products-breadcrumb -->
 <!---728x90--->
-<!-- banner -->
-	<div class="banner">
-<?php include('left-nav-bar.php'); ?>
-		<div class="w3l_banner_nav_right">
-			<div class="w3l_banner_nav_right_banner10">
-				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
-			</div>
-		</div>
-	</div>
+<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+	<h3>Wishlist</h3>
+	<div class="clearfix"> </div>
+	<!-- Affiliates section here -->
+</div>
+<div class="clearfix"> </div>
+</div>
+</div>
+<div class="clearfix"></div>
 <!---728x90--->
 
 <!---728x90--->

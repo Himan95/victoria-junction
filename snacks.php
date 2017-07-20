@@ -139,6 +139,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					$records = $connection->prepare('SELECT * FROM products WHERE prod_type IN("Snacks","Cookies","Chocolates","Beverages") AND prod_quantity>0 ORDER BY rand()');
 					$records->execute();
 					$results=$records->fetch(PDO::FETCH_ASSOC);
+					if(!$results['prod_name'])
+					{
+						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
+					}
+					else{
 					do{
 						$count=$count+1;
 						echo '
@@ -184,7 +189,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					}
 					}
 					while($results=$records->fetch(PDO::FETCH_ASSOC));
-					?>
+				}?>
 
 
 					<div class="clearfix"> </div>

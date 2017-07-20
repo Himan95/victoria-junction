@@ -145,9 +145,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 					<?php
 					$count=0;
+					$total=0;
 					$records = $connection->prepare('SELECT * FROM hot_offers INNER JOIN products ON hot_offers.offer_id=products.prod_id');
 					$records->execute();
 					$results=$records->fetch(PDO::FETCH_ASSOC);
+					if(!$results['prod_name'])
+					{
+						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
+					}
+					else{
 					do{
 						$count=$count+1;
 
@@ -164,7 +170,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="snipcart-thumb">
 						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
 						<p>'.$results['prod_name'].'</p>
-						<h4>Rs.'.$results['offer_price'].'<span>Rs.'.$results['prod_price'].'</span></h4>
+						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_price'].'</span></h4>
 
 						<div class="text">
 							<p>'.$results['prod_desc'].'</p>
@@ -201,6 +207,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 					}
 					while($results=$records->fetch(PDO::FETCH_ASSOC));
+				}
+
 					?>
 
 
