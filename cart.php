@@ -187,15 +187,19 @@ if(isset($_GET['index'])){
           <?php $index++; } ?>
           <tr>
             <?php
+             $_SESSION['tot_amount']=$s;
             if($s==0)
             {
-              echo '<td colspan="5" align="center">No Products Added</td>';
+              echo '<td colspan="5" align="center">No Products Added</td></tr>
+              <tr><td colspan="4" align="right">TOTAL:</td>
+              <td align="left">'.$s.'</td></tr>
+              ';
             }
             else
             {
              ?>
             <td colspan="4" align="right">TOTAL:</td>
-            <td align="left"><?php $_SESSION['tot_amount']=$s; echo $s; ?></td>
+            <td align="left"><?php echo $s; ?></td>
             <?php } ?>
           </tr>
         </table>
@@ -203,7 +207,7 @@ if(isset($_GET['index'])){
         <div class="form-group">
           <div style="margin-bottom:20px;" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
         <center><a style="margin-right:20px;" class="btn btn-warning" href="index.php">Shop More</a>
-        <a class="btn btn-success" href="checkout.php">Confirm</a></center>
+        <a class="btn btn-success" href="NON_SEAMLESS_KIT/dataFrom.php">Confirm</a></center>
       </div>
         </div>
         <div class="clearfix"></div>
