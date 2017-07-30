@@ -41,7 +41,7 @@
 				<li><a href="chocolates.php">Chocolates</a></li>
 				<li><a href="breads.php">Breads</a></li>
 				<li><a href="cookies.php">Cookies</a></li>
-				
+
 				<li class="dropdown mega-dropdown active">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Snacks<span class="caret"></span></a>
 					<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">

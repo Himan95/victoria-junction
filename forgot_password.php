@@ -131,9 +131,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       </div>
       <div class="w3ls_logo_products_left1">
         <ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
-				</ul>
+          <li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
+          <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
+        </ul>
       </div>
       <div class="clearfix"> </div>
     </div>
@@ -156,41 +156,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="w3l_banner_nav_right">
       <!-- login -->
       <center>
-      <div class="w3_login">
-        <h3>Forgot your Password?</h3>
-        <br>
-        <!---728x90--->
-        <div class="w3_login_module">
-          <center>
-            <div class="form">
-              <form action="forgot_password.php" method="POST">
-                <div class="form-group">
-                  <label class="control-label col-md-6" >Enter Email Id<span class="required">*</span>
-                  </label>
-                  <div class="col-md-4">
-                    <input type="email" required="required" autocomplete="off" name="email" class="form-control col-md-3 col-xs-3">
-                  </div>
-                </div>
-
-                <br><br><br>
-
-                <p><font color="red" style="font-style:italic"><?php if($errMsg!=null){echo $errMsg;} ?></font> </p>
-                <p><font color="green" style="font-style:italic"><?php if($success!=null){echo $success;} ?></font> </p>
-
-                <div class="form-group">
-                  <div class="col-md-10">
-                    <button type="submit" name="send_pass" class="btn btn-success">Send Password</button>
+        <div class="w3_login">
+          <h3>Forgot your Password?</h3>
+          <br>
+          <!---728x90--->
+          <div class="w3_login_module">
+            <center>
+              <div class="form">
+                <form action="forgot_password.php" method="POST">
+                  <div class="form-group">
+                    <label class="control-label col-md-6" >Enter Email Id<span class="required">*</span>
+                    </label>
+                    <div class="col-md-4">
+                      <input type="email" required="required" autocomplete="off" name="email" class="form-control col-md-3 col-xs-3">
+                    </div>
                   </div>
 
+                  <br><br><br>
 
-                </div>
-              </form>
-            </div>
-          </center>
+                  <p><font color="red" style="font-style:italic"><?php if($errMsg!=null){echo $errMsg;} ?></font> </p>
+                  <p><font color="green" style="font-style:italic"><?php if($success!=null){echo $success;} ?></font> </p>
+
+                  <div class="form-group">
+                    <div class="col-md-10">
+                      <button type="submit" name="send_pass" class="btn btn-success">Send Password</button>
+                    </div>
+
+
+                  </div>
+                </form>
+              </div>
+            </center>
+          </div>
         </div>
       </div>
-    </div>
-  </center>
+    </center>
     <!-- //login -->
   </div>
 

@@ -142,70 +142,70 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!---728x90--->
 	<!-- banner -->
 	<div class="banner">
-<?php include('left-nav-bar.php'); ?>
+		<?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
 			<div class="w3l_banner_nav_right_banner3">
 				<?php
 				$records12 = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 1');
 				$records12->execute();
 				$result=$records12->fetch(PDO::FETCH_ASSOC);
-				 ?>
+				?>
 				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 			</div>
 			<!---728x90--->
 			<div class="agileinfo_single">
 				<h5><?php echo $results['prod_name']; ?></h5>
 				<div  class="col-md-3 agileinfo_single_left">
-					<img style="border:4px solid black" id="example" src=<?php echo $results['prod_image']; ?> alt=" " class="img-responsive" />
+					<img style="border:4px solid black" id="example" src=<?php echo $results['prod_image']; ?> alt=" " class="img-responsive bada-image" />
 				</div>
 				<div class="col-md-9 agileinfo_single_right">
 					<h3><?php echo $results['prod_type']; ?></h3>
 					<!--<div class="rating1">
-						<span class="starRating">
-							<input id="rating5" type="radio" name="rating" value="5">
-							<label for="rating5">5</label>
-							<input id="rating4" type="radio" name="rating" value="4">
-							<label for="rating4">4</label>
-							<input id="rating3" type="radio" name="rating" value="3" checked>
-							<label for="rating3">3</label>
-							<input id="rating2" type="radio" name="rating" value="2">
-							<label for="rating2">2</label>
-							<input id="rating1" type="radio" name="rating" value="1">
-							<label for="rating1">1</label>
-						</span>
-					</div>-->
-					<div class="w3agile_description">
-						<p style="text-align:justify;"><?php echo $results['prod_desc']; ?></p>
+					<span class="starRating">
+					<input id="rating5" type="radio" name="rating" value="5">
+					<label for="rating5">5</label>
+					<input id="rating4" type="radio" name="rating" value="4">
+					<label for="rating4">4</label>
+					<input id="rating3" type="radio" name="rating" value="3" checked>
+					<label for="rating3">3</label>
+					<input id="rating2" type="radio" name="rating" value="2">
+					<label for="rating2">2</label>
+					<input id="rating1" type="radio" name="rating" value="1">
+					<label for="rating1">1</label>
+				</span>
+			</div>-->
+			<div class="w3agile_description">
+				<p style="text-align:justify;"><?php echo $results['prod_desc']; ?></p>
+			</div>
+			<div class="snipcart-item block">
+				<h3> Price: Rs.<?php echo $results['prod_price'];?></h3><br>
+
+				<div class="snipcart-thumb agileinfo_single_right_snipcart">
+
+					<?php
+					if($results['prod_discount'] >0){
+						echo '<h4>Additional Discount: Rs. '.$results['prod_discount'].'</h4>';
+					}
+					echo '
 					</div>
-					<div class="snipcart-item block">
-						<h3> Price: Rs.<?php echo $results['prod_price'];?></h3><br>
+					<div class="snipcart-details">
+					<form action="cart.php" method="GET">
+					<fieldset>
+					<input type="hidden" name="cmd" value="_cart" />
+					<input type="hidden" name="add" value="1" />
+					<input type="hidden" name="business" value=" " />
+					<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
+					<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+					<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+					<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+					<input type="hidden" name="currency_code" value="INR" />
+					<input type="hidden" name="return" value=" " />
+					<input type="hidden" name="cancel_return" value=" " />
+					<input type="submit" name="submit" value="Add to cart" class="button" />
+					</fieldset>
+					</form>
 
-						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-
-<?php
-if($results['prod_discount'] >0){
-	echo '<h4>Additional Discount: Rs. '.$results['prod_discount'].'</h4>';
-}
-echo '
-							</div>
-							<div class="snipcart-details">
-							<form action="cart.php" method="GET">
-							<fieldset>
-							<input type="hidden" name="cmd" value="_cart" />
-							<input type="hidden" name="add" value="1" />
-							<input type="hidden" name="business" value=" " />
-							<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
-							<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-							<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-							<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
-							<input type="hidden" name="currency_code" value="INR" />
-							<input type="hidden" name="return" value=" " />
-							<input type="hidden" name="cancel_return" value=" " />
-							<input type="submit" name="submit" value="Add to cart" class="button" />
-							</fieldset>
-							</form>
-
-						</div>
+					</div>
 					</div>
 
 					';
@@ -232,50 +232,58 @@ echo '
 					echo '
 
 					<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-							<div class="agile_top_brand_left_grid_pos">
-								<img src="images/offer.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="agile_top_brand_left_grid1">
-								<figure>
-									<div class="snipcart-item block">
-										<div class="snipcart-thumb">
-											<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-											<p>'.$results['prod_name'].'</p>
-											<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
-											<div>
-											<p class="text">'.$results['prod_desc'].'</p>
-											</div>
-											<div class="snipcart-details">
-											<form action="cart.php" method="GET">
-											<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
-											<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-											<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-											<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
-											<input type="hidden" name="currency_code" value="INR" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-											</form>
-										</div>
-									</div>
-								</figure>
-							</div>
-						</div>
-						</div>
+					<div class="hover14 column">
+					<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+					<div class="agile_top_brand_left_grid_pos">
+					<img src="images/offer.png" alt=" " class="img-responsive" />
+					</div>
+					<div class="agile_top_brand_left_grid1">
+					<figure>
+					<div class="snipcart-item block">
+					<div class="snipcart-thumb">
+					<a href="single.php?product='.$results['prod_id'].'">';
+					if($results['prod_image'])
+					echo '<img src="'.$results['prod_image'].'" alt=" " class="img-responsive bada-image" /></a>';
+					else {
+						echo '<img src="images/empty-image.png" alt=" " class="img-responsive bada-image" /></a>';
+					}
+
+
+					echo '
+					<p>'.$results['prod_name'].'</p>
+					<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+					<div>
+					<p class="text">'.$results['prod_desc'].'</p>
+					</div>
+					<div class="snipcart-details">
+					<form action="cart.php" method="GET">
+					<fieldset>
+					<input type="hidden" name="cmd" value="_cart" />
+					<input type="hidden" name="add" value="1" />
+					<input type="hidden" name="business" value=" " />
+					<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
+					<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+					<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+					<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+					<input type="hidden" name="currency_code" value="INR" />
+					<input type="hidden" name="return" value=" " />
+					<input type="hidden" name="cancel_return" value=" " />
+					<input type="submit" name="submit" value="Add to cart" class="button" />
+					</fieldset>
+					</form>
+					</div>
+					</div>
+					</figure>
+					</div>
+					</div>
+					</div>
 					</div>
 					';
 				}
 				while($results=$records->fetch(PDO::FETCH_ASSOC));
 				echo '<div class="clearfix"> </div>';
 				?>
-			<br><br>
+				<br><br>
 				<div class="clearfix"> </div>
 			</div>
 		</div>

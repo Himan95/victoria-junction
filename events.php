@@ -59,8 +59,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <style>
 .img{
-width: auto;
-height:350px;
+	width: 100%;
+	min-height:370px;
 }
 </style>
 
@@ -134,87 +134,84 @@ height:350px;
 		<?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
 
-      <?php
+			<?php
 			echo
 			'<div class="">
 			<img class="img" src="'.$results['events_image'].'"  />
 			'
 			;
 			?>
-			<div class="clearfix"> </div>
-			</div>
-			<br><br>
+
+		</div>
+	</div>
+	<div class="clearfix"> </div>
+
 </div>
 
 <div class="container">
-			<!-- events -->
-			<div class="events">
-				<h3>Events</h3>
-				<!---728x90--->
-				<?php echo  $results['description']; ?>
-					<!---728x90--->
-					<div class="clearfix"> </div>
-				</div>
+	<!-- events -->
+	<div style="margin-bottom:20px;" class="events">
+		<h3 style="margin-top:10px;">Events</h3>
+		<!---728x90--->
+		<?php echo  $results['description']; ?>
+		<!---728x90--->
 
-			</div>
+	</div>
+</div>
+<div class="clearfix"> </div>
+<!-- //events -->
+<!-- //banner -->
+<!-- newsletter -->
+<?php include('newsletter.php');?>
+<!-- //newsletter -->
+<!-- footer -->
+<?php include('footer.php');?>
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+	$(".dropdown").hover(
+		function() {
+			$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+			$(this).toggleClass('open');
+		},
+		function() {
+			$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+			$(this).toggleClass('open');
+		}
+	);
+});
+</script>
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+$(document).ready(function() {
+	/*
+	var defaults = {
+	containerID: 'toTop', // fading element id
+	containerHoverID: 'toTopHover', // fading element hover id
+	scrollSpeed: 1200,
+	easingType: 'linear'
+};
+*/
 
-			<div class="clearfix"> </div>
-			</div>
-			<!-- //events -->
-			<div class="clearfix"></div>
+$().UItoTop({ easingType: 'easeOutQuart' });
 
-			<!-- //banner -->
-			<!-- newsletter -->
-			<?php include('newsletter.php');?>
-			<!-- //newsletter -->
-			<!-- footer -->
-			<?php include('footer.php');?>
-			<!-- //footer -->
-			<!-- Bootstrap Core JavaScript -->
-			<script src="js/bootstrap.min.js"></script>
-			<script>
-			$(document).ready(function(){
-				$(".dropdown").hover(
-					function() {
-						$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-						$(this).toggleClass('open');
-					},
-					function() {
-						$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-						$(this).toggleClass('open');
-					}
-				);
-			});
-			</script>
-			<!-- here stars scrolling icon -->
-			<script type="text/javascript">
-			$(document).ready(function() {
-				/*
-				var defaults = {
-					containerID: 'toTop', // fading element id
-					containerHoverID: 'toTopHover', // fading element hover id
-					scrollSpeed: 1200,
-					easingType: 'linear'
-				};
-				*/
+});
+</script>
+<!-- //here ends scrolling icon -->
 
-				$().UItoTop({ easingType: 'easeOutQuart' });
+<script>
+// Mini Cart
+paypal.minicart.render({
+	action: '#'
+});
 
-			});
-			</script>
-			<!-- //here ends scrolling icon -->
-			
-			<script>
-			// Mini Cart
-			paypal.minicart.render({
-				action: '#'
-			});
+if (~window.location.search.indexOf('reset=true')) {
+	paypal.minicart.reset();
+}
+</script>
+</body>
 
-			if (~window.location.search.indexOf('reset=true')) {
-				paypal.minicart.reset();
-			}
-			</script>
-			</body>
-
-			<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/events.php  [XR&CO'2014], Thu, 04 May 2017 08:01:06 GMT -->
-			</html>
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/events.php  [XR&CO'2014], Thu, 04 May 2017 08:01:06 GMT -->
+</html>

@@ -29,7 +29,7 @@ if(isset($_POST['confirm'])){
   $results=$records->fetch(PDO::FETCH_ASSOC);
 
   if($results['coupon_enddate'] < $today)
-    echo "<script>alert('Coupon Invalid!');</script>";
+  echo "<script>alert('Coupon Invalid!');</script>";
   else{
     $order_no=mt_rand(100000, 999999);
     $order_status="Pending";
@@ -178,7 +178,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
       </div>
 
-          <input type="hidden" name="merchant_id" value="13007" class="form-control col-md-7 col-xs-12">
+      <input type="hidden" name="merchant_id" value="13007" class="form-control col-md-7 col-xs-12">
 
       <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Shipping Address<span class="required">*</span>

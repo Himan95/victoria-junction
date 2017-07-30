@@ -128,37 +128,47 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				$records12 = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 1');
 				$records12->execute();
 				$result=$records12->fetch(PDO::FETCH_ASSOC);
-				 ?>
+				?>
 				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 			</div>
-			<!---728x90--->
-			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
-				<h3>Pastries</h3>
-				<br>
-				<?php
-				$count=0;
-				$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Pastries" AND prod_quantity>0');
-				$records->execute();
-				$results=$records->fetch(PDO::FETCH_ASSOC);
-				if(!$results['prod_name'])
-				{
-					echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
-				}
-				else{
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<!---728x90--->
+	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+		<h3 style="margin-top:10px;">Pastries</h3>
+		<div style="margin-left:20px;margin-right:20px;" class="w3ls_w3l_banner_nav_right_grid1">
+			<?php
+			$count=0;
+			$records = $connection->prepare('SELECT * FROM products WHERE prod_type="Pastries" AND prod_quantity>0');
+			$records->execute();
+			$results=$records->fetch(PDO::FETCH_ASSOC);
+			if(!$results['prod_name'])
+			{
+				echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
+			}
+			else{
 				do{
 					$count=$count+1;
 					echo '
-					<div class="col-md-3 w3ls_w3l_banner_left">
+					<div style="margin-bottom:20px;" class="col-md-3 w3ls_w3l_banner_left">
 					<div class="hover14 column">
 					<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-					<div class="agile_top_brand_left_grid_pos">
-					<img src="images/offer.png" alt=" " class="img-responsive" />
-					</div>
+
 					<div class="agile_top_brand_left_grid1">
 					<figure>
 					<div class="snipcart-item block">
 					<div class="snipcart-thumb">
-					<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
+					<a href="single.php?product='.$results['prod_id'].'">';
+					if($results['prod_image'])
+					echo '<img src="'.$results['prod_image'].'" alt=" " class="img-responsive bada-image" /></a>';
+					else {
+						echo '<img src="images/empty-image.png" alt=" " class="img-responsive bada-image" /></a>';
+					}
+
+
+					echo '
 					<p>'.$results['prod_name'].'</p>
 					<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
 					<div>
@@ -195,66 +205,63 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			}?>
 
 
-				<div class="clearfix"> </div>
-				</div>
-				</div>
-				</div>
-				<div class="clearfix"></div>
-				</div>
-
-			<!---728x90--->
-			<!-- //banner -->
-			<!-- newsletter -->
-			<?php include('newsletter.php');?>
-			<!-- //newsletter -->
-			<!-- footer -->
-			<?php include('footer.php');?>
-			<!-- //footer -->
-			<!-- Bootstrap Core JavaScript -->
-			<script src="js/bootstrap.min.js"></script>
-			<script>
-			$(document).ready(function(){
-				$(".dropdown").hover(
-					function() {
-						$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-						$(this).toggleClass('open');
-					},
-					function() {
-						$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-						$(this).toggleClass('open');
-					}
-				);
-			});
-			</script>
-			<!-- here stars scrolling icon -->
-			<script type="text/javascript">
-			$(document).ready(function() {
-				/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-			};
-			*/
-
-			$().UItoTop({ easingType: 'easeOutQuart' });
-
-		});
-		</script>
-		<!-- //here ends scrolling icon -->
-
-		<script>
-		// Mini Cart
-		paypal.minicart.render({
-			action: '#'
-		});
-
-		if (~window.location.search.indexOf('reset=true')) {
-			paypal.minicart.reset();
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!---728x90--->
+<!-- //banner -->
+<!-- newsletter -->
+<?php include('newsletter.php');?>
+<!-- //newsletter -->
+<!-- footer -->
+<?php include('footer.php');?>
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+	$(".dropdown").hover(
+		function() {
+			$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+			$(this).toggleClass('open');
+		},
+		function() {
+			$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+			$(this).toggleClass('open');
 		}
-		</script>
-	</body>
+	);
+});
+</script>
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+$(document).ready(function() {
+	/*
+	var defaults = {
+	containerID: 'toTop', // fading element id
+	containerHoverID: 'toTopHover', // fading element hover id
+	scrollSpeed: 1200,
+	easingType: 'linear'
+};
+*/
 
-	<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:02:05 GMT -->
-	</html>
+$().UItoTop({ easingType: 'easeOutQuart' });
+
+});
+</script>
+<!-- //here ends scrolling icon -->
+
+<script>
+// Mini Cart
+paypal.minicart.render({
+	action: '#'
+});
+
+if (~window.location.search.indexOf('reset=true')) {
+	paypal.minicart.reset();
+}
+</script>
+</body>
+
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:02:05 GMT -->
+</html>

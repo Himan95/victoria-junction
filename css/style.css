@@ -4,6 +4,24 @@
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+.newsletter-top-serv-btm{
+  padding:1em 0;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.w3ls_w3l_banner_nav_right_grid_sub{
+  padding:1em 0;
+}
+.events,.w3_login{
+  padding: 0px;
+}
+.top-brands{
+  padding: 2em;
+}
+.privacy{
+  padding: 1em;
+}
 html, body{
     font-size: 100%;
 	font-family: 'Open Sans', sans-serif;
@@ -145,7 +163,7 @@ ul.dropdown-menu.drp-mnu {
     left:auto;
 }
 ul.dropdown-menu.drp-mnu li:first-child{
-	margin-bottom: .5em;
+	margin-bottom: .1em;
 }
 ul.dropdown-menu.drp-mnu li a {
     color: #999;
@@ -411,9 +429,10 @@ ul.dropdown-menu.drp-mnu li a i {
 }
 /*-- //banner --*/
 /*-- banner_bottom --*/
-.banner_bottom,.top-brands,.fresh-vegetables,.w3l_banner_nav_right_banner3_btm,.testimonials,.team,.newsletter-top-serv-btm,.w3ls_w3l_banner_nav_right_grid_sub{
+.banner_bottom,.fresh-vegetables,.w3l_banner_nav_right_banner3_btm,.testimonials,.team{
 	padding:5em 0 !important;
 }
+
 .wthree_banner_bottom_left {
     padding-left: 0;
 }
@@ -531,7 +550,7 @@ ul.dropdown-menu.drp-mnu li a i {
 }
 .agile_top_brand_left_grid1 p{
 	color:#212121;
-	margin:1.5em 0 1em;
+	margin:0.5em 0 0.5em;
 	line-height:1.5em;
 	text-transform:capitalize;
 	font-size:14px;
@@ -583,7 +602,7 @@ ul.dropdown-menu.drp-mnu li a i {
     padding: .5em 2.5em .5em 1em;
     border: 1px solid #84c639;
     margin: .35em 0 0;
-    background: url(../images/cart.png) no-repeat 116px 9px;
+    background: url(../images/cart.png);
 }
 #PPMiniCart form {
     width: 590px !important;
@@ -637,7 +656,7 @@ ul.dropdown-menu.drp-mnu li a i {
 /*-- //cart --*/
 .column div.agile_top_brand_left_grid {
 	position: relative;
-	margin:0;
+	margin-bottom:5px;
 }
 .agile_top_brand_left_grid figure {
 	margin: 0;
@@ -681,9 +700,9 @@ ul.dropdown-menu.drp-mnu li a i {
 /*-- //top-brands --*/
 /*-- top-products --*/
 .w3l_fresh_vegetables_grids{
-	margin:3em 0 0;
+	margin:2em 0 0;
 	padding:1em 0em 1em 1em;
-	background:#f5f5f5;
+
 }
 .w3l_fresh_vegetables_grid{
 	padding-left:0;
@@ -747,22 +766,24 @@ ul.dropdown-menu.drp-mnu li a i {
     padding: 1.1em 0 0;
     line-height: 1.3em;
 }
+
 .agileinfo_breaking_news {
-    float: right;
+    float: left;
     width: 10%;
+    text-align: left;
 }
 .agileinfo_marquee {
     width: 90%;
     float: left;
     padding: .8em 0 0px;
-	text-align:right;
+	text-align:left;
 }
-.agileinfo_breaking_news span{
+.agileinfo_breaking_news{
     background: url(../images/img-sp.png) no-repeat 1px -116px;
     display: block;
     width: 50px;
     height: 50px;
-    margin: 0 auto;
+
 }
 .w3l_fresh_vegetables_grid_right{
 	padding:0;
@@ -778,11 +799,12 @@ ul.dropdown-menu.drp-mnu li a i {
 }
 .agileinfo_marquee h4 span {
     color: #FA1818;
+
 }
 /*-- //top-products --*/
 /*-- newsletter --*/
 .newsletter{
-	padding:3em 0;
+	padding:1.5em 0;
 	background:#FA1818;
 }
 .w3agile_newsletter_left{
@@ -829,7 +851,7 @@ ul.dropdown-menu.drp-mnu li a i {
 /*-- //newsletter --*/
 /*-- footer --*/
 .footer{
-	padding:4em 0;
+	padding:1em 0;
 	background:#212121;
 }
 .w3_footer_grid h3{
@@ -930,8 +952,8 @@ ul.dropdown-menu.drp-mnu li a i {
 	color:#999;
 }
 .wthree_footer_copy{
-	margin: 4em 0 0;
-    padding: 3em 0 0;
+	margin: 2em 0 0;
+    padding: 1em 0 0;
     text-align: center;
     border-top: 1px solid #3A3A3A;
 }
@@ -976,7 +998,7 @@ ul.dropdown-menu.drp-mnu li a i {
 /*-- //to-top --*/
 /*-- products-breadcrumb --*/
 .products-breadcrumb{
-	padding:1em 0;
+	padding:0.5em 0;
 	background:#84C639;
 }
 .products-breadcrumb ul li{
@@ -1001,7 +1023,7 @@ ul.dropdown-menu.drp-mnu li a i {
 /*-- //products-breadcrumb --*/
 /*-- products --*/
 .w3l_banner_nav_right_banner3,.w3l_banner_nav_right_banner4,.w3l_banner_nav_right_banner5,.w3l_banner_nav_right_banner6,.w3l_banner_nav_right_banner7,.w3l_banner_nav_right_banner8,.w3l_banner_nav_right_banner9,.w3l_banner_nav_right_banner10{
-	min-height:300px;
+	min-height:370px;
 	padding-top: 7em;
 }
 .w3l_banner_nav_right_banner3{
@@ -1550,7 +1572,7 @@ h2.typoh2{
 		display: none;
 	}
 }
-.typo,.privacy,.faq,.services,.events,.mail,.agileinfo_single,.w3_login{
+.typo,.faq,.services,.mail,.agileinfo_single{
     padding: 5em;
 }
 /*--//Typography --*/
@@ -1762,7 +1784,7 @@ a.pa_italic:focus {
 	padding-bottom:2em;
 }
 .services-bottom{
-	background:url(../images/2.jpg) no-repeat 0px 0px;
+	background:url(../images/counter.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -1770,6 +1792,7 @@ a.pa_italic:focus {
 	-ms-background-size:cover;
 	min-height:300px;
 	padding:3em 0;
+  margin-top: 15px;
 }
 .about_counter_left {
     text-align: center;
@@ -1969,7 +1992,7 @@ ul.wmuSliderPagination {
 	margin:1em 0 0;
 }
 .w3agile_event_grids:nth-child(2){
-	margin:3em 0 0;
+	margin:1em 0 0;
 }
 .w3agile_event_grid_left {
     border-bottom: 1px solid #D2D2D2;
@@ -2058,7 +2081,7 @@ ul.wmuSliderPagination {
 	border-left:1px solid #999;
 }
 .agileinfo_mail_grids {
-    margin: 3em 0 0;
+    margin: 0.2em 0 0;
 }
 .agileinfo_mail_grid_left ul:nth-child(2){
 	margin:3em 0;
@@ -2381,7 +2404,7 @@ ul.wmuSliderPagination {
 	}
 	.w3l_banner_nav_right_banner1, .w3l_banner_nav_right_banner, .w3l_banner_nav_right_banner2 {
 		padding: 7em 13em 0 0;
-		min-height: 375px;
+		min-height: 370px;
 	}
 	.more {
 		margin-left: 51em;
@@ -2534,7 +2557,7 @@ ul.wmuSliderPagination {
 	.top-brands h3, .fresh-vegetables h3, .mail h3, .testimonials h3, .w3_login h3, .w3ls_w3l_banner_nav_right_grid h3, h3.title, .faq h3, .services h3, .about h3, .team h3, .events h3 {
 		font-size: 2.3em;
 	}
-	.banner_bottom, .top-brands, .fresh-vegetables, .w3l_banner_nav_right_banner3_btm, .testimonials, .team, .newsletter-top-serv-btm, .w3ls_w3l_banner_nav_right_grid_sub {
+	.banner_bottom, .top-brands, .fresh-vegetables, .w3l_banner_nav_right_banner3_btm, .testimonials, .team, .newsletter-top-serv-btm {
 		padding: 4em 0 !important;
 	}
 	.agile_footer_grids_w3_footer {
@@ -2595,9 +2618,12 @@ ul.wmuSliderPagination {
 	.w3l_banner_nav_right_banner_pet {
 		padding: 3em 0 0 3em !important;
 	}
-	.typo, .privacy, .faq, .services, .events, .mail, .agileinfo_single, .w3_login {
+	.typo, .privacy, .faq, .services, .events,  .agileinfo_single, .w3_login {
 		padding: 4em 3em;
 	}
+  .mail{
+  padding: 2em 3em;
+  }
 	.w3agile_event_grid_right h4 {
 		font-size: 1.1em;
 		line-height: 1.5em;
@@ -2753,10 +2779,10 @@ ul.wmuSliderPagination {
 		background: #fff;
 	}
 	.w3l_fresh_vegetables_grid {
-		padding: 1em;
+		padding: 1.1em;
 		width: 50%;
 		margin: 0 auto;
-		border: 10px solid #f5f5f5;
+
 	}
 	.w3l_fresh_vegetables_grid:nth-child(2) {
 		margin: 2em auto;
@@ -2874,7 +2900,7 @@ ul.wmuSliderPagination {
 		font-size: 1.5em;
 	}
 	p.animi {
-		margin: 3em 0 0;
+		margin: 0.1em 0 0;
 	}
 	.agile_about_grids {
 		margin: 2em 0 0;
@@ -3067,7 +3093,7 @@ ul.wmuSliderPagination {
 		padding: 10px 40px;
 		font-size: 14px;
 	}
-	.banner_bottom, .top-brands, .fresh-vegetables, .w3l_banner_nav_right_banner3_btm, .testimonials, .team, .newsletter-top-serv-btm, .w3ls_w3l_banner_nav_right_grid_sub {
+	.banner_bottom, .top-brands, .fresh-vegetables, .w3l_banner_nav_right_banner3_btm, .testimonials, .team, .newsletter-top-serv-btm {
 		padding: 3em 0 !important;
 	}
 	.agileinfo_single_left {
@@ -3255,7 +3281,7 @@ ul.wmuSliderPagination {
 	}
 	.wthree_footer_copy {
 		margin: 3em 0 0;
-		padding: 2.5em 0 0;
+		padding: 2em 0 0;
 	}
 	#PPMiniCart {
 		left: 36% !important;
@@ -3498,7 +3524,7 @@ ul.wmuSliderPagination {
 	.w3l_fresh_vegetables_grid {
 		width: 90%;
 	}
-	.agileinfo_breaking_news span {
+	.agileinfo_breaking_news {
 		background: url(../images/img-sp.png) no-repeat 1px -103px;
 		height: 65px;
 	}
@@ -3536,7 +3562,7 @@ ul.wmuSliderPagination {
 	}
 	.wthree_footer_copy {
 		margin: 2em 0 0;
-		padding: 1.5em 0 0;
+		padding: 1em 0 0;
 	}
 	.w3l_banner_nav_right_banner3 h3, .w3l_banner_nav_right_banner4 h3, .w3l_banner_nav_right_banner5 h3, .w3l_banner_nav_right_banner6 h3, .w3l_banner_nav_right_banner7 h3, .w3l_banner_nav_right_banner8 h3, .w3l_banner_nav_right_banner9 h3, .w3l_banner_nav_right_banner10 h3 {
 		font-size: 1.2em;
@@ -4274,13 +4300,21 @@ ul.wmuSliderPagination {
 		font-size: 13px;
 	}
 }
-.snipcart-item:hover .text{
-	height: 200px;
-  text-align: justify;
-	opacity:1;
-	transition:  height 1s ease-in ;
-}
 .snipcart-item .text{
 	height: 0;
 	opacity:0;
+}
+.cart-img{
+  margin-top:10px;
+  width:30px;
+  height:30px;
+  padding: 2px;
+}
+.cart-img:hover{
+  width:32px;
+  height:32px;
+}
+.bada-image{
+  width:90%;
+  height:180px;
 }

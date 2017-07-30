@@ -18,59 +18,59 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/  [XR&CO'2014], Thu, 04 May 2017 07:59:30 GMT -->
 <head>
-<title><?php echo $results1['web_name']; ?> | Home </title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Victoria Junction, Siliguri - Custom Cakes fro Every Occassion, Gluten, Dairy & Egg-Free Options Available
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- font-awesome icons -->
-<link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //font-awesome icons -->
-<!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
+	<title><?php echo $results1['web_name']; ?> | Home </title>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Victoria Junction, Siliguri - Custom Cakes fro Every Occassion, Gluten, Dairy & Egg-Free Options Available
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //for-mobile-apps -->
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- font-awesome icons -->
+	<link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- //font-awesome icons -->
+	<!-- js -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<!-- //js -->
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){
 			event.preventDefault();
 			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 		});
 	});
-</script>
-<!-- start-smoth-scrolling -->
+	</script>
+	<!-- start-smoth-scrolling -->
 </head>
 
 <body>
 
 
-<!-- header -->
-    <?php include('header.php'); ?>
+	<!-- header -->
+	<?php include('header.php'); ?>
 	<!-- script-for sticky-nav -->
 	<script>
 	$(document).ready(function() {
-		 var navoffeset=$(".agileits_header").offset().top;
-		 $(window).scroll(function(){
+		var navoffeset=$(".agileits_header").offset().top;
+		$(window).scroll(function(){
 			var scrollpos=$(window).scrollTop();
 			if(scrollpos >=navoffeset){
 				$(".agileits_header").addClass("fixed");
 			}else{
 				$(".agileits_header").removeClass("fixed");
 			}
-		 });
+		});
 	});
 	</script>
-<!-- //script-for sticky-nav -->
+	<!-- //script-for sticky-nav -->
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
@@ -93,11 +93,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<!-- //header -->
-<!-- banner -->
+	<!-- //header -->
+	<!-- banner -->
 	<div class="banner">
 		<?php include('left-nav-bar.php'); ?>
-        <div class="w3l_banner_nav_right">
+		<div class="w3l_banner_nav_right">
 			<section class="slider">
 				<div class="flexslider">
 					<ul class="slides">
@@ -120,71 +120,71 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</section>
 			<!-- flexSlider -->
-				<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
-				<script defer src="js/jquery.flexslider.js"></script>
-				<script type="text/javascript">
-				$(window).load(function(){
-				  $('.flexslider').flexslider({
+			<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
+			<script defer src="js/jquery.flexslider.js"></script>
+			<script type="text/javascript">
+			$(window).load(function(){
+				$('.flexslider').flexslider({
 					animation: "slide",
 					start: function(slider){
-					  $('body').removeClass('loading');
+						$('body').removeClass('loading');
 					}
-				  });
 				});
-			  </script>
+			});
+			</script>
 			<!-- //flexSlider -->
 		</div>
 		<div class="clearfix"></div>
 	</div>
-<!---728x90--->
-<!-- banner -->
+	<!---728x90--->
+	<!-- banner -->
 	<?php include('advertise-banners.php'); ?>
-    <!---728x90--->
-<!-- top-brands -->
+	<!---728x90--->
+	<!-- top-brands -->
 	<?php include('hot-offers.php'); ?>
-    <!-- //top-brands -->
-<!-- fresh-vegetables -->
+	<!-- //top-brands -->
+	<!-- fresh-vegetables -->
 	<?php include('top-products.php'); ?>
-    <!-- //fresh-vegetables -->
-<!-- newsletter -->
+	<!-- //fresh-vegetables -->
+	<!-- newsletter -->
 	<?php include('newsletter.php'); ?>
-<!-- //newsletter -->
-<!-- footer -->
+	<!-- //newsletter -->
+	<!-- footer -->
 	<?php include('footer.php'); ?>
-    <!-- //footer -->
+	<!-- //footer -->
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-<script>
-$(document).ready(function(){
-    $(".dropdown").hover(
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-            $(this).toggleClass('open');
-        },
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-            $(this).toggleClass('open');
-        }
-    );
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$(".dropdown").hover(
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+				$(this).toggleClass('open');
+			},
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+				$(this).toggleClass('open');
+			}
+		);
+	});
+	</script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+	$(document).ready(function() {
+		/*
+		var defaults = {
+		containerID: 'toTop', // fading element id
+		containerHoverID: 'toTopHover', // fading element hover id
+		scrollSpeed: 1200,
+		easingType: 'linear'
+	};
+	*/
+
+	$().UItoTop({ easingType: 'easeOutQuart' });
+
 });
 </script>
-<!-- here stars scrolling icon -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-				};
-			*/
-
-			$().UItoTop({ easingType: 'easeOutQuart' });
-
-			});
-	</script>
 <!-- //here ends scrolling icon -->
 
 

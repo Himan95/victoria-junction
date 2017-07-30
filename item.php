@@ -1,8 +1,8 @@
 <?php
 
 /**
- *
- */
+*
+*/
 class Item
 {
 
@@ -10,9 +10,9 @@ class Item
   var $name;
   var $price;
   var $quantity;
-  
+
 }
 
 
 
- ?>
+?>

@@ -138,86 +138,95 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				?>
 				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 			</div>
-			<!---728x90--->
-			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
-				<h3>Latest Offers</h3>
-				<div class="w3ls_w3l_banner_nav_right_grid1">
-
-					<?php
-					$count=0;
-					$total=0;
-					$records = $connection->prepare('SELECT * FROM hot_offers INNER JOIN products ON hot_offers.offer_id=products.prod_id');
-					$records->execute();
-					$results=$records->fetch(PDO::FETCH_ASSOC);
-					if(!$results['prod_name'])
-					{
-						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
-					}
-					else{
-					do{
-						$count=$count+1;
-
-						echo '
-						<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-            <div class="agile_top_brand_left_grid_pos">
-        		<img src="images/offer.png" alt=" " class="img-responsive" />
-        		</div>
-						<div class="agile_top_brand_left_grid1">
-						<figure>
-						<div class="snipcart-item block">
-						<div class="snipcart-thumb">
-						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-						<p>'.$results['prod_name'].'</p>
-						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_price'].'</span></h4>
-
-						<div class="text">
-							<p>'.$results['prod_desc'].'</p>
-						</div>
-
-						<div class="snipcart-details">
-						<form action="cart.php" method="GET">
-						<fieldset>
-						<input type="hidden" name="cmd" value="_cart" />
-						<input type="hidden" name="add" value="1" />
-						<input type="hidden" name="business" value=" " />
-						<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
-						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-						<input type="hidden" name="amount" value="'.$results['offer_price'].'" />
-						<input type="hidden" name="discount_amount" value="'.$results['offer_discount'].'" />
-						<input type="hidden" name="currency_code" value="INR" />
-						<input type="hidden" name="return" value=" " />
-						<input type="hidden" name="cancel_return" value=" " />
-						<input type="submit" name="submit" value="Add to cart" class="button" />
-						</fieldset>
-						</form>
-						</div>
-						</div>
-						</figure>
-						</div>
-						</div>
-						</div>
-						</div>
-						';
-						if($count % 4 == 0)
-						echo '<div class="clearfix"> </div><br> ';
-
-
-
-					}
-					while($results=$records->fetch(PDO::FETCH_ASSOC));
-				}
-
-					?>
-
-
-					<div class="clearfix"> </div>
-				</div>
-			</div>
 		</div>
 		<div class="clearfix"></div>
 	</div>
+
+	<!---728x90--->
+	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+		<h3 style="margin-top:12px;">Latest Offers</h3>
+		<div class="w3ls_w3l_banner_nav_right_grid1">
+
+			<?php
+			$count=0;
+			$total=0;
+			$records = $connection->prepare('SELECT * FROM hot_offers INNER JOIN products ON hot_offers.offer_id=products.prod_id');
+			$records->execute();
+			$results=$records->fetch(PDO::FETCH_ASSOC);
+			if(!$results['prod_name'])
+			{
+				echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
+			}
+			else{
+				do{
+					$count=$count+1;
+
+					echo '
+					<div style="margin-bottom:20px;" class="col-md-3 w3ls_w3l_banner_left">
+					<div class="hover14 column">
+					<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+					<div class="agile_top_brand_left_grid_pos">
+					<img src="images/offer.png" alt=" " class="img-responsive" />
+					</div>
+					<div class="agile_top_brand_left_grid1">
+					<figure>
+					<div class="snipcart-item block">
+					<div class="snipcart-thumb">
+					<a href="single.php?product='.$results['prod_id'].'">';
+					if($results['prod_image'])
+					echo '<img src="'.$results['prod_image'].'" alt=" " class="img-responsive bada-image" /></a>';
+					else {
+						echo '<img src="images/empty-image.png" alt=" " class="img-responsive bada-image" /></a>';
+					}
+
+
+					echo '
+					<p>'.$results['prod_name'].'</p>
+					<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_price'].'</span></h4>
+
+					<div class="text">
+					<p>'.$results['prod_desc'].'</p>
+					</div>
+
+					<div class="snipcart-details">
+					<form action="cart.php" method="GET">
+					<fieldset>
+					<input type="hidden" name="cmd" value="_cart" />
+					<input type="hidden" name="add" value="1" />
+					<input type="hidden" name="business" value=" " />
+					<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
+					<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+					<input type="hidden" name="amount" value="'.$results['offer_price'].'" />
+					<input type="hidden" name="discount_amount" value="'.$results['offer_discount'].'" />
+					<input type="hidden" name="currency_code" value="INR" />
+					<input type="hidden" name="return" value=" " />
+					<input type="hidden" name="cancel_return" value=" " />
+					<input type="submit" name="submit" value="Add to cart" class="button" />
+					</fieldset>
+					</form>
+					</div>
+					</div>
+					</figure>
+					</div>
+					</div>
+					</div>
+					</div>
+					';
+					if($count % 4 == 0)
+					echo '<div class="clearfix"> </div><br> ';
+
+
+
+				}
+				while($results=$records->fetch(PDO::FETCH_ASSOC));
+			}
+
+			?>
+
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
 <!-- Coupons -->
 <center>
 
@@ -262,42 +271,42 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 </center>
-	<!---Coupons--->
-	<!-- newsletter -->
-	<?php include('newsletter.php');?>
-	<!-- //newsletter -->
-	<!-- footer -->
-	<?php include('footer.php');?>
-	<!-- //footer -->
-	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
-	<script>
-	$(document).ready(function(){
-		$(".dropdown").hover(
-			function() {
-				$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-				$(this).toggleClass('open');
-			},
-			function() {
-				$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-				$(this).toggleClass('open');
-			}
-		);
-	});
-	</script>
-	<!-- here stars scrolling icon -->
-	<script type="text/javascript">
-	$(document).ready(function() {
-		/*
-		var defaults = {
-		containerID: 'toTop', // fading element id
-		containerHoverID: 'toTopHover', // fading element hover id
-		scrollSpeed: 1200,
-		easingType: 'linear'
-	};
-	*/
+<!---Coupons--->
+<!-- newsletter -->
+<?php include('newsletter.php');?>
+<!-- //newsletter -->
+<!-- footer -->
+<?php include('footer.php');?>
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+	$(".dropdown").hover(
+		function() {
+			$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+			$(this).toggleClass('open');
+		},
+		function() {
+			$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+			$(this).toggleClass('open');
+		}
+	);
+});
+</script>
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+$(document).ready(function() {
+	/*
+	var defaults = {
+	containerID: 'toTop', // fading element id
+	containerHoverID: 'toTopHover', // fading element hover id
+	scrollSpeed: 1200,
+	easingType: 'linear'
+};
+*/
 
-	$().UItoTop({ easingType: 'easeOutQuart' });
+$().UItoTop({ easingType: 'easeOutQuart' });
 
 });
 </script>

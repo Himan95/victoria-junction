@@ -82,14 +82,14 @@ if(isset($_GET['index'])){
   <script type="text/javascript" src="js/move-top.js"></script>
   <script type="text/javascript" src="js/easing.js"></script>
   <script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-		});
-	});
-	</script>
-	<!-- start-smoth-scrolling -->
+  jQuery(document).ready(function($) {
+    $(".scroll").click(function(event){
+      event.preventDefault();
+      $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+    });
+  });
+  </script>
+  <!-- start-smoth-scrolling -->
 
 </head>
 <body>
@@ -157,7 +157,7 @@ if(isset($_GET['index'])){
     </div>
   </div>
 
-  <div style="margin-top:70px;" class="container">
+  <div style="margin-top:12px;" class="container">
     <h1 style="text-align:center;margin-top:20px;">Shopping Cart</h1>
     <table id="datatable-responsive" style="margin-top:20px;" class="table table-striped table-bordered dt-responsive nowrap" align="left" border="1"  cellspacing="2" cellpadding="2" >
       <tr>
@@ -187,7 +187,7 @@ if(isset($_GET['index'])){
           <?php $index++; } ?>
           <tr>
             <?php
-             $_SESSION['tot_amount']=$s;
+            $_SESSION['tot_amount']=$s;
             if($s==0)
             {
               echo '<td colspan="5" align="center">No Products Added</td></tr>
@@ -197,40 +197,40 @@ if(isset($_GET['index'])){
             }
             else
             {
-             ?>
-            <td colspan="4" align="right">TOTAL:</td>
-            <td align="left"><?php echo $s; ?></td>
-            <?php } ?>
-          </tr>
-        </table>
-        <div class="ln_solid"></div>
-        <div class="form-group">
-          <div style="margin-bottom:20px;" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-        <center><a style="margin-right:20px;" class="btn btn-warning" href="index.php">Shop More</a>
-        <a class="btn btn-success" href="NON_SEAMLESS_KIT/dataFrom.php">Confirm</a></center>
-      </div>
-        </div>
-        <div class="clearfix"></div>
-      </div>
+              ?>
+              <td colspan="4" align="right">TOTAL:</td>
+              <td align="left"><?php echo $s; ?></td>
+              <?php } ?>
+            </tr>
+          </table>
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div style="margin-bottom:20px;" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+              <center><a style="margin-right:20px;" class="btn btn-danger" href="index.php">Shop More</a>
+                <a class="btn btn-success" href="NON_SEAMLESS_KIT/dataFrom.php">Confirm</a></center>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
 
-      <script src="js/bootstrap.min.js"></script>
+          <script src="js/bootstrap.min.js"></script>
 
-      <script>
-      $(document).ready(function(){
-      	$(".dropdown").hover(
-      		function() {
-      			$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-      			$(this).toggleClass('open');
-      		},
-      		function() {
-      			$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-      			$(this).toggleClass('open');
-      		}
-      	);
-      });
-      </script>
-    </body>
-    <?php include('newsletter.php');?>
+          <script>
+          $(document).ready(function(){
+            $(".dropdown").hover(
+              function() {
+                $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+                $(this).toggleClass('open');
+              },
+              function() {
+                $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+                $(this).toggleClass('open');
+              }
+            );
+          });
+          </script>
+        </body>
+        <?php include('newsletter.php');?>
 
-    <?php include('footer.php');?>
-    </html>
+        <?php include('footer.php');?>
+        </html>

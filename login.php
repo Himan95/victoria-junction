@@ -154,196 +154,196 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</script>
 	<script async type='text/javascript' src='../../../../../../cdn.fancybar.net/ac/fancybar6a2f.js?zoneid=1502&amp;serve=C6ADVKE&amp;placement=w3layouts' id='_fancybar_js'></script>
 	<style type='text/css'>  .adsense_fixed{position:fixed;bottom:-8px;width:100%;z-index:999999999999;}.adsense_content{width:720px;margin:0 auto;position:relative;background:#fff;}.adsense_btn_close,.adsense_btn_info{font-size:12px;color:#fff;height:20px;width:20px;vertical-align:middle;text-align:center;background:#000;top:4px;left:4px;position:absolute;z-index:99999999;font-family:Georgia;cursor:pointer;line-height:18px}.adsense_btn_info{left:26px;font-family:Georgia;font-style:italic}.adsense_info_content{display:none;width:260px;height:340px;position:absolute;top:-360px;background:rgba(255,255,255,.9);font-size:14px;padding:20px;font-family:Arial;border-radius:4px;-webkit-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);-moz-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);box-shadow:0 1px 26px -2px rgba(0,0,0,.3)}.adsense_info_content:after{content:'';position:absolute;left:25px;top:100%;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #fff;clear:both}.adsense_info_content #adsense_h3{color:#000;margin:0;font-size:18px!important;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_info_content .adsense_p{color:#888;font-size:13px!important;line-height:20px;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_fh5co-team{color:#000;font-style:italic;}</style>
-				<!-- header -->
-				<?php include('header.php'); ?>
-				<!--header-->
+	<!-- header -->
+	<?php include('header.php'); ?>
+	<!--header-->
 
-				<!-- script-for sticky-nav -->
+	<!-- script-for sticky-nav -->
+	<script>
+	$(document).ready(function() {
+		var navoffeset=$(".agileits_header").offset().top;
+		$(window).scroll(function(){
+			var scrollpos=$(window).scrollTop();
+			if(scrollpos >=navoffeset){
+				$(".agileits_header").addClass("fixed");
+			}else{
+				$(".agileits_header").removeClass("fixed");
+			}
+		});
+
+	});
+	</script>
+	<!-- //script-for sticky-nav -->
+	<div class="logo_products">
+		<div class="container">
+			<div class="w3ls_logo_products_left">
+				<h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="special_items">
+					<li><a href="events.php">Events</a><i>/</i></li>
+					<li><a href="about.php">About Us</a><i>/</i></li>
+
+					<li><a href="services.php">Services</a></li>
+				</ul>
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="phone_email">
+					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- //header -->
+	<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
+				<li>Sign In & Sign Up</li>
+			</ul>
+		</div>
+	</div>
+	<!-- //products-breadcrumb -->
+	<!---728x90--->
+	<!-- banner -->
+	<div class="banner">
+		<?php include('left-nav-bar.php'); ?>
+		<div class="w3l_banner_nav_right">
+			<!-- login -->
+			<div class="w3_login">
+				<h3 style="position:relative; bottom:-20px; margin-top:10px;">Sign In & Sign Up</h3>
+				<!---728x90--->
+				<div class="w3_login_module">
+					<div class="module form-module">
+						<div class="toggle"><i class="fa fa-times fa-pencil"></i>
+							<div class="tooltip">Click Me</div>
+						</div>
+						<div class="form">
+							<h2>Login to your account</h2>
+							<form action="login.php" method="post">
+								<input type="text" name="username" autocomplete="off" placeholder="Username" required=" ">
+								<input type="password" name="password" placeholder="Password" required=" ">
+								<p><font color="red" style="font-style:italic"><?php if($errMsg!=null){echo $errMsg;} ?></font> </p>
+								<p><font color="green" style="font-style:italic"><?php if($success!=null){echo $success;} ?></font> </p>
+								<input type="submit" name="login" value="Login">
+							</form>
+						</div>
+						<div class="form">
+							<h2>Create an account</h2>
+							<form action="login.php" method="post">
+								<input type="text" name="username" placeholder="Username" autocomplete="off" required=" ">
+								<input type="password" name="password" placeholder="Password" minlength="6" required=" ">
+								<input type="email" name="email" placeholder="Email Address" autocomplete="off" required=" ">
+								<input type="text" name="phone" placeholder="Phone Number" minlength="10" autocomplete="off" maxlength="10" required=" ">
+								<input type="submit" name="register" value="Register">
+							</form>
+						</div>
+						<div class="cta"><a href="forgot_password.php">Forgot your password?</a></div>
+					</div>
+				</div>
 				<script>
-				$(document).ready(function() {
-					var navoffeset=$(".agileits_header").offset().top;
-					$(window).scroll(function(){
-						var scrollpos=$(window).scrollTop();
-						if(scrollpos >=navoffeset){
-							$(".agileits_header").addClass("fixed");
-						}else{
-							$(".agileits_header").removeClass("fixed");
-						}
-					});
-
+				$('.toggle').click(function(){
+					// Switches the Icon
+					$(this).children('i').toggleClass('fa-pencil');
+					// Switches the forms
+					$('.form').animate({
+						height: "toggle",
+						'padding-top': 'toggle',
+						'padding-bottom': 'toggle',
+						opacity: "toggle"
+					}, "slow");
 				});
 				</script>
-				<!-- //script-for sticky-nav -->
-				<div class="logo_products">
-					<div class="container">
-						<div class="w3ls_logo_products_left">
-							<h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
-						</div>
-						<div class="w3ls_logo_products_left1">
-							<ul class="special_items">
-								<li><a href="events.php">Events</a><i>/</i></li>
-								<li><a href="about.php">About Us</a><i>/</i></li>
-
-								<li><a href="services.php">Services</a></li>
-							</ul>
-						</div>
-						<div class="w3ls_logo_products_left1">
-							<ul class="phone_email">
-								<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
-								<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
-							</ul>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
+			</div>
+			<!-- //login -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<!-- //banner -->
+	<!---728x90--->
+	<!-- newsletter-top-serv-btm -->
+	<div class="newsletter-top-serv-btm">
+		<div class="container">
+			<div class="col-md-4 wthree_news_top_serv_btm_grid">
+				<div class="wthree_news_top_serv_btm_grid_icon">
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 				</div>
-				<!-- //header -->
-				<!-- products-breadcrumb -->
-				<div class="products-breadcrumb">
-					<div class="container">
-						<ul>
-							<li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-							<li>Sign In & Sign Up</li>
-						</ul>
-					</div>
+				<h3>Smooth Shopping Cart</h3>
+				<p>The easiest working shopping cart is here for you at Victoria Junction.</p>
+			</div>
+			<div class="col-md-4 wthree_news_top_serv_btm_grid">
+				<div class="wthree_news_top_serv_btm_grid_icon">
+					<i class="fa fa-bar-chart" aria-hidden="true"></i>
 				</div>
-				<!-- //products-breadcrumb -->
-				<!---728x90--->
-				<!-- banner -->
-				<div class="banner">
-<?php include('left-nav-bar.php'); ?>
-					<div class="w3l_banner_nav_right">
-						<!-- login -->
-						<div class="w3_login">
-							<h3>Sign In & Sign Up</h3>
-							<!---728x90--->
-							<div class="w3_login_module">
-								<div class="module form-module">
-									<div class="toggle"><i class="fa fa-times fa-pencil"></i>
-										<div class="tooltip">Click Me</div>
-									</div>
-									<div class="form">
-										<h2>Login to your account</h2>
-										<form action="login.php" method="post">
-											<input type="text" name="username" autocomplete="off" placeholder="Username" required=" ">
-											<input type="password" name="password" placeholder="Password" required=" ">
-											<p><font color="red" style="font-style:italic"><?php if($errMsg!=null){echo $errMsg;} ?></font> </p>
-											<p><font color="green" style="font-style:italic"><?php if($success!=null){echo $success;} ?></font> </p>
-											<input type="submit" name="login" value="Login">
-										</form>
-									</div>
-									<div class="form">
-										<h2>Create an account</h2>
-										<form action="login.php" method="post">
-											<input type="text" name="username" placeholder="Username" autocomplete="off" required=" ">
-											<input type="password" name="password" placeholder="Password" minlength="6" required=" ">
-											<input type="email" name="email" placeholder="Email Address" autocomplete="off" required=" ">
-											<input type="text" name="phone" placeholder="Phone Number" minlength="10" autocomplete="off" maxlength="10" required=" ">
-											<input type="submit" name="register" value="Register">
-										</form>
-									</div>
-									<div class="cta"><a href="forgot_password.php">Forgot your password?</a></div>
-								</div>
-							</div>
-							<script>
-							$('.toggle').click(function(){
-								// Switches the Icon
-								$(this).children('i').toggleClass('fa-pencil');
-								// Switches the forms
-								$('.form').animate({
-									height: "toggle",
-									'padding-top': 'toggle',
-									'padding-bottom': 'toggle',
-									opacity: "toggle"
-								}, "slow");
-							});
-							</script>
-						</div>
-						<!-- //login -->
-					</div>
-					<div class="clearfix"></div>
+				<h3>Track order history</h3>
+				<p>Track order history at the earliest via VJ plugins.</p>
+			</div>
+			<div class="col-md-4 wthree_news_top_serv_btm_grid">
+				<div class="wthree_news_top_serv_btm_grid_icon">
+					<i class="fa fa-truck" aria-hidden="true"></i>
 				</div>
-				<!-- //banner -->
-				<!---728x90--->
-				<!-- newsletter-top-serv-btm -->
-				<div class="newsletter-top-serv-btm">
-					<div class="container">
-						<div class="col-md-4 wthree_news_top_serv_btm_grid">
-							<div class="wthree_news_top_serv_btm_grid_icon">
-								<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-							</div>
-							<h3>Smooth Shopping Cart</h3>
-							<p>The easiest working shopping cart is here for you at Victoria Junction.</p>
-						</div>
-						<div class="col-md-4 wthree_news_top_serv_btm_grid">
-							<div class="wthree_news_top_serv_btm_grid_icon">
-								<i class="fa fa-bar-chart" aria-hidden="true"></i>
-							</div>
-							<h3>Track order history</h3>
-							<p>Track order history at the earliest via VJ plugins.</p>
-						</div>
-						<div class="col-md-4 wthree_news_top_serv_btm_grid">
-							<div class="wthree_news_top_serv_btm_grid_icon">
-								<i class="fa fa-truck" aria-hidden="true"></i>
-							</div>
-							<h3>On Time Delivery</h3>
-							<p>We please our customers with best services and on time delivery.</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-							</div>
-							<!-- //newsletter-top-serv-btm -->
-							<!-- newsletter -->
-							<?php include('newsletter.php'); ?>
-							<!-- //newsletter -->
-							<!-- footer -->
-							<?php include('footer.php'); ?>
+				<h3>On Time Delivery</h3>
+				<p>We please our customers with best services and on time delivery.</p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- //newsletter-top-serv-btm -->
+	<!-- newsletter -->
+	<?php include('newsletter.php'); ?>
+	<!-- //newsletter -->
+	<!-- footer -->
+	<?php include('footer.php'); ?>
 
-							<!-- //footer -->
-							<!-- Bootstrap Core JavaScript -->
-							<script src="js/bootstrap.min.js"></script>
-							<script>
-							$(document).ready(function(){
-								$(".dropdown").hover(
-									function() {
-										$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-										$(this).toggleClass('open');
-									},
-									function() {
-										$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-										$(this).toggleClass('open');
-									}
-								);
-							});
-							</script>
-							<!-- here stars scrolling icon -->
-							<script type="text/javascript">
-							$(document).ready(function() {
-								/*
-								var defaults = {
-								containerID: 'toTop', // fading element id
-								containerHoverID: 'toTopHover', // fading element hover id
-								scrollSpeed: 1200,
-								easingType: 'linear'
-							};
-							*/
+	<!-- //footer -->
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$(".dropdown").hover(
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+				$(this).toggleClass('open');
+			},
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+				$(this).toggleClass('open');
+			}
+		);
+	});
+	</script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+	$(document).ready(function() {
+		/*
+		var defaults = {
+		containerID: 'toTop', // fading element id
+		containerHoverID: 'toTopHover', // fading element hover id
+		scrollSpeed: 1200,
+		easingType: 'linear'
+	};
+	*/
 
-							$().UItoTop({ easingType: 'easeOutQuart' });
+	$().UItoTop({ easingType: 'easeOutQuart' });
 
-						});
-						</script>
-						<!-- //here ends scrolling icon -->
-						
-						<script>
-						// Mini Cart
-						paypal.minicart.render({
-							action: '#'
-						});
+});
+</script>
+<!-- //here ends scrolling icon -->
 
-						if (~window.location.search.indexOf('reset=true')) {
-							paypal.minicart.reset();
-						}
-						</script>
-					</body>
+<script>
+// Mini Cart
+paypal.minicart.render({
+	action: '#'
+});
 
-					<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/login.php  [XR&CO'2014], Thu, 04 May 2017 08:01:05 GMT -->
-					</html>
+if (~window.location.search.indexOf('reset=true')) {
+	paypal.minicart.reset();
+}
+</script>
+</body>
+
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/login.php  [XR&CO'2014], Thu, 04 May 2017 08:01:05 GMT -->
+</html>

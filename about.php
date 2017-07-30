@@ -60,8 +60,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <style>
 .img{
-width:auto;
-height:335px;
+	width:100%;
+	min-height:370px;
 }
 </style>
 <body>
@@ -145,62 +145,59 @@ height:335px;
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-
-
-	<br><br><br>
-
-	<iv class="container">
+	<div class="clearfix"></div>
+	<div class="">
 		<div style="text-align:justify" class="privacy about">
 			<h3>About Us</h3>
-			<br>
+
 			<p style="text-align:justify" class="animi"><?php echo  $results['description']; ?></p>
 			<!---728x90--->
-
 		</div>
 		<!-- //about -->
 
-	<div class="clearfix"></div>
-<!-- //banner -->
-<!---728x90--->
+		<div class="clearfix"></div>
+	</div>
+	<!-- //banner -->
+	<!---728x90--->
 
 
-<!-- newsletter -->
-<?php include ('newsletter.php'); ?>
-<!-- //newsletter -->
+	<!-- newsletter -->
+	<?php include ('newsletter.php'); ?>
+	<!-- //newsletter -->
 
-<!-- footer -->
-<?php include('footer.php');?>
-<!-- //footer -->
+	<!-- footer -->
+	<?php include('footer.php');?>
+	<!-- //footer -->
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-<script>
-$(document).ready(function(){
-	$(".dropdown").hover(
-		function() {
-			$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-			$(this).toggleClass('open');
-		},
-		function() {
-			$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-			$(this).toggleClass('open');
-		}
-	);
-});
-</script>
-<!-- here stars scrolling icon -->
-<script type="text/javascript">
-$(document).ready(function() {
-	/*
-	var defaults = {
-	containerID: 'toTop', // fading element id
-	containerHoverID: 'toTopHover', // fading element hover id
-	scrollSpeed: 1200,
-	easingType: 'linear'
-};
-*/
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$(".dropdown").hover(
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+				$(this).toggleClass('open');
+			},
+			function() {
+				$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+				$(this).toggleClass('open');
+			}
+		);
+	});
+	</script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+	$(document).ready(function() {
+		/*
+		var defaults = {
+		containerID: 'toTop', // fading element id
+		containerHoverID: 'toTopHover', // fading element hover id
+		scrollSpeed: 1200,
+		easingType: 'linear'
+	};
+	*/
 
-$().UItoTop({ easingType: 'easeOutQuart' });
+	$().UItoTop({ easingType: 'easeOutQuart' });
 
 });
 </script>

@@ -128,7 +128,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				$records12 = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 1');
 				$records12->execute();
 				$result=$records12->fetch(PDO::FETCH_ASSOC);
-				 ?>
+				?>
 				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 			</div>
 			<!---728x90--->
@@ -152,52 +152,60 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
 					}
 					else{
-					do{
-						$count=$count+1;
-						echo '
-						<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						do{
+							$count=$count+1;
+							echo '
+							<div class="col-md-3 w3ls_w3l_banner_left">
+							<div class="hover14 column">
+							<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 
-						<div class="agile_top_brand_left_grid1">
-						<figure>
-						<div class="snipcart-item block">
-						<div class="snipcart-thumb">
-						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-						<p>'.$results['prod_name'].'</p>
-						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
-						<div>
-						<p class="text">'.$results['prod_desc'].'</p>
-						</div>
-						<div class="snipcart-details">
-						<form action="cart.php" method="GET">
-						<fieldset>
-						<input type="hidden" name="cmd" value="_cart" />
-						<input type="hidden" name="add" value="1" />
-						<input type="hidden" name="business" value=" " />
-						<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
-						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-						<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-						<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
-						<input type="hidden" name="currency_code" value="INR" />
-						<input type="hidden" name="return" value=" " />
-						<input type="hidden" name="cancel_return" value=" " />
-						<input type="submit" name="submit" value="Add to cart" class="button" />
-						</fieldset>
-						</form>
-						</div>
-						</div>
-						</figure>
-						</div>
-						</div>
-						</div>
-						</div>
-						';
-						if($count % 4 == 0)
-						echo '<div class="clearfix"> </div><br> ';
-					}
-					while($results=$records->fetch(PDO::FETCH_ASSOC));
-				}?>
+							<div class="agile_top_brand_left_grid1">
+							<figure>
+							<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+							<a href="single.php?product='.$results['prod_id'].'">';
+							if($results['prod_image'])
+							echo '<img src="'.$results['prod_image'].'" alt=" " class="img-responsive bada-image" /></a>';
+							else {
+								echo '<img src="images/empty-image.png" alt=" " class="img-responsive bada-image" /></a>';
+							}
+
+
+							echo '
+							<p>'.$results['prod_name'].'</p>
+							<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+							<div>
+							<p class="text">'.$results['prod_desc'].'</p>
+							</div>
+							<div class="snipcart-details">
+							<form action="cart.php" method="GET">
+							<fieldset>
+							<input type="hidden" name="cmd" value="_cart" />
+							<input type="hidden" name="add" value="1" />
+							<input type="hidden" name="business" value=" " />
+							<input type="hidden" name="item_id" value="'.$results['prod_id'].'" />
+							<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+							<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+							<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+							<input type="hidden" name="currency_code" value="INR" />
+							<input type="hidden" name="return" value=" " />
+							<input type="hidden" name="cancel_return" value=" " />
+							<input type="submit" name="submit" value="Add to cart" class="button" />
+							</fieldset>
+							</form>
+							</div>
+							</div>
+							</figure>
+							</div>
+							</div>
+							</div>
+							</div>
+							';
+							if($count % 4 == 0)
+							echo '<div class="clearfix"> </div><br> ';
+						}
+						while($results=$records->fetch(PDO::FETCH_ASSOC));
+					}?>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="w3ls_w3l_banner_nav_right_grid1">
@@ -213,52 +221,60 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
 					}
 					else{
-					do{
-						$count=$count+1;
-						echo '
-						<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						do{
+							$count=$count+1;
+							echo '
+							<div class="col-md-3 w3ls_w3l_banner_left">
+							<div class="hover14 column">
+							<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 
-						<div class="agile_top_brand_left_grid1">
-						<figure>
-						<div class="snipcart-item block">
-						<div class="snipcart-thumb">
-						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-						<p>'.$results['prod_name'].'</p>
-						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
-						<div>
-						<p class="text">'.$results['prod_desc'].'</p>
-						</div>
+							<div class="agile_top_brand_left_grid1">
+							<figure>
+							<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+							<a href="single.php?product='.$results['prod_id'].'">';
+							if($results['prod_image'])
+							echo '<img src="'.$results['prod_image'].'" alt=" " class="img-responsive bada-image" /></a>';
+							else {
+								echo '<img src="images/empty-image.png" alt=" " class="img-responsive bada-image" /></a>';
+							}
 
-						<div class="snipcart-details">
-						<form action="#" method="post">
-						<fieldset>
-						<input type="hidden" name="cmd" value="_cart" />
-						<input type="hidden" name="add" value="1" />
-						<input type="hidden" name="business" value=" " />
-						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-						<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-						<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
-						<input type="hidden" name="currency_code" value="INR" />
-						<input type="hidden" name="return" value=" " />
-						<input type="hidden" name="cancel_return" value=" " />
-						<input type="submit" name="submit" value="Add to cart" class="button" />
-						</fieldset>
-						</form>
-						</div>
-						</div>
-						</figure>
-						</div>
-						</div>
-						</div>
-						</div>
-						';
-						if($count % 4 == 0)
-						echo '<div class="clearfix"> </div><br> ';
-					}
-					while($results=$records->fetch(PDO::FETCH_ASSOC));
-				}?>
+
+							echo '
+							<p>'.$results['prod_name'].'</p>
+							<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+							<div>
+							<p class="text">'.$results['prod_desc'].'</p>
+							</div>
+
+							<div class="snipcart-details">
+							<form action="#" method="post">
+							<fieldset>
+							<input type="hidden" name="cmd" value="_cart" />
+							<input type="hidden" name="add" value="1" />
+							<input type="hidden" name="business" value=" " />
+							<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+							<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+							<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+							<input type="hidden" name="currency_code" value="INR" />
+							<input type="hidden" name="return" value=" " />
+							<input type="hidden" name="cancel_return" value=" " />
+							<input type="submit" name="submit" value="Add to cart" class="button" />
+							</fieldset>
+							</form>
+							</div>
+							</div>
+							</figure>
+							</div>
+							</div>
+							</div>
+							</div>
+							';
+							if($count % 4 == 0)
+							echo '<div class="clearfix"> </div><br> ';
+						}
+						while($results=$records->fetch(PDO::FETCH_ASSOC));
+					}?>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="w3ls_w3l_banner_nav_right_grid1">
@@ -274,51 +290,59 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
 					}
 					else{
-					do{
-						$count=$count+1;
-						echo '
-						<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						do{
+							$count=$count+1;
+							echo '
+							<div class="col-md-3 w3ls_w3l_banner_left">
+							<div class="hover14 column">
+							<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 
-						<div class="agile_top_brand_left_grid1">
-						<figure>
-						<div class="snipcart-item block">
-						<div class="snipcart-thumb">
-						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-						<p>'.$results['prod_name'].'</p>
-						<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
-						<div>
-						<p class="text">'.$results['prod_desc'].'</p>
-						</div>
-						<div class="snipcart-details">
-						<form action="#" method="post">
-						<fieldset>
-						<input type="hidden" name="cmd" value="_cart" />
-						<input type="hidden" name="add" value="1" />
-						<input type="hidden" name="business" value=" " />
-						<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
-						<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
-						<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
-						<input type="hidden" name="currency_code" value="INR" />
-						<input type="hidden" name="return" value=" " />
-						<input type="hidden" name="cancel_return" value=" " />
-						<input type="submit" name="submit" value="Add to cart" class="button" />
-						</fieldset>
-						</form>
-						</div>
-						</div>
-						</figure>
-						</div>
-						</div>
-						</div>
-						</div>
-						';
-						if($count % 4 == 0)
-						echo '<div class="clearfix"> </div><br> ';
-					}
-				while($results=$records->fetch(PDO::FETCH_ASSOC));
-			}?>
+							<div class="agile_top_brand_left_grid1">
+							<figure>
+							<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+							<a href="single.php?product='.$results['prod_id'].'">';
+							if($results['prod_image'])
+							echo '<img src="'.$results['prod_image'].'" alt=" " class="img-responsive bada-image" /></a>';
+							else {
+								echo '<img src="images/empty-image.png" alt=" " class="img-responsive bada-image" /></a>';
+							}
+
+
+							echo '
+							<p>'.$results['prod_name'].'</p>
+							<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
+							<div>
+							<p class="text">'.$results['prod_desc'].'</p>
+							</div>
+							<div class="snipcart-details">
+							<form action="#" method="post">
+							<fieldset>
+							<input type="hidden" name="cmd" value="_cart" />
+							<input type="hidden" name="add" value="1" />
+							<input type="hidden" name="business" value=" " />
+							<input type="hidden" name="item_name" value="'.$results['prod_name'].'" />
+							<input type="hidden" name="amount" value="'.$results['prod_price'].'" />
+							<input type="hidden" name="discount_amount" value="'.$results['prod_discount'].'" />
+							<input type="hidden" name="currency_code" value="INR" />
+							<input type="hidden" name="return" value=" " />
+							<input type="hidden" name="cancel_return" value=" " />
+							<input type="submit" name="submit" value="Add to cart" class="button" />
+							</fieldset>
+							</form>
+							</div>
+							</div>
+							</figure>
+							</div>
+							</div>
+							</div>
+							</div>
+							';
+							if($count % 4 == 0)
+							echo '<div class="clearfix"> </div><br> ';
+						}
+						while($results=$records->fetch(PDO::FETCH_ASSOC));
+					}?>
 					<div class="clearfix"> </div>
 				</div>
 				<div class="w3ls_w3l_banner_nav_right_grid1">
@@ -334,51 +358,59 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
 					}
 					else{
-					do{
-						$count=$count+1;
-						echo '
-						<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						do{
+							$count=$count+1;
+							echo '
+							<div class="col-md-3 w3ls_w3l_banner_left">
+							<div class="hover14 column">
+							<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 
-						<div class="agile_top_brand_left_grid1">
-						<figure>
-						<div class="snipcart-item block">
-						<div class="snipcart-thumb">
-						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-						<p>'.$results['prod_name'].'</p>
-						<h4>Rs.'.$results['prod_price'].'<span>95.00</span></h4>
-						<div>
-						<p class="text">'.$results['prod_desc'].'</p>
-						</div>
-						<div class="snipcart-details">
-						<form action="#" method="post">
-						<fieldset>
-						<input type="hidden" name="cmd" value="_cart" />
-						<input type="hidden" name="add" value="1" />
-						<input type="hidden" name="business" value=" " />
-						<input type="hidden" name="item_name" value="knorr instant soup" />
-						<input type="hidden" name="amount" value="3.00" />
-						<input type="hidden" name="discount_amount" value="1.00" />
-						<input type="hidden" name="currency_code" value="USD" />
-						<input type="hidden" name="return" value=" " />
-						<input type="hidden" name="cancel_return" value=" " />
-						<input type="submit" name="submit" value="Add to cart" class="button" />
-						</fieldset>
-						</form>
-						</div>
-						</div>
-						</figure>
-						</div>
-						</div>
-						</div>
-						</div>
-						';
-						if($count % 4 == 0)
-						echo '<div class="clearfix"> </div><br> ';
-					}
-					while($results=$records->fetch(PDO::FETCH_ASSOC));
-				}?>
+							<div class="agile_top_brand_left_grid1">
+							<figure>
+							<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+							<a href="single.php?product='.$results['prod_id'].'">';
+							if($results['prod_image'])
+							echo '<img src="'.$results['prod_image'].'" alt=" " class="img-responsive bada-image" /></a>';
+							else {
+								echo '<img src="images/empty-image.png" alt=" " class="img-responsive bada-image" /></a>';
+							}
+
+
+							echo '
+							<p>'.$results['prod_name'].'</p>
+							<h4>Rs.'.$results['prod_price'].'<span>95.00</span></h4>
+							<div>
+							<p class="text">'.$results['prod_desc'].'</p>
+							</div>
+							<div class="snipcart-details">
+							<form action="#" method="post">
+							<fieldset>
+							<input type="hidden" name="cmd" value="_cart" />
+							<input type="hidden" name="add" value="1" />
+							<input type="hidden" name="business" value=" " />
+							<input type="hidden" name="item_name" value="knorr instant soup" />
+							<input type="hidden" name="amount" value="3.00" />
+							<input type="hidden" name="discount_amount" value="1.00" />
+							<input type="hidden" name="currency_code" value="USD" />
+							<input type="hidden" name="return" value=" " />
+							<input type="hidden" name="cancel_return" value=" " />
+							<input type="submit" name="submit" value="Add to cart" class="button" />
+							</fieldset>
+							</form>
+							</div>
+							</div>
+							</figure>
+							</div>
+							</div>
+							</div>
+							</div>
+							';
+							if($count % 4 == 0)
+							echo '<div class="clearfix"> </div><br> ';
+						}
+						while($results=$records->fetch(PDO::FETCH_ASSOC));
+					}?>
 
 					<div class="clearfix"> </div>
 				</div>
@@ -395,51 +427,59 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
 					}
 					else{
-					do{
-						$count=$count+1;
-						echo '
-						<div class="col-md-3 w3ls_w3l_banner_left">
-						<div class="hover14 column">
-						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+						do{
+							$count=$count+1;
+							echo '
+							<div class="col-md-3 w3ls_w3l_banner_left">
+							<div class="hover14 column">
+							<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
 
-						<div class="agile_top_brand_left_grid1">
-						<figure>
-						<div class="snipcart-item block">
-						<div class="snipcart-thumb">
-						<a href="single.php?product='.$results['prod_id'].'"><img src="'.$results['prod_image'].'" alt=" " class="img-responsive" /></a>
-						<p>'.$results['prod_name'].'</p>
-						<h4>Rs.'.$results['prod_price'].'<span>95.00</span></h4>
-						<div>
-						<p class="text">'.$results['prod_desc'].'</p>
-						</div>
-						<div class="snipcart-details">
-						<form action="#" method="post">
-						<fieldset>
-						<input type="hidden" name="cmd" value="_cart" />
-						<input type="hidden" name="add" value="1" />
-						<input type="hidden" name="business" value=" " />
-						<input type="hidden" name="item_name" value="knorr instant soup" />
-						<input type="hidden" name="amount" value="3.00" />
-						<input type="hidden" name="discount_amount" value="1.00" />
-						<input type="hidden" name="currency_code" value="USD" />
-						<input type="hidden" name="return" value=" " />
-						<input type="hidden" name="cancel_return" value=" " />
-						<input type="submit" name="submit" value="Add to cart" class="button" />
-						</fieldset>
-						</form>
-						</div>
-						</div>
-						</figure>
-						</div>
-						</div>
-						</div>
-						</div>
-						';
-						if($count % 4 == 0)
-						echo '<div class="clearfix"> </div><br> ';
-					}
-					while($results=$records->fetch(PDO::FETCH_ASSOC));
-				}?>
+							<div class="agile_top_brand_left_grid1">
+							<figure>
+							<div class="snipcart-item block">
+							<div class="snipcart-thumb">
+							<a href="single.php?product='.$results['prod_id'].'">';
+							if($results['prod_image'])
+							echo '<img src="'.$results['prod_image'].'" alt=" " class="img-responsive bada-image" /></a>';
+							else {
+								echo '<img src="images/empty-image.png" alt=" " class="img-responsive bada-image" /></a>';
+							}
+
+
+							echo '
+							<p>'.$results['prod_name'].'</p>
+							<h4>Rs.'.$results['prod_price'].'<span>95.00</span></h4>
+							<div>
+							<p class="text">'.$results['prod_desc'].'</p>
+							</div>
+							<div class="snipcart-details">
+							<form action="#" method="post">
+							<fieldset>
+							<input type="hidden" name="cmd" value="_cart" />
+							<input type="hidden" name="add" value="1" />
+							<input type="hidden" name="business" value=" " />
+							<input type="hidden" name="item_name" value="knorr instant soup" />
+							<input type="hidden" name="amount" value="3.00" />
+							<input type="hidden" name="discount_amount" value="1.00" />
+							<input type="hidden" name="currency_code" value="USD" />
+							<input type="hidden" name="return" value=" " />
+							<input type="hidden" name="cancel_return" value=" " />
+							<input type="submit" name="submit" value="Add to cart" class="button" />
+							</fieldset>
+							</form>
+							</div>
+							</div>
+							</figure>
+							</div>
+							</div>
+							</div>
+							</div>
+							';
+							if($count % 4 == 0)
+							echo '<div class="clearfix"> </div><br> ';
+						}
+						while($results=$records->fetch(PDO::FETCH_ASSOC));
+					}?>
 					<div class="clearfix"> </div>
 				</div>
 			</div>
