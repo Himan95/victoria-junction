@@ -96,11 +96,11 @@ table,td,tr{
 
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <center><h2>Victoria Junction | Recent Orders  </h2></center>
             <div class="x_panel tile fixed_height_450">
               <div class="x_title">
-                <h2>View All Orders</h2>
+                <h2>View Recent Orders </h2>
                 <div class="clearfix"></div>
+                <i>(Recent Orders include orders made yesterday and today only)</i>
               </div>
 
               <div class="x_content">

@@ -109,7 +109,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
+				<a href="index.php"><img height="100px" src="images/vj_logo.png"/></a>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
@@ -152,9 +152,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				?>
 				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
 			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
 			<!---728x90--->
 			<div class="agileinfo_single">
-				<h5><?php echo $results['prod_name']; ?></h5>
+				<h5 style="text-align:center;"><?php echo $results['prod_name']; ?></h5>
 				<div  class="col-md-3 agileinfo_single_left">
 					<img style="border:4px solid black" id="example" src=<?php echo $results['prod_image']; ?> alt=" " class="img-responsive bada-image" />
 				</div>
@@ -201,7 +205,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<input type="hidden" name="currency_code" value="INR" />
 					<input type="hidden" name="return" value=" " />
 					<input type="hidden" name="cancel_return" value=" " />
-					<input type="submit" name="submit" value="Add to cart" class="button" />
+					<input style="width:40%" type="submit" name="submit" value="Add to cart" class="button" />
 					</fieldset>
 					</form>
 
@@ -214,8 +218,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="clearfix"> </div>
 			</div>
 		</div>
-		<div class="clearfix"></div>
-	</div>
 	<!-- //banner -->
 	<!---728x90--->
 	<!-- brands -->

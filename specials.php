@@ -95,7 +95,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
+				<a href="index.php"><img height="100px" src="images/vj_logo.png"/></a>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
@@ -233,7 +233,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="clearfix"> </div>
 	<div class="top-brands">
 		<div class="container">
-			<h3>Coupons</h3>
+			<h3 style="margin-bottom:15px;">Coupons</h3>
 			<?php
 			error_reporting(0);
 			session_start();
@@ -242,14 +242,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			$records = $connection->prepare('SELECT * FROM coupons WHERE coupon_status=1');
 			$records->execute();
 			$results=$records->fetch(PDO::FETCH_ASSOC);
-			echo '<br><br><br>';
+
 			do{
 				$start = date_format(date_create_from_format('Y-m-d', $results['coupon_startdate']), 'd-m-Y');
 				$end = date_format(date_create_from_format('Y-m-d', $results['coupon_enddate']), 'd-m-Y');
 
 				echo '
 
-				<div class="col-md-4 top_brand_left">
+				<div class="col-md-4 top_brand_left new-design-for-coupon">
 				<div class="hover14 column">
 				<h3>'.$results['coupon_name'].'*</h3>
 				<br>

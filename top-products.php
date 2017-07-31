@@ -20,31 +20,34 @@
 				<div class="col-md-9 w3l_fresh_vegetables_grid_right">
 					<div class="col-md-4 w3l_fresh_vegetables_grid">
 						<div class="w3l_fresh_vegetables_grid1">
-							<img src="images/8.jpg" alt=" " class="img-responsive bada-image" />
+							<a href="products.php"><img src="images/8.jpg" alt=" " class="img-responsive bada-image" /></a>
+						</div>
+						<div class="w3l_fresh_vegetables_grid1_bottom">
+							<a href="products.php"><img src="images/services.jpg" alt=" " class="img-responsive bada-image" /></a>
 						</div>
 					</div>
 					<div class="col-md-4 w3l_fresh_vegetables_grid">
 						<div class="w3l_fresh_vegetables_grid1">
 							<div class="w3l_fresh_vegetables_grid1_rel">
-								<img src="images/7.jpg" alt=" " class="img-responsive bada-image" />
+								<a href="products.php"><img src="images/7.jpg" alt=" " class="img-responsive bada-image" /></a>
 								<div class="w3l_fresh_vegetables_grid1_rel_pos">
 									<div class="more m1">
-
 									</div>
 								</div>
 							</div>
 						</div>
+
 						<div class="w3l_fresh_vegetables_grid1_bottom">
-							<img src="images/10.jpg" alt=" " class="img-responsive bada-image" />
+							<a href="products.php"><img src="images/10.jpg" alt=" " class="img-responsive bada-image" /></a>
 
 						</div>
 					</div>
 					<div class="col-md-4 w3l_fresh_vegetables_grid">
 						<div class="w3l_fresh_vegetables_grid1">
-							<img src="images/9.jpg" alt=" " class="img-responsive bada-image" />
+							<a href="products.php"><img src="images/9.jpg" alt=" " class="img-responsive bada-image" /></a>
 						</div>
 						<div class="w3l_fresh_vegetables_grid1_bottom">
-							<img src="images/11.jpg" alt=" " class="img-responsive bada-image" />
+							<a href="products.php"><img src="images/11.jpg" alt=" " class="img-responsive bada-image" /></a>
 						</div>
 					</div>
 					<div class="agileinfo_move_text">

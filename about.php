@@ -99,7 +99,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
+				<a href="index.php"><img height="100px" src="images/vj_logo.png"/></a>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
@@ -160,6 +160,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //banner -->
 	<!---728x90--->
 
+
+	<div style="margin-top:10px; text-align:center;" class="container">
+		<div style= "margin-bottom:20px;" class="col-md-3">
+			<a href="cakes.php"><img style="border:5px solid cyan; height:150px;  width:250px; border-radius: 10%;" src="images/extra1.jpg"/>
+		</div>
+		<div style="margin-bottom:20px;" class="col-md-3">
+			<a href="cookies.php"><img  style="border:5px solid red;  height:150px;  width:250px;  border-radius: 10%;" src="images/extra2.jpg"/></a>
+		</div>
+		<div style="margin-bottom:20px;" class="col-md-3">
+			<a href="pastries.php"><img  style="border:5px solid green;  height:150px;  width:250px;  border-radius: 10%;" src="images/extra3.jpg"/></a>
+		</div>
+		<div style="margin-bottom:20px;" class="col-md-3">
+			<a href="muffins.php"><img  style="border:5px solid blue;  height:150px;  width:250px;  border-radius: 10%;" src="images/extra4.jpg"/></a>
+		</div>
+
+	</div>
+	<div class="clearfix"> </div>
 
 	<!-- newsletter -->
 	<?php include ('newsletter.php'); ?>

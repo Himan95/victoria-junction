@@ -90,7 +90,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
+				<a href="index.php"><img height="100px" src="images/vj_logo.png"/></a>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">

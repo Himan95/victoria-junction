@@ -182,7 +182,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <div class="logo_products">
     <div class="container">
       <div class="w3ls_logo_products_left">
-        <h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
+        <a href="index.php"><img height="100px" src="images/vj_logo.png"/></a>
       </div>
       <div class="w3ls_logo_products_left1">
         <ul class="special_items">
@@ -216,7 +216,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <!-- banner -->
   <div class="banner">
     <?php include('left-nav-bar.php'); ?>
-    <div class="w3l_banner_nav_right">
+    <div class="w3l_banner_nav_right mail-class">
       <!-- mail -->
       <div class="mail">
 
@@ -266,7 +266,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d96748.15352429623!2d-74.25419879353115!3d40.731667701988506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sshopping+mall+in+New+York%2C+NY%2C+United+States!5e0!3m2!1sen!2sin!4v1467205237951" style="border:0"></iframe>
   </div>
 
-  <br><br>
   <!-- //map -->
   <!-- newsletter -->
   <?php include('newsletter.php');?>

@@ -56,7 +56,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 
 <style>
-img{
+.image-img{
 	height: inherit;
 	border-radius: 100%;
 	padding: 2px;
@@ -96,7 +96,7 @@ img{
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
+				<a href="index.php"><img height="100px" src="images/vj_logo.png"/></a>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
@@ -145,7 +145,7 @@ img{
 					<?php
 					echo
 					'
-					<img class="img" src="'.$results['services_image'].'" />
+					<img class="image-img" src="'.$results['services_image'].'" />
 					'
 					;
 					?>

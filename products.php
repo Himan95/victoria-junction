@@ -88,7 +88,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="index.php"><span>Victoria</span> Junction</a></h1>
+				<a href="index.php"><img height="100px" src="images/vj_logo.png"/></a>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
@@ -174,9 +174,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							echo '
 							<p>'.$results['prod_name'].'</p>
 							<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
-							<div>
-							<p class="text">'.$results['prod_desc'].'</p>
-							</div>
+							
 							<div class="snipcart-details">
 							<form action="cart.php" method="GET">
 							<fieldset>

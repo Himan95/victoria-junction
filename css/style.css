@@ -4,6 +4,20 @@
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+.mail-class{
+  position: relative;
+top: -40px;
+}
+.new-design-for-coupon{
+  border: 3px solid mistyrose;
+  background: aliceblue;
+  padding-top: 10px;
+}
+.w3l_banner_nav_right_banner1,.w3l_banner_nav_right_banner,.w3l_banner_nav_right_banner2{
+  width:100% important;
+  min-height: 370px important;
+  }
+
 .newsletter-top-serv-btm{
   padding:1em 0;
   text-align: center;
@@ -315,13 +329,10 @@ ul.dropdown-menu.drp-mnu li a i {
 	color:#FA1818;
 }
 .w3l_banner_nav_right_banner1,.w3l_banner_nav_right_banner,.w3l_banner_nav_right_banner2{
-	min-height:500px;
-	text-align: right;
-	padding:10em 17em 0 0;
-	margin-bottom: 5em;
+  margin-bottom: 2em;
 }
 .w3l_banner_nav_right_banner{
-	background:url(../images/1.jpg) no-repeat 0px 0px;
+	background:url(../images/mainslider1.jpg) no-repeat 0px 0px;
 
 	background-size:cover;
 	-webkit-background-size:cover;
@@ -330,7 +341,7 @@ ul.dropdown-menu.drp-mnu li a i {
 	-ms-background-size:cover;
 }
 .w3l_banner_nav_right_banner1{
-	background:url(../images/2.jpg) no-repeat 0px 0px;
+	background:url(../images/mainslider2.jpg) no-repeat 0px 0px;
 	background-size:cover;
 
 	-webkit-background-size:cover;
@@ -339,7 +350,7 @@ ul.dropdown-menu.drp-mnu li a i {
 	-ms-background-size:cover;
 }
 .w3l_banner_nav_right_banner2{
-	background:url(../images/3.jpg) no-repeat 0px 0px;
+	background:url(../images/mainslider3.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -2369,6 +2380,7 @@ ul.wmuSliderPagination {
 	}
 	.w3l_banner_nav_right_banner3 h3, .w3l_banner_nav_right_banner4 h3, .w3l_banner_nav_right_banner5 h3, .w3l_banner_nav_right_banner6 h3, .w3l_banner_nav_right_banner7 h3, .w3l_banner_nav_right_banner8 h3, .w3l_banner_nav_right_banner9 h3, .w3l_banner_nav_right_banner10 h3 {
 		width: 45%;
+    margin-top:1.5em;
 	}
 	.w3l_banner_nav_right_banner1, .w3l_banner_nav_right_banner, .w3l_banner_nav_right_banner2 {
 		padding: 10em 7em 0 0;
