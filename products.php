@@ -101,7 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
 					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href=""><?php echo $results1['web_email']; ?></a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -174,7 +174,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							echo '
 							<p>'.$results['prod_name'].'</p>
 							<h4>Rs.'.$results['prod_price'].'<span>Rs.'.$results['prod_span_price'].'</span></h4>
-							
+
 							<div class="snipcart-details">
 							<form action="cart.php" method="GET">
 							<fieldset>

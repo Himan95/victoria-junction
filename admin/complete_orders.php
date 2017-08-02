@@ -65,7 +65,7 @@ table,td,tr{
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2><?php echo $_SESSION['username']; ?></h2>
+              <h2><?php echo $_SESSION['usertype']; ?></h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -89,7 +89,7 @@ table,td,tr{
             </div>
             <ul class="nav navbar-nav navbar-right" style="text-align:right;margin-top:7px;margin-right:5px;">
 
-              <b>Logged in as :</b> <i><?php echo $_SESSION['username']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
+              <b>Logged in as :</b> <i><?php echo $_SESSION['usertype']; ?></i> | <a href="http://victoriajunction.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
             </ul>
           </nav>
         </div>
@@ -113,7 +113,7 @@ table,td,tr{
 
                 <?php
 
-                $records2 = $connection->prepare('SELECT * FROM orders WHERE order_status= "Complete"  ORDER BY created_at DESC');
+                $records2 = $connection->prepare('SELECT * FROM orders WHERE order_status= "Success"  ORDER BY created_at DESC');
 
                 $records2->execute();
                 $results2=$records2->fetch(PDO::FETCH_ASSOC);

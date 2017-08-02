@@ -14,9 +14,20 @@ if(isset($_POST['send_mail'])){
   $message=$_POST['message'];
   $telephone=$_POST['telephone'];
 
+
+    date_default_timezone_set('Asia/Kolkata');
+
+    $stmt=$connection->prepare('INSERT INTO support (name,email,subject,message,telephone,submitted_at) VALUES (:name,:email,:subject,:message,:telephone,:submitted_at)');
+    $stmt->bindParam(':name',$name);
+    $stmt->bindParam(':email',$email);
+    $stmt->bindParam(':subject',$subject);
+    $stmt->bindParam(':message',$message);
+    $stmt->bindParam(':telephone',$telephone);
+    $stmt->bindParam(':submitted_at',date('Y-m-d'));
+    $stmt->execute();
+
+
   $messageToSend= "<html>
-
-
   <head>
   <link href='css/bootstrap.css' rel='stylesheet' type='text/css' media='all' />
   <link href='css/style.css' rel='stylesheet' type='text/css' media='all' />
@@ -25,84 +36,34 @@ if(isset($_POST['send_mail'])){
   <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
   </head>
-  <style>
 
-  body {
-    padding: 10px;
-    margin: 0 auto;
-  }
-  h1{
-    text-align: center;
-    font-weight: bold;
-    color:#0000EE;
-  }
-  h3{
-    text-align: center;
-  }
-  h4{
-    margin:22px;
-    text-align: center;
-    font-size: 20px;
-  }
-  #content{
-    margin: 0px auto;
-    border: 1px oli;
-  }
-  .paragraph{
-    text-align: center;
-    margin-top: 30px;
-    font-size: 18px;
-    font-family:serif;
-  }
-  .foot{
-    text-align: center;
-    margin-top: 30px;
-    font-size: 16px;
-    font-family:sans-serif;
-  }
-  </style>
-  <body>
-  <div id='content'>
-  <h1>Victoria Junction</h1>
-  <h3>Confectionaries Shop</h3>
+  <body style='padding: 10px; margin: 0 auto;'>
+  <div style='margin: 0px auto;border: 1px oli;'>
+  <h1  style='text-align: center; font-weight: bold; color:#0000EE;'>Victoria Junction</h1>
+  <h3 style='text-align: center;'>Confectionaries Shop</h3>
 
-  <h4>REPLY: Email from Victoria Junction</h4>
+  <h4 style='margin:22px; text-align: center; font-size: 20px;'>REPLY: Email from Victoria Junction</h4>
 
-  <p class='paragraph'>Message: $message</p>
+  <p style='text-align: center; margin-top: 30px; font-size: 18px; font-family:serif;'>Message: $message</p>
 
-  <p class='foot'>Victoria Junction, Golden Enclave Building, Siliguri</p>
+  <p style='text-align: center;  margin-top: 30px; font-size: 16px; font-family:sans-serif;'>Victoria Junction, Golden Enclave Building, Siliguri</p>
   </div>
   </body>
   <script src='js/bootstrap.min.js'></script>
   </html>";
 
-
-
-  date_default_timezone_set('Asia/Kolkata');
-
-  $stmt=$connection->prepare('INSERT INTO support (name,email,subject,message,telephone,submitted_at) VALUES (:name,:email,:subject,:message,:telephone,:submitted_at)');
-  $stmt->bindParam(':name',$name);
-  $stmt->bindParam(':email',$email);
-  $stmt->bindParam(':subject',$subject);
-  $stmt->bindParam(':message',$message);
-  $stmt->bindParam(':telephone',$telephone);
-  $stmt->bindParam(':submitted_at',date('Y-m-d'));
-  $stmt->execute();
-
   $to='cooldudehiman@gmail.com';
   $subject='Customer Support';
-  $message='Message: '.$message;
   $headers .= "MIME-Version: 1.0\r\n";
   $headers .= "Content-type: text/html; charset: utf8\r\n";
   $m=mail($to,$subject,$messageToSend,$headers);
   if($m){
     echo "<script>alert('Thank You! We will get back to you pretty soon!');</script>";
+    echo "<script>window.location.href='index.php';</script>";
   }
   else {
     echo "<script>alert('Sorry, Mail could not be sent!');</script>";
   }
-
-
 }
 ?>
 <!--
@@ -195,7 +156,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <div class="w3ls_logo_products_left1">
         <ul class="phone_email">
           <li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
-          <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
+          <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href=""><?php echo $results1['web_email']; ?></a></li>
         </ul>
       </div>
       <div class="clearfix"> </div>

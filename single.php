@@ -122,7 +122,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
 					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results11['web_contact']; ?></li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results11['web_email']; ?></a></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href=""><?php echo $results11['web_email']; ?></a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -160,7 +160,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="agileinfo_single">
 				<h5 style="text-align:center;"><?php echo $results['prod_name']; ?></h5>
 				<div  class="col-md-3 agileinfo_single_left">
-					<img style="border:4px solid black" id="example" src=<?php echo $results['prod_image']; ?> alt=" " class="img-responsive bada-image" />
+					<!--<img style="border:4px solid black" id="example" src=<?php echo $results['prod_image']; ?> alt=" " class="img-responsive bada-image" />-->
+					<?php if($results['prod_image'])
+					echo '<img src="'.$results['prod_image'].'" style="border:4px solid black" id="example" alt=" " class="img-responsive bada-image" /></a>';
+					else {
+						echo '<img src="images/empty-image.png" style="border:4px solid black" id="example" alt=" " class="img-responsive bada-image" /></a>';
+					}
+					?>
+
 				</div>
 				<div class="col-md-9 agileinfo_single_right">
 					<h3><?php echo $results['prod_type']; ?></h3>
@@ -223,16 +230,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- brands -->
 	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_popular">
 		<div class="container">
-			<h3>Other Products</h3>
+			<h3 style="position:relative; top:-50px;">Other Products</h3>
 			<div class="w3ls_w3l_banner_nav_right_grid1">
-				<h6>Products</h6>
 				<?php
 				$records = $connection->prepare('SELECT * FROM products ORDER BY rand() LIMIT 4');
 				$records->execute();
 				$results=$records->fetch(PDO::FETCH_ASSOC);
 				do{
 					echo '
-
 					<div class="col-md-3 w3ls_w3l_banner_left">
 					<div class="hover14 column">
 					<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
@@ -285,7 +290,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				while($results=$records->fetch(PDO::FETCH_ASSOC));
 				echo '<div class="clearfix"> </div>';
 				?>
-				<br><br>
 				<div class="clearfix"> </div>
 			</div>
 		</div>

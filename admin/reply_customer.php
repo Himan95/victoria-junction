@@ -11,16 +11,40 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 	echo "<script>window.location.href='login.php';</script>";
 }
 
+
 //Update Button clicked
 if(isset($_POST['send'])){
 
   $to=$_GET['email'];
   $email="rm46@gmail.com";
-  $message=$_POST['editor1'];
+    $message=$_POST['editor1'];
+    $messageToSend= "<html>
+    <head>
+    <link href='css/bootstrap.css' rel='stylesheet' type='text/css' media='all' />
+    <link href='css/style.css' rel='stylesheet' type='text/css' media='all' />
+    <link href='css/font-awesome.css' rel='stylesheet' type='text/css' media='all' />
+    <script src='js/jquery-1.11.1.min.js'></script>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    </head>
+
+    <body style='padding: 10px; margin: 0 auto;'>
+    <div style='margin: 0px auto;border: 1px oli;'>
+    <h1  style='text-align: center; font-weight: bold; color:#0000EE;'>Victoria Junction</h1>
+    <h3 style='text-align: center;'>Confectionaries Shop</h3>
+
+    <h4 style='margin:22px; text-align: center; font-size: 20px;'>REPLY: Email from Victoria Junction</h4>
+
+    <p style='text-align: center; margin-top: 30px; font-size: 18px; font-family:serif;'>Message: $message</p>
+
+    <p style='text-align: center;  margin-top: 30px; font-size: 16px; font-family:sans-serif;'>Victoria Junction, Golden Enclave Building, Siliguri</p>
+    </div>
+    </body>
+    <script src='js/bootstrap.min.js'></script>
+    </html>";
   $subject='Victoria Junction | Customer Support';
-  $message='Message: '.$message;
   $headers='From:'.$email;
-  $m=mail($to,$subject,$message,$headers);
+  $m=mail($to,$subject,$messageToSend,$headers);
   if($m){
   echo "<script>alert('Message sent!');</script>";
   }
@@ -73,7 +97,7 @@ if(isset($_POST['send'])){
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2><?php echo $_SESSION['username']; ?></h2>
+              <h2><?php echo $_SESSION['usertype']; ?></h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -97,7 +121,7 @@ if(isset($_POST['send'])){
             </div>
             <ul class="nav navbar-nav navbar-right" style="text-align:right;margin-top:7px;margin-right:5px;">
 
-              <b>Logged in as :</b> <i><?php echo $_SESSION['username']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
+              <b>Logged in as :</b> <i><?php echo $_SESSION['usertype']; ?></i> | <a href="http://victoriajunction.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
             </ul>
           </nav>
         </div>

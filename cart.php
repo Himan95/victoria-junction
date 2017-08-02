@@ -140,7 +140,7 @@ if(isset($_GET['index'])){
       <div class="w3ls_logo_products_left1">
         <ul class="phone_email">
           <li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
-          <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com"><?php echo $results1['web_email']; ?></a></li>
+          <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href=""><?php echo $results1['web_email']; ?></a></li>
         </ul>
       </div>
       <div class="clearfix"> </div>

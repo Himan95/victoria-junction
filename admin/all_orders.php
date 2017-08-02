@@ -41,6 +41,18 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
+  <script>
+      printDivCSS = new String ('<link href="../css/style.css" rel="stylesheet" type="text/css">')
+
+    function printDiv(divId) {
+
+           window.frames["print_frame"].document.body.innerHTML=printDivCSS + document.getElementById(divId).innerHTML;
+          window.frames["print_frame"].window.focus();
+          window.frames["print_frame"].window.print();
+
+      }
+  </script>
+
 </head>
 <style>
 table,td,tr{
@@ -65,7 +77,7 @@ table,td,tr{
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2><?php echo $_SESSION['username']; ?></h2>
+              <h2><?php echo $_SESSION['usertype']; ?></h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -89,7 +101,7 @@ table,td,tr{
             </div>
             <ul class="nav navbar-nav navbar-right" style="text-align:right;margin-top:7px;margin-right:5px;">
 
-              <b>Logged in as :</b> <i><?php echo $_SESSION['username']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
+              <b>Logged in as :</b> <i><?php echo $_SESSION['usertype']; ?></i> | <a href="http://victoriajunction.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
             </ul>
           </nav>
         </div>
@@ -127,6 +139,7 @@ table,td,tr{
                     <div class="form-group">
                       <button type="reset" class="btn btn-primary">Reset</button>
                       <button type="submit" name="display_all" class="btn btn-success">View</button>
+
                     </div>
                   </center>
                 </form>
@@ -205,6 +218,9 @@ table,td,tr{
 
         </div>
       </div>
+      <input type="button" value="Print" class="btn btn-warning" onClick="javascript:printDiv('datatable-responsive')"/>
+
+      <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
 
 
       <!-- /page content -->

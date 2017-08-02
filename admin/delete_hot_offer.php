@@ -75,7 +75,7 @@ if(isset($_POST['delete_hot_offer'])){
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2><?php echo $_SESSION['username']; ?></h2>
+              <h2><?php echo $_SESSION['usertype']; ?></h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -99,7 +99,7 @@ if(isset($_POST['delete_hot_offer'])){
             </div>
             <ul class="nav navbar-nav navbar-right" style="text-align:right;margin-top:7px;margin-right:5px;">
 
-              <b>Logged in as :</b> <i><?php echo $_SESSION['username']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
+              <b>Logged in as :</b> <i><?php echo $_SESSION['usertype']; ?></i> | <a href="http://victoriajunction.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
             </ul>
           </nav>
         </div>

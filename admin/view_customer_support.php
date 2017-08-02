@@ -59,7 +59,7 @@ table,td,tr{
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2><?php echo $_SESSION['username']; ?></h2>
+              <h2><?php echo $_SESSION['usertype']; ?></h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -83,7 +83,7 @@ table,td,tr{
             </div>
             <ul class="nav navbar-nav navbar-right" style="text-align:right;margin-top:7px;margin-right:5px;">
 
-              <b>Logged in as :</b> <i><?php echo $_SESSION['username']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
+              <b>Logged in as :</b> <i><?php echo $_SESSION['usertype']; ?></i> | <a href="http://victoriajunction.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
             </ul>
           </nav>
         </div>
@@ -130,7 +130,7 @@ table,td,tr{
                  echo "<td style='padding:3px' align='left'>".$results2['telephone']."</td>";
              	   echo "<td colspan='3' style='padding:3px' align='left'>".$results2['message']."</td>";
                  echo "<td style='padding:3px' align='left'>".$queryDate."</td>";
-                 echo "<td style='padding:3px' align='center'><a class='btn-success' href='reply_customer.php?email=".$results2['email']."' name='reply'>REPLY</a></td></tr>";
+                 echo "<td style='padding:3px' align='center'><a class='btn btn-success' href='reply_customer.php?email=".$results2['email']."' name='reply'>REPLY</a></td></tr>";
             }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
 
             ?>

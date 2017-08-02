@@ -10,10 +10,8 @@ include('connect/connection.php');
 	<div class="container">
 		<h3 style="margin-bottom:15px;">Specializations</h3>
 
-
-
 		<?php
-		$records = $connection->prepare('SELECT * FROM products WHERE prod_type IN("Cakes","Cookies","Breads") ORDER BY rand() LIMIT 4');
+		$records = $connection->prepare('SELECT * FROM products WHERE prod_type IN("Cakes","Cookies","Breads","Pastries") ORDER BY rand() LIMIT 4');
 		$records->execute();
 
 
@@ -32,8 +30,6 @@ include('connect/connection.php');
 			else {
 				echo '<img src="images/empty-image.png" alt=" " class="img-responsive bada-image" /></a>';
 			}
-
-
 			echo '
 			<p><b>'.$results['prod_name'].'</b></p>
 			</figure>

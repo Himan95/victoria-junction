@@ -2,7 +2,7 @@
 
 date_default_timezone_set('Asia/Kolkata');
 session_start();
-error_reporting(0);
+//error_reporting(0);
 
 include('../connect/connection.php');
 
@@ -11,19 +11,21 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 	echo "<script>window.location.href='login.php';</script>";
 }
 
-$description=$_POST['editor1'];
+  $order_no=$_GET['order_no'];
 
-//Update Button clicked
-if(isset($_POST['update_faqs'])){
+if(isset($_POST['update'])){
 
-      $stmt1=$connection->prepare('UPDATE faqs SET description=:description');
-      $stmt1->bindParam(':description',$description);
-      $stmt1->execute();
+  $order_status="Success";
+  $records2 = $connection->prepare('UPDATE orders SET order_status=:order_status WHERE order_no=:order_no');
+  $records2->bindParam(':order_status',$order_status);
+  $records2->bindParam(':order_no',$order_no);
+  $records2->execute();
 
-      echo "<script>alert('FAQs Page updated!');</script>";
+    echo "<script>alert('Order status updated');</script>";
+  	echo "<script>window.location.href='pending_orders.php';</script>";
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,9 +49,7 @@ if(isset($_POST['update_faqs'])){
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
 
-
-<script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
-
+  <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
 </head>
 
 <body class="nav-md">
@@ -108,39 +108,34 @@ if(isset($_POST['update_faqs'])){
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel tile fixed_height_450">
               <div class="x_title">
-                <h2>Update FAQs Page</h2>
+                <h2>Update Order</h2>
 
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
-                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data" action="faqs.php" method="post">
-
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="updateorder.php" method="post">
                   <div class="form-group">
-                      <label class="control-label col-md-3" >Change FAQs Content<span class="required">*</span>
-                      </label>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
-                        <textarea name="editor1"></textarea>
-                        <script>
-                        CKEDITOR.replace('editor1');
-                      </script>
-                        </div>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Order Id<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <input type="number" readonly autocomplete="off" value="<?php echo $_GET['order_no']; ?>" class="form-control col-md-7 col-xs-12">
+                        <i>Order will be changed from pending to successful if update button is clicked</i>
+                    </div>
                   </div>
-
                   <div class="ln_solid"></div>
                   <div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                      <button type="reset" class="btn btn-primary">Reset</button>
-                      <button type="submit" name="update_faqs" class="btn btn-success">Update FAQs</button>
+                      <button type="submit" name="update" class="btn btn-success">Update</button>
+
                     </div>
                   </div>
 
                 </form>
-
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
       <?php //include('report-card-display.php'); ?>
     </div>
   </div>

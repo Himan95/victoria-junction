@@ -19,7 +19,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/  [XR&CO'2014], Thu, 04 May 2017 07:59:30 GMT -->
 <head>
 	<title><?php echo $results1['web_name']; ?> | Home </title>
-	<!-- for-mobile-apps -->
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Victoria Junction, Siliguri - Custom Cakes fro Every Occassion, Gluten, Dairy & Egg-Free Options Available
@@ -31,6 +32,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- font-awesome icons -->
 	<link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+
+
+	<link href="css/print.css" rel="stylesheet" type="text/css" media="print" />
+
 	<!-- //font-awesome icons -->
 	<!-- js -->
 	<script src="js/jquery-1.11.1.min.js"></script>
@@ -48,111 +53,109 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		});
 	});
 	</script>
+
+	<script>
+			printDivCSS = new String ('<link href="bootstrap.css" rel="stylesheet" type="text/css">')
+			function printDiv(divId) {
+					window.frames["print_frame"].document.body.innerHTML=printDivCSS + document.getElementById(divId).innerHTML;
+					window.frames["print_frame"].window.focus();
+					window.frames["print_frame"].window.print();
+			}
+	</script>
 	<!-- start-smoth-scrolling -->
+	<style type="text/css">
+
+	</style>
 </head>
 
 <body>
+	<?php include('header.php');?>
+
+	<div class="container">
+
+		<div style="margin-top:20px;	text-align: center;" class="bold">
+			<h4>Thank you. Your order has been placed and will be processed shortly. For details, please write to support@victoriajunction.com</h4>
+		</div>
+		<div id= "yesPrint">
+		<h3 style="	margin-top:20px;margin-bottom:20px;	background-color: black;padding:10px;	height:40px;color:white;text-align: center;letter-spacing: 3.75px;" class="invoice">INVOICE</h3>
+		<h4 style="font-size:150%; margin-bottom:10px;">ORDER FOR:</h4>
+		<div class="row">
+			<div style="line-height: 200%;" class="col-md-4">
+					<p>Ayush Mahato</p>
+					<p>Shakti Kunj, Shaktigarh, Road 2</p>
+					<p>Siliguri, 734005</p>
+					<p>+91 9832344231</p>
+			</div>
+			<div class="col-md-4">
+			</div>
 
 
-	<!-- header -->
-	<?php include('header.php'); ?>
-	<!-- script-for sticky-nav -->
-	<script>
-	$(document).ready(function() {
-		var navoffeset=$(".agileits_header").offset().top;
-		$(window).scroll(function(){
-			var scrollpos=$(window).scrollTop();
-			if(scrollpos >=navoffeset){
-				$(".agileits_header").addClass("fixed");
-			}else{
-				$(".agileits_header").removeClass("fixed");
-			}
-		});
-	});
-	</script>
-	<!-- //script-for sticky-nav -->
-	<div class="logo_products">
-		<div class="container">
-			<div class="w3ls_logo_products_left">
-				<a href="index.php"><img height="100px" src="images/vj_logo.png"/></a>
+			<div style="line-height: 200%;" class="col-md-4">
+				<p><b>Order No:</b> 164451</p>
+				<p><b>Date:</b> 1st Aug, 2017</p>
+				<p><b>Total Amount:</b> Rs. 4500</p>
+				<p><b>Order Status:</b> Success</p>
 			</div>
-			<div class="w3ls_logo_products_left1">
-				<ul class="special_items">
-					<li><a href="events.php">Events</a><i>/</i></li>
-					<li><a href="about.php">About Us</a><i>/</i></li>
+		</div>
 
-					<li><a href="services.php">Services</a></li>
-				</ul>
-			</div>
-			<div class="w3ls_logo_products_left1">
-				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $results1['web_contact']; ?></li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href=""><?php echo $results1['web_email']; ?></a></li>
-				</ul>
-			</div>
-			<div class="clearfix"> </div>
+		<div style="margin-top:20px;">
+			<table style="border:none;" id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" align="center" >
+				<thead>
+					<tr style="font-size:120%;">
+						<th>Product</th>
+						<th>Item</th>
+						<th>Unit Cost</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr style="width:120%;">
+					<td><img width="70px" height="auto" src="images/vj_logo.png"/></td>
+					<td>Choco Chips Cake</td>
+					<td>Rs. 650.00</td>
+					<td>Rs. 650.00</td>
+				</tr>
+					<hr style="border: 2px solid cyan;">
+					<tr>
+						<td style="border:none;" colspan="2"> </td>
+						<td style="border:none;"  colspan="1">Subtotal</td>
+						<td style="border:none;">Rs. 650.00</td>
+					</tr>
+					<tr>
+
+						<td style="border:none;" colspan="2" > </td>
+						<td style="border:none;" colspan="1" >Total</td>
+						<td style="border:none;">Rs. 650.00</td>
+					</tr>
+					<tr>
+						<td style="border:none;" colspan="2" > </td>
+						<td style="border:none;" colspan="1" >Amount Paid</td>
+						<td style="border:none;">Rs. 0.00</td>
+					</tr>
+					<tr>
+						<td style="border:none;" colspan="2" > </td>
+						<td style="border:none;" colspan="1" >Balance Due</td>
+						<td style="border:none;" >Rs. 650.00</td>
+					</tr>
+
+				</tbody>
+			</table>
 		</div>
 	</div>
-	<!-- //header -->
-	<!-- banner -->
-	<div class="banner">
-		<?php include('left-nav-bar.php'); ?>
-		<div class="w3l_banner_nav_right">
-			<section class="slider">
-				<div class="flexslider">
-					<ul class="slides">
-						<li>
-							<div class="w3l_banner_nav_right_banner">
-
-							</div>
-						</li>
-						<li>
-							<div class="w3l_banner_nav_right_banner1">
-
-							</div>
-						</li>
-						<li>
-							<div class="w3l_banner_nav_right_banner2">
-
-							</div>
-						</li>
-					</ul>
-				</div>
-			</section>
-			<!-- flexSlider -->
-			<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
-			<script defer src="js/jquery.flexslider.js"></script>
-			<script type="text/javascript">
-			$(window).load(function(){
-				$('.flexslider').flexslider({
-					animation: "slide",
-					start: function(slider){
-						$('body').removeClass('loading');
-					}
-				});
-			});
-			</script>
-			<!-- //flexSlider -->
-		</div>
-		<div class="clearfix"></div>
 	</div>
-	<!---728x90--->
-	<!-- banner -->
-	<?php include('advertise-banners.php'); ?>
-	<!---728x90--->
-	<!-- top-brands -->
-	<?php include('hot-offers.php'); ?>
-	<!-- //top-brands -->
-	<!-- fresh-vegetables -->
-	<?php include('top-products.php'); ?>
-	<!-- //fresh-vegetables -->
-	<!-- newsletter -->
+		<div style="margin:30px; text-align:center">
+		<input type="button" value="Print Invoice" class="btn btn-warning" onClick="javascript:printDiv('yesPrint')"/>
+	</div>
+
+<!--Printing Purpose-->
+	<iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+
+
 	<?php include('newsletter.php'); ?>
 	<!-- //newsletter -->
 	<!-- footer -->
 	<?php include('footer.php'); ?>
 	<!-- //footer -->
-
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
 	<script>
@@ -186,9 +189,5 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 });
 </script>
 <!-- //here ends scrolling icon -->
-
-
 </body>
-
-<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/  [XR&CO'2014], Thu, 04 May 2017 08:00:21 GMT -->
 </html>

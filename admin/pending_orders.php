@@ -65,7 +65,7 @@ table,td,tr{
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
-              <h2><?php echo $_SESSION['username']; ?></h2>
+              <h2><?php echo $_SESSION['usertype']; ?></h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -89,7 +89,7 @@ table,td,tr{
             </div>
             <ul class="nav navbar-nav navbar-right" style="text-align:right;margin-top:7px;margin-right:5px;">
 
-              <b>Logged in as :</b> <i><?php echo $_SESSION['username']; ?></i> | <a href="http://www.victoriajunction.co.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
+              <b>Logged in as :</b> <i><?php echo $_SESSION['usertype']; ?></i> | <a href="http://victoriajunction.in" target="_blank"> <b><i class="fa fa-laptop fa-x"></i></b> <font color="green" style="font-weight:bold">View Website</font></a>
             </ul>
           </nav>
         </div>
@@ -112,7 +112,7 @@ table,td,tr{
 
                 <?php
 
-                $records2 = $connection->prepare('SELECT * FROM orders WHERE order_status= "Pending" ORDER BY created_at DESC');
+                $records2 = $connection->prepare('SELECT * FROM orders WHERE order_status="Pending" ORDER BY created_at DESC');
 
                 $records2->execute();
                 $results2=$records2->fetch(PDO::FETCH_ASSOC);
@@ -148,6 +148,7 @@ table,td,tr{
                   <td style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
                   <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
+<!--                  <td style='padding:5px' align='left'<i><b>Reply </b></i></td>-->
                   </tr>";
                   echo "<br />";
 
@@ -160,12 +161,11 @@ table,td,tr{
                     echo "<td style='padding:3px' align='left'>".$results2['shipping_address']."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['product']."</td>";
                     echo "<td style='padding:3px' align='left'>".$results2['price']."</td></tr>";
+//                    echo "<td style='padding:3px' align='center'><a class='btn btn-success' href='updateorder.php?order_no=".$results2['order_no']."' name='update'>Update</a></td></tr>";
 
 
                   }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
                 }
-
-
                 ?>
               </div>
             </div>
