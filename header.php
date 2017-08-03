@@ -22,7 +22,7 @@ $results1=$records1->fetch(PDO::FETCH_ASSOC);
 			<fieldset>
 				<input type="hidden" name="cmd" value="_cart" />
 				<input type="hidden" name="display" value="1" />
-				<a class="" href="cart.php"><img class="cart-img" src="images/cart.png"></a>
+				<a class="" href="cart.php"><img class="cart-img" style="height:30px;" src="images/cart.png"></a>
 				<!--<input type="submit" name="submit" value="" class="button" />-->
 			</fieldset>
 		</form>

@@ -8,13 +8,39 @@ $records1->execute();
 $results1=$records1->fetch(PDO::FETCH_ASSOC);
 
 
-if(!$_SESSION['username'] ){
-  echo "<script>alert('Register/Login to access your account');</script>";
-	echo "<script>window.location.href='login.php';</script>";
+
+//Update Button clicked
+if(isset($_POST['update_pass'])){
+
+$records2 = $connection->prepare('SELECT * FROM login WHERE username=:username');
+$records2->bindParam(':username', $_SESSION['username']);
+$records2->execute();
+$results2=$records2->fetch(PDO::FETCH_ASSOC);
+
+if($_POST['old_password']==$results2['password']){
+
+  $records3 = $connection->prepare('UPDATE login SET password=:password WHERE username=:username');
+  $records3->bindParam(':password', $password);
+  $records3->bindParam(':username', $username);
+  $username=$_SESSION['username'];
+  $password=$_POST['password'];
+  $records3->execute();
+
+  $records31 = $connection->prepare('UPDATE register SET password=:password WHERE username=:username');
+  $records31->bindParam(':password', $password);
+  $records31->bindParam(':username', $username);
+  $username=$_SESSION['username'];
+  $password=$_POST['password'];
+  $records31->execute();
+
+  $success="Password updated successfully.";
+  }
+  else{
+	   $error_alert="Enter correct password";
+	}
 }
 
 ?>
-
 
 <!--
 
@@ -25,9 +51,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 
-<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:01:53 GMT -->
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/  [XR&CO'2014], Thu, 04 May 2017 07:59:30 GMT -->
 <head>
-  <title><?php echo $results1['web_name']; ?>| My Account </title>
+  <title><?php echo $results1['web_name']; ?> | Update Details </title>
   <!-- for-mobile-apps -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -58,40 +84,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   });
   </script>
   <!-- start-smoth-scrolling -->
-  <style>
-   .try-border{
-     text-align: center;
-     width:500px;
-     height:70px;
-     font-size:250%;
-     margin-top:10px;
-     border:2px solid Magenta;
-     background-color: red;
-     color: white;
-
-   }
-   .try-border:hover{
-     top: 5px;
-   }
-  </style>
-
 </head>
 
 <body>
-  <script src='../../../../../../ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script><script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-30027142-1', 'w3layouts.com');
-  ga('send', 'pageview');
-  </script>
-  <script async type='text/javascript' src='../../../../../../cdn.fancybar.net/ac/fancybar6a2f.js?zoneid=1502&amp;serve=C6ADVKE&amp;placement=w3layouts' id='_fancybar_js'></script>
-  <style type='text/css'>  .adsense_fixed{position:fixed;bottom:-8px;width:100%;z-index:999999999999;}.adsense_content{width:720px;margin:0 auto;position:relative;background:#fff;}.adsense_btn_close,.adsense_btn_info{font-size:12px;color:#fff;height:20px;width:20px;vertical-align:middle;text-align:center;background:#000;top:4px;left:4px;position:absolute;z-index:99999999;font-family:Georgia;cursor:pointer;line-height:18px}.adsense_btn_info{left:26px;font-family:Georgia;font-style:italic}.adsense_info_content{display:none;width:260px;height:340px;position:absolute;top:-360px;background:rgba(255,255,255,.9);font-size:14px;padding:20px;font-family:Arial;border-radius:4px;-webkit-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);-moz-box-shadow:0 1px 26px -2px rgba(0,0,0,.3);box-shadow:0 1px 26px -2px rgba(0,0,0,.3)}.adsense_info_content:after{content:'';position:absolute;left:25px;top:100%;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #fff;clear:both}.adsense_info_content #adsense_h3{color:#000;margin:0;font-size:18px!important;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_info_content .adsense_p{color:#888;font-size:13px!important;line-height:20px;font-family:'Arial'!important;margin-bottom:20px!important;}.adsense_fh5co-team{color:#000;font-style:italic;}</style>
+
 
   <!-- header -->
-  <?php include('header.php');?>
-  <!--header-->
+  <?php include('header.php'); ?>
   <!-- script-for sticky-nav -->
   <script>
   $(document).ready(function() {
@@ -104,7 +103,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         $(".agileits_header").removeClass("fixed");
       }
     });
-
   });
   </script>
   <!-- //script-for sticky-nav -->
@@ -136,53 +134,75 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="container">
       <ul>
         <li><i class="fa fa-home" aria-hidden="true"></i><a href="index.php">Home</a><span>|</span></li>
-        <li>My Account</li>
+        <li>Change Password</li>
       </ul>
     </div>
   </div>
   <!-- //products-breadcrumb -->
+
+  <!-- banner -->
   <div class="banner">
     <?php include('left-nav-bar.php'); ?>
     <div class="w3l_banner_nav_right">
-      <div class="w3l_banner_nav_right_banner10">
-        <?php
-        $records12 = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 1');
-        $records12->execute();
-        $result=$records12->fetch(PDO::FETCH_ASSOC);
-        ?>
-        <h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel tile fixed_height_450">
+          <div class="x_title">
+            <h2 style="text-align:center; margin:20px;">Update Password</h2>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="change_user_password.php" method="post">
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" >Old password<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="password" required="required" placeholder="Enter current password" autocomplete="off" name="old_password" class="form-control col-md-7 col-xs-12">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" >New password<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="password" required="required" autocomplete="off" name="password" placeholder="Enter new password" class="form-control col-md-7 col-xs-12">
+                  <i><font color="green" style="font-style:italic;font-weight:bold;">
+                    <?php if($success!=null){ ?>
+                      <img src="images/tick.png">
+                      <?php
+                      echo $success;
+                    } ?>
+                  </font></i>
+                  <i><font color="red" style="font-style:italic;font-weight:bold;">
+                    <?php if($error_alert!=null){ ?>
+                      <img src="images/cross.gif">
+                      <?php
+                      echo $error_alert;
+                    } ?>
+                  </font></i>
+                </div>
+              </div>
+              <div class="ln_solid"></div>
+              <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                  <button type="reset" class="btn btn-primary">Reset</button>
+                  <button type="submit" name="update_pass" class="btn btn-success">Update</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="clearfix"></div>
-  </div>
-  <!---728x90--->
-  <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
-    <h3 style="margin-top:12px; margin-bottom:10px;">My Account</h3>
-    <div class="row text-center">
-      <div class="col-sm-6 text-center">
-        <div class="col-sm-2"></div>
-        <a href="change_user_password.php"><div class="col-sm-4 try-border"><i style="margin-right:15px;" class="fa fa-key" aria-hidden="true"></i>Change Password</div></a>
-      </div>
-      <div class="col-sm-6 text-center">
-        <a href="change_user_address.php"><div class="col-sm-4 try-border"><i style="margin-right:15px;" class="fa fa-user" aria-hidden="true"></i>Edit Address</div></a>
-          <div class="col-sm-2"></div>
-      </div>
-    </div>
-    <!-- Affiliates section here -->
 
-    <div class="clearfix"> </div>
-  </div>
-</div>
-</div>
 
-<!---728x90--->
-<!-- //banner -->
-<!-- newsletter -->
-<?php include('newsletter.php');?>
+<div class="clearfix"></div>
+</div>
+<?php include('newsletter.php'); ?>
 <!-- //newsletter -->
 <!-- footer -->
-<?php include('footer.php');?>
+<?php include('footer.php'); ?>
 <!-- //footer -->
+
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script>
@@ -217,17 +237,8 @@ $().UItoTop({ easingType: 'easeOutQuart' });
 </script>
 <!-- //here ends scrolling icon -->
 
-<script>
-// Mini Cart
-paypal.minicart.render({
-  action: '#'
-});
 
-if (~window.location.search.indexOf('reset=true')) {
-  paypal.minicart.reset();
-}
-</script>
 </body>
 
-<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/frozen.php  [XR&CO'2014], Thu, 04 May 2017 08:02:05 GMT -->
+<!-- Mirrored from empreuslabs.com/demos/july-2016/07-07-2016/grocery_store/web/  [XR&CO'2014], Thu, 04 May 2017 08:00:21 GMT -->
 </html>

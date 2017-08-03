@@ -163,7 +163,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" >Enter Email<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input  style="margin-bottom:10px;" type="email" placeholder="eg: abc@xyz.com" required="required" autocomplete="off" name="email" class="form-control col-md-3 col-xs-3">
+                      <input style="margin-bottom:10px;" type="email" placeholder="eg: abc@xyz.com" required="required" autocomplete="off" name="email" class="form-control col-md-3 col-xs-3">
                       <p><font color="red" style="font-style:italic"><?php if($errMsg!=null){echo $errMsg;} ?></font> </p>
                       <p><font color="green" style="font-style:italic"><?php if($success!=null){echo $success;} ?></font> </p>
                     </div>

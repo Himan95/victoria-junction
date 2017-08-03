@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 session_start();
 include ('connect/connection.php');
 
@@ -7,6 +7,13 @@ include ('connect/connection.php');
 $records1 = $connection->prepare('SELECT * FROM web_info');
 $records1->execute();
 $results1=$records1->fetch(PDO::FETCH_ASSOC);
+
+
+if(!$_SESSION['username'] ){
+  echo "<script>alert('Register/Login to access your account');</script>";
+	echo "<script>window.location.href='login.php';</script>";
+}
+
 ?>
 
 
@@ -52,6 +59,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	});
 	</script>
 	<!-- start-smoth-scrolling -->
+	<style>
+	 .try-border{
+		 text-align: center;
+		 width:250px;
+		 height:200px;
+		 font-size:200%;
+		 margin-top:10px;
+		 border:2px solid Magenta;
+		 background-color: green;
+		 color: white;
+
+	 }
+	 .try-border:hover{
+		 top: 5px;
+	 }
+	</style>
+
 </head>
 
 <body>
@@ -122,30 +146,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- banner -->
 	<div class="banner">
 		<?php include('left-nav-bar.php'); ?>
-		<div class="w3l_banner_nav_right">
-			<div class="w3l_banner_nav_right_banner10">
-				<?php
-				$records12 = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 1');
-				$records12->execute();
-				$result=$records12->fetch(PDO::FETCH_ASSOC);
-				?>
-				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
-			</div>
-		</div>
-		<div class="clearfix"></div>
+
 	</div>
 	<!---728x90--->
 	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
-		<h3 style="margin-top:12px;">Order History</h3>
+		<h2 class="text-center" style="font-size: 250%; margin-top:12px;margin-bottom:12px;">Order History</h2>
 
-		<p style="text-align:justify" class="animi"><?php echo  $results['description']; ?></p>
-		<!-- Affiliates section here -->
+<?php
+$records7 = $connection->prepare('SELECT * FROM orders WHERE customer_name = :cust_name');
+$records7->bindParam(':cust_name',$_SESSION['username']);
+$records7->execute();
+
+while($results7=$records7->fetch(PDO::FETCH_ASSOC)){
+echo '
+		<div style="float:left; margin-left:1px;" class="row text-center">
+			<div class="col-sm-4 text-center">
+				<a href="invoice.php">
+					<div class="col-sm-4 try-border">
+						<p><b>Invoice No: '.$results7['order_id'].'</b></p>
+						<p style="font-size:20px;">Dated:'.$results7['created_at'].'</p>
+						<p style="font-size:80px;">+</p>
+					</div>
+				</a>
+			</div>
+		</div>
+';
+}
+?>
+
 
 		<div class="clearfix"> </div>
 	</div>
-</div>
-</div>
-
 <!---728x90--->
 <!-- //banner -->
 <!-- newsletter -->

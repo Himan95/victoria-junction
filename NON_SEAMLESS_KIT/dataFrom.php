@@ -43,6 +43,19 @@ if(!$_SESSION['logged_in']){
 	echo "<script>window.location.href='../login.php';</script>";
 }
 
+
+$records1 = $connection->prepare('SELECT * FROM web_info');
+$records1->execute();
+$results1=$records1->fetch(PDO::FETCH_ASSOC);
+
+
+$records4 = $connection->prepare('SELECT * FROM customers WHERE cust_name=:cust_name');
+$records4->bindParam(':cust_name',$_SESSION['username']);
+$records4->execute();
+$results4=$records4->fetch(PDO::FETCH_ASSOC);
+
+
+/*
 $cart = unserialize(serialize($_SESSION['cart']));
 $r=sizeof($cart);
 
@@ -106,11 +119,7 @@ if(isset($_POST['checkout'])){
 		echo "<script>window.location.href='ccavResponseHandler.php';</script>";
 	}
 }
-
-
-$records1 = $connection->prepare('SELECT * FROM web_info');
-$records1->execute();
-$results1=$records1->fetch(PDO::FETCH_ASSOC);
+*/
 
 ?>
 
@@ -287,7 +296,7 @@ hr{
 					<label class="control-label col-md-3 col-sm-3 col-xs-12" >Contact:
 					</label>
 					<div class="col-md-9 col-sm-6 col-xs-12">
-						<input type="number" required="required" placeholder="eg: 9458XX1254" autocomplete="off" name="delivery_tel" class="form-control col-md-7 col-xs-12">
+						<input type="number" required="required" placeholder="eg: 9458XX1254" autocomplete="off" name="delivery_tel"  value="<?php echo $results4['cust_contact'];?>" class="form-control col-md-7 col-xs-12">
 					</div>
 				</div>
 				<div class="form-group">
@@ -306,7 +315,7 @@ hr{
 					<label class="control-label col-md-3 col-sm-3 col-xs-12" >Address:
 					</label>
 					<div class="col-md-6 col-sm-6 col-xs-12">
-						<input type="text" autocomplete="on" required="required" placeholder="eg: Flat No 4A, 4th Floor, Shakti Kunj, Khalpara" autocomplete="off" name="delivery_address" class="form-control col-md-7 col-xs-12">
+						<input type="text" autocomplete="on" required="required" value="<?php echo $results4['cust_address'];?>" placeholder="eg: Flat No 4A, 4th Floor, Shakti Kunj, Khalpara" autocomplete="off" name="delivery_address" class="form-control col-md-7 col-xs-12">
 					</div>
 				</div>
 
@@ -363,19 +372,19 @@ hr{
 -->
 <div class="ln_solid"></div>
 <div class="form-group">
-	<div style="margin-top:60px;text-align:center;" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+	<div style="margin-top:20px;text-align:center;" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 		<input type="submit" style=""  name="checkout" class="btn btn-success" value="CheckOut">
 	</div>
 </div>
 </form>
 
-<form style="margin-bottom:30px;" method="post" action="dataFrom.php">
-	<div style="position:relative; top:-75px; margin-left:20px; margin-bottom:20px;" class="col-md-6">
+<form style="text-align:center;" method="POST" action="dataFrom.php">
+	<div style="text-align:center;  margin-bottom:20px;" class="col-md-12 col-sm-6 col-xs-12 col-md-offset-3">
 		<div class="form-group">
-			<div class="col-md-4 col-sm-6 col-xs-12">
+			<div class="col-md-6 col-sm-6 col-xs-12">
 				<input type="text" required placeholder="eg: SUMMERSALE15" autocomplete="off" value="" name="promo_code" class="form-control col-md-7 col-xs-12">
+				<input style=" text-align:center;margin-top:5px;border:none; color:blue;" class="btn-default" type="submit" name="apply_coupon" value="Apply Coupon"/>
 			</div>
-			<div class="col-md-2"><input style="margin-top:5px;border:none; color:blue;" class="btn-default" type="submit" name="apply_coupon" value="Apply Coupon"/></div>
 		</div>
 	</div>
 </form>

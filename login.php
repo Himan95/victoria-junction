@@ -34,12 +34,16 @@ if(isset($_POST['register'])){
 	$stmt1=$connection->prepare('INSERT INTO login (username,password) VALUES (:username,:password)');
 	$stmt1->bindParam(':username',$username);
 	$stmt1->bindParam(':password',$password);
+	
+		$stmt2=$connection->prepare('INSERT INTO customers (cust_name) VALUES (:username)');
+		$stmt2->bindParam(':username',$username);
 
 	try{
 
 		if($results==0){
 			$stmt->execute();
 			$stmt1->execute();
+			$stmt2->execute();
 			echo "<script>alert('Registration successful. Login to continue');</script>";
 			//header('location:login.php');
 		}
