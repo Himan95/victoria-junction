@@ -55,9 +55,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</script>
 
 	<script>
-			printDivCSS = new String ('<link href="bootstrap.css" rel="stylesheet" type="text/css">')
+			printDivCSS = new String ('<link href="css/style.css" rel="stylesheet" type="text/css">')
+			printDivCSS2 = new String('<link href="css/bootstrap.css" rel="stylesheet" type="text/css">')
 			function printDiv(divId) {
-					window.frames["print_frame"].document.body.innerHTML=printDivCSS + document.getElementById(divId).innerHTML;
+					window.frames["print_frame"].document.body.innerHTML=printDivCSS + printDivCSS2 + document.getElementById(divId).innerHTML;
 					window.frames["print_frame"].window.focus();
 					window.frames["print_frame"].window.print();
 			}

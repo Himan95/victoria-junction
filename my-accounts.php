@@ -61,9 +61,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <style>
    .try-border{
      text-align: center;
-     width:500px;
-     height:70px;
-     font-size:250%;
+     font-size:200%;
      margin-top:10px;
      border:2px solid Magenta;
      background-color: red;
@@ -161,12 +159,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="row text-center">
       <div class="col-sm-6 text-center">
         <div class="col-sm-2"></div>
-        <a href="change_user_password.php"><div class="col-sm-4 try-border"><i style="margin-right:15px;" class="fa fa-key" aria-hidden="true"></i>Change Password</div></a>
+        <a href="change_user_password.php"><div style="float:right;" class="col-sm-4 try-border"><i style="margin-right:15px;" class="fa fa-key" aria-hidden="true"></i>Change Password</div></a>
       </div>
+
       <div class="col-sm-6 text-center">
-        <a href="change_user_address.php"><div class="col-sm-4 try-border"><i style="margin-right:15px;" class="fa fa-user" aria-hidden="true"></i>Edit Address</div></a>
-          <div class="col-sm-2"></div>
+
+          <a href="change_user_address.php"><div class="col-sm-4  try-border"><i style="margin-right:15px;" class="fa fa-user" aria-hidden="true"></i>Edit Address</div></a>
+          <div class="col-sm-2">
+          </div>
       </div>
+    </div>
     </div>
     <!-- Affiliates section here -->
 

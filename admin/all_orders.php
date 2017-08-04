@@ -43,10 +43,11 @@ if(!$_SESSION['admin'] || !$_SESSION['usertype'] ){
 
   <script>
       printDivCSS = new String ('<link href="../css/style.css" rel="stylesheet" type="text/css">')
+			printDivCSS2 = new String('<link href="../css/bootstrap.css" rel="stylesheet" type="text/css">')
 
     function printDiv(divId) {
 
-           window.frames["print_frame"].document.body.innerHTML=printDivCSS + document.getElementById(divId).innerHTML;
+          window.frames["print_frame"].document.body.innerHTML=printDivCSS + printDivCSS2 + document.getElementById(divId).innerHTML;
           window.frames["print_frame"].window.focus();
           window.frames["print_frame"].window.print();
 
@@ -143,7 +144,7 @@ table,td,tr{
                     </div>
                   </center>
                 </form>
-
+                <div id="yesPrint">
                 <?php
                 if(isset($_POST['display_all']))
                 {
@@ -164,47 +165,47 @@ table,td,tr{
                     if(!$results2['order_id'])  // No Order exists
                     {
                       echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
-                      <tr style='background-color:#EDEDED;padding:5px'>
+                      <tr class='lets_try' style='background-color:#EDEDED;padding:5px'>
 
-                      <td style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
-                      <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
-                      <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
-                      <td style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
-                      <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
-                      <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
-                      <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>NAME</b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>PHONE </b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>PRICE</b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
                       </tr>";
                       echo "<br />";
 
-                      echo "<tr><td colspan='7' style='padding:3px' align='left'>No Records Found</td>";
+                      echo "<tr><td colspan='7' class='table-items' style='padding:3px' align='left'>No Records Found</td>";
 
                     }
                     else {
 
                       echo "<table id='datatable-responsive' class='table table-striped table-bordered dt-responsive nowrap' align='left' border='1'  cellspacing='2' cellpadding='2'  width='750px;'>
-                      <tr style='background-color:#EDEDED;padding:5px'>
+                      <tr class='lets_try' style='background-color:#EDEDED;padding:5px'>
 
-                      <td style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
-                      <td style='padding:5px' align='left'<i><b>ORDER DATE. </b></i></td>
-                      <td style='padding:5px' align='left'<i><b>NAME</b></i></td>
-                      <td style='padding:5px' align='left'<i><b>PHONE </b></i></td>
-                      <td style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
-                      <td style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
-                      <td style='padding:5px' align='left'<i><b>PRICE</b></i></td>
-                      <td style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>ORDER NO. </b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>ORDER DATE. </b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>NAME</b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>PHONE </b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>ADDRESS</b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>PRODUCT</b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>PRICE</b></i></td>
+                      <td class='table-items' style='padding:5px' align='left'<i><b>ORDER STATUS </b></i></td>
                       </tr>";
                       echo "<br />";
 
                       do{
                           $orderDate = date_format(date_create_from_format('Y-m-d', $results2['created_at']), 'd-m-Y');
-                        echo "<tr><td style='padding:3px' align='left'>".$results2['order_no']."</td>";
-                        echo "<td style='padding:3px' align='left'>".$orderDate."</td>";
-                        echo "<td style='padding:3px' align='left'>".$results2['customer_name']."</td>";
-                        echo "<td style='padding:3px' align='left'>".$results2['customer_contact']."</td>";
-                        echo "<td style='padding:3px' align='left'>".$results2['shipping_address']."</td>";
-                        echo "<td style='padding:3px' align='left'>".$results2['product']."</td>";
-                        echo "<td style='padding:3px' align='left'>".$results2['price']."</td>";
-                        echo "<td style='padding:3px' align='left'>".$results2['order_status']."</td></tr>";
+                        echo "<tr><td class='table-items' style='padding:3px' align='left'>".$results2['order_no']."</td>";
+                        echo "<td class='table-items' style='padding:3px' align='left'>".$orderDate."</td>";
+                        echo "<td class='table-items' style='padding:3px' align='left'>".$results2['customer_name']."</td>";
+                        echo "<td class='table-items' style='padding:3px' align='left'>".$results2['customer_contact']."</td>";
+                        echo "<td class='table-items' style='padding:3px' align='left'>".$results2['shipping_address']."</td>";
+                        echo "<td class='table-items' style='padding:3px' align='left'>".$results2['product']."</td>";
+                        echo "<td class='table-items' style='padding:3px' align='left'>".$results2['price']."</td>";
+                        echo "<td class='table-items' style='padding:3px' align='left'>".$results2['order_status']."</td></tr>";
 
 
                       }while($results2=$records2->fetch(PDO::FETCH_ASSOC));
@@ -213,12 +214,13 @@ table,td,tr{
                 }
                 ?>
               </div>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
-      <input type="button" value="Print" class="btn btn-warning" onClick="javascript:printDiv('datatable-responsive')"/>
+      <input type="button" value="Print" class="btn btn-warning" onClick="javascript:printDiv('yesPrint')"/>
 
       <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
 
