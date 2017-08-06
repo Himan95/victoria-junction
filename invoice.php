@@ -3,12 +3,21 @@ error_reporting(0);
 session_start();
 include('connect/connection.php');
 
+
+$order_id=$_GET['order_no'];
+
+
+$records15= $connection->prepare('SELECT * FROM orders WHERE order_no=:order_no');
+$records15->bindParam(':order_no',$order_id);
+$records15->execute();
+$results15=$records15->fetch(PDO::FETCH_ASSOC);
+
+
 $records1 = $connection->prepare('SELECT * FROM web_info');
 $records1->execute();
 $results1=$records1->fetch(PDO::FETCH_ASSOC);
 ?>
 <!--
-
 
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
@@ -78,24 +87,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<h4>Thank you. Your order has been placed and will be processed shortly. For details, please write to support@victoriajunction.com</h4>
 		</div>
 		<div id= "yesPrint">
-		<h3 style="	margin-top:20px;margin-bottom:20px;	background-color: black;padding:10px;	height:40px;color:white;text-align: center;letter-spacing: 3.75px;" class="invoice">INVOICE</h3>
+		<h3 style="margin-top:20px;margin-bottom:20px;	background-color: black;padding:10px;	height:40px;color:white;text-align: center;letter-spacing: 3.75px;" class="invoice">INVOICE</h3>
 		<h4 style="font-size:150%; margin-bottom:10px;">ORDER FOR:</h4>
 		<div class="row">
 			<div style="line-height: 200%;" class="col-md-4">
-					<p>Ayush Mahato</p>
-					<p>Shakti Kunj, Shaktigarh, Road 2</p>
-					<p>Siliguri, 734005</p>
-					<p>+91 9832344231</p>
+					<p><?php echo $results15['customer_name']; ?></p>
+					<p><?php echo $results15['shipping_address']; ?></p>
+					<p><?php echo $results15['customer_contact']; ?></p>
 			</div>
 			<div class="col-md-4">
 			</div>
 
-
 			<div style="line-height: 200%;" class="col-md-4">
-				<p><b>Order No:</b> 164451</p>
-				<p><b>Date:</b> 1st Aug, 2017</p>
-				<p><b>Total Amount:</b> Rs. 4500</p>
-				<p><b>Order Status:</b> Success</p>
+				<p><b>Order No:</b><?php echo $results15['order_no']; ?></p>
+				<p><b>Date:</b> <?php echo $results15['created_at']; ?></p>
+				<p><b>Total Amount:</b> <?php echo $results15['total']; ?></p>
+				<p><b>Order Status:</b><?php echo $results15['order_status']; ?></p>
 			</div>
 		</div>
 
@@ -110,34 +117,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</tr>
 				</thead>
 				<tbody>
-					<tr style="width:120%;">
-					<td><img width="70px" height="auto" src="images/vj_logo.png"/></td>
-					<td>Choco Chips Cake</td>
-					<td>Rs. 650.00</td>
-					<td>Rs. 650.00</td>
-				</tr>
-					<hr style="border: 2px solid cyan;">
-					<tr>
-						<td style="border:none;" colspan="2"> </td>
-						<td style="border:none;"  colspan="1">Subtotal</td>
-						<td style="border:none;">Rs. 650.00</td>
-					</tr>
-					<tr>
+					<?php
 
-						<td style="border:none;" colspan="2" > </td>
-						<td style="border:none;" colspan="1" >Total</td>
-						<td style="border:none;">Rs. 650.00</td>
-					</tr>
-					<tr>
-						<td style="border:none;" colspan="2" > </td>
-						<td style="border:none;" colspan="1" >Amount Paid</td>
-						<td style="border:none;">Rs. 0.00</td>
-					</tr>
-					<tr>
-						<td style="border:none;" colspan="2" > </td>
-						<td style="border:none;" colspan="1" >Balance Due</td>
-						<td style="border:none;" >Rs. 650.00</td>
-					</tr>
+					$records155= $connection->prepare('SELECT * FROM orders WHERE order_no=:order_no');
+					$records155->bindParam(':order_no',$order_id);
+					$records155->execute();
+
+					while($results155=$records155->fetch(PDO::FETCH_ASSOC)){
+						echo '
+											<tr style="width:120%;">
+											<td><img width="70px" height="auto" src="'.$results155['prod_image'].'"/></td>
+											<td>'.$results155['product'].'</td>
+											<td>'.$results155['price'].'</td>
+											<td>'.$results155['quantity']*$results155['price'].'</td>
+										</tr>
+											<hr style="border: 2px solid cyan;">
+											<tr>
+												<td style="border:none;" colspan="2" > </td>
+												<td style="border:none;" colspan="1" >Total</td>
+												<td style="border:none;">'.$results155['total'].'</td>
+											</tr>
+						';
+					}
+					 ?>
+
 
 				</tbody>
 			</table>

@@ -9,7 +9,7 @@ require '../item.php';
 
 $order_no=mt_rand(100000, 999999);
 $_SESSION['check']=0;
-
+$countt=0;
 if(isset($_POST['apply_coupon'])){
 	if($_SESSION['check']==0){
 		$_SESSION['check']++;
@@ -25,6 +25,8 @@ if(isset($_POST['apply_coupon'])){
 		else{
 			$_SESSION['actual_total']=$_SESSION['tot_amount'];
 			$_SESSION['tot_amount']=$_SESSION['tot_amount'] - ($_SESSION['tot_amount'] * $results['coupon_discount'] / 100);
+			$countt=1;
+			echo "<script>alert('Coupon applied!');</script>";
 		}
 	}
 	else {
@@ -53,73 +55,6 @@ $records4 = $connection->prepare('SELECT * FROM customers WHERE cust_name=:cust_
 $records4->bindParam(':cust_name',$_SESSION['username']);
 $records4->execute();
 $results4=$records4->fetch(PDO::FETCH_ASSOC);
-
-
-/*
-$cart = unserialize(serialize($_SESSION['cart']));
-$r=sizeof($cart);
-
-if(isset($_POST['checkout'])){
-
-	$coupon_name=strtoupper($_POST['promo_code']);
-	$today=date('Y-m-d');
-	$records = $connection->prepare('SELECT * FROM coupons WHERE coupon_name=:coupon_name');
-	$records->bindParam(':coupon_name',$coupon_name);
-	$records->execute();
-	$results=$records->fetch(PDO::FETCH_ASSOC);
-
-	if($results['coupon_enddate'] < $today)
-	echo "<script>alert('Coupon Invalid!');</script>";
-	else{
-		$order_status="Pending";
-		$payment_status="Pending";
-
-		$customer_name=$_SESSION['username'];
-		$customer_contact=$_POST['delivery_tel'];
-		$customer_email=$_POST['email'];
-
-		$created_at=date('Y-m-d');
-		$created_time=date('h:i:s');
-		$shipping_address=$_POST['address'];
-		$total= $_SESSION['tot_amount'];
-		$_SESSION['payment'] = $total - ($total * ($results['coupon_discount']/100));
-
-		while($r--){
-
-			$prod_id=$cart[$r]->id;
-			$records21 = $connection->prepare('SELECT * FROM products WHERE prod_id=:prod_id');
-			$records21->bindParam(':prod_id',$prod_id);
-			$records21->execute();
-			$results21=$records21->fetch(PDO::FETCH_ASSOC);
-
-			$product=$results21['prod_name'];
-			$price=$results21['prod_price'];
-			$quantity=$results21['prod_quantity'];
-
-			//Write code for creating order and adding in db
-			$records2 = $connection->prepare('INSERT INTO orders(order_no,product,price,quantity,payment_status,order_status,customer_name,customer_contact,customer_email,created_at,created_time,shipping_address,total) VALUES(:order_no,:product,:price,:quantity,:payment_status,:order_status,:customer_name,:customer_contact,:customer_email,:created_at,:created_time,:shipping_address,:total)');
-			$records2->bindParam(':order_no',$order_no);
-			$records2->bindParam(':product',$product);
-			$records2->bindParam(':price',$price);
-			$records2->bindParam(':quantity',$quantity);
-			$records2->bindParam(':payment_status',$payment_status);
-			$records2->bindParam(':order_status',$order_status);
-			$records2->bindParam(':customer_name',$customer_name);
-			$records2->bindParam(':customer_contact',$customer_contact);
-			$records2->bindParam(':customer_email',$customer_email);
-			$records2->bindParam(':created_at',$created_at);
-			$records2->bindParam(':created_time',$created_time);
-			$records2->bindParam(':shipping_address',$shipping_address);
-			$records2->bindParam(':total',$_SESSION['payment']);
-			$records2->execute();
-
-		}
-
-		echo "<script>alert('Redirecting to Payment Gateway!');</script>";
-		echo "<script>window.location.href='ccavResponseHandler.php';</script>";
-	}
-}
-*/
 
 ?>
 
@@ -379,6 +314,9 @@ hr{
 </form>
 
 <form style="text-align:center;" method="POST" action="dataFrom.php">
+	<?php
+	if($countt==0){
+		echo '
 	<div style="text-align:center;  margin-bottom:20px;" class="col-md-12 col-sm-6 col-xs-12 col-md-offset-3">
 		<div class="form-group">
 			<div class="col-md-6 col-sm-6 col-xs-12">
@@ -387,6 +325,9 @@ hr{
 			</div>
 		</div>
 	</div>
+	';
+}
+	?>
 </form>
 
 <div class="clearfix"></div>
