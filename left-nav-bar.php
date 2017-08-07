@@ -17,7 +17,7 @@
 					<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
 						<div class="w3ls_vegetables">
 							<ul>
-								<li><a href="cakes.php">Chocolate Cakes</a></li>
+								<li><a href="cakes.php">Basic Cakes</a></li>
 								<li><a href="cakes.php">Customised Cakes</a></li>
 							</ul>
 						</div>

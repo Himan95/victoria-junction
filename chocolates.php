@@ -122,7 +122,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="banner">
 		<?php include('left-nav-bar.php'); ?>
 		<div class="w3l_banner_nav_right">
-			<div class="w3l_banner_nav_right_banner10">
+			<div class="w3l_banner_nav_right_banner21 w3l_banner_nav_right_banner10">
 				<?php
 				$records12 = $connection->prepare('SELECT * FROM offers ORDER BY rand() LIMIT 1');
 				$records12->execute();

@@ -50,19 +50,23 @@
 							<a href="products.php"><img src="images/11.jpg" alt=" " class="img-responsive bada-image" /></a>
 						</div>
 					</div>
-					<div class="agileinfo_move_text">
+					
+					<!--<div class="agileinfo_move_text">
 						<div class="agileinfo_marquee">
 							<h4>get <span class="blink_me">25% off</span> on first order and also get gift voucher
-								<!--<div class="agileinfo_breaking_news">
+								<div class="agileinfo_breaking_news">
 									<span> </span>
-								</div>-->
+								</div>
 							</h4>
 
 							</div>
 
-						</div>
+						</div>-->
+
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
+	<br>

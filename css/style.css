@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 .table-striped{
   align:left;
   border:1
-  cellspacing:2; 
+  cellspacing:2;
   cellpadding:2;
   width:750px;
 }
@@ -137,18 +137,17 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
 	font-size: 1.2em;
     color: #fff;
     text-decoration: none;
-    padding: .5em 3em;
+    padding: .5em 2em;
     background: #84C639;
 	display:block;
 }
 .w3l_search{
 	float: left;
-    width: 27%;
     margin:.1em 0 0em 10em;
 }
 .w3l_search input[type="text"]{
 	outline: none;
-    padding: 10px;
+
     color: #212121;
     font-size: 14px;
     width: 85%;
@@ -369,6 +368,7 @@ ul.dropdown-menu.drp-mnu li a i {
 .w3l_banner_nav_right_banner2{
 	background:url(../images/mainslider3.jpg) no-repeat 0px 0px;
 	background-size:cover;
+
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
 	-o-background-size:cover;
@@ -1111,13 +1111,90 @@ ul.dropdown-menu.drp-mnu li a i {
 	-ms-background-size:cover;
 }
 .w3l_banner_nav_right_banner10{
-	background:url(../images/228.jpg) no-repeat 0px 0px;
+	background:url(../images/cake_banner.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	-ms-background-size:cover;
 }
+
+.w3l_banner_nav_right_banner20{
+	background:url(../images/pastry_banner.jpg) no-repeat 0px 0px;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+}
+.w3l_banner_nav_right_banner25{
+  background:url(../images/bread_banner.jpg) no-repeat 0px 0px;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+}
+.w3l_banner_nav_right_banner35{
+  background:url(../images/cookie_banner.jpg) no-repeat 0px 0px;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+}
+
+.w3l_banner_nav_right_banner55{
+  background:url(../images/drinks_banner.jpg) no-repeat 0px 0px;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+}
+
+.w3l_banner_nav_right_banner45{
+  background:url(../images/snacks_banner.jpg) no-repeat 0px 0px;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+}
+
+.w3l_banner_nav_right_banner21{
+	background:url(../images/chocolate_banner.jpg) no-repeat 0px 0px;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+}
+
+
+
+.w3l_banner_nav_right_banner65{
+  background:url(../images/gift_banner.jpg) no-repeat 0px 0px;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+}
+
+
+.w3l_banner_nav_right_banner75{
+  background:url(../images/bouquet_banner.jpg) no-repeat 0px 0px;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+}
+
+
+
+
 .w3l_banner_nav_right_banner3 h3,.w3l_banner_nav_right_banner4 h3,.w3l_banner_nav_right_banner5 h3,.w3l_banner_nav_right_banner6 h3,.w3l_banner_nav_right_banner7 h3,.w3l_banner_nav_right_banner8 h3,.w3l_banner_nav_right_banner9 h3,.w3l_banner_nav_right_banner10 h3{
 	font-size: 2em;
     color: #FA1818;
@@ -2393,14 +2470,14 @@ ul.wmuSliderPagination {
 }
 @media (max-width:1440px){
 	.w3l_header_right {
-		padding-left: 4em;
+
 	}
 	.w3l_banner_nav_right_banner3 h3, .w3l_banner_nav_right_banner4 h3, .w3l_banner_nav_right_banner5 h3, .w3l_banner_nav_right_banner6 h3, .w3l_banner_nav_right_banner7 h3, .w3l_banner_nav_right_banner8 h3, .w3l_banner_nav_right_banner9 h3, .w3l_banner_nav_right_banner10 h3 {
 		width: 45%;
     margin-top:1.5em;
 	}
 	.w3l_banner_nav_right_banner1, .w3l_banner_nav_right_banner, .w3l_banner_nav_right_banner2 {
-		padding: 10em 7em 0 0;
+		 padding: 10em 7em 0 0; 
 	}
 	.snipcart-details {
 		width: 93%;
@@ -2533,7 +2610,7 @@ ul.wmuSliderPagination {
 	}
 	.w3l_search {
 		margin: .1em 0 0em 3em;
-		width: 30%;
+
 	}
 	.w3l_search input[type="submit"] {
 		background: url(../images/img-sp.png) no-repeat 6px 5px #FA1818;
@@ -4334,14 +4411,12 @@ ul.wmuSliderPagination {
 	opacity:0;
 }
 .cart-img{
+float:right;
   margin-top:10px;
   width:30px;
-  height:30px;
-  padding: 2px;
 }
 .cart-img:hover{
-  width:32px;
-  height:32px;
+  width:31px;
 }
 .bada-image{
   width:90%;
