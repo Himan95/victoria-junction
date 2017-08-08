@@ -97,8 +97,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //header -->
 	<!-- banner -->
 	<div class="banner">
-		<?php include('left-nav-bar.php'); ?>
-		<div class="w3l_banner_nav_right">
+		<div style="background-color:red; height:50px;" class="menu-bar">
+			<?php include('index-nav-bar.php'); ?>
+		</div>
+		<!--<div class="w3l_banner_nav_right">-->
 			<section class="slider">
 				<div class="flexslider">
 					<ul class="slides">
@@ -134,7 +136,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			});
 			</script>
 			<!-- //flexSlider -->
-		</div>
+		<!--</div>-->
 		<div class="clearfix"></div>
 	</div>
 	<!---728x90--->

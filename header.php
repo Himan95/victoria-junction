@@ -9,11 +9,11 @@ $results1=$records1->fetch(PDO::FETCH_ASSOC);
 ?>
 <div class="agileits_header">
 	<div class="w3l_offers">
-		<a href="specials.php">Offers</a>
+		<a href="specials.php">Special Offers</a>
 	</div>
 
 	<div class="w3l_search">
-		<marquee style="color:red; margin-top:8px;"> <h4 style="  font-size:22px; width: 400px;text-align:center;color:red;"> Welcome To <?php echo $results1['web_name'];  ?> | 
+		<marquee style="color:red; margin-top:8px;"> <h4 style="  font-size:22px; width: 400px;text-align:center;color:red;"> Welcome To <?php echo $results1['web_name'];  ?> |
 		First Live Eggless Bakery in North Bengal </h4></marquee>
 	</div>
 

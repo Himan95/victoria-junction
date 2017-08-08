@@ -112,7 +112,7 @@ table,td,tr{
 
                 <?php
 
-                $records2 = $connection->prepare('SELECT * FROM orders WHERE order_status="Pending" ORDER BY created_at DESC');
+                $records2 = $connection->prepare('SELECT * FROM orders WHERE order_status IN("Aborted","Failure")  ORDER BY created_at DESC');
 
                 $records2->execute();
                 $results2=$records2->fetch(PDO::FETCH_ASSOC);

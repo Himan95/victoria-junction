@@ -4,6 +4,40 @@
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.my_nav{
+  margin-left:100px;
+}
+.my_nav a{
+  font-size:110%;
+  margin-right:25px;
+}
+.my_nav > li > a{
+float:left;
+color:white;
+margin-top:5px;
+text-align:center;
+border-bottom: none important;
+}
+
 .table-striped{
   align:left;
   border:1
@@ -310,6 +344,7 @@ ul.dropdown-menu.drp-mnu li a i {
     background-color: #84C639;
     color: #fff;
 }
+
 .navbar-nav {
     float: none;
     margin: 0;
@@ -2477,7 +2512,7 @@ ul.wmuSliderPagination {
     margin-top:1.5em;
 	}
 	.w3l_banner_nav_right_banner1, .w3l_banner_nav_right_banner, .w3l_banner_nav_right_banner2 {
-		 padding: 10em 7em 0 0; 
+		 padding: 10em 7em 0 0;
 	}
 	.snipcart-details {
 		width: 93%;

@@ -23,7 +23,7 @@
 			<ul class="w3_footer_grid_list">
 				<li><a href="faqs.php">FAQs</a></li>
 				<li><a href="brands.php">Brands</a></li>
-				<li><a href="affiliates.php">Affiliates</a></li>
+				<!--<li><a href="affiliates.php">Affiliates</a></li>-->
 				<li><a href="specials.php">Specials</a></li>
 
 			</ul>
@@ -34,7 +34,7 @@
 				<li><a href="my-accounts.php">My Account</a></li>
 				<li><a href="order-history.php">Order History</a></li>
 
-				<li><a href="newsletters.php">Newsletters</a></li>
+<!--				<li><a href="newsletters.php">Newsletters</a></li>-->
 			</ul>
 		</div>
 		<div class="clearfix"> </div>

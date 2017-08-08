@@ -162,17 +162,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 	<div style="margin-top:10px; text-align:center;" class="container">
-		<div style= "margin-bottom:20px;" class="col-md-3">
-			<a href="cakes.php"><img style="border:5px solid cyan; height:150px;  width:250px; border-radius: 10%;" src="images/extra1.jpg"/>
+		<div style= " margin-left:0px; float:left;  margin-bottom:20px;" class="">
+			<a href="cakes.php"><img style="height:150px; border-radius:12px 0px 12px 0px; width:280px;" src="images/extra1.jpg"/>
 		</div>
-		<div style="margin-bottom:20px;" class="col-md-3">
-			<a href="cookies.php"><img  style="border:5px solid red;  height:150px;  width:250px;  border-radius: 10%;" src="images/extra2.jpg"/></a>
+		<div style=" margin-left:0px; float:left;  margin-bottom:20px;" class="">
+			<a href="cookies.php"><img  style="border-radius:0px 0px 12px 0px; height:150px;  margin-left:0px; width:280px;  " src="images/extra2.jpg"/></a>
 		</div>
-		<div style="margin-bottom:20px;" class="col-md-3">
-			<a href="pastries.php"><img  style="border:5px solid green;  height:150px;  width:250px;  border-radius: 10%;" src="images/extra3.jpg"/></a>
+		<div style=" margin-left:0px; float:left; margin-bottom:20px;" class="">
+			<a href="pastries.php"><img  style="margin-left:0px; border-radius:0px 0px 12px 0px; height:150px;  width:280px;  " src="images/extra3.jpg"/></a>
 		</div>
-		<div style="margin-bottom:20px;" class="col-md-3">
-			<a href="muffins.php"><img  style="border:5px solid blue;  height:150px;  width:250px;  border-radius: 10%;" src="images/extra4.jpg"/></a>
+		<div style=" margin-left:0px; float:left; margin-bottom:20px;" class="">
+			<a href="muffins.php"><img  style="margin-left:0px; height:150px;  width:280px; border-radius:0px 0px 12px 0px; " src="images/extra4.jpg"/></a>
 		</div>
 
 	</div>

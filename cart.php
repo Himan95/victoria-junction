@@ -159,7 +159,7 @@ if(isset($_GET['index'])){
 
   <div style="margin-top:12px;" class="container">
     <h1 style="text-align:center;margin-top:20px;">Shopping Cart</h1>
-    <table id="datatable-responsive" style="margin-top:20px;" class="table table-striped table-bordered dt-responsive nowrap" align="left" border="1"  cellspacing="2" cellpadding="2" >
+    <table id="datatable-responsive" style="width:95%; margin-top:20px;" class="table table-striped table-bordered dt-responsive nowrap" align="left" border="1"  cellspacing="2" cellpadding="2" >
       <tr>
         <th>Remove</th>
         <th>Name</th>

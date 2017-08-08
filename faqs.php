@@ -141,7 +141,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
 		<h3 style="margin-top:12px;">FAQs</h3>
 
-		<p style="text-align:justify" class="animi"><?php echo  $results['description']; ?></p>
+		<?php echo  $results['description']; ?>
 		<!-- Affiliates section here -->
 
 		<div class="clearfix"> </div>

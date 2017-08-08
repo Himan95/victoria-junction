@@ -87,18 +87,17 @@ while($row=$records->fetch(PDO::FETCH_ASSOC)){
     <li><a href="delete_offer.php">Delete Offer</a></li>
     </ul>
 
-    <li><a> Main Slider <span class="fa fa-chevron-down"></span></a>
+    <!-- <li><a> Main Slider <span class="fa fa-chevron-down"></span></a>
     <ul class="nav child_menu">
     <li><a href="add_main_slider.php">Add Main Slider</a></li>
     <li><a href="delete_main_slider.php">Delete Main Slider</a></li>
-    </ul>
+    </ul> -->
     <li><a> Coupons <span class="fa fa-chevron-down"></span></a>
     <ul class="nav child_menu">
     <li><a href="add_coupon.php">Add Coupon</a></li>
     <li><a href="delete_coupon.php">Delete Coupon</a></li>
     </ul>
     </ul>
-
 
     <li><a><i class="fa fa-folder-o"></i> Transactions <span class="fa fa-chevron-down"></span></a>
     <ul class="nav child_menu">
