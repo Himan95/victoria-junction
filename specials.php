@@ -136,7 +136,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				$records12->execute();
 				$result=$records12->fetch(PDO::FETCH_ASSOC);
 				?>
-				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
+				<!--<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>-->
 			</div>
 		</div>
 		<div class="clearfix"></div>
@@ -242,7 +242,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			$records = $connection->prepare('SELECT * FROM coupons WHERE coupon_status=1');
 			$records->execute();
 			$results=$records->fetch(PDO::FETCH_ASSOC);
-
+			if(!$results['coupon_name'])
+			{
+				echo '<div style="text-align:center"><h2>No Products Available in this section as of now!</h2></div>';
+			}
+			else{
 			do{
 				$start = date_format(date_create_from_format('Y-m-d', $results['coupon_startdate']), 'd-m-Y');
 				$end = date_format(date_create_from_format('Y-m-d', $results['coupon_enddate']), 'd-m-Y');
@@ -266,6 +270,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				';
 			}
 			while($results=$records->fetch(PDO::FETCH_ASSOC));
+		}
 			?>
 			<div class="clearfix"> </div>
 		</div>

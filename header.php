@@ -7,6 +7,65 @@ $records1 = $connection->prepare('SELECT * FROM web_info');
 $records1->execute();
 $results1=$records1->fetch(PDO::FETCH_ASSOC);
 ?>
+<style>
+.active {
+}
+
+
+.linked{
+  text-decoration: none;
+  color:white;
+}
+/* Dropdown Button */
+.dropbttn {
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-hover:hover{
+  background-color:#3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown content */
+
+
+/* Dropdown Content (Hidden by Default) */
+.content-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.content-dropdown a {
+  font-size: 15px;
+  color: black;
+  padding: 10px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.content-dropdown a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .content-dropdown {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbttn {
+  background-color: #3e8e41;
+}
+
+
+</style>
 <div class="agileits_header">
 	<div class="w3l_offers">
 		<a href="specials.php">Special Offers</a>
@@ -31,20 +90,22 @@ $results1=$records1->fetch(PDO::FETCH_ASSOC);
 	<div class="w3l_header_right">
 		<ul>
 			<li class="dropdown profile_details_drop">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user"></span> Login / Register</a>
-				<div class="mega-dropdown-menu">
-					<div class="w3ls_vegetables">
-						<ul class="dropdown-menu drp-mnu">
+
+				<a href="#" class="dropbttn"><span class="fa fa-user"></span> Login / Register</a>
+				<div class="content-dropdown">
+				<!--<div class="mega-dropdown-menu">
+					<div class="w3ls_vegetables">-->
+
 							<?php if(isset($_SESSION['username'])){ ?>
-								<li><a href="checksession.php">LOGOUT</a></li>
+								<a href="checksession.php">LOGOUT</a>
 								<?php }else{ ?>
-									<li><a href="login.php">LOGIN</a></li>
+									<a href="login.php">LOGIN</a>
 									<?php } ?>
-									<li><a href="login.php">SIGN UP</a></li>
-									<li><a href="my-accounts.php">MY ACCOUNT</a></li>
-								</ul>
+									<a href="login.php">SIGN UP</a>
+									<a href="my-accounts.php">MY ACCOUNT</a>
+
 							</div>
-						</div>
+						<!--</div>-->
 					</li>
 				</ul>
 			</div>

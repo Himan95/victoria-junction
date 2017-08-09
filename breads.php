@@ -129,7 +129,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				$records12->execute();
 				$result=$records12->fetch(PDO::FETCH_ASSOC);
 				?>
-				<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>
+				<!--<h3><?php echo $result['offer_desc'];?><span class="blink_me"></span></h3>-->
 			</div>
 		</div>
 		<div class="clearfix"></div>

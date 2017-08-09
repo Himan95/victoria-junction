@@ -97,9 +97,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //header -->
 	<!-- banner -->
 	<div class="banner">
-		<div style="background-color:red; height:50px;" class="menu-bar">
-			<?php include('index-nav-bar.php'); ?>
-		</div>
+	<!--	<div style="background-color:red; height:50px;" class="menu-bar">-->
+			<?php include('new_nav_bar.php'); ?>
+		<!--</div>-->
 		<!--<div class="w3l_banner_nav_right">-->
 			<section class="slider">
 				<div class="flexslider">
